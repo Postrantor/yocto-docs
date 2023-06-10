@@ -3,17 +3,18 @@ tip: translate by openai@2023-06-07 22:36:49
 ...
 ---
 title: Release notes for 3.4.3 (honister)
----
+-----------------------------------------
+
 # Security Fixes in 3.4.3
 
 - ghostscript: fix `2021-3781`{.interpreted-text role="cve"}
 - ghostscript: fix `2021-45949`{.interpreted-text role="cve"}
 - tiff: Add backports for two CVEs from upstream (`2022-0561`{.interpreted-text role="cve"} & `2022-0562`{.interpreted-text role="cve"})
 - gcc : Fix `2021-46195`{.interpreted-text role="cve"}
-
 - virglrenderer: fix [CVE-2022-0135](https://security-tracker.debian.org/tracker/CVE-2022-0135) and [CVE-2022-0175](https://security-tracker.debian.org/tracker/CVE-2022-0175)
 
-> - Virglrenderer：修复[CVE-2022-0135](https://security-tracker.debian.org/tracker/CVE-2022-0135)和[CVE-2022-0175](https://security-tracker.debian.org/tracker/CVE-2022-0175)
+> - Virglrenderer：修复 [CVE-2022-0135](https://security-tracker.debian.org/tracker/CVE-2022-0135) 和 [CVE-2022-0175](https://security-tracker.debian.org/tracker/CVE-2022-0175)
+
 - binutils: Add fix for `2021-45078`{.interpreted-text role="cve"}
 
 # Fixes in 3.4.3
@@ -135,13 +136,12 @@ poky
 - Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
 - Branch: :yocto\_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
 - Tag: :yocto\_[git:%60yocto-3.4.3](git:%60yocto-3.4.3) \</poky/tag/?h=yocto-3.4.3\>\`
-
 - Git Revision: :yocto\_[git:%60ee68ae307fd951b9de6b31dc6713ea29186b7749](git:%60ee68ae307fd951b9de6b31dc6713ea29186b7749) \</poky/commit/?id=ee68ae307fd951b9de6b31dc6713ea29186b7749\>\`
 
-> Git版本：:yocto_[git:ee68ae307fd951b9de6b31dc6713ea29186b7749](git:ee68ae307fd951b9de6b31dc6713ea29186b7749) </poky/commit/?id=ee68ae307fd951b9de6b31dc6713ea29186b7749>
+> Git 版本：:yocto_[git:ee68ae307fd951b9de6b31dc6713ea29186b7749](git:ee68ae307fd951b9de6b31dc6713ea29186b7749) </poky/commit/?id=ee68ae307fd951b9de6b31dc6713ea29186b7749>
+
 - Release Artefact: poky-ee68ae307fd951b9de6b31dc6713ea29186b7749
 - sha: 92c3d73c3e74f0e1d5c2ab2836ce3a3accbe47772cea70df3755845e0db1379b
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2), [http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2)，[http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/poky-ee68ae307fd951b9de6b31dc6713ea29186b7749.tar.bz2)
@@ -151,13 +151,12 @@ openembedded-core
 - Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
 - Branch: :oe\_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
 - Tag: :oe\_[git:%60yocto-3.4.3](git:%60yocto-3.4.3) \</openembedded-core/tag/?h=yocto-3.4.3\>\`
-
 - Git Revision: :oe\_[git:%60ebca8f3ac9372b7ebb3d39e8f7f930b63b481448](git:%60ebca8f3ac9372b7ebb3d39e8f7f930b63b481448) \</openembedded-core/commit/?id=ebca8f3ac9372b7ebb3d39e8f7f930b63b481448\>\`
 
 > - Git 版本：<openembedded-core/commit/?id=ebca8f3ac9372b7ebb3d39e8f7f930b63b481448>（git:`ebca8f3ac9372b7ebb3d39e8f7f930b63b481448`）
+
 - Release Artefact: oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448
 - sha: f28e503f6f6c0bcd9192dbd528f8e3c7bcea504c089117e0094d9a4f315f4b9f
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2), [http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2)，[http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/oecore-ebca8f3ac9372b7ebb3d39e8f7f930b63b481448.tar.bz2)
@@ -167,13 +166,12 @@ meta-mingw
 - Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
 - Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
 - Tag: :yocto\_[git:%60yocto-3.4.3](git:%60yocto-3.4.3) \</meta-mingw/tag/?h=yocto-3.4.3\>\`
-
 - Git Revision: :yocto\_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
-> Git版本： :yocto_[git:`f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:`f5d761cbd5c957e4405c5d40b0c236d263c916a8) </meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8>
+> Git 版本： :yocto_[git:`f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:` f5d761cbd5c957e4405c5d40b0c236d263c916a8) </meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8>
+
 - Release Artefact: meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8
 - sha: d4305d638ef80948584526c8ca386a8cf77933dffb8a3b8da98d26a5c40fcc11
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2), [http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2)，[http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-mingw-f5d761cbd5c957e4405c5d40b0c236d263c916a8.tar.bz2)
@@ -183,13 +181,12 @@ meta-gplv2
 - Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
 - Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
 - Tag: :yocto\_[git:%60yocto-3.4.3](git:%60yocto-3.4.3) \</meta-gplv2/tag/?h=yocto-3.4.3\>\`
-
 - Git Revision: :yocto\_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
-> Git版本：yocto_[git：`f04e4369bf9dd3385165281b9fa2ed1043b0e400`]（git：`f04e4369bf9dd3385165281b9fa2ed1043b0e400`）</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400>
+> Git 版本：yocto_[git：`f04e4369bf9dd3385165281b9fa2ed1043b0e400`]（git：`f04e4369bf9dd3385165281b9fa2ed1043b0e400`）</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400>
+
 - Release Artefact: meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400
 - sha: ef8e2b1ec1fb43dbee4ff6990ac736315c7bc2d8c8e79249e1d337558657d3fe
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2), [http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2)，[http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/meta-gplv2-f04e4369bf9dd3385165281b9fa2ed1043b0e400.tar.bz2)
@@ -199,13 +196,12 @@ bitbake
 - Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
 - Branch: :oe\_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
 - Tag: :oe\_[git:%60yocto-3.4.3](git:%60yocto-3.4.3) \</bitbake/tag/?h=yocto-3.4.3\>\`
-
 - Git Revision: :oe\_[git:%6043dcb2b2a2b95a5c959be57bca94fb7190ea6257](git:%6043dcb2b2a2b95a5c959be57bca94fb7190ea6257) \</bitbake/commit/?id=43dcb2b2a2b95a5c959be57bca94fb7190ea6257\>\`
 
-> Git版本：<bitbake/commit/?id=43dcb2b2a2b95a5c959be57bca94fb7190ea6257>（git:`43dcb2b2a2b95a5c959be57bca94fb7190ea6257`）
+> Git 版本：<bitbake/commit/?id=43dcb2b2a2b95a5c959be57bca94fb7190ea6257>（git:`43dcb2b2a2b95a5c959be57bca94fb7190ea6257`）
+
 - Release Artefact: bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257
 - sha: 92497ff97fed81dcc6d3e202969fb63ca983a8f5d9d91cafc6aee88312f79cf9
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2), [http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2)，[http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-3.4.3/bitbake-43dcb2b2a2b95a5c959be57bca94fb7190ea6257.tar.bz2)
@@ -215,7 +211,6 @@ yocto-docs
 - Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
 - Branch: :yocto\_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
 - Tag: :yocto\_[git:%60yocto-3.4.3](git:%60yocto-3.4.3) \</yocto-docs/tag/?h=yocto-3.4.3\>\`
-
 - Git Revision: :yocto\_[git:%6015f46f97d9cad558c19fc1dc19cfbe3720271d04](git:%6015f46f97d9cad558c19fc1dc19cfbe3720271d04) \</yocto-docs/commit/?15f46f97d9cad558c19fc1dc19cfbe3720271d04\>\`
 
 > Git 版本：:yocto_[git:%6015f46f97d9cad558c19fc1dc19cfbe3720271d04](git:%6015f46f97d9cad558c19fc1dc19cfbe3720271d04) \</yocto-docs/commit/?15f46f97d9cad558c19fc1dc19cfbe3720271d04\>\`

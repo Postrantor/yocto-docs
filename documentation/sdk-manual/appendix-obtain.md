@@ -1,10 +1,7 @@
 ---
 tip: translate by openai@2023-06-07 20:57:25
-...
----
 title: Obtaining the SDK
-------------------------
-
+---
 # Working with the SDK components directly in a Yocto build
 
 Please refer to section \"`sdk-manual/extensible:Setting up the Extensible SDK environment directly in a Yocto build`{.interpreted-text role="ref"}\"
@@ -25,15 +22,15 @@ Follow these steps to locate and hand-install the toolchain:
 
 > 按照以下步骤定位并手动安装工具链：
 
-1. *Go to the Installers Directory:* Go to :yocto_dl:[/releases/yocto/yocto-&DISTRO;/toolchain/]{.title-ref}
+1. _Go to the Installers Directory:_ Go to :yocto_dl:[/releases/yocto/yocto-&DISTRO;/toolchain/]{.title-ref}
 
 > 去安装程序目录：转到：yocto_dl：[/releases/yocto/yocto-&DISTRO;/toolchain/]{.title-ref}
 
-2. *Open the Folder for Your Build Host:* Open the folder that matches your `Build Host`{.interpreted-text role="term"} (i.e. `i686` for 32-bit machines or `x86_64` for 64-bit machines).
+2. _Open the Folder for Your Build Host:_ Open the folder that matches your `Build Host`{.interpreted-text role="term"} (i.e. `i686` for 32-bit machines or `x86_64` for 64-bit machines).
 
 > 打开与您的构建主机匹配的文件夹（例如 32 位机器的 `i686` 或 64 位机器的 `x86_64`）。
 
-3. *Locate and Download the SDK Installer:* You need to find and download the installer appropriate for your build host, target hardware, and image type.
+3. _Locate and Download the SDK Installer:_ You need to find and download the installer appropriate for your build host, target hardware, and image type.
 
 > *3. 找到并下载 SDK 安装程序：*您需要找到并下载适合您的构建主机、目标硬件和映像类型的安装程序。
 
@@ -83,7 +80,7 @@ poky-glibc-x86_64-core-image-sato-core2-64-toolchain-ext-&DISTRO;.sh
 > poky-glibc-x86_64-core-image-sato-core2-64-toolchain-ext-&DISTRO;.sh（Poky-GLIBC-x86_64核心图像SATO Core2-64工具链EXT-&DISTRO;.sh）
 ```
 
-4. *Run the Installer:* Be sure you have execution privileges and run the installer. Following is an example from the `Downloads` directory:
+4. _Run the Installer:_ Be sure you have execution privileges and run the installer. Following is an example from the `Downloads` directory:
 
 > 4. *运行安装程序：*确保您具有执行权限，然后运行安装程序。以下是 `下载` 目录中的示例：
 
@@ -104,15 +101,15 @@ As an alternative to locating and downloading an SDK installer, you can build th
 
 > 作为寻找和下载 SDK 安装程序的替代方案，您可以构建 SDK 安装程序。按照以下步骤操作：
 
-1. *Set Up the Build Environment:* Be sure you are set up to use BitBake in a shell. See the \"`dev-manual/start:preparing the build host`{.interpreted-text role="ref"}\" section in the Yocto Project Development Tasks Manual for information on how to get a build host ready that is either a native Linux machine or a machine that uses CROPS.
+1. _Set Up the Build Environment:_ Be sure you are set up to use BitBake in a shell. See the \"`dev-manual/start:preparing the build host`{.interpreted-text role="ref"}\" section in the Yocto Project Development Tasks Manual for information on how to get a build host ready that is either a native Linux machine or a machine that uses CROPS.
 
 > 1. *设置构建环境：*确保您已经准备好在 shell 中使用 BitBake。有关如何准备本地 Linux 机器或使用 CROPS 的机器的信息，请参阅 Yocto Project 开发任务手册中的“dev-manual/start：准备构建主机”部分。
 
-2. *Clone the \`\`poky\`\` Repository:* You need to have a local copy of the Yocto Project `Source Directory`{.interpreted-text role="term"} (i.e. a local `poky` repository). See the \"``dev-manual/start:cloning the \`\`poky\`\` repository``{.interpreted-text role="ref"}\" and possibly the \"`dev-manual/start:checking out by branch in poky`{.interpreted-text role="ref"}\" and \"`dev-manual/start:checking out by tag in poky`{.interpreted-text role="ref"}\" sections all in the Yocto Project Development Tasks Manual for information on how to clone the `poky` repository and check out the appropriate branch for your work.
+2. _Clone the \`\`poky\`\` Repository:_ You need to have a local copy of the Yocto Project `Source Directory`{.interpreted-text role="term"} (i.e. a local `poky` repository). See the \"``dev-manual/start:cloning the \`\`poky\`\` repository``{.interpreted-text role="ref"}\" and possibly the \"`dev-manual/start:checking out by branch in poky`{.interpreted-text role="ref"}\" and \"`dev-manual/start:checking out by tag in poky`{.interpreted-text role="ref"}\" sections all in the Yocto Project Development Tasks Manual for information on how to clone the `poky` repository and check out the appropriate branch for your work.
 
-> 2. *克隆 `poky` 仓库：* 你需要有一个 Yocto 项目源码目录（即本地 `poky` 仓库）的本地副本。参见 Yocto 项目开发任务手册中的“克隆 `poky` 仓库”（dev-manual/start:cloning the `poky` repository）以及可能的“按分支在 poky 中检出”（dev-manual/start:checking out by branch in poky）和“按标签在 poky 中检出”（dev-manual/start:checking out by tag in poky）章节，了解如何克隆 `poky` 仓库并检出适合你工作的适当分支。
+> 2. _克隆 `poky` 仓库：_ 你需要有一个 Yocto 项目源码目录（即本地 `poky` 仓库）的本地副本。参见 Yocto 项目开发任务手册中的“克隆 `poky` 仓库”（dev-manual/start:cloning the `poky` repository）以及可能的“按分支在 poky 中检出”（dev-manual/start:checking out by branch in poky）和“按标签在 poky 中检出”（dev-manual/start:checking out by tag in poky）章节，了解如何克隆 `poky` 仓库并检出适合你工作的适当分支。
 
-3. *Initialize the Build Environment:* While in the root directory of the Source Directory (i.e. `poky`), run the `structure-core-script`{.interpreted-text role="ref"} environment setup script to define the OpenEmbedded build environment on your build host:
+3. _Initialize the Build Environment:_ While in the root directory of the Source Directory (i.e. `poky`), run the `structure-core-script`{.interpreted-text role="ref"} environment setup script to define the OpenEmbedded build environment on your build host:
 
 > *初始化构建环境：*在源目录（即 `poky`）的根目录下，运行 `structure-core-script`{.interpreted-text role="ref"}环境设置脚本，以在构建主机上定义 OpenEmbedded 构建环境。
 
@@ -127,11 +124,11 @@ Among other things, the script creates the `Build Directory`{.interpreted-text r
 
 > 脚本还会创建 `构建目录`，在这种情况下，它的名称是 `build`，位于源目录中。脚本运行后，你的当前工作目录会被设置为 `build` 目录。
 
-4. *Make Sure You Are Building an Installer for the Correct Machine:* Check to be sure that your `MACHINE`{.interpreted-text role="term"} variable in the `local.conf` file in your `Build Directory`{.interpreted-text role="term"} matches the architecture for which you are building.
+4. _Make Sure You Are Building an Installer for the Correct Machine:_ Check to be sure that your `MACHINE`{.interpreted-text role="term"} variable in the `local.conf` file in your `Build Directory`{.interpreted-text role="term"} matches the architecture for which you are building.
 
 > 确保您正在为正确的机器构建安装程序：检查构建目录中 local.conf 文件中的 MACHINE 变量是否与您正在构建的架构匹配。
 
-5. *Make Sure Your SDK Machine is Correctly Set:* If you are building a toolchain designed to run on an architecture that differs from your current development host machine (i.e. the build host), be sure that the `SDKMACHINE`{.interpreted-text role="term"} variable in the `local.conf` file in your `Build Directory`{.interpreted-text role="term"} is correctly set.
+5. _Make Sure Your SDK Machine is Correctly Set:_ If you are building a toolchain designed to run on an architecture that differs from your current development host machine (i.e. the build host), be sure that the `SDKMACHINE`{.interpreted-text role="term"} variable in the `local.conf` file in your `Build Directory`{.interpreted-text role="term"} is correctly set.
 
 > 确保你的 SDK 机器设置正确：如果您正在构建旨在运行在与当前开发主机机器（即构建主机）不同架构上的工具链，请确保在构建目录中的 local.conf 文件中的 SDKMACHINE 变量设置正确。
 
@@ -168,7 +165,7 @@ different from the architecture of the build machine (``x86_64``).
 
 :::
 
-6. *Build the SDK Installer:* To build the SDK installer for a standard SDK and populate the SDK image, use the following command form. Be sure to replace `image` with an image (e.g. \"core-image-sato\"):
+6. _Build the SDK Installer:_ To build the SDK installer for a standard SDK and populate the SDK image, use the following command form. Be sure to replace `image` with an image (e.g. \"core-image-sato\"):
 
 > 6. *构建 SDK 安装程序：*要构建标准 SDK 的 SDK 安装程序并填充 SDK 映像，请使用以下命令表单。请确保将 `image` 替换为图像（例如“core-image-sato”）：
 
@@ -211,7 +208,7 @@ Note
 > 默认情况下，之前的 BitBake 命令不会构建静态二进制文件。如果要使用工具链构建这些类型的库，您需要确保 SDK 具有适当的静态开发库。在构建 SDK 安装程序之前，请在 `local.conf` 文件中使用 `TOOLCHAIN_TARGET_TASK` 变量。这样可以确保最终的 SDK 安装过程将适当的库软件包作为 SDK 的一部分安装。以下是使用 `libc` 静态开发库的示例：TOOLCHAIN_TARGET_TASK：append =\" libc-staticdev\"
 > :::
 
-7. *Run the Installer:* You can now run the SDK installer from `tmp/deploy/sdk` in the `Build Directory`{.interpreted-text role="term"}. Following is an example:
+7. _Run the Installer:_ You can now run the SDK installer from `tmp/deploy/sdk` in the `Build Directory`{.interpreted-text role="term"}. Following is an example:
 
 > 现在，您可以从 `Build Directory` 中的 `tmp/deploy/sdk` 处运行 SDK 安装程序。以下是一个示例：
 
@@ -246,7 +243,7 @@ Follow these steps to extract the root filesystem:
 
 > 按照以下步骤提取根文件系统：
 
-1. *Locate and Download the Tarball for the Pre-Built Root Filesystem Image File:* You need to find and download the root filesystem image file that is appropriate for your target system. These files are kept in machine-specific folders in the :yocto_dl:[Index of Releases \</releases/yocto/yocto-&DISTRO;/machines/\>]{.title-ref} in the \"machines\" directory.
+1. _Locate and Download the Tarball for the Pre-Built Root Filesystem Image File:_ You need to find and download the root filesystem image file that is appropriate for your target system. These files are kept in machine-specific folders in the :yocto_dl:[Index of Releases \</releases/yocto/yocto-&DISTRO;/machines/\>]{.title-ref} in the \"machines\" directory.
 
 > 请找到并下载适合您的目标系统的根文件系统映像文件。这些文件都存储在:yocto_dl:[发布索引 \</releases/yocto/yocto-&DISTRO;/machines/\>]{.title-ref} 中的“machines”目录中的机器特定文件夹中。
 
@@ -294,7 +291,7 @@ core-image-sato-sdk-beaglebone-yocto.tar.bz2
 > 核心图像SATO SDK Beaglebone Yocto.tar.bz2
 ```
 
-2. *Initialize the Cross-Development Environment:* You must `source` the cross-development environment setup script to establish necessary environment variables.
+2. _Initialize the Cross-Development Environment:_ You must `source` the cross-development environment setup script to establish necessary environment variables.
 
 > 2. *初始化交叉开发环境：*您必须运行 `source` 命令来加载交叉开发环境设置脚本，以建立必要的环境变量。
 
@@ -313,7 +310,7 @@ $ source poky_sdk/environment-setup-core2-64-poky-linux
 > $ 源 poky_sdk/environment-setup-core2-64-poky-linux
 ```
 
-3. *Extract the Root Filesystem:* Use the `runqemu-extract-sdk` command and provide the root filesystem image.
+3. _Extract the Root Filesystem:_ Use the `runqemu-extract-sdk` command and provide the root filesystem image.
 
 > 使用 `runqemu-extract-sdk` 命令，提供根文件系统映像。
 

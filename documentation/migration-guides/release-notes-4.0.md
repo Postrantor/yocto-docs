@@ -3,37 +3,38 @@ tip: translate by openai@2023-06-07 23:07:02
 ...
 ---
 title: Release notes for 4.0 (kirkstone)
----
+----------------------------------------
+
 This is a Long Term Support release, published in April 2022, and supported at least for two years (April 2024).
 
 # New Features / Enhancements in 4.0
 
 - Linux kernel 5.15, glibc 2.35 and \~300 other recipe upgrades
-
 - Reproducibility: this release fixes the reproducibility issues with `rust-llvm` and `golang`. Recipes in OpenEmbedded-Core are now fully reproducible. Functionality previously in the optional \"reproducible\" class has been merged into the `ref-classes-base`{.interpreted-text role="ref"} class.
 
-> - 可重现性：此版本修复了Rust-LLVM和Go语言的可重现性问题。OpenEmbedded-Core中的配方现在完全可重复。以前在可选的“可重复”类中的功能已合并到`ref-classes-base`{.interpreted-text role="ref"}类中。
-- Network access is now disabled by default for tasks other than where it is expected to ensure build integrity (where host kernel supports it)
+> - 可重现性：此版本修复了 Rust-LLVM 和 Go 语言的可重现性问题。OpenEmbedded-Core 中的配方现在完全可重复。以前在可选的“可重复”类中的功能已合并到 `ref-classes-base`{.interpreted-text role="ref"}类中。
 
+- Network access is now disabled by default for tasks other than where it is expected to ensure build integrity (where host kernel supports it)
 - The Yocto Project now allows you to reuse the Shared State cache from its autobuilder. If the network connection between our server and your machine is faster than you would build recipes from source, you can try to speed up your builds by using such Shared State and Hash Equivalence by setting:
 
-> 马上，Yocto项目允许您重用其自动构建器的共享状态缓存。如果我们的服务器和您的机器之间的网络连接比您从源代码构建配方要快，您可以通过设置共享状态和哈希等价性来尝试加速构建：
+> 马上，Yocto 项目允许您重用其自动构建器的共享状态缓存。如果我们的服务器和您的机器之间的网络连接比您从源代码构建配方要快，您可以通过设置共享状态和哈希等价性来尝试加速构建：
 
-  ```
-  BB_SIGNATURE_HANDLER = "OEEquivHash"
-  BB_HASHSERVE = "auto"
-  BB_HASHSERVE_UPSTREAM = "hashserv.yocto.io:8687"
-  SSTATE_MIRRORS ?= "file://.* https://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
-  ```
+```
+BB_SIGNATURE_HANDLER = "OEEquivHash"
+BB_HASHSERVE = "auto"
+BB_HASHSERVE_UPSTREAM = "hashserv.yocto.io:8687"
+SSTATE_MIRRORS ?= "file://.* https://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
+```
+
 - The Python package build process is now based on [wheels](https://pythonwheels.com/) in line with the upstream direction.
-
 - New `ref-classes-overlayfs`{.interpreted-text role="ref"} and `ref-classes-overlayfs-etc`{.interpreted-text role="ref"} classes and `overlayroot` support in the `Initramfs`{.interpreted-text role="term"} framework to make it easier to overlay read-only filesystems (for example) with `OverlayFS <OverlayFS>`{.interpreted-text role="wikipedia"}.
 
-> 新的ref-classes-overlayfs和ref-classes-overlayfs-etc类以及Initramfs框架中的overlayroot支持，可以更轻松地使用OverlayFS（例如）覆盖只读文件系统。
+> 新的 ref-classes-overlayfs 和 ref-classes-overlayfs-etc 类以及 Initramfs 框架中的 overlayroot 支持，可以更轻松地使用 OverlayFS（例如）覆盖只读文件系统。
 
 - Inclusive language adjustments to some variable names - see the `4.0 migration guide <migration-4.0-inclusive-language>`{.interpreted-text role="ref"} for details.
 
-> 调整一些变量名的包容性语言——详情请参见“4.0迁移指南<migration-4.0-inclusive-language>”。
+> 调整一些变量名的包容性语言——详情请参见“4.0 迁移指南 <migration-4.0-inclusive-language>”。
+
 - New recipes:
 
   > - `buildtools-docs-tarball`
@@ -180,14 +181,14 @@ This is a Long Term Support release, published in April 2022, and supported at l
   > - New `FIT_CONF_PREFIX` variable to allow overriding FIT configuration prefix
   > - Use \'bbnote\' for better logging
   >
-
 - New `PACKAGECONFIG`{.interpreted-text role="term"} options in `curl`, `dtc`, `epiphany`, `git`, `git`, `gstreamer1.0-plugins-bad`, `linux-yocto-dev`, `kmod`, `mesa`, `piglit`, `qemu`, `rpm`, `systemd`, `webkitgtk`, `weston-init`
 
-> 新的PACKAGECONFIG选项可用于curl、dtc、epiphany、git、git、gstreamer1.0-plugins-bad、linux-yocto-dev、kmod、mesa、piglit、qemu、rpm、systemd、webkitgtk、weston-init。
+> 新的 PACKAGECONFIG 选项可用于 curl、dtc、epiphany、git、git、gstreamer1.0-plugins-bad、linux-yocto-dev、kmod、mesa、piglit、qemu、rpm、systemd、webkitgtk、weston-init。
 
 - ptest enhancements in `findutils`, `lttng-tools`, `openssl`, `gawk`, `strace`, `lttng-tools`, `valgrind`, `perl`, `libxml-parser-perl`, `openssh`, `python3-cryptography`, `popt`
 
-> 对Findutils、LTTng-Tools、OpenSSL、Gawk、Strace、LTTng-Tools、Valgrind、Perl、Libxml-Parser-Perl、OpenSSH、Python3-Cryptography和Popt进行了ptest增强。
+> 对 Findutils、LTTng-Tools、OpenSSL、Gawk、Strace、LTTng-Tools、Valgrind、Perl、Libxml-Parser-Perl、OpenSSH、Python3-Cryptography 和 Popt 进行了 ptest 增强。
+
 - Sysroot dependencies have been further optimised
 - Significant effort to upstream / rationalise patches across a variety of recipes
 - Allow the creation of block devices on top of UBI volumes
@@ -233,13 +234,15 @@ This is a Long Term Support release, published in April 2022, and supported at l
   >
 - SDK-related enhancements:
 
-
   > - Extended recipes to `ref-classes-nativesdk`{.interpreted-text role="ref"}: `cargo`, `librsvg`, `libstd-rs`, `libva`, `python3-docutil`, `python3-packaging`
-
-> > 將食譜擴展到`ref-classes-nativesdk`{.interpreted-text role="ref"}：`cargo`、`librsvg`、`libstd-rs`、`libva`、`python3-docutil`、`python3-packaging`
-  > - Enabled `ref-classes-nativesdk`{.interpreted-text role="ref"} recipes to find a correct version of the rust cross compiler
-  > - Support creating per-toolchain cmake file in SDK
   >
+
+>> 將食譜擴展到 `ref-classes-nativesdk`{.interpreted-text role="ref"}：`cargo`、`librsvg`、`libstd-rs`、`libva`、`python3-docutil`、`python3-packaging`
+>>
+>
+> - Enabled `ref-classes-nativesdk`{.interpreted-text role="ref"} recipes to find a correct version of the rust cross compiler
+> - Support creating per-toolchain cmake file in SDK
+
 - Rust enhancements:
 
   > - New python_setuptools3_rust class to enable building python extensions in Rust
@@ -294,58 +297,54 @@ This is a Long Term Support release, published in April 2022, and supported at l
 
 # Known Issues in 4.0
 
-
 - `make` version 4.2.1 is known to be buggy on non-Ubuntu systems. If this `make` version is detected on host distributions other than Ubuntu at build start time, then a warning will be displayed.
 
-> 如果在构建开始时，在非Ubuntu系统上检测到`make`版本4.2.1，则会显示警告。
+> 如果在构建开始时，在非 Ubuntu 系统上检测到 `make` 版本 4.2.1，则会显示警告。
 
 # Recipe License changes in 4.0
 
 The following corrections have been made to the `LICENSE`{.interpreted-text role="term"} values set by recipes:
 
-
 - cmake: add BSD-1-Clause & MIT & BSD-2-Clause to `LICENSE`{.interpreted-text role="term"} due to additional vendored libraries in native/target context
 
-> 添加BSD-1-Clause、MIT和BSD-2-Clause到LICENSE文件中，由于在本地/目标上下文中添加了额外的供应库。
+> 添加 BSD-1-Clause、MIT 和 BSD-2-Clause 到 LICENSE 文件中，由于在本地/目标上下文中添加了额外的供应库。
 
 - gettext: extend `LICENSE`{.interpreted-text role="term"} conditional upon `PACKAGECONFIG`{.interpreted-text role="term"} (due to vendored libraries)
 
-> 根据供应商库，扩展`LICENSE`的条件取决于`PACKAGECONFIG`。
+> 根据供应商库，扩展 `LICENSE` 的条件取决于 `PACKAGECONFIG`。
+
 - gstreamer1.0: update licenses of all modules to LGPL-2.1-or-later (with some exceptions that are GPL-2.0-or-later)
 - gstreamer1.0-plugins-bad/ugly: use the GPL-2.0-or-later only when it is in use
 - kern-tools-native: add missing MIT license due to Kconfiglib
 - libcap: add pam_cap license to `LIC_FILES_CHKSUM`{.interpreted-text role="term"} if pam is enabled
 - libidn2: add Unicode-DFS-2016 license
 - libsdl2: add BSD-2-Clause to `LICENSE`{.interpreted-text role="term"} due to default yuv2rgb and hidapi inclusion
-
 - libx11-compose-data: update `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-1-Clause & HPND & HPND-sell-variant\" to better reflect reality
 
-> -libx11-compose-data：更新“LICENSE”以反映现实，将其更改为“MIT和MIT样式和BSD-1条款和HPND和HPND销售变体”
+> -libx11-compose-data：更新“LICENSE”以反映现实，将其更改为“MIT 和 MIT 样式和 BSD-1 条款和 HPND 和 HPND 销售变体”
+
 - libx11: update `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-1-Clause & HPND & HPND-sell-variant\" to better reflect reality
 - libxshmfence: correct `LICENSE`{.interpreted-text role="term"} - MIT -\> HPND
 - newlib: add BSD-3-Clause to `LICENSE`{.interpreted-text role="term"}
 - python3-idna: correct `LICENSE`{.interpreted-text role="term"} - Unicode -\> Unicode-TOU
-
 - python3-pip: add \"Apache-2.0 & MPL-2.0 & LGPL-2.1-only & BSD-3-Clause & PSF-2.0 & BSD-2-Clause\" to `LICENSE`{.interpreted-text role="term"} due to vendored libraries
 
-> 将"Apache-2.0 & MPL-2.0 & LGPL-2.1-only & BSD-3-Clause & PSF-2.0 & BSD-2-Clause"添加到LICENSE文件中，因为有第三方库。
+> 将"Apache-2.0 & MPL-2.0 & LGPL-2.1-only & BSD-3-Clause & PSF-2.0 & BSD-2-Clause"添加到 LICENSE 文件中，因为有第三方库。
 
 Other license-related notes:
 
-
 - The ambiguous \"BSD\" license has been removed from the `common-licenses` directory. Each recipe that fetches or builds BSD-licensed code should specify the proper version of the BSD license in its `LICENSE`{.interpreted-text role="term"} value.
 
-> "BSD"许可证已从`common-licenses`目录中删除。每个抓取或构建BSD许可代码的配方都应在其`LICENSE`值中指定正确版本的BSD许可证。
+> "BSD"许可证已从 `common-licenses` 目录中删除。每个抓取或构建 BSD 许可代码的配方都应在其 `LICENSE` 值中指定正确版本的 BSD 许可证。
 
 - `LICENSE`{.interpreted-text role="term"} definitions now have to use [SPDX identifiers](https://spdx.org/licenses/). A :oe\_[git:%60convert-spdx-licenses.py](git:%60convert-spdx-licenses.py) \</openembedded-core/tree/scripts/contrib/convert-spdx-licenses.py\>\` script can be used to update your recipes.
 
-> `授权声明现在必须使用[SPDX标识符](https://spdx.org/licenses/)。可以使用:oe_[git:`convert-spdx-licenses.py`](git:`convert-spdx-licenses.py`) \</openembedded-core/tree/scripts/contrib/convert-spdx-licenses.py\>\`脚本来更新您的菜谱。`
+> `授权声明现在必须使用[SPDX标识符](https://spdx.org/licenses/)。可以使用:oe_[git:` convert-spdx-licenses.py `](git:` convert-spdx-licenses.py `) \</openembedded-core/tree/scripts/contrib/convert-spdx-licenses.py\>\` 脚本来更新您的菜谱。`
 
 # Security Fixes in 4.0
 
 - binutils: `2021-42574`{.interpreted-text role="cve"}, `2021-45078`{.interpreted-text role="cve"}
 - curl: `2021-22945`{.interpreted-text role="cve"}, `2021-22946`{.interpreted-text role="cve"}, `2021-22947`{.interpreted-text role="cve"}
-
 - epiphany: `2021-45085`{.interpreted-text role="cve"}, `2021-45086`{.interpreted-text role="cve"}, `2021-45087`{.interpreted-text role="cve"}, `2021-45088`{.interpreted-text role="cve"}
 
 > CVE-2021-45085、CVE-2021-45086、CVE-2021-45087、CVE-2021-45088
@@ -353,8 +352,8 @@ Other license-related notes:
 - expat: `2021-45960`{.interpreted-text role="cve"}, `2021-46143`{.interpreted-text role="cve"}, `2022-22822`{.interpreted-text role="cve"}, `2022-22823`{.interpreted-text role="cve"}, `2022-22824`{.interpreted-text role="cve"}, `2022-22825`{.interpreted-text role="cve"}, `2022-22826`{.interpreted-text role="cve"}, `2022-22827`{.interpreted-text role="cve"}, `2022-23852`{.interpreted-text role="cve"}, `2022-23990`{.interpreted-text role="cve"}, `2022-25235`{.interpreted-text role="cve"}, `2022-25236`{.interpreted-text role="cve"}, `2022-25313`{.interpreted-text role="cve"}, `2022-25314`{.interpreted-text role="cve"}, `2022-25315`{.interpreted-text role="cve"}
 
 > CVE-2021-45960、CVE-2021-46143、CVE-2022-22822、CVE-2022-22823、CVE-2022-22824、CVE-2022-22825、CVE-2022-22826、CVE-2022-22827、CVE-2022-23852、CVE-2022-23990、CVE-2022-25235、CVE-2022-25236、CVE-2022-25313、CVE-2022-25314、CVE-2022-25315
-- ffmpeg: `2021-38114`{.interpreted-text role="cve"}
 
+- ffmpeg: `2021-38114`{.interpreted-text role="cve"}
 - gcc: `2021-35465`{.interpreted-text role="cve"}, `2021-42574`{.interpreted-text role="cve"}, `2021-46195`{.interpreted-text role="cve"}, `2022-24765`{.interpreted-text role="cve"}
 
 > GCC：CVE-2021-35465、CVE-2021-42574、CVE-2021-46195、CVE-2022-24765
@@ -362,6 +361,7 @@ Other license-related notes:
 - glibc: `2021-3998`{.interpreted-text role="cve"}, `2021-3999`{.interpreted-text role="cve"}, `2021-43396`{.interpreted-text role="cve"}, `2022-23218`{.interpreted-text role="cve"}, `2022-23219`{.interpreted-text role="cve"}
 
 > CVE-2021-3998、CVE-2021-3999、CVE-2021-43396、CVE-2022-23218 和 CVE-2022-23219
+
 - gmp: `2021-43618`{.interpreted-text role="cve"}
 - go: `2021-41771`{.interpreted-text role="cve"} and `2021-41772`{.interpreted-text role="cve"}
 - grub2: `2021-3981`{.interpreted-text role="cve"}
@@ -379,15 +379,15 @@ Other license-related notes:
 - speex: `2020-23903`{.interpreted-text role="cve"}
 - squashfs-tools: `2021-41072`{.interpreted-text role="cve"}
 - systemd: `2021-4034`{.interpreted-text role="cve"}
-
 - tiff: `2022-0561`{.interpreted-text role="cve"}, `2022-0562`{.interpreted-text role="cve"}, `2022-0865`{.interpreted-text role="cve"}, `2022-0891`{.interpreted-text role="cve"}, `2022-0907`{.interpreted-text role="cve"}, `2022-0908`{.interpreted-text role="cve"}, `2022-0909`{.interpreted-text role="cve"}, `2022-0924`{.interpreted-text role="cve"}, `2022-1056`{.interpreted-text role="cve"}, `2022-22844`{.interpreted-text role="cve"}
 
 > CVE-2022-0561，CVE-2022-0562，CVE-2022-0865，CVE-2022-0891，CVE-2022-0907，CVE-2022-0908，CVE-2022-0909，CVE-2022-0924，CVE-2022-1056，CVE-2022-22844
-- unzip: `2021-4217`{.interpreted-text role="cve"}
 
+- unzip: `2021-4217`{.interpreted-text role="cve"}
 - vim: `2021-3796`{.interpreted-text role="cve"}, `2021-3872`{.interpreted-text role="cve"}, `2021-3875`{.interpreted-text role="cve"}, `2021-3927`{.interpreted-text role="cve"}, `2021-3928`{.interpreted-text role="cve"}, `2021-3968`{.interpreted-text role="cve"}, `2021-3973`{.interpreted-text role="cve"}, `2021-4187`{.interpreted-text role="cve"}, `2022-0128`{.interpreted-text role="cve"}, `2022-0156`{.interpreted-text role="cve"}, `2022-0158`{.interpreted-text role="cve"}, `2022-0261`{.interpreted-text role="cve"}, `2022-0318`{.interpreted-text role="cve"}, `2022-0319`{.interpreted-text role="cve"}, `2022-0554`{.interpreted-text role="cve"}, `2022-0696`{.interpreted-text role="cve"}, `2022-0714`{.interpreted-text role="cve"}, `2022-0729`{.interpreted-text role="cve"}, `2022-0943`{.interpreted-text role="cve"}
 
 > vim：CVE-2021-3796，CVE-2021-3872，CVE-2021-3875，CVE-2021-3927，CVE-2021-3928，CVE-2021-3968，CVE-2021-3973，CVE-2021-4187，CVE-2022-0128，CVE-2022-0156，CVE-2022-0158，CVE-2022-0261，CVE-2022-0318，CVE-2022-0319，CVE-2022-0554，CVE-2022-0696，CVE-2022-0714，CVE-2022-0729，CVE-2022-0943
+
 - virglrenderer: `2022-0135`{.interpreted-text role="cve"}, `2022-0175`{.interpreted-text role="cve"}
 - webkitgtk: `2022-22589`{.interpreted-text role="cve"}, `2022-22590`{.interpreted-text role="cve"}, `2022-22592`{.interpreted-text role="cve"}
 - xz: `2022-1271`{.interpreted-text role="cve"}
@@ -887,13 +887,12 @@ poky
 - Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</poky/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0](git:%60yocto-4.0) \</poky/tag/?h=yocto-4.0\>\`
-
 - Git Revision: :yocto\_[git:%6000cfdde791a0176c134f31e5a09eff725e75b905](git:%6000cfdde791a0176c134f31e5a09eff725e75b905) \</poky/commit/?id=00cfdde791a0176c134f31e5a09eff725e75b905\>\`
 
 > - Git 版本：yocto_[git:%6000cfdde791a0176c134f31e5a09eff725e75b905](git:%6000cfdde791a0176c134f31e5a09eff725e75b905) \</poky/commit/?id=00cfdde791a0176c134f31e5a09eff725e75b905\>\`
+
 - Release Artefact: poky-00cfdde791a0176c134f31e5a09eff725e75b905
 - sha: 4cedb491b7bf0d015768c61690f30d7d73f4266252d6fba907bba97eac83648c
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/poky-00cfdde791a0176c134f31e5a09eff725e75b905.tar.bz2)
@@ -903,13 +902,12 @@ openembedded-core
 - Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
 - Branch: :oe\_[git:%60kirkstone](git:%60kirkstone) \</openembedded-core/log/?h=kirkstone\>\`
 - Tag: :oe\_[git:%60yocto-4.0](git:%60yocto-4.0) \</openembedded-core/tag/?h=yocto-4.0\>\`
-
 - Git Revision: :oe\_[git:%6092fcb6570bddd0c5717d8cfdf38ecf3e44942b0f](git:%6092fcb6570bddd0c5717d8cfdf38ecf3e44942b0f) \</openembedded-core/commit/?id=92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f\>\`
 
-> Git版本：:oe_[git：`92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f`](git:`92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f`) </openembedded-core/commit/?id=92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f>
+> Git 版本：:oe_[git：`92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f`](git:%6092fcb6570bddd0c5717d8cfdf38ecf3e44942b0f%60) </openembedded-core/commit/?id=92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f>
+
 - Release Artefact: oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f
 - sha: c042629752543a10b0384b2076b1ee8742fa5e8112aef7b00b3621f8387a51c6
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/oecore-92fcb6570bddd0c5717d8cfdf38ecf3e44942b0f.tar.bz2)
@@ -919,13 +917,12 @@ meta-mingw
 - Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-mingw/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0](git:%60yocto-4.0) \</meta-mingw/tag/?h=yocto-4.0\>\`
-
 - Git Revision: :yocto\_[git:%60a90614a6498c3345704e9611f2842eb933dc51c1](git:%60a90614a6498c3345704e9611f2842eb933dc51c1) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
 
-> - Git 版本：yocto_[git:`a90614a6498c3345704e9611f2842eb933dc51c1`](git:`a90614a6498c3345704e9611f2842eb933dc51c1`) </meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1>
+> - Git 版本：yocto_[git:`a90614a6498c3345704e9611f2842eb933dc51c1`](git:%60a90614a6498c3345704e9611f2842eb933dc51c1%60) </meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1>
+
 - Release Artefact: meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1
 - sha: 49f9900bfbbc1c68136f8115b314e95d0b7f6be75edf36a75d9bcd1cca7c6302
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) 下载地址：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2)
@@ -935,13 +932,12 @@ meta-gplv2
 - Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-gplv2/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0](git:%60yocto-4.0) \</meta-gplv2/tag/?h=yocto-4.0\>\`
-
 - Git Revision: :yocto\_[git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-mingw/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
 
-> Git版本：yocto_[git：d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git：d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-mingw/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
+> Git 版本：yocto_[git：d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git%EF%BC%9Ad2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-mingw/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
+
 - Release Artefact: meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a
 - sha: c386f59f8a672747dc3d0be1d4234b6039273d0e57933eb87caa20f56b9cca6d
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2)
@@ -951,13 +947,12 @@ bitbake
 - Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
 - Branch: :oe\_[git:%602.0](git:%602.0) \</bitbake/log/?h=2.0\>\`
 - Tag: :oe\_[git:%60yocto-4.0](git:%60yocto-4.0) \</bitbake/tag/?h=yocto-4.0\>\`
-
 - Git Revision: :oe\_[git:%60c212b0f3b542efa19f15782421196b7f4b64b0b9](git:%60c212b0f3b542efa19f15782421196b7f4b64b0b9) \</bitbake/commit/?id=c212b0f3b542efa19f15782421196b7f4b64b0b9\>\`
 
-> Git版本：:oe_[git:`c212b0f3b542efa19f15782421196b7f4b64b0b9`](git:`c212b0f3b542efa19f15782421196b7f4b64b0b9`) \</bitbake/commit/?id=c212b0f3b542efa19f15782421196b7f4b64b0b9\>\`
+> Git 版本：:oe_[git:`c212b0f3b542efa19f15782421196b7f4b64b0b9`](git:%60c212b0f3b542efa19f15782421196b7f4b64b0b9%60) \</bitbake/commit/?id=c212b0f3b542efa19f15782421196b7f4b64b0b9\>\`
+
 - Release Artefact: bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9
 - sha: 6872095c7d7be5d791ef3e18b6bab2d1e0e237962f003d2b00dc7bd6fb6d2ef7
-
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2)
 
 > 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0/bitbake-c212b0f3b542efa19f15782421196b7f4b64b0b9.tar.bz2)
@@ -967,7 +962,6 @@ yocto-docs
 - Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</yocto-docs/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0](git:%60yocto-4.0) \</yocto-docs/tag/?h=yocto-4.0\>\`
-
 - Git Revision: :yocto\_[git:%60a6f571ad5b087385cad8765ed455c4b4eaeebca6](git:%60a6f571ad5b087385cad8765ed455c4b4eaeebca6) \</yocto-docs/commit/?id=a6f571ad5b087385cad8765ed455c4b4eaeebca6\>\`
 
-> Git版本：yocto_[git:`a6f571ad5b087385cad8765ed455c4b4eaeebca6`](git:`a6f571ad5b087385cad8765ed455c4b4eaeebca6`) \</yocto-docs/commit/?id=a6f571ad5b087385cad8765ed455c4b4eaeebca6\>\`
+> Git 版本：yocto_[git:`a6f571ad5b087385cad8765ed455c4b4eaeebca6`](git:%60a6f571ad5b087385cad8765ed455c4b4eaeebca6%60) \</yocto-docs/commit/?id=a6f571ad5b087385cad8765ed455c4b4eaeebca6\>\`

@@ -268,11 +268,13 @@ Within the diagram, three possible scenarios feed into the `devtool add` workflo
 > 图中的左侧场景代表一种常见情况，即源代码不存在于本地，需要提取。在这种情况下，源代码将提取到默认的工作区 - 你不想将文件放在工作区之外的某个特定位置。因此，您需要的一切都将位于工作区中。
 
 ```
- ```
- $ devtool add recipe fetchuri
- ```
+```
 
- With this command, `devtool` extracts the upstream source files into a local Git repository within the `sources` folder. The command then creates a recipe named recipe and a corresponding append file in the workspace. If you do not provide recipe, the command makes an attempt to determine the recipe name.
+$ devtool add recipe fetchuri
+
+```
+
+With this command, `devtool` extracts the upstream source files into a local Git repository within the `sources` folder. The command then creates a recipe named recipe and a corresponding append file in the workspace. If you do not provide recipe, the command makes an attempt to determine the recipe name.
 ```
 
 - *Middle*: The middle scenario in the figure also represents a situation where the source code does not exist locally. In this case, the code is again upstream and needs to be extracted to some local area \-\-- this time outside of the default workspace.
@@ -290,13 +292,15 @@ Within the diagram, three possible scenarios feed into the `devtool add` workflo
 
  Furthermore, the first positional argument `srctree` in this case identifies where the `devtool add` command will locate the extracted code outside of the workspace. You need to specify an empty directory:
 
- ```
- $ devtool add recipe srctree fetchuri
- ```
+```
 
- In summary, the source code is pulled from fetchuri and extracted into the location defined by `srctree` as a local Git repository.
+$ devtool add recipe srctree fetchuri
 
- Within workspace, `devtool` creates a recipe named recipe along with an associated append file.
+```
+
+In summary, the source code is pulled from fetchuri and extracted into the location defined by `srctree` as a local Git repository.
+
+Within workspace, `devtool` creates a recipe named recipe along with an associated append file.
 ```
 
 - *Right*: The right scenario in the figure represents a situation where the `srctree` has been previously prepared outside of the `devtool` workspace.
@@ -306,15 +310,17 @@ Within the diagram, three possible scenarios feed into the `devtool add` workflo
 ```
  The following command provides a new recipe name and identifies the existing source tree location:
 
- ```
- $ devtool add recipe srctree
- ```
+```
 
- The command examines the source code and creates a recipe named recipe for the code and places the recipe into the workspace.
+$ devtool add recipe srctree
 
- Because the extracted source code already exists, `devtool` does not try to relocate the source code into the workspace \-\-- only the new recipe is placed in the workspace.
+```
 
- Aside from a recipe folder, the command also creates an associated append folder and places an initial `*.bbappend` file within.
+The command examines the source code and creates a recipe named recipe for the code and places the recipe into the workspace.
+
+Because the extracted source code already exists, `devtool` does not try to relocate the source code into the workspace \-\-- only the new recipe is placed in the workspace.
+
+Aside from a recipe folder, the command also creates an associated append folder and places an initial `*.bbappend` file within.
 ```
 
 2. *Edit the Recipe*: You can use `devtool edit-recipe` to open up the editor as defined by the `$EDITOR` environment variable and modify the file:
@@ -465,15 +471,17 @@ The typical situation is where another developer has created a layer for use wit
 ```
  The following command identifies the recipe and, by default, extracts the source files:
 
- ```
- $ devtool modify recipe
- ```
+```
 
- Once `devtool` locates the recipe, `devtool` uses the recipe\'s `SRC_URI`{.interpreted-text role="term"} statements to locate the source code and any local patch files from other developers.
+$ devtool modify recipe
 
- With this scenario, there is no `srctree` argument. Consequently, the default behavior of the `devtool modify` command is to extract the source files pointed to by the `SRC_URI`{.interpreted-text role="term"} statements into a local Git structure. Furthermore, the location for the extracted source is the default area within the `devtool` workspace. The result is that the command sets up both the source code and an append file within the workspace while the recipe remains in its original location.
+```
 
- Additionally, if you have any non-patch local files (i.e. files referred to with `file://` entries in `SRC_URI`{.interpreted-text role="term"} statement excluding `*.patch/` or `*.diff`), these files are copied to an `oe-local-files` folder under the newly created source tree. Copying the files here gives you a convenient area from which you can modify the files. Any changes or additions you make to those files are incorporated into the build the next time you build the software just as are other changes you might have made to the source.
+Once `devtool` locates the recipe, `devtool` uses the recipe\'s `SRC_URI`{.interpreted-text role="term"} statements to locate the source code and any local patch files from other developers.
+
+With this scenario, there is no `srctree` argument. Consequently, the default behavior of the `devtool modify` command is to extract the source files pointed to by the `SRC_URI`{.interpreted-text role="term"} statements into a local Git structure. Furthermore, the location for the extracted source is the default area within the `devtool` workspace. The result is that the command sets up both the source code and an append file within the workspace while the recipe remains in its original location.
+
+Additionally, if you have any non-patch local files (i.e. files referred to with `file://` entries in `SRC_URI`{.interpreted-text role="term"} statement excluding `*.patch/` or `*.diff`), these files are copied to an `oe-local-files` folder under the newly created source tree. Copying the files here gives you a convenient area from which you can modify the files. Any changes or additions you make to those files are incorporated into the build the next time you build the software just as are other changes you might have made to the source.
 ```
 
 - *Middle*: The middle scenario in the figure represents a situation where the source code also does not exist locally. In this case, the code is again upstream and needs to be extracted to some local area as a Git repository. The recipe, in this scenario, is again local and in its own layer outside the workspace.
@@ -483,23 +491,25 @@ The typical situation is where another developer has created a layer for use wit
 ```
  The following command tells `devtool` the recipe with which to work and, in this case, identifies a local area for the extracted source files that exists outside of the default `devtool` workspace:
 
- ```
- $ devtool modify recipe srctree
- ```
+```
 
- ::: note
- ::: title
- Note
- :::
+$ devtool modify recipe srctree
 
- You cannot provide a URL for srctree using the devtool command.
- :::
+```
 
- As with all extractions, the command uses the recipe\'s `SRC_URI`{.interpreted-text role="term"} statements to locate the source files and any associated patch files. Non-patch files are copied to an `oe-local-files` folder under the newly created source tree.
+::: note
+::: title
+Note
+:::
 
- Once the files are located, the command by default extracts them into `srctree`.
+You cannot provide a URL for srctree using the devtool command.
+:::
 
- Within workspace, `devtool` creates an append file for the recipe. The recipe remains in its original location but the source files are extracted to the location you provide with `srctree`.
+As with all extractions, the command uses the recipe\'s `SRC_URI`{.interpreted-text role="term"} statements to locate the source files and any associated patch files. Non-patch files are copied to an `oe-local-files` folder under the newly created source tree.
+
+Once the files are located, the command by default extracts them into `srctree`.
+
+Within workspace, `devtool` creates an append file for the recipe. The recipe remains in its original location but the source files are extracted to the location you provide with `srctree`.
 ```
 
 - *Right*: The right scenario in the figure represents a situation where the source tree (`srctree`) already exists locally as a previously extracted Git structure outside of the `devtool` workspace. In this example, the recipe also exists elsewhere locally in its own layer.
@@ -509,13 +519,15 @@ The typical situation is where another developer has created a layer for use wit
 ```
  The following command tells `devtool` the recipe with which to work, uses the \"-n\" option to indicate source does not need to be extracted, and uses `srctree` to point to the previously extracted source files:
 
- ```
- $ devtool modify -n recipe srctree
- ```
+```
 
- If an `oe-local-files` subdirectory happens to exist and it contains non-patch files, the files are used. However, if the subdirectory does not exist and you run the `devtool finish` command, any non-patch files that might exist next to the recipe are removed because it appears to `devtool` that you have deleted those files.
+$ devtool modify -n recipe srctree
 
- Once the `devtool modify` command finishes, it creates only an append file for the recipe in the `devtool` workspace. The recipe and the source code remain in their original locations.
+```
+
+If an `oe-local-files` subdirectory happens to exist and it contains non-patch files, the files are used. However, if the subdirectory does not exist and you run the `devtool finish` command, any non-patch files that might exist next to the recipe are removed because it appears to `devtool` that you have deleted those files.
+
+Once the `devtool modify` command finishes, it creates only an append file for the recipe in the `devtool` workspace. The recipe and the source code remain in their original locations.
 ```
 
 2. *Edit the Source*: Once you have used the `devtool modify` command, you are free to make changes to the source files. You can use any editor you like to make and save your source code modifications.

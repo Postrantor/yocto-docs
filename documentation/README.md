@@ -368,5 +368,4 @@ This would be the same if we had identical document filenames in both the Yocto 
 Please see the top level README file in this repository for details of where to send patches.
 
 > 请参阅本存储库中的顶级 README 文件，了解如何发送补丁的详细信息。
-
 ---

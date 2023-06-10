@@ -74,14 +74,16 @@ Create the remaining three files as follows:
 > 你好。c
 
 ```
- ```
- #include <stdio.h>
+```
 
- main()
-     {
-         printf("Hello World!\n");
-     }
- ```
+#include <stdio.h>
+
+main()
+{
+printf("Hello World!\n");
+}
+
+```
 ```
 
 - `configure.ac`:
@@ -89,13 +91,15 @@ Create the remaining three files as follows:
 > - `configure.ac`：
 
 ```
- ```
- AC_INIT(hello,0.1)
- AM_INIT_AUTOMAKE([foreign])
- AC_PROG_CC
- AC_CONFIG_FILES(Makefile)
- AC_OUTPUT
- ```
+```
+
+AC_INIT(hello,0.1)
+AM_INIT_AUTOMAKE([foreign])
+AC_PROG_CC
+AC_CONFIG_FILES(Makefile)
+AC_OUTPUT
+
+```
 ```
 
 - `Makefile.am`:
@@ -103,10 +107,12 @@ Create the remaining three files as follows:
 > 制作文件 AM
 
 ```
- ```
- bin_PROGRAMS = hello
- hello_SOURCES = hello.c
- ```
+```
+
+bin_PROGRAMS = hello
+hello_SOURCES = hello.c
+
+```
 ```
 
 2. *Source the Cross-Toolchain Environment Setup File:* As described earlier in the manual, installing the cross-toolchain creates a cross-toolchain environment setup script in the directory that the SDK was installed. Before you can use the tools to develop your project, you must source this setup script. The script begins with the string \"environment-setup\" and contains the machine architecture, which is followed by the string \"poky-linux\". For this example, the command sources a script from the default SDK installation directory that uses the 32-bit Intel x86 Architecture and the &DISTRO; Yocto Project release:
@@ -336,15 +342,17 @@ Create the three files as follows:
 > - `main.c`：
 
 ```
- ```
- #include "module.h"
- void sample_func();
- int main()
- {
-     sample_func();
-     return 0;
- }
- ```
+```
+
+#include "module.h"
+void sample_func();
+int main()
+{
+sample_func();
+return 0;
+}
+
+```
 ```
 
 - `module.h`:
@@ -352,10 +360,12 @@ Create the three files as follows:
 > - `模块.h`:
 
 ```
- ```
- #include <stdio.h>
- void sample_func();
- ```
+```
+
+#include <stdio.h>
+void sample_func();
+
+```
 ```
 
 - `module.c`:
@@ -363,14 +373,16 @@ Create the three files as follows:
 > - `module.c`：
 
 ```
- ```
- #include "module.h"
- void sample_func()
- {
-     printf("Hello World!");
-     printf("\n");
- }
- ```
+```
+
+#include "module.h"
+void sample_func()
+{
+printf("Hello World!");
+printf("\n");
+}
+
+```
 ```
 
 2. *Source the Cross-Toolchain Environment Setup File:* As described earlier in the manual, installing the cross-toolchain creates a cross-toolchain environment setup script in the directory that the SDK was installed. Before you can use the tools to develop your project, you must source this setup script. The script begins with the string \"environment-setup\" and contains the machine architecture, which is followed by the string \"poky-linux\". For this example, the command sources a script from the default SDK installation directory that uses the 32-bit Intel x86 Architecture and the &DISTRO_NAME; Yocto Project release:

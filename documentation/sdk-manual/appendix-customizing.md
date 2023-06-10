@@ -1,10 +1,7 @@
 ---
 tip: translate by openai@2023-06-07 20:48:34
-...
----
 title: Customizing the Extensible SDK standalone installer
-----------------------------------------------------------
-
+---
 This appendix describes customizations you can apply to the extensible SDK when using in the standalone installer version.
 
 > 此附录描述了您可以在使用独立安装程序版本时应用于可扩展 SDK 的自定义设置。
@@ -125,7 +122,7 @@ By default, this title is derived from `DISTRO_NAME`{.interpreted-text role="ter
 
 The `populate_sdk_base <ref-classes-populate-sdk-*>`{.interpreted-text role="ref"} class defines the default value of the `SDK_TITLE`{.interpreted-text role="term"} variable as follows:
 
-> 类 populate_sdk_base<ref-classes-populate-sdk-*>{.interpreted-text role="ref"}定义变量 SDK_TITLE{.interpreted-text role="term"}的默认值如下：
+> 类 populate_sdk_base<ref-classes-populate-sdk-\*>{.interpreted-text role="ref"}定义变量 SDK_TITLE{.interpreted-text role="term"}的默认值如下：
 
 ```
 SDK_TITLE ??= "${@d.getVar('DISTRO_NAME') or d.getVar('DISTRO')} SDK"
@@ -161,7 +158,7 @@ When you make changes to your configuration or to the metadata and if you want t
 
 > 使用以下命令发布 SDK：
 
-```
+````
 
 > 请帮助我翻译：```
 
@@ -169,7 +166,7 @@ $ oe-publish-sdk some_path/sdk-installer.sh path_to_shared_http_directory
 
 > $ oe-publish-sdk 一些路徑/sdk-installer.sh 路徑到共享的HTTP目錄
 
-```
+````
 
 > 请帮助我翻译：```
 
@@ -233,16 +230,16 @@ If you want the users of an extensible SDK you build to be able to add items to 
 
 > 设置适当的配置，以便生成的 SDK 知道如何找到配置。您需要设置的变量是 SSTATE_MIRRORS。
 
-```
+````
 
 > 请帮助我翻译：```
 
 SSTATE_MIRRORS = "file://.* https://example.com/some_path/sstate-cache/PATH"
 
-> SSTATE_MIRRORS = "file://.* https://example.com/some_path/sstate-cache/PATH" 
+> SSTATE_MIRRORS = "file://.* https://example.com/some_path/sstate-cache/PATH"
 SSTATE_MIRRORS = "文件://.* https://example.com/some_path/sstate-cache/PATH"
 
-```
+````
 
 > 请帮助我翻译，```
 
@@ -255,11 +252,13 @@ You can set the `SSTATE_MIRRORS`{.interpreted-text role="term"} variable in two 
 > 如果您设置的镜像值适用于正在构建 SDK 的 OpenEmbedded 构建系统和 SDK 本身（即镜像在这两个地方都可以访问，或者在 OpenEmbedded 构建系统端会很快失败，其内容不会影响构建），那么您可以在 `local.conf` 或自定义发行版配置文件中设置该变量。然后，您可以通过添加以下内容将变量传递给 SDK：
 
 ```
+
 ```
 
 ESDK_LOCALCONF_ALLOW = "SSTATE_MIRRORS"
 
 ```
+
 ```
 
 - Alternatively, if you just want to set the `SSTATE_MIRRORS`{.interpreted-text role="term"} variable\'s value for the SDK alone, create a `conf/sdk-extra.conf` file either in your `Build Directory`{.interpreted-text role="term"} or within any layer and put your `SSTATE_MIRRORS`{.interpreted-text role="term"} setting within that file.

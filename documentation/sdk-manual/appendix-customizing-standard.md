@@ -1,10 +1,7 @@
 ---
 tip: translate by openai@2023-06-07 20:47:55
-...
----
 title: Customizing the Standard SDK
------------------------------------
-
+---
 This appendix presents customizations you can apply to the standard SDK.
 
 > 这个附录介绍了你可以应用到标准 SDK 上的定制功能。

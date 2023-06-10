@@ -208,19 +208,25 @@ The tests are based on [Python unittest](https://docs.python.org/3/library/unitt
 
 ```
 ```
+
 $ oe-selftest -r <testname>
+
 ```
 
 For example, the following command would run the tinfoil getVar API test:
 
 ```
+
 $ oe-selftest -r tinfoil.TinfoilTests.test_getvar
+
 ```
 
 It is also possible to run a set of tests. For example the following command will run all of the tinfoil tests:
 
 ```
+
 $ oe-selftest -r tinfoil
+
 ```
 ```
 
