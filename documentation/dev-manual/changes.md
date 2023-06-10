@@ -192,7 +192,8 @@ The following sections provide procedures for submitting a change.
      personal information I submit with it, including my sign-off) is
      maintained indefinitely and may be redistributed consistent with
      this project or the open source license(s) involved.
- ```
+```
+
 ```
 
 - Provide a single-line summary of the change and, if more explanation is needed, provide more detail in the body of the commit. This summary is typically viewable in the \"shortlist\" of changes. Thus, providing something short and descriptive that gives the reader a summary of the change is useful when viewing a list of many commits. You should prefix this short description with the recipe name (if changing a recipe), or else with the short form path to the file being changed.
@@ -204,13 +205,15 @@ The following sections provide procedures for submitting a change.
 > -对于提交消息的正文，请提供详细信息，说明您更改了什么、更改的原因以及使用的方法。如果您提到您是如何测试更改的，这可能也会有所帮助。在提交消息的正文中提供尽可能多的细节。
 
 ```
- ::: note
- ::: title
- Note
- :::
 
- You do not need to provide a more detailed explanation of a change if the change is minor to the point of the single line summary providing all the information.
- :::
+::: note
+::: title
+Note
+:::
+
+You do not need to provide a more detailed explanation of a change if the change is minor to the point of the single line summary providing all the information.
+:::
+
 ```
 
 - If the change addresses a specific bug or issue that is associated with a bug-tracking ID, include a reference to that ID in your detailed description. For example, the Yocto Project uses a specific convention for bug references \-\-- any commit that addresses a specific bug should use the following form for the detailed description. Be sure to use the actual bug-tracking ID from Bugzilla for bug-id:
@@ -218,11 +221,13 @@ The following sections provide procedures for submitting a change.
 > -如果更改解决了与错误跟踪 ID 相关联的特定错误或问题，请在详细描述中包含对该 ID 的引用。例如，Yocto 项目对 bug 引用使用了特定的约定\-任何解决特定 bug 的提交都应该使用以下形式进行详细描述。请确保使用 Bugzilla 的实际错误跟踪 ID 作为错误 ID：
 
 ```
- ```
- Fixes [YOCTO #bug-id]
 
- detailed description of change
- ```
+```
+Fixes [YOCTO #bug-id]
+
+detailed description of change
+```
+
 ```
 
 ## Using Email to Submit a Patch
@@ -242,10 +247,11 @@ Here is the general procedure on how to submit a patch through email without usi
 ```
 
 > ```
+> ```
 
 $ git format-patch -1
 
-> $git格式修补程序-1
+> $git 格式修补程序-1
 
 ```
 
@@ -259,10 +265,11 @@ or :
 ```
 
 > ```
+> ```
 
 $ git format-patch HEAD~
 
-> $git格式补丁HEAD~
+> $git 格式补丁 HEAD~
 
 ```
 
@@ -378,10 +385,11 @@ You can find general Git information on how to push a change upstream in the [Gi
 ```
 
 > ```
+> ```
 
 $ git push upstream_remote_repo local_branch_name
 
-> $git推送上行_移动_本地_分支_名称
+> $git 推送上行_移动_本地_分支_名称
 
 ```
 
@@ -395,10 +403,11 @@ For example, suppose you have permissions to push into the upstream `meta-intel-
 ```
 
 > ```
+> ```
 
 $ git push meta-intel-contrib your_name/README
 
-> $git推送meta intel contrib your_name/README
+> $git 推送 meta intel contrib your_name/README
 
 ```
 
@@ -422,11 +431,13 @@ Before submitting any change, you need to be sure who the maintainer is or what 
 > -*按文件搜索：*使用 `overview manual/development environment:git`｛.explored text role=“ref”｝，您可以输入以下命令来显示针对特定文件的所有提交的短列表：
 
 ```
- ```
- git shortlog -- filename
- ```
 
- Just provide the name of the file for which you are interested. The information returned is not ordered by history but does include a list of everyone who has committed grouped by name. From the list, you can see who is responsible for the bulk of the changes against the file.
+```
+git shortlog -- filename
+```
+
+Just provide the name of the file for which you are interested. The information returned is not ordered by history but does include a list of everyone who has committed grouped by name. From the list, you can see who is responsible for the bulk of the changes against the file.
+
 ```
 
 - *Examine the List of Mailing Lists:* For a list of the Yocto Project and related mailing lists, see the \"`Mailing lists <resources-mailinglist>`{.interpreted-text role="ref"}\" section in the Yocto Project Reference Manual.
@@ -452,6 +463,7 @@ First, create the pull request. For example, the following command runs the scri
 ```
 
 > ```
+> ```
 
 $ poky/scripts/create-pull-request -u meta-intel-contrib -s "Updated Manual Section Reference in README"
 
@@ -473,10 +485,11 @@ Before running the `send-pull-request` script, you must edit the cover letter pa
 ```
 
 > ```
+> ```
 
-$ poky/scripts/send-pull-request -p ~/meta-intel/pull-10565 -t meta-intel@lists.yoctoproject.org
+$ poky/scripts/send-pull-request -p ~/meta-intel/pull-10565 -t meta-intel@lists.yoctoproject.orgmailto:meta-intel@lists.yoctoproject.org
 
-> $poky/scripts/发送pull-request-p~/meta-intel/pull10565-tmeta-intel@lists.yoctoproject.org
+> $poky/scripts/发送 pull-request-p~/meta-intel/pull10565-tmeta-intel@lists.yoctoproject.org
 
 ```
 
@@ -509,6 +522,7 @@ For help on using these scripts, simply provide the `-h` argument as follows:
 
 ```
 
+> ```
 > ```
 
 $ poky/scripts/create-pull-request -h
@@ -589,3 +603,4 @@ See `dev-manual/vulnerabilities:checking for vulnerabilities`{.interpreted-text 
 3. *If the fix is unsuitable for the master branch \-\-- submit a patch directly for the stable branch:* This method should be considered as a last resort. It is typically necessary when the master branch is using a newer version of the software which includes an upstream fix for the issue or when the issue has been fixed on the master branch in a way that introduces backwards incompatible changes. In this case follow the steps in `dev-manual/changes:preparing changes for submission`{.interpreted-text role="ref"} and `dev-manual/changes:using email to submit a patch`{.interpreted-text role="ref"} but modify the subject header of your patch email to include the name of the stable branch which you are targetting. This can be done using the `--subject-prefix` argument to `git format-patch`, for example to submit a patch to the dunfell branch use `git format-patch --subject-prefix='&DISTRO_NAME_NO_CAP_MINUS_ONE;][PATCH' ...`.
 
 > 3.*如果修复不适合主分支\-直接为稳定分支提交补丁：*这种方法应被视为最后的手段。当主分支使用包括问题的上游修复的较新版本的软件时，或者当问题已经以引入向后不兼容的更改的方式在主分支上修复时，这通常是必要的。在这种情况下，请遵循 `dev manual/changes:prepare changes for submission`｛.depreted text role=“ref”｝和 `dev manual/changes:using e-mail to submit a patch`｛.epreted text role=“ref”}中的步骤，但要修改修补程序电子邮件的主题标题，以包含您要针对的稳定分支的名称。这可以使用“git format patch”的“--subject prefix”参数来完成，例如，要向 dunfall 分支提交修补程序，请使用“git-format patch--subject refix='&DISTRO_NAME_NO_CAP_MINUS_ONE；][修补程序“…”。
+```

@@ -1505,7 +1505,7 @@ Behind the scenes, the shared state code works by looking in `SSTATE_DIR`{.inter
 ```
 
 SSTATE_MIRRORS ?= "
-file://.* https://someserver.tld/share/sstate/PATH;downloadfilename=PATH 
+file://.* https://someserver.tld/share/sstate/PATH;downloadfilename=PATH
 file://.* file:///some/local/dir/sstate/PATH"
 
 ```

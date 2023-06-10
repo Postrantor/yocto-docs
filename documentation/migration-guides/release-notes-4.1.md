@@ -1,10 +1,16 @@
 ---
+tip: translate by openai@2023-06-07 23:19:40
+...
+---
 title: Release notes for 4.1 (langdale)
 ---
 # New Features / Enhancements in 4.1
 
 - Linux kernel 5.19, glibc 2.36 and \~260 other recipe upgrades
+
 - `make` 4.0 is now the minimum make version required on the build host. For host distros that do not provide it, this is included as part of the `buildtools`{.interpreted-text role="term"} tarball, and additionally a new `buildtools-make`{.interpreted-text role="term"} tarball has been introduced to provide this in particular for host distros with a broken make 4.x version. For more details see `ref-manual/system-requirements:required git, tar, python, make and gcc versions`{.interpreted-text role="ref"}.
+
+> `make` 4.0 现在是构建主机所需的最低 make 版本。对于不提供此版本的主机发行版，它包含在`buildtools`{.interpreted-text role="term"} tarball 中，此外还引入了一个新的`buildtools-make`{.interpreted-text role="term"} tarball，专门为具有破损的 make 4.x 版本的主机发行版提供此功能。有关详细信息，请参阅`ref-manual/system-requirements:required git, tar, python, make and gcc versions`{.interpreted-text role="ref"}。
 - New layer setup tooling:
 
   - New `scripts/oe-setup-layers` standalone script to restore the layer configuration from a json file
@@ -30,20 +36,32 @@ title: Release notes for 4.1 (langdale)
   - `sato-icon-theme` (previously removed)
 - CVE checking enhancements:
 
+
   - New `CVE_DB_UPDATE_INTERVAL`{.interpreted-text role="term"} variable to allow specifying the CVE database minimum update interval (and default to once per day)
+
+> 新增`CVE_DB_UPDATE_INTERVAL`变量，允许指定CVE数据库的最小更新间隔（默认为每天一次）。
   - Added JSON format to summary output
   - Added support for Ignored CVEs
   - Enable recursive CVE checking also for `do_populate_sdk`
   - New `CVE_CHECK_SHOW_WARNINGS`{.interpreted-text role="term"} variable to disable unpatched CVE warning messages
+
   - The `ref-classes-pypi`{.interpreted-text role="ref"} class now defaults `CVE_PRODUCT`{.interpreted-text role="term"} from `PYPI_PACKAGE`{.interpreted-text role="term"}
+
+> 现在，`ref-classes-pypi`{.interpreted-text role="ref"}类默认将`CVE_PRODUCT`{.interpreted-text role="term"}从`PYPI_PACKAGE`{.interpreted-text role="term"}默认为简体中文。
   - Added current kernel CVEs to ignore list since we stay as close to the kernel stable releases as we can
   - Optimisations to avoid dependencies on fetching
 - Complementary package installation (as used in SDKs and images) no longer installs recommended packages, in order to avoid conflicts
+
 - Dependency of -dev package on main package is now an `RRECOMMENDS`{.interpreted-text role="term"} and can be easily set via new `DEV_PKG_DEPENDENCY`{.interpreted-text role="term"} variable
+
+> - -dev 包对主包的依赖现在是一个 `RRECOMMENDS`{.interpreted-text role="term"}，可以通过新的 `DEV_PKG_DEPENDENCY`{.interpreted-text role="term"}变量轻松设置。
 - Support for CPU, I/O and memory pressure regulation in BitBake
 - Pressure data gathering in `ref-classes-buildstats`{.interpreted-text role="ref"} and rendering in `pybootchartgui`
 - New Picobuild system for lightweight Python PEP-517 build support in the `ref-classes-python_pep517`{.interpreted-text role="ref"} class
+
 - Many classes are now split into global and recipe contexts for better validation. For more information, see `Classes now split by usage context <migration-4.1-classes-split>`{.interpreted-text role="ref"}.
+
+> 现在许多类已经按全局和配方上下文分割，以便更好地验证。有关更多信息，请参阅“现在按使用上下文分割的类<migration-4.1-classes-split>”。
 - Architecture-specific enhancements:
 
   - arch-armv8-4a.inc: add tune include for armv8.4a
@@ -71,7 +89,10 @@ title: Release notes for 4.1 (langdale)
   - Added `none` fstype for custom image (for use in conjunction with `rawcopy`)
 - SDK-related enhancements:
 
+
   - `Support for using the regular build system as an SDK <sdk-manual/extensible:Setting up the Extensible SDK environment directly in a Yocto build>`{.interpreted-text role="ref"}
+
+> 支持使用常规构建系统作为SDK <sdk-manual/extensible: 直接在Yocto构建中设置可扩展SDK环境>
   - `ref-classes-image-buildinfo`{.interpreted-text role="ref"} class now also writes build information to SDKs
   - New `SDK_TOOLCHAIN_LANGS`{.interpreted-text role="term"} variable to control support of rust / go in SDK
   - rust-llvm: enabled `ref-classes-nativesdk`{.interpreted-text role="ref"} variant
@@ -86,7 +107,10 @@ title: Release notes for 4.1 (langdale)
   - New variable `UBOOT_MKIMAGE_KERNEL_TYPE`{.interpreted-text role="term"}
   - New variable `FIT_PAD_ALG`{.interpreted-text role="term"} to control FIT image padding algorithm
   - New `KERNEL_DEPLOY_DEPEND`{.interpreted-text role="term"} variable to allow disabling image dependency on deploying the kernel
+
   - `ref-classes-image_types`{.interpreted-text role="ref"}: isolate the write of UBI configuration to a `write_ubi_config` function that can be easily overridden
+
+> - `ref-classes-image_types`{.interpreted-text role="ref"}：将UBI配置的写操作隔离到一个可以轻松覆盖的`write_ubi_config`函数中。
 - openssh: add support for config snippet includes to ssh and sshd
 - `ref-classes-create-spdx`{.interpreted-text role="ref"}: Add `SPDX_PRETTY`{.interpreted-text role="term"} option
 - wpa-supplicant: build static library if not disabled via `DISABLE_STATIC`{.interpreted-text role="term"}
@@ -101,11 +125,20 @@ title: Release notes for 4.1 (langdale)
 - systemd: systemd-systemctl: Support instance conf files during enable
 - weston.init: enable `xwayland` in weston.ini if `x11` is in `DISTRO_FEATURES`{.interpreted-text role="term"}
 - New `npm_registry` Python module to enable caching with nodejs 16+
+
 - `ref-classes-npm`{.interpreted-text role="ref"}: replaced `npm pack` call with `tar czf` for nodejs 16+ compatibility and improved `do_configure` performance
+
+> `- `ref-classes-npm`{.interpreted-text role="ref"}: 为了兼容Nodejs 16+，用`tar czf`取代了`npm pack`调用，并且改善了`do_configure`性能
 - Enabled `ref-classes-bin-package`{.interpreted-text role="ref"} class to work properly in the native case
 - Enabled `buildpaths <qa-check-buildpaths>`{.interpreted-text role="ref"} QA check as a warning by default
+
 - New `OVERLAYFS_ETC_EXPOSE_LOWER`{.interpreted-text role="term"} to provide read-only access to the original `/etc` content with `ref-classes-overlayfs-etc`{.interpreted-text role="ref"}
+
+> 新增 `OVERLAYFS_ETC_EXPOSE_LOWER`{.interpreted-text role="term"} 以提供只读访问原始 `/etc` 内容的 `ref-classes-overlayfs-etc`{.interpreted-text role="ref"}。
+
 - New `OVERLAYFS_QA_SKIP`{.interpreted-text role="term"} variable to allow skipping check on `ref-classes-overlayfs`{.interpreted-text role="ref"} mounts
+
+> 新的OVERLAYFS_QA_SKIP变量允许跳过ref-classes-overlayfs挂载的检查。
 - New `PACKAGECONFIG`{.interpreted-text role="term"} options for individual recipes:
 
   > - apr: xsi-strerror
@@ -131,7 +164,10 @@ title: Release notes for 4.1 (langdale)
   > - tiff: jbig
   >
 - ptest enhancements in `curl`, `json-c`, `libgcrypt`, `libgpg-error`, `libxml2`
+
 - ptest compile/install functions now use `PARALLEL_MAKE`{.interpreted-text role="term"} and `PARALLEL_MAKEINST`{.interpreted-text role="term"} in ptest for significant speedup
+
+> 现在，ptest的编译/安装功能使用`PARALLEL_MAKE`{.interpreted-text role="term"}和`PARALLEL_MAKEINST`{.interpreted-text role="term"}，以显着加速。
 - New `TC_CXX_RUNTIME`{.interpreted-text role="term"} variable to enable other layers to more easily control C++ runtime
 - Set `BB_DEFAULT_UMASK`{.interpreted-text role="term"} using ??= to make it easier to override
 - Set `TCLIBC`{.interpreted-text role="term"} and `TCMODE`{.interpreted-text role="term"} using ??= to make them easier to override
@@ -141,7 +177,10 @@ title: Release notes for 4.1 (langdale)
 - meson: provide relocation script and native/cross wrappers also for meson-native
 - meson.bbclass: add cython binary to cross/native toolchain config
 - New `musl-locales` recipe to provide a limited set of locale data for musl based systems
+
 - gobject-introspection: use `OBJDUMP`{.interpreted-text role="term"} environment variable so that objdump tool can be picked up from the environment
+
+> 使用 `OBJDUMP` 环境变量，以便从环境中捡起 objdump 工具，gobject-introspection。
 - The Python `zoneinfo` module is now split out to its own `python3-zoneinfo` package.
 - busybox: added devmem 128-bit support
 - vim: split xxd out into its own package
@@ -149,7 +188,10 @@ title: Release notes for 4.1 (langdale)
 - `devtool reset` now preserves `workspace/sources` source trees in `workspace/attic/sources/` instead of leaving them in-place
 - scripts/patchreview: Add commit to stored json data
 - scripts/patchreview: Make json output human parsable
+
 - `wpa-supplicant` recipe now uses the upstream `defconfig` modified based upon `PACKAGECONFIG`{.interpreted-text role="term"} instead of a stale `defconfig` file
+
+> 现在，`wpa-supplicant`配方使用基于`PACKAGECONFIG`的上游`defconfig`，而不是过时的`defconfig`文件
 - bitbake: build: prefix the tasks with a timestamp in the log.task_order
 - bitbake: fetch2/osc: Add support to query latest revision
 - bitbake: utils: Pass lock argument in fileslocked
@@ -157,9 +199,18 @@ title: Release notes for 4.1 (langdale)
 
 # Known Issues in 4.1
 
+
 - The change to `migration-4.1-complementary-deps`{.interpreted-text role="ref"} means that images built with the `ptest-pkgs` `IMAGE_FEATURES`{.interpreted-text role="term"} don't automatically install `ptest-runner`, as that package is a recommendation of the individual `-ptest` packages. This will be resolved in the next point release, and can be worked around by explicitly installing `ptest-runner` into the image. Filed as :yocto_bugs:[bug 14928 \</show_bug.cgi?id=14928\>]{.title-ref}.
+
+> 变更为“migration-4.1-complementary-deps”意味着使用“ptest-pkgs”“IMAGE_FEATURES”构建的镜像不会自动安装“ptest-runner”，因为它是各个“-ptest”软件包的建议。这将在下一个点发行版中解决，可以通过明确安装“ptest-runner”到镜像来解决。已报告为：yocto_bugs:[bug 14928 \</show_bug.cgi?id=14928\>]{.title-ref}。
+
 - There is a known issue with eSDKs where sstate objects may be missing, resulting in packages being unavailable to install in the sysroot. This is due to image generation optimisations having unintended consequences in eSDK generation. This will be resolved in the next point release. Filed as :yocto_bugs:[bug 14626 \</show_bug.cgi?id=14626\>]{.title-ref}, which also details the fix.
+
+> 在eSDK中有一个已知的问题，即sstate对象可能丢失，导致在sysroot中无法安装软件包。这是由于图像生成优化产生的意外后果导致的eSDK生成。下一个点发布会解决这个问题。报告号：yocto_bugs:[bug 14626 \</show_bug.cgi?id=14626\>]{.title-ref}，该报告中还详细说明了解决方案。
+
 - The change to `migration-4.1-classes-split`{.interpreted-text role="ref"} inadvertently moved the `ref-classes-externalsrc`{.interpreted-text role="ref"} class to `meta/classes-recipe`, when it is not recipe-specific and can also be used in a global context. The class will be moved back to `meta/classes` in the next point release. Filed as :yocto_bugs:[bug 14940 \</show_bug.cgi?id=14940\>]{.title-ref}.
+
+> 更改到`migration-4.1-classes-split`无意中将`ref-classes-externalsrc`类移动到`meta/classes-recipe`，而它不是特定于配方的，也可以在全局上下文中使用。该类将在下一个点发行版中移回`meta/classes`。 已提交为：yocto_bugs: [bug 14940 \</show_bug.cgi?id=14940\>]。
 
 # Recipe License changes in 4.1
 
@@ -172,8 +223,14 @@ The following corrections have been made to the `LICENSE`{.interpreted-text role
 
 # Security Fixes in 4.1
 
+
 - bind: `2022-1183`{.interpreted-text role="cve"}, `2022-2795`{.interpreted-text role="cve"}, `2022-2881`{.interpreted-text role="cve"}, `2022-2906`{.interpreted-text role="cve"}, `2022-3080`{.interpreted-text role="cve"}, `2022-38178`{.interpreted-text role="cve"}
+
+> 绑定：CVE-2022-1183、CVE-2022-2795、CVE-2022-2881、CVE-2022-2906、CVE-2022-3080、CVE-2022-38178
+
 - binutils: `2019-1010204`{.interpreted-text role="cve"}, `2022-38126`{.interpreted-text role="cve"}, `2022-38127`{.interpreted-text role="cve"}, `2022-38128`{.interpreted-text role="cve"}, `2022-38533`{.interpreted-text role="cve"}
+
+> binutils：CVE-2019-1010204，CVE-2022-38126，CVE-2022-38127，CVE-2022-38128，CVE-2022-38533
 - busybox: `2022-30065`{.interpreted-text role="cve"}
 - connman: `2022-32292`{.interpreted-text role="cve"}, `2022-32293`{.interpreted-text role="cve"}
 - cups: `2022-26691`{.interpreted-text role="cve"}
@@ -182,7 +239,10 @@ The following corrections have been made to the `LICENSE`{.interpreted-text role
 - freetype: `2022-27404`{.interpreted-text role="cve"}
 - glibc: `2022-39046`{.interpreted-text role="cve"}
 - gnupg: `2022-34903`{.interpreted-text role="cve"}
+
 - grub2: `2021-3695`{.interpreted-text role="cve"}, `2021-3696`{.interpreted-text role="cve"}, `2021-3697`{.interpreted-text role="cve"}, `2022-28733`{.interpreted-text role="cve"}, `2022-28734`{.interpreted-text role="cve"}, `2022-28735`{.interpreted-text role="cve"}
+
+> CVE-2021-3695、CVE-2021-3696、CVE-2021-3697、CVE-2022-28733、CVE-2022-28734、CVE-2022-28735
 - inetutils: `2022-39028`{.interpreted-text role="cve"}
 - libtirpc: `2021-46828`{.interpreted-text role="cve"}
 - libxml2: `2016-3709`{.interpreted-text role="cve"} (ignored)
@@ -192,15 +252,27 @@ The following corrections have been made to the `LICENSE`{.interpreted-text role
 - lua: `2022-33099`{.interpreted-text role="cve"}
 - nasm: `2020-18974`{.interpreted-text role="cve"} (ignored)
 - ncurses: `2022-29458`{.interpreted-text role="cve"}
+
 - openssl: `2022-1292`{.interpreted-text role="cve"}, `2022-1343`{.interpreted-text role="cve"}, `2022-1434`{.interpreted-text role="cve"}, `2022-1473`{.interpreted-text role="cve"}, `2022-2068`{.interpreted-text role="cve"}, `2022-2274`{.interpreted-text role="cve"}, `2022-2097`{.interpreted-text role="cve"}
+
+> CVE-2022-1292，CVE-2022-1343，CVE-2022-1434，CVE-2022-1473，CVE-2022-2068，CVE-2022-2274，CVE-2022-2097
 - python3: `2015-20107`{.interpreted-text role="cve"} (ignored)
+
 - qemu: `2021-20255`{.interpreted-text role="cve"} (ignored), `2019-12067`{.interpreted-text role="cve"} (ignored), `2021-3507`{.interpreted-text role="cve"}, `2022-0216`{.interpreted-text role="cve"}, `2022-2962`{.interpreted-text role="cve"}, `2022-35414`{.interpreted-text role="cve"}
+
+> QEMU：2021-20255（已忽略），2019-12067（已忽略），2021-3507，2022-0216，2022-2962，2022-35414
 - rpm: `2021-35937`{.interpreted-text role="cve"}, `2021-35938`{.interpreted-text role="cve"}, `2021-35939`{.interpreted-text role="cve"}
 - rsync: `2022-29154`{.interpreted-text role="cve"}
 - subversion: `2021-28544`{.interpreted-text role="cve"}, `2022-24070`{.interpreted-text role="cve"}
+
 - tiff: `2022-1210`{.interpreted-text role="cve"} (not applicable), `2022-1622`{.interpreted-text role="cve"}, `2022-1623`{.interpreted-text role="cve"} (invalid), `2022-2056`{.interpreted-text role="cve"}, `2022-2057`{.interpreted-text role="cve"}, `2022-2058`{.interpreted-text role="cve"}, `2022-2953`{.interpreted-text role="cve"}, `2022-34526`{.interpreted-text role="cve"}
+
+> - 提夫：“2022-1210”（不适用），“2022-1622”，“2022-1623”（无效），“2022-2056”，“2022-2057”，“2022-2058”，“2022-2953”，“2022-34526”。
 - unzip: `2022-0529`{.interpreted-text role="cve"}, `2022-0530`{.interpreted-text role="cve"}
+
 - vim: `2022-1381`{.interpreted-text role="cve"}, `2022-1420`{.interpreted-text role="cve"}, `2022-1621`{.interpreted-text role="cve"}, `2022-1629`{.interpreted-text role="cve"}, `2022-1674`{.interpreted-text role="cve"}, `2022-1733`{.interpreted-text role="cve"}, `2022-1735`{.interpreted-text role="cve"}, `2022-1769`{.interpreted-text role="cve"}, `2022-1771`{.interpreted-text role="cve"}, `2022-1785`{.interpreted-text role="cve"}, `2022-1796`{.interpreted-text role="cve"}, `2022-1927`{.interpreted-text role="cve"}, `2022-1942`{.interpreted-text role="cve"}, `2022-2257`{.interpreted-text role="cve"}, `2022-2264`{.interpreted-text role="cve"}, `2022-2284`{.interpreted-text role="cve"}, `2022-2285`{.interpreted-text role="cve"}, `2022-2286`{.interpreted-text role="cve"}, `2022-2287`{.interpreted-text role="cve"}, `2022-2816`{.interpreted-text role="cve"}, `2022-2817`{.interpreted-text role="cve"}, `2022-2819`{.interpreted-text role="cve"}, `2022-2845`{.interpreted-text role="cve"}, `2022-2849`{.interpreted-text role="cve"}, `2022-2862`{.interpreted-text role="cve"}, `2022-2874`{.interpreted-text role="cve"}, `2022-2889`{.interpreted-text role="cve"}, `2022-2980`{.interpreted-text role="cve"}, `2022-2946`{.interpreted-text role="cve"}, `2022-2982`{.interpreted-text role="cve"}, `2022-3099`{.interpreted-text role="cve"}, `2022-3134`{.interpreted-text role="cve"}, `2022-3234`{.interpreted-text role="cve"}, `2022-3278`{.interpreted-text role="cve"}
+
+> -Vim: CVE-2022-1381、CVE-2022-1420、CVE-2022-1621、CVE-2022-1629、CVE-2022-1674、CVE-2022-1733、CVE-2022-1735、CVE-2022-1769、CVE-2022-1771、CVE-2022-1785、CVE-2022-1796、CVE-2022-1927、CVE-2022-1942、CVE-2022-2257、CVE-2022-2264、CVE-2022-2284、CVE-2022-2285、CVE-2022-2286、CVE-2022-2287、CVE-2022-2816、CVE-2022-2817、CVE-2022-2819、CVE-2022-2845、CVE-2022-2849、CVE-2022-2862、CVE-2022-2874、CVE-2022-2889、CVE-2022-2980、CVE-2022-2946、CVE-2022-2982、CVE-2022-3099、CVE-2022-3134、CVE-2022-3234、CVE-2022-3278。
 - zlib: `2022-37434`{.interpreted-text role="cve"}
 
 # Recipe Upgrades in 4.1
@@ -648,44 +720,71 @@ poky
 - Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
 - Branch: :yocto\_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
 - Tag: :yocto\_[git:%60yocto-4.1](git:%60yocto-4.1) \</poky/log/?h=yocto-4.1\>\`
+
 - Git Revision: :yocto\_[git:%605200799866b92259e855051112520006e1aaaac0](git:%605200799866b92259e855051112520006e1aaaac0) \</poky/commit/?id=5200799866b92259e855051112520006e1aaaac0\>\`
+
+> - Git 版本：:yocto_[git:%605200799866b92259e855051112520006e1aaaac0](git:%605200799866b92259e855051112520006e1aaaac0) \</poky/commit/?id=5200799866b92259e855051112520006e1aaaac0\>\`
 - Release Artefact: poky-5200799866b92259e855051112520006e1aaaac0
 - sha: 9d9a2f7ecf2502f89f43bf45d63e6b61cdcb95ed1d75c8281372f550d809c823
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/poky-5200799866b92259e855051112520006e1aaaac0.tar.bz2)
 
 openembedded-core
 
 - Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
 - Branch: :oe\_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
 - Tag: :oe\_[git:%60yocto-4.1](git:%60yocto-4.1) \</openembedded-core/log/?h=yocto-4.1\>\`
+
 - Git Revision: :oe\_[git:%60744a2277844ec9a384a9ca7dae2a634d5a0d3590](git:%60744a2277844ec9a384a9ca7dae2a634d5a0d3590) \</openembedded-core/commit/?id=744a2277844ec9a384a9ca7dae2a634d5a0d3590\>\`
+
+> - Git 版本：<openembedded-core/commit/?id=744a2277844ec9a384a9ca7dae2a634d5a0d3590>（git：%60744a2277844ec9a384a9ca7dae2a634d5a0d3590）
 - Release Artefact: oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590
 - sha: 34f1fd5bb83514bf0ec8ad7f8cce088a8e28677e1338db94c188283da704c663
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2) 下载地址：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590.tar.bz2)
 
 meta-mingw
 
 - Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
 - Branch: :yocto\_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
 - Tag: :yocto\_[git:%60yocto-4.1](git:%60yocto-4.1) \</meta-mingw/log/?h=yocto-4.1\>\`
+
 - Git Revision: :yocto\_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
+
+> Git 版本：yocto_[git:`b0067202db8573df3d23d199f82987cebe1bee2c`](git:`b0067202db8573df3d23d199f82987cebe1bee2c`) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 - Release Artefact: meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c
 - sha: 704f2940322b81ce774e9cbd27c3cfa843111d497dc7b1eeaa39cd694d9a2366
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c.tar.bz2)
 
 bitbake
 
 - Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
 - Branch: :oe\_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
 - Tag: :oe\_[git:%60yocto-4.1](git:%60yocto-4.1) \</bitbake/log/?h=yocto-4.1\>\`
+
 - Git Revision: :oe\_[git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67](git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67) \</bitbake/commit/?id=074da4c469d1f4177a1c5be72b9f3ccdfd379d67\>\`
+
+> Git 版本：<bitbake/commit/?id=074da4c469d1f4177a1c5be72b9f3ccdfd379d67>（git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67）
 - Release Artefact: bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67
 - sha: e32c300e0c8522d8d49ef10aae473bd5f293202672eb9d38e90ed92594ed1fe8
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.1/bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67.tar.bz2)
 
 yocto-docs
 
 - Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
 - Branch: :yocto\_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
 - Tag: :yocto\_[git:%60yocto-4.1](git:%60yocto-4.1) \</yocto-docs/log/?h=yocto-4.1\>\`
+
 - Git Revision: :yocto\_[git:%6042d3e26a0d04bc5951e640b471686f347dc9b74a](git:%6042d3e26a0d04bc5951e640b471686f347dc9b74a) \</yocto-docs/commit/?id=42d3e26a0d04bc5951e640b471686f347dc9b74a\>\`
+
+> Git版本：yocto_[git：`42d3e26a0d04bc5951e640b471686f347dc9b74a`](git：`42d3e26a0d04bc5951e640b471686f347dc9b74a`) \</yocto-docs/commit/?id=42d3e26a0d04bc5951e640b471686f347dc9b74a\>\`

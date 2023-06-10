@@ -55,10 +55,12 @@ To use QEMU, you need to have QEMU installed and initialized as well as have the
 > -如果您克隆了“poky”存储库，或者下载并解包了 Yocto Project 发行版 tarball，则可以获取构建环境脚本（即“structure core script”｛.depreted text role=“ref”｝）：
 
 ```
- ```
- $ cd poky
- $ source oe-init-build-env
- ```
+```
+
+$ cd poky
+$ source oe-init-build-env
+
+```
 ```
 
 - If you installed a cross-toolchain, you can run the script that initializes the toolchain. For example, the following commands run the initialization script from the default `poky_sdk` directory:
@@ -66,9 +68,11 @@ To use QEMU, you need to have QEMU installed and initialized as well as have the
 > -如果安装了跨工具链，则可以运行初始化工具链的脚本。例如，以下命令从默认的“poky_sdk”目录运行初始化脚本：
 
 ```
- ```
- . poky_sdk/environment-setup-core2-64-poky-linux
- ```
+```
+
+. poky_sdk/environment-setup-core2-64-poky-linux
+
+```
 ```
 
 3. *Ensure the Artifacts are in Place:* You need to be sure you have a pre-built kernel that will boot in QEMU. You also need the target root filesystem for your target machine\'s architecture:
@@ -117,17 +121,19 @@ Here are some additional examples to help illustrate further QEMU:
 > -本例在 MACHINE 设置为“qemux86-64\”的情况下启动 QEMU。假设标准的 `Build Directory`｛.explored text role=“term”｝，`runqemu` 会自动找到 `bzImage-qemux86-64.bin` 图像文件和 `core-image-minimal-qemu x86-64-20200218002850.rootfs.ext4`（假设当前构建创建了 `core-image minimu` 图像）：
 
 ```
- ```
- $ runqemu qemux86-64
- ```
+```
 
- ::: note
- ::: title
- Note
- :::
+$ runqemu qemux86-64
 
- When more than one image with the same name exists, QEMU finds and uses the most recently built image according to the timestamp.
- :::
+```
+
+::: note
+::: title
+Note
+:::
+
+When more than one image with the same name exists, QEMU finds and uses the most recently built image according to the timestamp.
+:::
 ```
 
 - This example produces the exact same results as the previous example. This command, however, specifically provides the image and root filesystem type:
@@ -135,9 +141,11 @@ Here are some additional examples to help illustrate further QEMU:
 > -此示例产生与上一示例完全相同的结果。但是，此命令专门提供映像和根文件系统类型：
 
 ```
- ```
- $ runqemu qemux86-64 core-image-minimal ext4
- ```
+```
+
+$ runqemu qemux86-64 core-image-minimal ext4
+
+```
 ```
 
 - This example specifies to boot an `Initramfs`{.interpreted-text role="term"} image and to enable audio in QEMU. For this case, `runqemu` sets the internal variable `FSTYPE` to `cpio.gz`. Also, for audio to be enabled, an appropriate driver must be installed (see the `audio` option in ``dev-manual/qemu:\`\`runqemu\`\` command-line options``{.interpreted-text role="ref"} for more information):
@@ -145,9 +153,11 @@ Here are some additional examples to help illustrate further QEMU:
 > -此示例指定启动 `Initramfs`｛.explored text role=“term”｝映像并在 QEMU 中启用音频。在这种情况下，“runqemu”将内部变量“FSTYPE”设置为“cpio.gz”。此外，要启用音频，必须安装适当的驱动程序（有关详细信息，请参阅“dev manual/qemu:\”\`runqemu\`\`命令行选项 ``｛.explored text role=“ref”｝中的“audio”选项）：
 
 ```
- ```
- $ runqemu qemux86-64 ramfs audio
- ```
+```
+
+$ runqemu qemux86-64 ramfs audio
+
+```
 ```
 
 - This example does not provide enough information for QEMU to launch. While the command does provide a root filesystem type, it must also minimally provide a [MACHINE]{.title-ref}, [KERNEL]{.title-ref}, or [VM]{.title-ref} option:
@@ -155,9 +165,11 @@ Here are some additional examples to help illustrate further QEMU:
 > -这个例子没有为 QEMU 的启动提供足够的信息。虽然该命令确实提供了根文件系统类型，但它还必须至少提供[MACHINE]｛.title-ref｝、[KERNEL]｛.title-ref｝或[VM]｛\title-rev｝选项：
 
 ```
- ```
- $ runqemu ext4
- ```
+```
+
+$ runqemu ext4
+
+```
 ```
 
 - This example specifies to boot a virtual machine image (`.wic.vmdk` file). From the `.wic.vmdk`, `runqemu` determines the QEMU architecture ([MACHINE]{.title-ref}) to be \"qemux86-64\" and the root filesystem type to be \"vmdk\":
@@ -165,9 +177,11 @@ Here are some additional examples to help illustrate further QEMU:
 > -此示例指定启动虚拟机映像（`.wic.vmdk` 文件）。根据 `.wic.vmdk`，`runqemu` 确定 QEMU 体系结构（[MACHINE]｛.title-ref｝）为\“qemux86-64\”，根文件系统类型为\“vmdk\”：
 
 ```
- ```
- $ runqemu /home/scott-lenovo/vm/core-image-minimal-qemux86-64.wic.vmdk
- ```
+```
+
+$ runqemu /home/scott-lenovo/vm/core-image-minimal-qemux86-64.wic.vmdk
+
+```
 ```
 
 # Switching Between Consoles

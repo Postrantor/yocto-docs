@@ -1,4 +1,7 @@
 ---
+tip: translate by openai@2023-06-07 22:52:57
+...
+---
 title: Release notes for Yocto-4.0.4 (Kirkstone)
 ---
 # Security Fixes in Yocto-4.0.4
@@ -6,14 +9,20 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - binutils : fix `2022-38533`{.interpreted-text role="cve"}
 - curl: fix `2022-35252`{.interpreted-text role="cve"}
 - sqlite: fix `2022-35737`{.interpreted-text role="cve"}
+
 - grub2: fix `2021-3695`{.interpreted-text role="cve"}, `2021-3696`{.interpreted-text role="cve"}, `2021-3697`{.interpreted-text role="cve"}, `2022-28733`{.interpreted-text role="cve"}, `2022-28734`{.interpreted-text role="cve"} and `2022-28735`{.interpreted-text role="cve"}
+
+> 修复GRUB2：CVE-2021-3695、CVE-2021-3696、CVE-2021-3697、CVE-2022-28733、CVE-2022-28734和CVE-2022-28735
 - u-boot: fix `2022-30552`{.interpreted-text role="cve"} and `2022-33967`{.interpreted-text role="cve"}
 - libxml2: Ignore `2016-3709`{.interpreted-text role="cve"}
 - libtiff: fix `2022-34526`{.interpreted-text role="cve"}
 - zlib: fix `2022-37434`{.interpreted-text role="cve"}
 - gnutls: fix `2022-2509`{.interpreted-text role="cve"}
 - u-boot: fix `2022-33103`{.interpreted-text role="cve"}
+
 - qemu: fix `2021-3507`{.interpreted-text role="cve"}, `2021-3929`{.interpreted-text role="cve"}, `2021-4158`{.interpreted-text role="cve"}, `2022-0216`{.interpreted-text role="cve"} and `2022-0358`{.interpreted-text role="cve"}
+
+> 修复QEMU：CVE-2021-3507、CVE-2021-3929、CVE-2021-4158、CVE-2022-0216和CVE-2022-0358
 
 # Fixes in Yocto-4.0.4
 
@@ -228,54 +237,93 @@ poky
 - Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</poky/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</poky/log/?h=yocto-4.0.4\>\`
+
 - Git Revision: :yocto\_[git:%60d64bef1c7d713b92a51228e5ade945835e5a94a4](git:%60d64bef1c7d713b92a51228e5ade945835e5a94a4) \</poky/commit/?id=d64bef1c7d713b92a51228e5ade945835e5a94a4\>\`
+
+> Git 版本：yocto_[git：d64bef1c7d713b92a51228e5ade945835e5a94a4](git：d64bef1c7d713b92a51228e5ade945835e5a94a4)</poky/commit/?id=d64bef1c7d713b92a51228e5ade945835e5a94a4>
 - Release Artefact: poky-d64bef1c7d713b92a51228e5ade945835e5a94a4
 - sha: b5e92506b31f88445755bad2f45978b747ad1a5bea66ca897370542df5f1e7db
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/poky-d64bef1c7d713b92a51228e5ade945835e5a94a4.tar.bz2)
 
 openembedded-core
 
 - Repository Location: oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
 - Branch: :oe\_[git:%60kirkstone](git:%60kirkstone) \</openembedded-core/log/?h=kirkstone\>\`
 - Tag: :oe\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</openembedded-core/log/?h=yocto-4.0.4\>\`
+
 - Git Revision: :oe\_[git:%60f7766da462905ec67bf549d46b8017be36cd5b2a](git:%60f7766da462905ec67bf549d46b8017be36cd5b2a) \</openembedded-core/commit/?id=f7766da462905ec67bf549d46b8017be36cd5b2a\>\`
+
+> Git 修订：<openembedded-core/commit/?id=f7766da462905ec67bf549d46b8017be36cd5b2a>（git:`f7766da462905ec67bf549d46b8017be36cd5b2a`）
 - Release Artefact: oecore-f7766da462905ec67bf549d46b8017be36cd5b2a
 - sha: ce0ac011474db5e5f0bb1be3fb97f890a02e46252a719dbcac5813268e48ff16
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2) 下载地址：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/oecore-f7766da462905ec67bf549d46b8017be36cd5b2a.tar.bz2)
 
 meta-mingw
 
 - Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-mingw/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</meta-mingw/log/?h=yocto-4.0.4\>\`
+
 - Git Revision: :yocto\_[git:%60a90614a6498c3345704e9611f2842eb933dc51c1](git:%60a90614a6498c3345704e9611f2842eb933dc51c1) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
+
+> Git 版本：:yocto_[git:`a90614a6498c3345704e9611f2842eb933dc51c1`](git:`a90614a6498c3345704e9611f2842eb933dc51c1`) </meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1>
 - Release Artefact: meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1
 - sha: 49f9900bfbbc1c68136f8115b314e95d0b7f6be75edf36a75d9bcd1cca7c6302
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2)
+
+下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2)
+
+下载地址：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-mingw-a90614a6498c3345704e9611f2842eb933dc51c1.tar.bz2)
 
 meta-gplv2
 
 - Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-gplv2/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</meta-gplv2/log/?h=yocto-4.0.4\>\`
+
 - Git Revision: :yocto\_[git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
+
+> Git版本：yocto_[git:`d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a`](git:`d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a`) </meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a>
 - Release Artefact: meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a
 - sha: c386f59f8a672747dc3d0be1d4234b6039273d0e57933eb87caa20f56b9cca6d
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2)
+
+> 下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/meta-gplv2-d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a.tar.bz2)
 
 bitbake
 
 - Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
 - Branch: :oe\_[git:%602.0](git:%602.0) \</bitbake/log/?h=2.0\>\`
 - Tag: :oe\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</bitbake/log/?h=yocto-4.0.4\>\`
+
 - Git Revision: :oe\_[git:%60ac576d6fad6bba0cfea931883f25264ea83747ca](git:%60ac576d6fad6bba0cfea931883f25264ea83747ca) \</bitbake/commit/?id=ac576d6fad6bba0cfea931883f25264ea83747ca\>\`
+
+> Git版本：<bitbake/commit/?id=ac576d6fad6bba0cfea931883f25264ea83747ca>（git:`ac576d6fad6bba0cfea931883f25264ea83747ca`）
 - Release Artefact: bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca
 - sha: 526c2768874eeda61ade8c9ddb3113c90d36ef44a026d6690f02de6f3dd0ea12
+
 - Download Locations: [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2)
+
+> 下载位置： [http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2)
+
+下载位置：[http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2](http://downloads.yoctoproject.org/releases/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2) [http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2](http://mirrors.kernel.org/yocto/yocto/yocto-4.0.4/bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca.tar.bz2) 下载处
 
 yocto-docs
 
 - Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
 - Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</yocto-docs/log/?h=kirkstone\>\`
 - Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</yocto-docs/log/?h=yocto-4.0.4\>\`
+
 - Git Revision: :yocto\_[git:%60f632dad24c39778f948014029e74db3c871d9d21](git:%60f632dad24c39778f948014029e74db3c871d9d21) \</yocto-docs/commit/?id=f632dad24c39778f948014029e74db3c871d9d21\>\`
+
+> Git 版本：yocto_[git:`f632dad24c39778f948014029e74db3c871d9d21](git:`f632dad24c39778f948014029e74db3c871d9d21) \</yocto-docs/commit/?id=f632dad24c39778f948014029e74db3c871d9d21\>\`

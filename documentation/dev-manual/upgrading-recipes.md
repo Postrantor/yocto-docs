@@ -170,12 +170,14 @@ Re-using an existing `Build Directory`{.interpreted-text role="term"} and its co
 > -如果您想启用 `Build History＜dev manual/Build quality:maintaining Build output quality>`{.expreted text role=“ref”}（可选），则需要在 `conf/local.conf` 文件中使用以下行：
 
 ```
- ```
- INHERIT =+ "buildhistory"
- BUILDHISTORY_COMMIT = "1"
- ```
+```
 
- With this configuration and a successful upgrade, a build history \"diff\" file appears in the `upgrade-helper/work/recipe/buildhistory-diff.txt` file found in your `Build Directory`{.interpreted-text role="term"}.
+INHERIT =+ "buildhistory"
+BUILDHISTORY_COMMIT = "1"
+
+```
+
+With this configuration and a successful upgrade, a build history \"diff\" file appears in the `upgrade-helper/work/recipe/buildhistory-diff.txt` file found in your `Build Directory`{.interpreted-text role="term"}.
 ```
 
 - If you want to enable testing through the `ref-classes-testimage`{.interpreted-text role="ref"} class, which is optional, you need to have the following set in your `conf/local.conf` file:
@@ -183,22 +185,26 @@ Re-using an existing `Build Directory`{.interpreted-text role="term"} and its co
 > -如果您想通过 `ref-classes testimage`｛.explored text role=“ref”｝类（可选）启用测试，则需要在 `conf/local.conf` 文件中设置以下内容：
 
 ```
- ```
- INHERIT += "testimage"
- ```
+```
 
- ::: note
- ::: title
- Note
- :::
+INHERIT += "testimage"
 
- If your distro does not enable by default ptest, which Poky does, you need the following in your `local.conf` file:
+```
 
- ```
- DISTRO_FEATURES:append = " ptest"
- ```
+::: note
+::: title
+Note
+:::
 
- :::
+If your distro does not enable by default ptest, which Poky does, you need the following in your `local.conf` file:
+
+```
+
+DISTRO_FEATURES:append = " ptest"
+
+```
+
+:::
 ```
 
 6. *Optionally Start a vncserver:* If you are running in a server without an X11 session, you need to start a vncserver:

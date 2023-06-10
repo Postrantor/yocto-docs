@@ -227,7 +227,9 @@ To create layers that are easier to maintain and that will not impact builds for
 
 ```
 ```
+
 DEPENDS = "foo"
+
 ```
 
 The dependency is created during any build that includes the layer `meta-one`. However, you might not want this dependency for all machines. For example, suppose you are building for machine \"two\" but your `bblayers.conf` file has the `meta-one` layer included. During the build, the `base-files` for machine \"two\" will also have the dependency on `foo`.
@@ -235,19 +237,24 @@ The dependency is created during any build that includes the layer `meta-one`. H
 To make sure your changes apply only when building machine \"one\", use a machine override with the `DEPENDS`{.interpreted-text role="term"} statement:
 
 ```
+
 DEPENDS:one = "foo"
+
 ```
 
 You should follow the same strategy when using `:append` and `:prepend` operations:
 
 ```
+
 DEPENDS:append:one = " foo"
 DEPENDS:prepend:one = "foo "
+
 ```
 
 As an actual example, here\'s a snippet from the generic kernel include file `linux-yocto.inc`, wherein the kernel compile and link options are adjusted in the case of a subset of the supported architectures:
 
 ```
+
 DEPENDS:append:aarch64 = " libgcc"
 KERNEL_CC:append:aarch64 = " ${TOOLCHAIN_OPTIONS}"
 KERNEL_LD:append:aarch64 = " ${TOOLCHAIN_OPTIONS}"
@@ -261,6 +268,7 @@ KERNEL_CC:append:arc = " ${TOOLCHAIN_OPTIONS}"
 KERNEL_LD:append:arc = " ${TOOLCHAIN_OPTIONS}"
 
 KERNEL_FEATURES:append:qemuall=" features/debug/printk.scc"
+
 ```
 ```
 
@@ -270,7 +278,9 @@ KERNEL_FEATURES:append:qemuall=" features/debug/printk.scc"
 
 ```
 ```
+
 FILESEXTRAPATHS:prepend := "${THISDIR}/${BPN}:"
+
 ```
 
 The build for machine \"one\" will pick up your machine-specific file as long as you have the file in `meta-one/recipes-core/base-files/base-files/`. However, if you are building for a different machine and the `bblayers.conf` file includes the `meta-one` layer and the location of your machine-specific file is the first location where that file is found according to `FILESPATH`{.interpreted-text role="term"}, builds for all machines will also use that machine-specific file.
@@ -676,26 +686,30 @@ The following list describes the available commands:
 
 ```
 ```
+
 ...
 DESCRIPTION = "A useful utility"
 ...
 EXTRA_OECONF = "--enable-something"
 ...
 
-#### bbappended from meta-anotherlayer ####
+#### bbappended from meta-anotherlayer
 
 DESCRIPTION = "Customized utility"
 EXTRA_OECONF += "--enable-somethingelse"
+
 ```
 
 Ideally, you would tidy up these utilities as follows:
 
 ```
+
 ...
 DESCRIPTION = "Customized utility"
 ...
 EXTRA_OECONF = "--enable-something --enable-somethingelse"
 ...
+
 ```
 ```
 

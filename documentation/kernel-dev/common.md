@@ -647,6 +647,7 @@ ERROR: Taskhash mismatch 2c793438c2d9f8c3681fd5f7bc819efa versus
 
 You can safely ignore these messages. The source code is correctly checked out.
 :::
+
 ```
 
 2. *Edit the Source Files* Follow these steps to make some simple changes to the source files:
@@ -654,28 +655,33 @@ You can safely ignore these messages. The source code is correctly checked out.
 > 2.*编辑源文件*按照以下步骤对源文件进行一些简单的更改：
 
 ```
-1.  *Change the working directory*: In the previous step, the output noted where you can find the source files (e.g. `poky_sdk/workspace/sources/linux-yocto`). Change to where the kernel source code is before making your edits to the `calibrate.c` file:
 
-        $ cd poky_sdk/workspace/sources/linux-yocto
+1. *Change the working directory*: In the previous step, the output noted where you can find the source files (e.g. `poky_sdk/workspace/sources/linux-yocto`). Change to where the kernel source code is before making your edits to the `calibrate.c` file:
 
-2.  *Edit the source file*: Edit the `init/calibrate.c` file to have the following changes:
+   ```
+   $ cd poky_sdk/workspace/sources/linux-yocto
+   ```
+2. *Edit the source file*: Edit the `init/calibrate.c` file to have the following changes:
 
-        void calibrate_delay(void)
-        {
-            unsigned long lpj;
-            static bool printed;
-            int this_cpu = smp_processor_id();
+   ```
+   void calibrate_delay(void)
+   {
+       unsigned long lpj;
+       static bool printed;
+       int this_cpu = smp_processor_id();
 
-            printk("*************************************\n");
-            printk("*                                   *\n");
-            printk("*        HELLO YOCTO KERNEL         *\n");
-            printk("*                                   *\n");
-            printk("*************************************\n");
+       printk("*************************************\n");
+       printk("*                                   *\n");
+       printk("*        HELLO YOCTO KERNEL         *\n");
+       printk("*                                   *\n");
+       printk("*************************************\n");
 
-            if (per_cpu(cpu_loops_per_jiffy, this_cpu)) {
-                  .
-                  .
-                  .
+       if (per_cpu(cpu_loops_per_jiffy, this_cpu)) {
+             .
+             .
+             .
+   ```
+
 ```
 
 3. *Build the Updated Kernel Source:* To build the updated kernel source, use `devtool`:
@@ -683,7 +689,11 @@ You can safely ignore these messages. The source code is correctly checked out.
 > 3.*构建更新的内核源：*要构建更新的核心源，请使用“devtool”：
 
 ```
-    $ devtool build linux-yocto
+
+```
+$ devtool build linux-yocto
+```
+
 ```
 
 4. *Create the Image With the New Kernel:* Use the `devtool build-image` command to create a new image that has the new kernel:
@@ -691,8 +701,11 @@ You can safely ignore these messages. The source code is correctly checked out.
 > 4.*使用新内核创建映像：*使用“devtool build Image”命令创建具有新内核的新映像：
 
 ```
-    $ cd ~
-    $ devtool build-image core-image-minimal
+
+```
+$ cd ~
+$ devtool build-image core-image-minimal
+```
 
 ::: note
 ::: title
@@ -701,6 +714,7 @@ Note
 
 If the image you originally created resulted in a Wic file, you can use an alternate method to create the new image with the updated kernel. For an example, see the steps in the :yocto_wiki:[TipsAndTricks/KernelDevelopmentWithEsdk \</TipsAndTricks/KernelDevelopmentWithEsdk\>]{.title-ref} Wiki Page.
 :::
+
 ```
 
 5. *Test the New Image:* For this example, you can run the new image using QEMU to verify your changes:
@@ -708,17 +722,20 @@ If the image you originally created resulted in a Wic file, you can use an alter
 > 5.*测试新映像：*对于本例，您可以使用 QEMU 运行新映像来验证您的更改：
 
 ```
-1.  *Boot the image*: Boot the modified image in the QEMU emulator using this command:
 
-        $ runqemu qemux86
+1. *Boot the image*: Boot the modified image in the QEMU emulator using this command:
 
-2.  *Verify the changes*: Log into the machine using `root` with no password and then use the following shell command to scroll through the console\'s boot output.
+   ```
+   $ runqemu qemux86
+   ```
+2. *Verify the changes*: Log into the machine using `root` with no password and then use the following shell command to scroll through the console\'s boot output.
 
-    ``` none
-    # dmesg | less
-    ```
+   ```none
+   # dmesg | less
+   ```
 
-    You should see the results of your `printk` statements as part of the output when you scroll down the console window.
+   You should see the results of your `printk` statements as part of the output when you scroll down the console window.
+
 ```
 
 6. *Stage and commit your changes*: Change your working directory to where you modified the `calibrate.c` file and use these Git commands to stage and commit your changes:
@@ -726,10 +743,14 @@ If the image you originally created resulted in a Wic file, you can use an alter
 > 6.*暂存并提交您的更改*：将您的工作目录更改为您修改“calible.c”文件的位置，并使用以下 Git 命令暂存并提交更改：
 
 ```
-    $ cd poky_sdk/workspace/sources/linux-yocto
-    $ git status
-    $ git add init/calibrate.c
-    $ git commit -m "calibrate: Add printk example"
+
+```
+$ cd poky_sdk/workspace/sources/linux-yocto
+$ git status
+$ git add init/calibrate.c
+$ git commit -m "calibrate: Add printk example"
+```
+
 ```
 
 7. *Export the Patches and Create an Append File:* To export your commits as patches and create a `.bbappend` file, use the following command. This example uses the previously established layer named `meta-mylayer`:
@@ -737,17 +758,21 @@ If the image you originally created resulted in a Wic file, you can use an alter
 > 7.*导出补丁并创建附加文件：*要将提交导出为补丁并创建 `.bappend` 文件，请使用以下命令。此示例使用了先前建立的名为“meta mylayer”的层：
 
 ```
-    $ devtool finish linux-yocto ~/meta-mylayer
+
+```
+$ devtool finish linux-yocto ~/meta-mylayer
+```
 
 ::: note
 ::: title
 Note
 :::
 
-See Step 3 of the \"`` kernel-dev/common:getting ready to develop using \`\`devtool\`\` ``{.interpreted-text role="ref"}\" section for information on setting up this layer.
+See Step 3 of the \"``kernel-dev/common:getting ready to develop using \`\`devtool\`\` ``{.interpreted-text role="ref"}\" section for information on setting up this layer.
 :::
 
 Once the command finishes, the patches and the `.bbappend` file are located in the `~/meta-mylayer/recipes-kernel/linux` directory.
+
 ```
 
 8. *Build the Image With Your Modified Kernel:* You can now build an image that includes your kernel patches. Execute the following command from your `Build Directory`{.interpreted-text role="term"} in the terminal set up to run BitBake:
@@ -755,8 +780,12 @@ Once the command finishes, the patches and the `.bbappend` file are located in t
 > 8.*使用修改后的内核构建镜像：*您现在可以构建一个包含内核补丁的镜像。在设置为运行 BitBake 的终端中，从“构建目录”｛.explored text role=“term”｝执行以下命令：
 
 ```
-    $ cd poky/build
-    $ bitbake core-image-minimal
+
+```
+$ cd poky/build
+$ bitbake core-image-minimal
+```
+
 ```
 
 # Using Traditional Kernel Development to Patch the Kernel
@@ -788,28 +817,33 @@ The example in this section creates a simple patch by adding some QEMU emulator 
 > 1.*编辑源文件*在此步骤之前，您应该使用 Git 为内核创建存储库的本地副本。假设您按照\“`kernel dev/common:准备进行传统内核开发`｛.depreted text role=“ref”｝\”部分中的指示创建了存储库，请使用以下命令编辑 `calible.c'文件：
 
 ```
-1.  *Change the working directory*: You need to locate the source files in the local copy of the kernel Git repository. Change to where the kernel source code is before making your edits to the `calibrate.c` file:
 
-        $ cd ~/linux-yocto-4.12/init
+1. *Change the working directory*: You need to locate the source files in the local copy of the kernel Git repository. Change to where the kernel source code is before making your edits to the `calibrate.c` file:
 
-2.  *Edit the source file*: Edit the `calibrate.c` file to have the following changes:
+   ```
+   $ cd ~/linux-yocto-4.12/init
+   ```
+2. *Edit the source file*: Edit the `calibrate.c` file to have the following changes:
 
-        void calibrate_delay(void)
-        {
-            unsigned long lpj;
-            static bool printed;
-            int this_cpu = smp_processor_id();
+   ```
+   void calibrate_delay(void)
+   {
+       unsigned long lpj;
+       static bool printed;
+       int this_cpu = smp_processor_id();
 
-            printk("*************************************\n");
-            printk("*                                   *\n");
-            printk("*        HELLO YOCTO KERNEL         *\n");
-            printk("*                                   *\n");
-            printk("*************************************\n");
+       printk("*************************************\n");
+       printk("*                                   *\n");
+       printk("*        HELLO YOCTO KERNEL         *\n");
+       printk("*                                   *\n");
+       printk("*************************************\n");
 
-            if (per_cpu(cpu_loops_per_jiffy, this_cpu)) {
-                  .
-                  .
-                  .
+       if (per_cpu(cpu_loops_per_jiffy, this_cpu)) {
+             .
+             .
+             .
+   ```
+
 ```
 
 2. *Stage and Commit Your Changes:* Use standard Git commands to stage and commit the changes you just made:
@@ -817,10 +851,14 @@ The example in this section creates a simple patch by adding some QEMU emulator 
 > 2.*暂存并提交您的更改：*使用标准 Git 命令暂存并提交刚才所做的更改：
 
 ```
-    $ git add calibrate.c
-    $ git commit -m "calibrate.c - Added some printk statements"
+
+```
+$ git add calibrate.c
+$ git commit -m "calibrate.c - Added some printk statements"
+```
 
 If you do not stage and commit your changes, the OpenEmbedded Build System will not pick up the changes.
+
 ```
 
 3. *Update Your local.conf File to Point to Your Source Files:* In addition to your `local.conf` file specifying to use \"kernel-modules\" and the \"qemux86\" machine, it must also point to the updated kernel source files. Add `SRC_URI`{.interpreted-text role="term"} and `SRCREV`{.interpreted-text role="term"} statements similar to the following to your `local.conf`:
@@ -828,14 +866,19 @@ If you do not stage and commit your changes, the OpenEmbedded Build System will 
 > 3.*更新 local.conf 文件以指向源文件：*除了指定使用“内核模块”和“qemux86”机器的“local.conf”文件外，它还必须指向更新的内核源文件。将类似于以下语句的 `SRC_URI`｛.respered text role=“term”｝和 `SRCREV`｛.espered text role=“term“｝语句添加到 `local.conf` 中：
 
 ```
-    $ cd poky/build/conf
+
+```
+$ cd poky/build/conf
+```
 
 Add the following to the `local.conf`:
 
-    SRC_URI:pn-linux-yocto = "git:///path-to/linux-yocto-4.12;protocol=file;name=machine;branch=standard/base; \
-                              git:///path-to/yocto-kernel-cache;protocol=file;type=kmeta;name=meta;branch=yocto-4.12;destsuffix=${KMETA}"
-    SRCREV_meta:qemux86 = "${AUTOREV}"
-    SRCREV_machine:qemux86 = "${AUTOREV}"
+```
+SRC_URI:pn-linux-yocto = "git:///path-to/linux-yocto-4.12;protocol=file;name=machine;branch=standard/base; \
+                          git:///path-to/yocto-kernel-cache;protocol=file;type=kmeta;name=meta;branch=yocto-4.12;destsuffix=${KMETA}"
+SRCREV_meta:qemux86 = "${AUTOREV}"
+SRCREV_machine:qemux86 = "${AUTOREV}"
+```
 
 ::: note
 ::: title
@@ -844,6 +887,7 @@ Note
 
 Be sure to replace [path-to]{.title-ref} with the pathname to your local Git repositories. Also, you must be sure to specify the correct branch and machine types. For this example, the branch is `standard/base` and the machine is `qemux86`.
 :::
+
 ```
 
 4. *Build the Image:* With the source modified, your changes staged and committed, and the `local.conf` file pointing to the kernel files, you can now use BitBake to build the image:
@@ -851,8 +895,12 @@ Be sure to replace [path-to]{.title-ref} with the pathname to your local Git rep
 > 4.*构建镜像：*修改了源代码，提交了更改，并且“local.conf”文件指向内核文件，现在可以使用 BitBake 构建镜像：
 
 ```
-    $ cd poky/build
-    $ bitbake core-image-minimal
+
+```
+$ cd poky/build
+$ bitbake core-image-minimal
+```
+
 ```
 
 5. *Boot the image*: Boot the modified image in the QEMU emulator using this command. When prompted to login to the QEMU console, use \"root\" with no password:
@@ -860,8 +908,12 @@ Be sure to replace [path-to]{.title-ref} with the pathname to your local Git rep
 > 5.*引导镜像*：使用此命令在 QEMU 模拟器中引导修改后的镜像。当提示登录 QEMU 控制台时，使用不带密码的\“root\”：
 
 ```
-    $ cd poky/build
-    $ runqemu qemux86
+
+```
+$ cd poky/build
+$ runqemu qemux86
+```
+
 ```
 
 6. *Look for Your Changes:* As QEMU booted, you might have seen your changes rapidly scroll by. If not, use these commands to see your changes:
@@ -869,11 +921,13 @@ Be sure to replace [path-to]{.title-ref} with the pathname to your local Git rep
 > 6.*查找您的更改：*当 QEMU 启动时，您可能已经看到您的更改快速滚动。如果没有，请使用以下命令查看您的更改
 
 ```
-``` none
+
+```none
 # dmesg | less
 ```
 
 You should see the results of your `printk` statements as part of the output when you scroll down the console window.
+
 ```
 
 7. *Generate the Patch File:* Once you are sure that your patch works correctly, you can generate a `*.patch` file in the kernel source repository:
@@ -881,9 +935,13 @@ You should see the results of your `printk` statements as part of the output whe
 > 7.*生成修补程序文件：*一旦您确定您的修补程序工作正常，您就可以在内核源存储库中生成“*.Patch”文件：
 
 ```
-    $ cd ~/linux-yocto-4.12/init
-    $ git format-patch -1
-    0001-calibrate.c-Added-some-printk-statements.patch
+
+```
+$ cd ~/linux-yocto-4.12/init
+$ git format-patch -1
+0001-calibrate.c-Added-some-printk-statements.patch
+```
+
 ```
 
 8. *Move the Patch File to Your Layer:* In order for subsequent builds to pick up patches, you need to move the patch file you created in the previous step to your layer `meta-mylayer`. For this example, the layer created earlier is located in your home directory as `meta-mylayer`. When the layer was created using the `yocto-create` script, no additional hierarchy was created to support patches. Before moving the patch file, you need to add additional structure to your layer using the following commands:
@@ -891,14 +949,20 @@ You should see the results of your `printk` statements as part of the output whe
 > 8.*将修补程序文件移动到您的层：*为了后续构建能够获取修补程序，您需要将在上一步中创建的修补程序文件移到您的“meta-mylayer”层。在这个例子中，前面创建的层位于您的主目录中，名为“metamylayer”。当使用“yocto-create”脚本创建层时，没有创建额外的层次结构来支持修补程序。在移动修补程序文件之前，需要使用以下命令向图层添加其他结构：
 
 ```
-    $ cd ~/meta-mylayer
-    $ mkdir recipes-kernel
-    $ mkdir recipes-kernel/linux
-    $ mkdir recipes-kernel/linux/linux-yocto
+
+```
+$ cd ~/meta-mylayer
+$ mkdir recipes-kernel
+$ mkdir recipes-kernel/linux
+$ mkdir recipes-kernel/linux/linux-yocto
+```
 
 Once you have created this hierarchy in your layer, you can move the patch file using the following command:
 
-    $ mv ~/linux-yocto-4.12/init/0001-calibrate.c-Added-some-printk-statements.patch ~/meta-mylayer/recipes-kernel/linux/linux-yocto
+```
+$ mv ~/linux-yocto-4.12/init/0001-calibrate.c-Added-some-printk-statements.patch ~/meta-mylayer/recipes-kernel/linux/linux-yocto
+```
+
 ```
 
 9. *Create the Append File:* Finally, you need to create the `linux-yocto_4.12.bbappend` file and insert statements that allow the OpenEmbedded build system to find the patch. The append file needs to be in your layer\'s `recipes-kernel/linux` directory and it must be named `linux-yocto_4.12.bbappend` and have the following contents:
@@ -906,8 +970,11 @@ Once you have created this hierarchy in your layer, you can move the patch file 
 > 9.*创建附加文件：*最后，您需要创建“linux-octo_4.12.bappend”文件并插入允许 OpenEmbedded 构建系统查找补丁的语句。附加文件需要位于层的“recipes kernel/linux”目录中，并且必须命名为“linux-yoct_4.12.bappend”，并且具有以下内容：
 
 ```
-    FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-    SRC_URI += "file://0001-calibrate.c-Added-some-printk-statements.patch"
+
+```
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+SRC_URI += "file://0001-calibrate.c-Added-some-printk-statements.patch"
+```
 
 The `FILESEXTRAPATHS`{.interpreted-text role="term"} and `SRC_URI`{.interpreted-text role="term"} statements enable the OpenEmbedded build system to find the patch file.
 
@@ -920,12 +987,16 @@ Note
 
 To build `core-image-minimal` again and see the effects of your patch, you can essentially eliminate the temporary source files saved in `poky/build/tmp/work/...` and residual effects of the build by entering the following sequence of commands:
 
-    $ cd poky/build
-    $ bitbake -c cleanall yocto-linux
-    $ bitbake core-image-minimal -c cleanall
-    $ bitbake core-image-minimal
-    $ runqemu qemux86
+```
+$ cd poky/build
+$ bitbake -c cleanall yocto-linux
+$ bitbake core-image-minimal -c cleanall
+$ bitbake core-image-minimal
+$ runqemu qemux86
+```
+
 :::
+
 ```
 
 # Configuring the Kernel
@@ -962,20 +1033,24 @@ To use the `menuconfig` tool in the Yocto Project development environment, you m
 
 - Your build host must have the following two packages installed:
 
-  ```
-  libncurses5-dev
-  libtinfo-dev
-  ```
+```
+
+libncurses5-dev
+libtinfo-dev
+
+```
 
 The following commands initialize the BitBake environment, run the `ref-tasks-kernel_configme`{.interpreted-text role="ref"} task, and launch `menuconfig`. These commands assume the Source Directory\'s top-level folder is `poky`:
 
 > 以下命令初始化 BitBake 环境，运行 `ref-tasks-kernel_configme`｛.depreted text role=“ref”｝任务，然后启动 `menuconfig`。这些命令假定源目录的顶级文件夹为“poky”：
 
 ```
+
 $ cd poky
 $ source oe-init-build-env
 $ bitbake linux-yocto -c kernel_configme -f
 $ bitbake linux-yocto -c menuconfig
+
 ```
 
 Once `menuconfig` comes up, its standard interface allows you to interactively examine and configure all the kernel configuration parameters. After making your changes, simply exit the tool and save your changes to create an updated version of the `.config` configuration file.

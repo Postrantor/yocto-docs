@@ -1,4 +1,7 @@
 ---
+tip: translate by openai@2023-06-07 23:30:12
+...
+---
 title: Release notes for 4.3 (nandbield)
 ---
 # New Features / Enhancements in 4.3
@@ -20,7 +23,10 @@ title: Release notes for 4.3 (nandbield)
 - Image-related enhancements:
 - wic Image Creator enhancements:
 - FIT image related improvements:
+
   - New `FIT_ADDRESS_CELLS`{.interpreted-text role="term"} and `UBOOT_FIT_ADDRESS_CELLS`{.interpreted-text role="term"} variables allowing to specify 64 bit addresses, typically for loading U-Boot.
+
+> 新的`FIT_ADDRESS_CELLS`{.interpreted-text role="term"}和`UBOOT_FIT_ADDRESS_CELLS`{.interpreted-text role="term"}变量允许指定64位地址，通常用于加载U-Boot。
 - SDK-related improvements:
 - Testing:
 - Utility script changes:
@@ -29,8 +35,14 @@ title: Release notes for 4.3 (nandbield)
 - Packaging changes:
 - Prominent documentation updates:
 - Miscellaneous changes:
+
   - Git based recipes in OE-Core which used the git protocol have been changed to use https where possibile. https is now believed to be faster and more reliable.
+
+> Git 基于的 OE-Core 食谱，原先使用 Git 协议，现已改用可能的情况下使用 https。现在认为 https 更快、更可靠。
+
   - The `os-release` recipe added a `CPE_NAME` to the fields provided, with the default being populated from `DISTRO`{.interpreted-text role="term"}.
+
+> 菜谱`os-release`增加了一个`CPE_NAME`字段，默认值从`DISTRO`中获取。
 
 # Known Issues in 4.3
 

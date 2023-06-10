@@ -57,9 +57,11 @@ Note
 - Be sure to use an absolute path when calling this script with sudo.
 - The package recipe `qemu-helper-native` is required to run this script. Build the package using the following command:
 
-  ```
-  $ bitbake qemu-helper-native
-  ```
+```
+
+$ bitbake qemu-helper-native
+
+```
 
 :::
 ```
@@ -213,6 +215,7 @@ Here are the image recipe requirements:
 - Uses a custom `Initramfs`{.interpreted-text role="term"} image with a custom installer. A normal image that you can install usually creates a single root filesystem partition. This image uses another installer that creates a specific partition layout. Not all Board Support Packages (BSPs) can use an installer. For such cases, you need to manually create the following partition layout on the target:
 
 > -将自定义 `Initramfs`｛.explored text role=“term”｝图像与自定义安装程序一起使用。可以安装的普通映像通常会创建一个根文件系统分区。此映像使用另一个创建特定分区布局的安装程序。并非所有板支持包（BSP）都可以使用安装程序。对于这种情况，您需要在目标上手动创建以下分区布局：
+>
 > - First partition mounted under `/boot`, labeled \"boot\".
 > - The main root filesystem partition where this image gets installed, which is mounted under `/`.
 > - Another partition labeled \"testrootfs\" where test images get deployed.
@@ -572,6 +575,7 @@ Class attributes are as follows:
 - *target:* The target controller object used to deploy and start an image on a particular target (e.g. Qemu, SimpleRemote, and SystemdbootTarget). Tests usually use the following:
 
 > -*target：*用于在特定目标（例如 Qemu、SimpleRemote 和 SystemdbootTarget）上部署和启动映像的目标控制器对象。测试通常使用以下内容：
+>
 > - *ip:* The target\'s IP address.
 > - *server_ip:* The host\'s IP address, which is usually used by the DNF test suite.
 > - *run(cmd, timeout=None):* The single, most used method. This command is a wrapper for: `ssh root@host "cmd"`. The command returns a tuple: (status, output), which are what their names imply - the return code of \"cmd\" and whatever output it produces. The optional timeout argument represents the number of seconds the test should wait for \"cmd\" to return. If the argument is \"None\", the test uses the default instance\'s timeout period, which is 300 seconds. If the argument is \"0\", the test runs until the command returns.

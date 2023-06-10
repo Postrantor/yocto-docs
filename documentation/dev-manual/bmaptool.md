@@ -79,9 +79,11 @@ $ bitbake image
 > -如果您有对介质的写访问权限，请使用以下命令形式：
 
 ```
- ```
- $ oe-run-native bmap-tools-native bmaptool copy build-directory/tmp/deploy/images/machine/image.wic /dev/sdX
- ```
+```
+
+$ oe-run-native bmap-tools-native bmaptool copy build-directory/tmp/deploy/images/machine/image.wic /dev/sdX
+
+```
 ```
 
 - If you do not have write access to the media, set your permissions first and then use the same command form:
@@ -89,10 +91,12 @@ $ bitbake image
 > -如果您没有对介质的写访问权限，请先设置您的权限，然后使用相同的命令形式：
 
 ```
- ```
- $ sudo chmod 666 /dev/sdX
- $ oe-run-native bmap-tools-native bmaptool copy build-directory/tmp/deploy/images/machine/image.wic /dev/sdX
- ```
+```
+
+$ sudo chmod 666 /dev/sdX
+$ oe-run-native bmap-tools-native bmaptool copy build-directory/tmp/deploy/images/machine/image.wic /dev/sdX
+
+```
 ```
 
 For help on the `bmaptool` command, use the following command:
