@@ -5,15 +5,15 @@ tip: translate by openai@2023-06-10 12:41:56
 title: Using Wayland and Weston
 -------------------------------
 
-`Wayland <Wayland_(display_server_protocol)>`{.interpreted-text role="wikipedia"} is a computer display server protocol that provides a method for compositing window managers to communicate directly with applications and video hardware and expects them to communicate with input hardware using other libraries. Using Wayland with supporting targets can result in better control over graphics frame rendering than an application might otherwise achieve.
+`Wayland <Wayland_(display_server_protocol)>` is a computer display server protocol that provides a method for compositing window managers to communicate directly with applications and video hardware and expects them to communicate with input hardware using other libraries. Using Wayland with supporting targets can result in better control over graphics frame rendering than an application might otherwise achieve.
 
-> Wayland（显示服务器协议）是一种计算机显示服务器协议，它提供了一种组合窗口管理器直接与应用程序和视频硬件通信的方法，并期望它们使用其他库与输入硬件通信。使用支持目标的 Wayland 可以比应用程序本身可以获得的更好的图形帧渲染控制。
+> Wayland(显示服务器协议)是一种计算机显示服务器协议，它提供了一种组合窗口管理器直接与应用程序和视频硬件通信的方法，并期望它们使用其他库与输入硬件通信。使用支持目标的 Wayland 可以比应用程序本身可以获得的更好的图形帧渲染控制。
 
-The Yocto Project provides the Wayland protocol libraries and the reference `Weston <Wayland_(display_server_protocol)#Weston>`{.interpreted-text role="wikipedia"} compositor as part of its release. You can find the integrated packages in the `meta` layer of the `Source Directory`{.interpreted-text role="term"}. Specifically, you can find the recipes that build both Wayland and Weston at `meta/recipes-graphics/wayland`.
+The Yocto Project provides the Wayland protocol libraries and the reference `Weston <Wayland_(display_server_protocol)#Weston>`. Specifically, you can find the recipes that build both Wayland and Weston at `meta/recipes-graphics/wayland`.
 
-> 项目 Yocto 提供 Wayland 协议库和参考 Weston（Wayland 显示服务器协议的一部分）组合器作为其发行版的一部分。您可以在源目录的 `meta` 层中找到集成的软件包。具体来说，您可以在 `meta/recipes-graphics/wayland` 中找到构建 Wayland 和 Weston 的配方。
+> 项目 Yocto 提供 Wayland 协议库和参考 Weston(Wayland 显示服务器协议的一部分)组合器作为其发行版的一部分。您可以在源目录的 `meta` 层中找到集成的软件包。具体来说，您可以在 `meta/recipes-graphics/wayland` 中找到构建 Wayland 和 Weston 的配方。
 
-You can build both the Wayland and Weston packages for use only with targets that accept the `Mesa 3D and Direct Rendering Infrastructure <Mesa_(computer_graphics)>`{.interpreted-text role="wikipedia"}, which is also known as Mesa DRI. This implies that you cannot build and use the packages if your target uses, for example, the Intel Embedded Media and Graphics Driver (Intel EMGD) that overrides Mesa DRI.
+You can build both the Wayland and Weston packages for use only with targets that accept the `Mesa 3D and Direct Rendering Infrastructure <Mesa_(computer_graphics)>`, which is also known as Mesa DRI. This implies that you cannot build and use the packages if your target uses, for example, the Intel Embedded Media and Graphics Driver (Intel EMGD) that overrides Mesa DRI.
 
 > 你只能用接受 Mesa 3D 和 Direct Rendering Infrastructure <Mesa_(computer_graphics)> 的目标来构建 Wayland 和 Weston 软件包。这意味着如果你的目标使用 Intel Embedded Media and Graphics Driver (Intel EMGD)来覆盖 Mesa DRI，你就不能构建和使用这些软件包。
 
@@ -35,9 +35,9 @@ To enable Wayland, you need to enable it to be built and enable it to be include
 
 ## Building Wayland
 
-To cause Mesa to build the `wayland-egl` platform and Weston to build Wayland with Kernel Mode Setting ([KMS](https://wiki.archlinux.org/index.php/Kernel_Mode_Setting)) support, include the \"wayland\" flag in the `DISTRO_FEATURES`{.interpreted-text role="term"} statement in your `local.conf` file:
+To cause Mesa to build the `wayland-egl` platform and Weston to build Wayland with Kernel Mode Setting ([KMS](https://wiki.archlinux.org/index.php/Kernel_Mode_Setting)) support, include the \"wayland\" flag in the `DISTRO_FEATURES` statement in your `local.conf` file:
 
-> 要使 Mesa 构建 `wayland-egl` 平台并使 Weston 构建具有内核模式设置（KMS）支持的 Wayland，请在 `local.conf` 文件中的 `DISTRO_FEATURES` 语句中包含“wayland”标志。
+> 要使 Mesa 构建 `wayland-egl` 平台并使 Weston 构建具有内核模式设置(KMS)支持的 Wayland，请在 `local.conf` 文件中的 `DISTRO_FEATURES` 语句中包含“wayland”标志。
 
 ```
 DISTRO_FEATURES:append = " wayland"
@@ -53,9 +53,9 @@ If X11 has been enabled elsewhere, Weston will build Wayland with X11 support
 
 ## Installing Wayland and Weston
 
-To install the Wayland feature into an image, you must include the following `CORE_IMAGE_EXTRA_INSTALL`{.interpreted-text role="term"} statement in your `local.conf` file:
+To install the Wayland feature into an image, you must include the following `CORE_IMAGE_EXTRA_INSTALL` statement in your `local.conf` file:
 
-> 要将 Wayland 功能安装到图像中，您必须在 local.conf 文件中包含以下 CORE_IMAGE_EXTRA_INSTALL 语句：
+> 要将 Wayland 功能安装到镜像中，您必须在 local.conf 文件中包含以下 CORE_IMAGE_EXTRA_INSTALL 语句：
 
 ```
 CORE_IMAGE_EXTRA_INSTALL += "wayland weston"
@@ -65,11 +65,11 @@ CORE_IMAGE_EXTRA_INSTALL += "wayland weston"
 
 To run Weston inside X11, enabling it as described earlier and building a Sato image is sufficient. If you are running your image under Sato, a Weston Launcher appears in the \"Utility\" category.
 
-> 要在 X11 中运行 Weston，按照前面描述的方式启用它并构建 Sato 镜像就足够了。如果您正在 Sato 下运行图像，则 Weston Launcher 会出现在“实用程序”类别中。
+> 要在 X11 中运行 Weston，按照前面描述的方式启用它并构建 Sato 镜像就足够了。如果您正在 Sato 下运行镜像，则 Weston Launcher 会出现在“实用程序”类别中。
 
 Alternatively, you can run Weston through the command-line interpretor (CLI), which is better suited for development work. To run Weston under the CLI, you need to do the following after your image is built:
 
-> 另外，您可以通过命令行解释器（CLI）运行 Weston，这更适合开发工作。在构建图像后，要在 CLI 下运行 Weston，您需要执行以下操作：
+> 另外，您可以通过命令行解释器(CLI)运行 Weston，这更适合开发工作。在构建镜像后，要在 CLI 下运行 Weston，您需要执行以下操作：
 
 1. Run these commands to export `XDG_RUNTIME_DIR`:
 

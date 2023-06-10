@@ -7,7 +7,7 @@ title: Using x32 psABI
 
 x32 processor-specific Application Binary Interface ([x32 psABI](https://software.intel.com/en-us/node/628948)) is a native 32-bit processor-specific ABI for Intel 64 (x86-64) architectures. An ABI defines the calling conventions between functions in a processing environment. The interface determines what registers are used and what the sizes are for various C data types.
 
-> x32 处理器特定应用程序二进制接口（[x32 psABI]（[https://software.intel.com/en-us/node/628948](https://software.intel.com/en-us/node/628948)））是 Intel 64（x86-64）架构的本机 32 位处理器特定 ABI。ABI 定义处理环境中函数之间的调用约定。该接口确定使用哪些寄存器以及各种 C 数据类型的大小。
+> x32 处理器特定应用程序二进制接口([x32 psABI](%5Bhttps://software.intel.com/en-us/node/628948%5D(https://software.intel.com/en-us/node/628948)))是 Intel 64(x86-64)架构的本机 32 位处理器特定 ABI。ABI 定义处理环境中函数之间的调用约定。该接口确定使用哪些寄存器以及各种 C 数据类型的大小。
 
 Some processing environments prefer using 32-bit applications even when running on Intel 64-bit platforms. Consider the i386 psABI, which is a very old 32-bit ABI for Intel 64-bit platforms. The i386 psABI does not provide efficient use and access of the Intel 64-bit processor resources, leaving the system underutilized. Now consider the x86_64 psABI. This ABI is newer and uses 64-bits for data sizes and program pointers. The extra bits increase the footprint size of the programs, libraries, and also increases the memory and file system size requirements. Executing under the x32 psABI enables user programs to utilize CPU and system resources more efficiently while keeping the memory footprint of the applications low. Extra bits are used for registers but not for addressing mechanisms.
 

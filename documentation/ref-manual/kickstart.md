@@ -5,7 +5,7 @@ tip: translate by openai@2023-06-07 22:11:17
 title: OpenEmbedded Kickstart (`.wks`) Reference
 ------------------------------------------
 
-# Introduction {#openembedded-kickstart-wks-reference}
+# Introduction
 
 The current Wic implementation supports only the basic kickstart partitioning commands: `partition` (or `part` for short) and `bootloader`.
 
@@ -39,7 +39,7 @@ The `mntpoint` is where the partition is mounted and must be in one of the follo
 
 Specifying a mntpoint causes the partition to automatically be mounted. Wic achieves this by adding entries to the filesystem table (fstab) during image generation. In order for Wic to generate a valid fstab, you must also provide one of the `--ondrive`, `--ondisk`, or `--use-uuid` partition options as part of the command.
 
-> 指定 mntpoint 会导致分区自动挂载。Wic 通过在图像生成期间添加条目到文件系统表(fstab)来实现这一点。为了使 Wic 生成有效的 fstab，您还必须在命令中提供 `--ondrive`、`--ondisk` 或 `--use-uuid` 分区选项之一。
+> 指定 mntpoint 会导致分区自动挂载。Wic 通过在镜像生成期间添加条目到文件系统表(fstab)来实现这一点。为了使 Wic 生成有效的 fstab，您还必须在命令中提供 `--ondrive`、`--ondisk` 或 `--use-uuid` 分区选项之一。
 
 ::: note
 ::: title
@@ -67,7 +67,7 @@ Here is a list that describes other supported options you can use with the `part
 
 > `--fixed-size`：精确的分区大小。以整数值指定，可选择以“k”/“K”表示 Kibibyte，“M”表示 Mebibyte，“G”表示 Gibibyte 的单位。如果没有指定单位，默认为“M”。不能与 `--size` 一起指定。如果分区数据大于 `--fixed-size`，组装磁盘映像时会出现错误。
 
-- `--source`: This option is a Wic-specific option that names the source of the data that populates the partition. The most common value for this option is \"rootfs\", but you can use any value that maps to a valid source plugin. For information on the source plugins, see the \"`dev-manual/wic:using the wic plugin interface`{.interpreted-text role="ref"}\" section in the Yocto Project Development Tasks Manual.
+- `--source`: This option is a Wic-specific option that names the source of the data that populates the partition. The most common value for this option is \"rootfs\", but you can use any value that maps to a valid source plugin. For information on the source plugins, see the \"`dev-manual/wic:using the wic plugin interface`\" section in the Yocto Project Development Tasks Manual.
 
 > 这个选项是 Wic 特定的选项，用于指定填充分区的数据源。最常用的值是“rootfs”，但您也可以使用任何映射到有效源插件的值。有关源插件的信息，请参阅 Yocto 项目开发任务手册中的“使用 wic 插件接口”部分。
 
@@ -106,7 +106,7 @@ If you do not use the `--source` option, the `wic` command creates an empty part
 - `--align (in KBytes)`: This option is a Wic-specific option that says to start partitions on boundaries given x KBytes.
 - `--offset`: This option is a Wic-specific option that says to place a partition at exactly the specified offset. If the partition cannot be placed at the specified offset, the image build will fail. Specify as an integer value optionally followed by one of the units \"s\" / \"S\" for 512 byte sector, \"k\" / \"K\" for kibibyte, \"M\" for mebibyte and \"G\" for gibibyte. The default unit if none is given is \"k\".
 
-> `--offset`：这个选项是 Wic 特定的选项，表示在指定的偏移量处放置一个分区。如果无法在指定的偏移量处放置分区，则映像构建将失败。指定为整数值，可选地后跟“s”/“S”（512 字节扇区）、“k”/“K”（KiB）、“M”（MiB）和“G”（GiB）单位之一。如果未指定单位，则默认单位为“k”。
+> `--offset`：这个选项是 Wic 特定的选项，表示在指定的偏移量处放置一个分区。如果无法在指定的偏移量处放置分区，则映像构建将失败。指定为整数值，可选地后跟“s”/“S”(512 字节扇区)、“k”/“K”(KiB)、“M”(MiB)和“G”(GiB)单位之一。如果未指定单位，则默认单位为“k”。
 
 - `--no-table`: This option is a Wic-specific option. Using the option reserves space for the partition and causes it to become populated. However, the partition is not added to the partition table.
 
@@ -118,25 +118,25 @@ If you do not use the `--source` option, the `wic` command creates an empty part
 
 - `--extra-space`: This option is a Wic-specific option that adds extra space after the space filled by the content of the partition. The final size can exceed the size specified by the `--size` option. The default value is 10M. Specify as an integer value optionally followed by one of the units \"k\" / \"K\" for kibibyte, \"M\" for mebibyte and \"G\" for gibibyte. The default unit if none is given is \"M\".
 
-> `--extra-space`：这个选项是 Wic 特有的，它会在分区内容填充完成后添加额外的空间，最终大小可以超过 `--size` 选项指定的大小。默认值为 10M。可以指定一个整数值，可选地后接"k" / "K"（Kibibyte）、"M"（Mebibyte）或"G"（Gibibyte）等单位。如果没有指定单位，默认单位为"M"。
+> `--extra-space`：这个选项是 Wic 特有的，它会在分区内容填充完成后添加额外的空间，最终大小可以超过 `--size` 选项指定的大小。默认值为 10M。可以指定一个整数值，可选地后接"k" / "K"(Kibibyte)、"M"(Mebibyte)或"G"(Gibibyte)等单位。如果没有指定单位，默认单位为"M"。
 
 - `--overhead-factor`: This option is a Wic-specific option that multiplies the size of the partition by the option\'s value. You must supply a value greater than or equal to \"1\". The default value is \"1.3\".
 
 > `- `--overhead-factor`: 此选项是 Wic 特定的选项，可将分区的大小乘以该选项的值。您必须提供大于或等于“1”的值。默认值为“1.3”。
 
 - `--part-name`: This option is a Wic-specific option that specifies a name for GPT partitions.
-- `--part-type`: This option is a Wic-specific option that specifies the partition type globally unique identifier (GUID) for GPT partitions. You can find the list of partition type GUIDs at `GUID_Partition_Table#Partition_type_GUIDs`{.interpreted-text role="wikipedia"}.
+- `--part-type`: This option is a Wic-specific option that specifies the partition type globally unique identifier (GUID) for GPT partitions. You can find the list of partition type GUIDs at `GUID_Partition_Table#Partition_type_GUIDs`.
 
-> `-`--part-type `：此选项是Wic专用选项，用于指定GPT分区的全局唯一标识符（GUID）。您可以在GUID_Partition_Table#Partition_type_GUIDs`{.interpreted-text role="wikipedia"}中找到分区类型 GUID 的列表。
+> `-`--part-type `：此选项是Wic专用选项，用于指定GPT分区的全局唯一标识符(GUID)。您可以在GUID_Partition_Table#Partition_type_GUIDs` 中找到分区类型 GUID 的列表。
 
 - `--use-uuid`: This option is a Wic-specific option that causes Wic to generate a random GUID for the partition. The generated identifier is used in the bootloader configuration to specify the root partition.
 
 > `-`--use-uuid`：此选项是 Wic 特定的选项，它会导致 Wic 为分区生成一个随机的 GUID。生成的标识符用于引导程序配置中指定根分区。
 
 - `--uuid`: This option is a Wic-specific option that specifies the partition UUID.
-- `--fsuuid`: This option is a Wic-specific option that specifies the filesystem UUID. You can generate or modify `WKS_FILE`{.interpreted-text role="term"} with this option if a preconfigured filesystem UUID is added to the kernel command line in the bootloader configuration before you run Wic.
+- `--fsuuid`: This option is a Wic-specific option that specifies the filesystem UUID. You can generate or modify `WKS_FILE` with this option if a preconfigured filesystem UUID is added to the kernel command line in the bootloader configuration before you run Wic.
 
-> `-`--fsuuid `: 这个选项是Wic特定的选项，用于指定文件系统UUID。如果在运行Wic之前在引导加载程序配置中向内核命令行添加了预先配置的文件系统UUID，则可以使用此选项生成或修改` WKS_FILE`{.interpreted-text role="term"}。
+> `-`--fsuuid `: 这个选项是Wic特定的选项，用于指定文件系统UUID。如果在运行Wic之前在引导加载程序配置中向内核命令行添加了预先配置的文件系统UUID，则可以使用此选项生成或修改` WKS_FILE`。
 
 - `--system-id`: This option is a Wic-specific option that specifies the partition system ID, which is a one byte long, hexadecimal parameter with or without the 0x prefix.
 
@@ -144,7 +144,7 @@ If you do not use the `--source` option, the `wic` command creates an empty part
 
 - `--mkfs-extraopts`: This option specifies additional options to pass to the `mkfs` utility. Some default options for certain filesystems do not take effect. See Wic\'s help on kickstart (i.e. `wic help kickstart`).
 
-> `-`--mkfs-extraopts `: 此选项用于指定传递给` mkfs `实用程序的其他选项。某些默认文件系统选项不会生效。请参阅Wic的Kickstart帮助（即` wic help kickstart`）。
+> `-`--mkfs-extraopts `: 此选项用于指定传递给` mkfs `实用程序的其他选项。某些默认文件系统选项不会生效。请参阅Wic的Kickstart帮助(即` wic help kickstart`)。
 
 # Command: bootloader
 
@@ -160,7 +160,7 @@ Bootloader functionality and boot partitions are implemented by the various sour
 > 引导程序功能和引导分区由实现引导程序功能的各种源插件实现。引导程序命令实际上提供了一种修改引导程序配置的方法。
 > :::
 
-- `--append`: Specifies kernel parameters. These parameters will be added to the syslinux `APPEND`{.interpreted-text role="term"} or `grub` kernel command line.
+- `--append`: Specifies kernel parameters. These parameters will be added to the syslinux `APPEND` or `grub` kernel command line.
 
 > `-`--append `：指定内核参数。这些参数将被添加到syslinux的` APPEND `或` grub` 内核命令行中。
 

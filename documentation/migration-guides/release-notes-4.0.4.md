@@ -7,20 +7,20 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 
 # Security Fixes in Yocto-4.0.4
 
-- binutils : fix `2022-38533`{.interpreted-text role="cve"}
-- curl: fix `2022-35252`{.interpreted-text role="cve"}
-- sqlite: fix `2022-35737`{.interpreted-text role="cve"}
-- grub2: fix `2021-3695`{.interpreted-text role="cve"}, `2021-3696`{.interpreted-text role="cve"}, `2021-3697`{.interpreted-text role="cve"}, `2022-28733`{.interpreted-text role="cve"}, `2022-28734`{.interpreted-text role="cve"} and `2022-28735`{.interpreted-text role="cve"}
+- binutils : fix `2022-38533`
+- curl: fix `2022-35252`
+- sqlite: fix `2022-35737`
+- grub2: fix `2021-3695`
 
 > 修复 GRUB2：CVE-2021-3695、CVE-2021-3696、CVE-2021-3697、CVE-2022-28733、CVE-2022-28734 和 CVE-2022-28735
 
-- u-boot: fix `2022-30552`{.interpreted-text role="cve"} and `2022-33967`{.interpreted-text role="cve"}
-- libxml2: Ignore `2016-3709`{.interpreted-text role="cve"}
-- libtiff: fix `2022-34526`{.interpreted-text role="cve"}
-- zlib: fix `2022-37434`{.interpreted-text role="cve"}
-- gnutls: fix `2022-2509`{.interpreted-text role="cve"}
-- u-boot: fix `2022-33103`{.interpreted-text role="cve"}
-- qemu: fix `2021-3507`{.interpreted-text role="cve"}, `2021-3929`{.interpreted-text role="cve"}, `2021-4158`{.interpreted-text role="cve"}, `2022-0216`{.interpreted-text role="cve"} and `2022-0358`{.interpreted-text role="cve"}
+- u-boot: fix `2022-30552`
+- libxml2: Ignore `2016-3709`
+- libtiff: fix `2022-34526`
+- zlib: fix `2022-37434`
+- gnutls: fix `2022-2509`
+- u-boot: fix `2022-33103`
+- qemu: fix `2021-3507`
 
 > 修复 QEMU：CVE-2021-3507、CVE-2021-3929、CVE-2021-4158、CVE-2022-0216 和 CVE-2022-0358
 
@@ -29,18 +29,18 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - apr: Cache configure tests which use AC_TRY_RUN
 - apr: Use correct strerror_r implementation based on libc type
 - apt: fix nativesdk-apt build failure during the second time build
-- archiver.bbclass: remove unsed do_deploy_archives\[dirs\]
+- archiver.bbclass: remove unsed do_deploy_archives\[dirs]
 - archiver.bbclass: some recipes that uses the kernelsrc bbclass uses the shared source
 - autoconf: Fix strict prototype errors in generated tests
 - autoconf: Update K & R stype functions
 - bind: upgrade to 9.18.5
-- bitbake.conf: set `BB_DEFAULT_UMASK`{.interpreted-text role="term"} using ??=
+- bitbake.conf: set `BB_DEFAULT_UMASK` using ??=
 - bitbake: ConfHandler/BBHandler: Improve comment error messages and add tests
 - bitbake: ConfHandler: Remove lingering close
 - bitbake: bb/utils: movefile: use the logger for printing
 - bitbake: bb/utils: remove: check the path again the expand python glob
 - bitbake: bitbake-user-manual: Correct description of the ??= operator
-- bitbake: bitbake-user-manual: npm fetcher: improve description of `SRC_URI`{.interpreted-text role="term"} format
+- bitbake: bitbake-user-manual: npm fetcher: improve description of `SRC_URI` format
 - bitbake: bitbake: bitbake-user-manual: hashserv can be accessed on a dedicated domain
 - bitbake: bitbake: runqueue: add cpu/io pressure regulation
 - bitbake: bitbake: runqueue: add memory pressure regulation
@@ -75,7 +75,7 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - epiphany: upgrade to 42.4
 - externalsrc: Don\'t wipe out src dir when EXPORT_FUNCTIONS is used.
 - gcc-multilib-config: Fix i686 toolchain relocation issues
-- gcr: Define \_GNU_SOURCE
+- gcr: Define _GNU_SOURCE
 - gdk-pixbuf: upgrade to 2.42.9
 - glib-networking: upgrade to 2.72.2
 - go: upgrade to v1.17.13
@@ -83,7 +83,7 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - iso-codes: upgrade to 4.11.0
 - kernel-fitimage.bbclass: add padding algorithm property in config nodes
 - kernel-fitimage.bbclass: only package unique DTBs
-- kernel: Always set `CC`{.interpreted-text role="term"} and `LD`{.interpreted-text role="term"} for the kernel build
+- kernel: Always set `CC` for the kernel build
 - kernel: Use consistent make flags for menuconfig
 - lib:npm_registry: initial checkin
 - libatomic-ops: upgrade to 7.6.14
@@ -100,18 +100,18 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - linux-yocto/5.10: update to v5.10.137
 - linux-yocto/5.15: update genericx86\* machines to v5.15.59
 - linux-yocto/5.15: update to v5.15.62
-- linux-yocto: Fix `COMPATIBLE_MACHINE`{.interpreted-text role="term"} regex match
-- linux-yocto: prepend the value with a space when append to `KERNEL_EXTRA_ARGS`{.interpreted-text role="term"}
+- linux-yocto: Fix `COMPATIBLE_MACHINE` regex match
+- linux-yocto: prepend the value with a space when append to `KERNEL_EXTRA_ARGS`
 - lttng-modules: fix 5.19+ build
 - lttng-modules: fix build against mips and v5.19 kernel
 - lttng-modules: fix build for kernel 5.10.137
 - lttng-modules: replace mips compaction fix with upstream change
 - lz4: upgrade to 1.9.4
 - maintainers: update opkg maintainer
-- meta: introduce `UBOOT_MKIMAGE_KERNEL_TYPE`{.interpreted-text role="term"}
+- meta: introduce `UBOOT_MKIMAGE_KERNEL_TYPE`
 - migration guides: add missing release notes
 - mobile-broadband-provider-info: upgrade to 20220725
-- nativesdk: Clear `TUNE_FEATURES`{.interpreted-text role="term"}
+- nativesdk: Clear `TUNE_FEATURES`
 - npm: replace \'npm pack\' call by \'tar czf\'
 - npm: return content of \'package.json\' in \'npm_pack\'
 - npm: take \'version\' directly from \'package.json\'
@@ -126,11 +126,11 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - packagegroup-self-hosted: update for strace
 - parselogs: Ignore xf86OpenConsole error
 - perf: Fix reproducibility issues with 5.19 onwards
-- pinentry: enable \_XOPEN_SOURCE on musl for wchar usage in curses
+- pinentry: enable _XOPEN_SOURCE on musl for wchar usage in curses
 - poky.conf: add ubuntu-22.04 to tested distros
 - poky.conf: bump version for 4.0.4
 - pseudo: Update to include recent upstream minor fixes
-- python3-pip: Fix `RDEPENDS`{.interpreted-text role="term"} after the update
+- python3-pip: Fix `RDEPENDS` after the update
 - ref-manual: add numa to machine features
 - relocate_sdk.py: ensure interpreter size error causes relocation to fail
 - rootfs-postcommands.bbclass: avoid moving ssh host keys if etc is writable
@@ -146,12 +146,12 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 - shadow: Avoid nss warning/error with musl
 - shadow: Enable subid support
 - system-requirements.rst: Add Ubuntu 22.04 to list of supported distros
-- systemd: Add \'no-dns-fallback\' `PACKAGECONFIG`{.interpreted-text role="term"} option
+- systemd: Add \'no-dns-fallback\' `PACKAGECONFIG` option
 - systemd: Fix unwritable /var/lock when no sysvinit handling
 - sysvinit-inittab/start_getty: Fix respawn too fast
 - tcp-wrappers: Fix implicit-function-declaration warnings
 - tzdata: upgrade to 2022b
-- util-linux: Remove \--enable-raw from `EXTRA_OECONF`{.interpreted-text role="term"}
+- util-linux: Remove \--enable-raw from `EXTRA_OECONF`
 - vala: upgrade to 0.56.3
 - vim: Upgrade to 9.0.0453
 - watchdog: Include needed system header for function decls
@@ -234,10 +234,10 @@ title: Release notes for Yocto-4.0.4 (Kirkstone)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</poky/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</poky/log/?h=yocto-4.0.4\>\`
-- Git Revision: :yocto\_[git:%60d64bef1c7d713b92a51228e5ade945835e5a94a4](git:%60d64bef1c7d713b92a51228e5ade945835e5a94a4) \</poky/commit/?id=d64bef1c7d713b92a51228e5ade945835e5a94a4\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</poky/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</poky/log/?h=yocto-4.0.4\>\`
+- Git Revision: :yocto_[git:%60d64bef1c7d713b92a51228e5ade945835e5a94a4](git:%60d64bef1c7d713b92a51228e5ade945835e5a94a4) \</poky/commit/?id=d64bef1c7d713b92a51228e5ade945835e5a94a4\>\`
 
 > Git 版本：yocto_[git：d64bef1c7d713b92a51228e5ade945835e5a94a4](git%EF%BC%9Ad64bef1c7d713b92a51228e5ade945835e5a94a4)</poky/commit/?id=d64bef1c7d713b92a51228e5ade945835e5a94a4>
 
@@ -249,12 +249,12 @@ poky
 
 openembedded-core
 
-- Repository Location: oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60kirkstone](git:%60kirkstone) \</openembedded-core/log/?h=kirkstone\>\`
-- Tag: :oe\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</openembedded-core/log/?h=yocto-4.0.4\>\`
-- Git Revision: :oe\_[git:%60f7766da462905ec67bf549d46b8017be36cd5b2a](git:%60f7766da462905ec67bf549d46b8017be36cd5b2a) \</openembedded-core/commit/?id=f7766da462905ec67bf549d46b8017be36cd5b2a\>\`
+- Repository Location: oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60kirkstone](git:%60kirkstone) \</openembedded-core/log/?h=kirkstone\>\`
+- Tag: :oe_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</openembedded-core/log/?h=yocto-4.0.4\>\`
+- Git Revision: :oe_[git:%60f7766da462905ec67bf549d46b8017be36cd5b2a](git:%60f7766da462905ec67bf549d46b8017be36cd5b2a) \</openembedded-core/commit/?id=f7766da462905ec67bf549d46b8017be36cd5b2a\>\`
 
-> Git 修订：<openembedded-core/commit/?id=f7766da462905ec67bf549d46b8017be36cd5b2a>（git:`f7766da462905ec67bf549d46b8017be36cd5b2a`）
+> Git 修订：<openembedded-core/commit/?id=f7766da462905ec67bf549d46b8017be36cd5b2a>(git:`f7766da462905ec67bf549d46b8017be36cd5b2a`)
 
 - Release Artefact: oecore-f7766da462905ec67bf549d46b8017be36cd5b2a
 - sha: ce0ac011474db5e5f0bb1be3fb97f890a02e46252a719dbcac5813268e48ff16
@@ -264,10 +264,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-mingw/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</meta-mingw/log/?h=yocto-4.0.4\>\`
-- Git Revision: :yocto\_[git:%60a90614a6498c3345704e9611f2842eb933dc51c1](git:%60a90614a6498c3345704e9611f2842eb933dc51c1) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</meta-mingw/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</meta-mingw/log/?h=yocto-4.0.4\>\`
+- Git Revision: :yocto_[git:%60a90614a6498c3345704e9611f2842eb933dc51c1](git:%60a90614a6498c3345704e9611f2842eb933dc51c1) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
 
 > Git 版本：:yocto_[git:`a90614a6498c3345704e9611f2842eb933dc51c1`](git:%60a90614a6498c3345704e9611f2842eb933dc51c1%60) </meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1>
 
@@ -283,10 +283,10 @@ meta-mingw
 
 meta-gplv2
 
-- Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-gplv2/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</meta-gplv2/log/?h=yocto-4.0.4\>\`
-- Git Revision: :yocto\_[git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
+- Repository Location: :yocto_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</meta-gplv2/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</meta-gplv2/log/?h=yocto-4.0.4\>\`
+- Git Revision: :yocto_[git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
 
 > Git 版本：yocto_[git:`d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a`](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a%60) </meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a>
 
@@ -298,12 +298,12 @@ meta-gplv2
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.0](git:%602.0) \</bitbake/log/?h=2.0\>\`
-- Tag: :oe\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</bitbake/log/?h=yocto-4.0.4\>\`
-- Git Revision: :oe\_[git:%60ac576d6fad6bba0cfea931883f25264ea83747ca](git:%60ac576d6fad6bba0cfea931883f25264ea83747ca) \</bitbake/commit/?id=ac576d6fad6bba0cfea931883f25264ea83747ca\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.0](git:%602.0) \</bitbake/log/?h=2.0\>\`
+- Tag: :oe_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</bitbake/log/?h=yocto-4.0.4\>\`
+- Git Revision: :oe_[git:%60ac576d6fad6bba0cfea931883f25264ea83747ca](git:%60ac576d6fad6bba0cfea931883f25264ea83747ca) \</bitbake/commit/?id=ac576d6fad6bba0cfea931883f25264ea83747ca\>\`
 
-> Git 版本：<bitbake/commit/?id=ac576d6fad6bba0cfea931883f25264ea83747ca>（git:`ac576d6fad6bba0cfea931883f25264ea83747ca`）
+> Git 版本：<bitbake/commit/?id=ac576d6fad6bba0cfea931883f25264ea83747ca>(git:`ac576d6fad6bba0cfea931883f25264ea83747ca`)
 
 - Release Artefact: bitbake-ac576d6fad6bba0cfea931883f25264ea83747ca
 - sha: 526c2768874eeda61ade8c9ddb3113c90d36ef44a026d6690f02de6f3dd0ea12
@@ -315,9 +315,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</yocto-docs/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</yocto-docs/log/?h=yocto-4.0.4\>\`
-- Git Revision: :yocto\_[git:%60f632dad24c39778f948014029e74db3c871d9d21](git:%60f632dad24c39778f948014029e74db3c871d9d21) \</yocto-docs/commit/?id=f632dad24c39778f948014029e74db3c871d9d21\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</yocto-docs/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.4](git:%60yocto-4.0.4) \</yocto-docs/log/?h=yocto-4.0.4\>\`
+- Git Revision: :yocto_[git:%60f632dad24c39778f948014029e74db3c871d9d21](git:%60f632dad24c39778f948014029e74db3c871d9d21) \</yocto-docs/commit/?id=f632dad24c39778f948014029e74db3c871d9d21\>\`
 
 > Git 版本：yocto_[git:`f632dad24c39778f948014029e74db3c871d9d21](git:` f632dad24c39778f948014029e74db3c871d9d21) \</yocto-docs/commit/?id=f632dad24c39778f948014029e74db3c871d9d21\>\`

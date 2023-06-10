@@ -14,12 +14,12 @@ This chapter describes the standard SDK and how to install it. Information inclu
 Note
 :::
 
-For a side-by-side comparison of main features supported for a standard SDK as compared to an extensible SDK, see the \"`sdk-manual/intro:introduction`{.interpreted-text role="ref"}\" section.
+For a side-by-side comparison of main features supported for a standard SDK as compared to an extensible SDK, see the \"`sdk-manual/intro:introduction`\" section.
 
 > 若要比较标准 SDK 与可扩展 SDK 的主要功能，请参见“sdk-manual/intro:introduction”部分。
 > :::
 
-You can use a standard SDK to work on Makefile and Autotools-based projects. See the \"`sdk-manual/working-projects:using the sdk toolchain directly`{.interpreted-text role="ref"}\" chapter for more information.
+You can use a standard SDK to work on Makefile and Autotools-based projects. See the \"`sdk-manual/working-projects:using the sdk toolchain directly`\" chapter for more information.
 
 > 你可以使用标准的 SDK 来处理基于 Makefile 和 Autotools 的项目。有关更多信息，请参阅“sdk-manual / working-projects：直接使用 sdk 工具链”一章。
 
@@ -27,19 +27,19 @@ You can use a standard SDK to work on Makefile and Autotools-based projects. See
 
 The Standard SDK provides a cross-development toolchain and libraries tailored to the contents of a specific image. You would use the Standard SDK if you want a more traditional toolchain experience as compared to the extensible SDK, which provides an internal build system and the `devtool` functionality.
 
-> 标准 SDK 提供了一个跨开发工具链和库，这些库都是针对特定图像的内容进行定制的。如果您希望比可扩展 SDK 提供的内部构建系统和 `devtool` 功能更具传统的工具链体验，那么您就可以使用标准 SDK。
+> 标准 SDK 提供了一个跨开发工具链和库，这些库都是针对特定镜像的内容进行定制的。如果您希望比可扩展 SDK 提供的内部构建系统和 `devtool` 功能更具传统的工具链体验，那么您就可以使用标准 SDK。
 
-The installed Standard SDK consists of several files and directories. Basically, it contains an SDK environment setup script, some configuration files, and host and target root filesystems to support usage. You can see the directory structure in the \"`sdk-manual/appendix-obtain:installed standard sdk directory structure`{.interpreted-text role="ref"}\" section.
+The installed Standard SDK consists of several files and directories. Basically, it contains an SDK environment setup script, some configuration files, and host and target root filesystems to support usage. You can see the directory structure in the \"`sdk-manual/appendix-obtain:installed standard sdk directory structure`\" section.
 
 > 安装的标准 SDK 包括几个文件和目录。基本上，它包含一个 SDK 环境设置脚本、一些配置文件以及支持使用的主机和目标根文件系统。您可以在“sdk-manual/appendix-obtain：安装的标准 SDK 目录结构”部分查看目录结构。
 
 # Installing the SDK
 
-The first thing you need to do is install the SDK on your `Build Host`{.interpreted-text role="term"} by running the `*.sh` installation script.
+The first thing you need to do is install the SDK on your `Build Host` by running the `*.sh` installation script.
 
 > 首先你需要做的是在你的构建主机上运行 `*.sh` 安装脚本来安装 SDK。
 
-You can download a tarball installer, which includes the pre-built toolchain, the `runqemu` script, and support files from the appropriate :yocto_dl:[toolchain \</releases/yocto/yocto-&DISTRO;/toolchain/\>]{.title-ref} directory within the Index of Releases. Toolchains are available for several 32-bit and 64-bit architectures with the `x86_64` directories, respectively. The toolchains the Yocto Project provides are based off the `core-image-sato` and `core-image-minimal` images and contain libraries appropriate for developing against the corresponding image.
+You can download a tarball installer, which includes the pre-built toolchain, the `runqemu` script, and support files from the appropriate :yocto_dl:[toolchain \</releases/yocto/yocto-&DISTRO;/toolchain/\>] directory within the Index of Releases. Toolchains are available for several 32-bit and 64-bit architectures with the `x86_64` directories, respectively. The toolchains the Yocto Project provides are based off the `core-image-sato` and `core-image-minimal` images and contain libraries appropriate for developing against the corresponding image.
 
 > 你可以从适当的 Index of Releases 目录中下载 tarball 安装程序，其中包括预构建的工具链、`runqemu` 脚本和支持文件。Yocto 项目提供的工具链基于 `core-image-sato` 和 `core-image-minimal` 映像，并包含适合开发相应映像的库。这些工具链分别位于 32 位和 64 位架构的 `x86_64` 目录中。
 
@@ -81,7 +81,7 @@ poky-glibc-x86_64-core-image-sato-i586-toolchain-DISTRO.sh
 Note
 :::
 
-As an alternative to downloading an SDK, you can build the SDK installer. For information on building the installer, see the \"`sdk-manual/appendix-obtain:building an sdk installer`{.interpreted-text role="ref"}\" section.
+As an alternative to downloading an SDK, you can build the SDK installer. For information on building the installer, see the \"`sdk-manual/appendix-obtain:building an sdk installer`\" section.
 
 > 作为下载 SDK 的替代方案，您可以构建 SDK 安装程序。有关构建安装程序的信息，请参阅“sdk-manual / appendix-obtain：构建 SDK 安装程序”部分。
 > :::
@@ -117,7 +117,7 @@ If you do not have write permissions for the directory into which you are instal
 > 如果您没有安装 SDK 所需的写入权限，安装程序会通知您并退出。在这种情况下，请在目录中设置正确的权限，然后再次运行安装程序。
 > :::
 
-Again, reference the \"`sdk-manual/appendix-obtain:installed standard sdk directory structure`{.interpreted-text role="ref"}\" section for more details on the resulting directory structure of the installed SDK.
+Again, reference the \"`sdk-manual/appendix-obtain:installed standard sdk directory structure`\" section for more details on the resulting directory structure of the installed SDK.
 
 > 再次参考“sdk-manual/appendix-obtain：安装的标准 sdk 目录结构”部分，了解安装的 SDK 的最终目录结构的更多细节。
 
@@ -135,6 +135,6 @@ Before running the script, be sure it is the one that matches the architecture f
 $ source /opt/poky/&DISTRO;/environment-setup-i586-poky-linux
 ```
 
-When you run the setup script, the same environment variables are defined as are when you run the setup script for an extensible SDK. See the \"`sdk-manual/appendix-obtain:installed extensible sdk directory structure`{.interpreted-text role="ref"}\" section for more information.
+When you run the setup script, the same environment variables are defined as are when you run the setup script for an extensible SDK. See the \"`sdk-manual/appendix-obtain:installed extensible sdk directory structure`\" section for more information.
 
 > 当你运行安装脚本时，定义的环境变量与运行可扩展 SDK 的安装脚本时相同。有关更多信息，请参见“sdk-manual / appendix-obtain：安装可扩展 SDK 目录结构”部分。

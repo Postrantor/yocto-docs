@@ -10,20 +10,16 @@ dir_path=$1
 if [[ $# -eq 2 ]]; then
   extension=$2
 else
-  extension=`.md` #设定默认后缀名
+  extension=".md" #设定默认后缀名
 fi
 
 operations=(
     's/{.*}//g'
-    's/图像/镜像/g'
-    's/食谱/recipes/g'
     's/（/\(/g'
     's/）/\)/g'
     's/。 /。/g'
     's/， /，/g'
-    's/“/ "/g'
-    's/”/" /g'
-    's/"/`/g'
+    # 's/"/`/g'
     's/； /；/g'
     's/。 /。/g'
     's/， /，/g'
@@ -33,6 +29,9 @@ operations=(
     's/\\_ /_/g'
     's/\\_/_/g'
     's/{.*}//g'
+    's/图像/镜像/g'
+    's/食谱/recipes/g'
+    's/`Wait`//g'
 )
 
 function traverse_dir() {
@@ -43,10 +42,10 @@ function traverse_dir() {
         else
             extension=$
             # if [[ $extension == $2 ]]; then
-                echo `Processing $file`
-                for i in `$`
+                echo "Processing $file"
+                for i in "${operations[@]}"
                 do
-                    sed -i `$i` `$file`
+                    sed -i "$i" "$file"
                 done
             # fi
         fi
@@ -55,4 +54,4 @@ function traverse_dir() {
 
 traverse_dir $dir_path $2
 
-echo `Replacement Completed.`
+echo "Replacement Completed."

@@ -19,7 +19,7 @@ The \'perf\' tool is the profiling and tracing tool that comes bundled with the 
 
 Don\'t let the fact that it\'s part of the kernel fool you into thinking that it\'s only for tracing and profiling the kernel \-\-- you can indeed use it to trace and profile just the kernel, but you can also use it to profile specific applications separately (with or without kernel context), and you can also use it to trace and profile the kernel and all applications on the system simultaneously to gain a system-wide view of what\'s going on.
 
-> 不要以为它只是用来跟踪和分析内核的，让它作为内核的一部分来欺骗你 - 你确实可以用它来跟踪和分析内核，但你也可以单独用它来分析特定应用程序（有或没有内核上下文），你也可以同时跟踪和分析内核和系统上的所有应用程序，以获得系统范围的视图。
+> 不要以为它只是用来跟踪和分析内核的，让它作为内核的一部分来欺骗你 - 你确实可以用它来跟踪和分析内核，但你也可以单独用它来分析特定应用程序(有或没有内核上下文)，你也可以同时跟踪和分析内核和系统上的所有应用程序，以获得系统范围的视图。
 
 In many ways, perf aims to be a superset of all the tracing and profiling tools available in Linux today, including all the other tools covered in this HOWTO. The past couple of years have seen perf subsume a lot of the functionality of those other tools and, at the same time, those other tools have removed large portions of their previous functionality and replaced it with calls to the equivalent functionality now implemented by the perf subsystem. Extrapolation suggests that at some point those other tools will simply become completely redundant and go away; until then, we\'ll cover those other tools in these pages and in many cases show how the same things can be accomplished in perf and the other tools when it seems useful to do so.
 
@@ -31,7 +31,7 @@ The coverage below details some of the most common ways you\'ll likely want to a
 
 ## Perf Setup
 
-For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section.
+For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`\" section.
 
 > 对于本节，我们假定您已经执行了“profile-manual/intro：General Setup”部分中概述的基本设置。
 
@@ -88,7 +88,7 @@ See 'perf help COMMAND' for more information on a specific command.
 
 As a simple test case, we\'ll profile the \'wget\' of a fairly large file, which is a minimally interesting case because it has both file and network I/O aspects, and at least in the case of standard Yocto images, it\'s implemented as part of BusyBox, so the methods we use to analyze it can be used in a very similar way to the whole host of supported BusyBox applets in Yocto. :
 
-> 作为一个简单的测试用例，我们将对一个相当大的文件进行'wget'分析，这是一个最小化的有趣的案例，因为它具有文件和网络 I/O 方面，而且至少在标准 Yocto 图像的情况下，它是作为 BusyBox 的一部分实现的，因此我们用来分析它的方法可以以非常类似的方式应用于 Yocto 中支持的整个 BusyBox applet。
+> 作为一个简单的测试用例，我们将对一个相当大的文件进行'wget'分析，这是一个最小化的有趣的案例，因为它具有文件和网络 I/O 方面，而且至少在标准 Yocto 镜像的情况下，它是作为 BusyBox 的一部分实现的，因此我们用来分析它的方法可以以非常类似的方式应用于 Yocto 中支持的整个 BusyBox applet。
 
 ```shell
 root@crownbay:~# rm linux-2.6.19.2.tar.bz2; \
@@ -122,7 +122,7 @@ Performance counter stats for 'wget &YOCTO_DL_URL;/mirror/sources/linux-2.6.19.2
 
 Many times such a simple-minded test doesn\'t yield much of interest, but sometimes it does (see Real-world Yocto bug (slow loop-mounted write speed)).
 
-> 很多时候这样一个简单的测试不会产生太多有趣的东西，但有时候会（参见实际世界的 Yocto 错误（循环挂载写入速度慢））。
+> 很多时候这样一个简单的测试不会产生太多有趣的东西，但有时候会(参见实际世界的 Yocto 错误(循环挂载写入速度慢))。
 
 Also, note that \'perf stat\' isn\'t restricted to a fixed set of counters - basically any event listed in the output of \'perf list\' can be tallied by \'perf stat\'. For example, suppose we wanted to see a summary of all the events related to kernel memory allocation/freeing along with cache hits and misses:
 
@@ -159,11 +159,11 @@ So \'perf stat\' gives us a nice easy way to get a quick overview of what might 
 
 To dive down into a next level of detail, we can use \'perf record\'/\'perf report\' which will collect profiling data and present it to use using an interactive text-based UI (or simply as text if we specify `--stdio` to \'perf report\').
 
-> 我们可以使用'perf record'/'perf report'来深入到下一个细节层次，它将收集分析数据并使用交互式文本 UI（如果我们指定 `--stdio` 到'perf report'，则只以文本形式呈现）将其呈现给我们。
+> 我们可以使用'perf record'/'perf report'来深入到下一个细节层次，它将收集分析数据并使用交互式文本 UI(如果我们指定 `--stdio` 到'perf report'，则只以文本形式呈现)将其呈现给我们。
 
 As our first attempt at profiling this workload, we\'ll simply run \'perf record\', handing it the workload we want to profile (everything after \'perf record\' and any perf options we hand it \-\-- here none, will be executed in a new shell). perf collects samples until the process exits and records them in a file named \'perf.data\' in the current working directory. :
 
-> 作为我们第一次尝试对这项工作负载进行分析，我们只需运行“perf record”，将我们想要分析的工作负载（所有在“perf record”之后以及我们传递给它的任何 perf 选项 - 这里没有，将在一个新的 shell 中执行）传递给它。 perf 在进程退出之前一直收集样本，并将它们记录在当前工作目录中名为“perf.data”的文件中。
+> 作为我们第一次尝试对这项工作负载进行分析，我们只需运行“perf record”，将我们想要分析的工作负载(所有在“perf record”之后以及我们传递给它的任何 perf 选项 - 这里没有，将在一个新的 shell 中执行)传递给它。perf 在进程退出之前一直收集样本，并将它们记录在当前工作目录中名为“perf.data”的文件中。
 
 ```shell
 root@crownbay:~# perf record wget &YOCTO_DL_URL;/mirror/sources/linux-2.6.19.2.tar.bz2
@@ -176,17 +176,17 @@ linux-2.6.19.2.tar.b 100% |************************************************| 417
 
 To see the results in a \'text-based UI\' (tui), simply run \'perf report\', which will read the perf.data file in the current working directory and display the results in an interactive UI:
 
-> 要在文本界面（tui）中查看结果，只需运行“perf report”，它将读取当前工作目录中的 perf.data 文件，并在交互式界面中显示结果：
+> 要在文本界面(tui)中查看结果，只需运行“perf report”，它将读取当前工作目录中的 perf.data 文件，并在交互式界面中显示结果：
 
 ```shell
 root@crownbay:~# perf report
 ```
 
-![image](figures/perf-wget-flat-stripped.png){.align-center width="70.0%"}
+![image](figures/perf-wget-flat-stripped.png)
 
-The above screenshot displays a \'flat\' profile, one entry for each \'bucket\' corresponding to the functions that were profiled during the profiling run, ordered from the most popular to the least (perf has options to sort in various orders and keys as well as display entries only above a certain threshold and so on \-\-- see the perf documentation for details). Note that this includes both userspace functions (entries containing a \[.\]) and kernel functions accounted to the process (entries containing a \[k\]). (perf has command-line modifiers that can be used to restrict the profiling to kernel or userspace, among others).
+The above screenshot displays a \'flat\' profile, one entry for each \'bucket\' corresponding to the functions that were profiled during the profiling run, ordered from the most popular to the least (perf has options to sort in various orders and keys as well as display entries only above a certain threshold and so on \-\-- see the perf documentation for details). Note that this includes both userspace functions (entries containing a \[.]) and kernel functions accounted to the process (entries containing a \[k]). (perf has command-line modifiers that can be used to restrict the profiling to kernel or userspace, among others).
 
-> 以上截图显示了一个“平坦”的配置文件，每个“桶”对应于在监测运行期间检测的功能，从最受欢迎的功能到最不受欢迎的功能（perf 具有用于以各种顺序和键排序以及仅显示超过特定阈值的条目等的选项-参见 perf 文档以获取详细信息）。请注意，这包括用户空间函数（包含\[.\]的条目）和账户给进程的内核函数（包含\[k\]的条目）。 （perf 有命令行修饰符，可用于将监测限制为内核或用户空间等）。
+> 以上截图显示了一个“平坦”的配置文件，每个“桶”对应于在监测运行期间检测的功能，从最受欢迎的功能到最不受欢迎的功能(perf 具有用于以各种顺序和键排序以及仅显示超过特定阈值的条目等的选项-参见 perf 文档以获取详细信息)。请注意，这包括用户空间函数(包含\[.]的条目)和账户给进程的内核函数(包含\[k]的条目)。(perf 有命令行修饰符，可用于将监测限制为内核或用户空间等)。
 
 Notice also that the above report shows an entry for \'busybox\', which is the executable that implements \'wget\' in Yocto, but that instead of a useful function name in that entry, it displays a not-so-friendly hex value instead. The steps below will show how to fix that problem.
 
@@ -207,7 +207,7 @@ linux-2.6.19.2.tar.b 100% |************************************************| 417
 root@crownbay:~# perf report
 ```
 
-![image](figures/perf-wget-g-copy-to-user-expanded-stripped.png){.align-center width="70.0%"}
+![image](figures/perf-wget-g-copy-to-user-expanded-stripped.png)
 
 Using the callgraph view, we can actually see not only which functions took the most time, but we can also see a summary of how those functions were called and learn something about how the program interacts with the kernel in the process.
 
@@ -215,15 +215,15 @@ Using the callgraph view, we can actually see not only which functions took the 
 
 Notice that each entry in the above screenshot now contains a \'+\' on the left-hand side. This means that we can expand the entry and drill down into the callchains that feed into that entry. Pressing \'enter\' on any one of them will expand the callchain (you can also press \'E\' to expand them all at the same time or \'C\' to collapse them all).
 
-> 在上面的截图中，可以看到每个条目都在左边带有一个'+'号。这意味着我们可以展开这个条目，深入查看调用链。按下任何一个条目上的'enter'键就可以展开调用链（也可以按'E'键一次性展开所有条目，或者按'C'键一次性折叠所有条目）。
+> 在上面的截图中，可以看到每个条目都在左边带有一个'+'号。这意味着我们可以展开这个条目，深入查看调用链。按下任何一个条目上的'enter'键就可以展开调用链(也可以按'E'键一次性展开所有条目，或者按'C'键一次性折叠所有条目)。
 
 In the screenshot above, we\'ve toggled the `__copy_to_user_ll()` entry and several subnodes all the way down. This lets us see which callchains contributed to the profiled `__copy_to_user_ll()` function which contributed 1.77% to the total profile.
 
-> 在上面的截图中，我们已经切换了 `__copy_to_user_ll（）` 条目和几个子节点。这使我们可以看到哪些调用链有助于分析的 `__copy_to_user_ll（）` 函数，该函数占总分析的 1.77％。
+> 在上面的截图中，我们已经切换了 `__copy_to_user_ll()` 条目和几个子节点。这使我们可以看到哪些调用链有助于分析的 `__copy_to_user_ll()` 函数，该函数占总分析的 1.77％。
 
 As a bit of background explanation for these callchains, think about what happens at a high level when you run wget to get a file out on the network. Basically what happens is that the data comes into the kernel via the network connection (socket) and is passed to the userspace program \'wget\' (which is actually a part of BusyBox, but that\'s not important for now), which takes the buffers the kernel passes to it and writes it to a disk file to save it.
 
-> 作为这些调用链的背景解释，想想当你运行 wget 从网络上获取文件时会发生什么。基本上发生的是，数据通过网络连接（套接字）进入内核，并传递给用户空间程序“wget”（实际上是 BusyBox 的一部分，但现在这不重要），它接收内核传递给它的缓冲区，并将其写入磁盘文件以保存它。
+> 作为这些调用链的背景解释，想想当你运行 wget 从网络上获取文件时会发生什么。基本上发生的是，数据通过网络连接(套接字)进入内核，并传递给用户空间程序“wget”(实际上是 BusyBox 的一部分，但现在这不重要)，它接收内核传递给它的缓冲区，并将其写入磁盘文件以保存它。
 
 The part of this process that we\'re looking at in the above call stacks is the part where the kernel passes the data it has read from the socket down to wget i.e. a copy-to-user.
 
@@ -233,17 +233,17 @@ Notice also that here there\'s also a case where the hex value is displayed in t
 
 > 注意，在此处，还有一种情况，即十六进制值显示在调用堆栈中，这里是在展开的 `sys_clock_gettime()` 函数中。稍后，我们将看到它解析为 Busybox 中的用户空间函数调用。
 
-![image](figures/perf-wget-g-copy-from-user-expanded-stripped.png){.align-center width="70.0%"}
+![image](figures/perf-wget-g-copy-from-user-expanded-stripped.png)
 
 The above screenshot shows the other half of the journey for the data -from the wget program\'s userspace buffers to disk. To get the buffers to disk, the wget program issues a `write(2)`, which does a `copy-from-user` to the kernel, which then takes care via some circuitous path (probably also present somewhere in the profile data), to get it safely to disk.
 
-> 上面的截图展示了数据的另一半旅程——从 wget 程序的用户空间缓冲区到磁盘。为了将缓冲区写入磁盘，wget 程序发出一个“write（2）”，它将数据从用户空间复制到内核，内核再通过某种曲折的路径（可能也在配置文件数据中存在）将数据安全地写入磁盘。
+> 上面的截图展示了数据的另一半旅程——从 wget 程序的用户空间缓冲区到磁盘。为了将缓冲区写入磁盘，wget 程序发出一个“write(2)”，它将数据从用户空间复制到内核，内核再通过某种曲折的路径(可能也在配置文件数据中存在)将数据安全地写入磁盘。
 
 Now that we\'ve seen the basic layout of the profile data and the basics of how to extract useful information out of it, let\'s get back to the task at hand and see if we can get some basic idea about where the time is spent in the program we\'re profiling, wget. Remember that wget is actually implemented as an applet in BusyBox, so while the process name is \'wget\', the executable we\'re actually interested in is BusyBox. So let\'s expand the first entry containing BusyBox:
 
 > 现在我们已经了解了配置文件数据的基本布局和如何从中提取有用信息的基础知识，让我们回到手头的任务上，看看我们是否能够对我们正在分析的程序 wget 花费时间的基本情况有一些了解。请记住，wget 实际上是作为 BusyBox 的一个小程序实现的，因此，尽管进程名称为'wget'，我们实际上感兴趣的可执行文件是 BusyBox。因此，让我们展开包含 BusyBox 的第一个条目：
 
-![image](figures/perf-wget-busybox-expanded-stripped.png){.align-center width="70.0%"}
+![image](figures/perf-wget-busybox-expanded-stripped.png)
 
 Again, before we expanded we saw that the function was labeled with a hex value instead of a symbol as with most of the kernel entries. Expanding the BusyBox entry doesn\'t make it any better.
 
@@ -263,9 +263,9 @@ INHIBIT_PACKAGE_STRIP = "1"
 
 However, we already have an image with the binaries stripped, so what can we do to get perf to resolve the symbols? Basically we need to install the debuginfo for the BusyBox package.
 
-> 然而，我们已经有了一个已经剥离二进制文件的图像，那么我们要如何让 perf 来解析符号？基本上我们需要安装 BusyBox 包的调试信息。
+> 然而，我们已经有了一个已经剥离二进制文件的镜像，那么我们要如何让 perf 来解析符号？基本上我们需要安装 BusyBox 包的调试信息。
 
-To generate the debug info for the packages in the image, we can add `dbg-pkgs` to `EXTRA_IMAGE_FEATURES`{.interpreted-text role="term"} in `local.conf`. For example:
+To generate the debug info for the packages in the image, we can add `dbg-pkgs` to `EXTRA_IMAGE_FEATURES` in `local.conf`. For example:
 
 > 为镜像中的软件包生成调试信息，我们可以在 `local.conf` 中将 `dbg-pkgs` 添加到 `EXTRA_IMAGE_FEATURES` 中。例如：
 
@@ -273,7 +273,7 @@ To generate the debug info for the packages in the image, we can add `dbg-pkgs` 
 EXTRA_IMAGE_FEATURES = "debug-tweaks tools-profile dbg-pkgs"
 ```
 
-Additionally, in order to generate the type of debuginfo that perf understands, we also need to set `PACKAGE_DEBUG_SPLIT_STYLE`{.interpreted-text role="term"} in the `local.conf` file:
+Additionally, in order to generate the type of debuginfo that perf understands, we also need to set `PACKAGE_DEBUG_SPLIT_STYLE` in the `local.conf` file:
 
 > 此外，为了生成 perf 理解的调试信息，我们还需要在 `local.conf` 文件中设置 `PACKAGE_DEBUG_SPLIT_STYLE`。
 
@@ -302,37 +302,37 @@ Now that the debuginfo is installed, we see that the BusyBox entries now display
 
 > 现在调试信息已安装，我们可以看到 BusyBox 条目现在以符号形式显示其功能：
 
-![image](figures/perf-wget-busybox-debuginfo.png){.align-center width="70.0%"}
+![image](figures/perf-wget-busybox-debuginfo.png)
 
 If we expand one of the entries and press \'enter\' on a leaf node, we\'re presented with a menu of actions we can take to get more information related to that entry:
 
 > 如果我们展开一个条目，并在叶节点上按下“回车”，我们就会看到一个可以采取的操作菜单，以获取与该条目相关的更多信息。
 
-![image](figures/perf-wget-busybox-dso-zoom-menu.png){.align-center width="70.0%"}
+![image](figures/perf-wget-busybox-dso-zoom-menu.png)
 
 One of these actions allows us to show a view that displays a busybox-centric view of the profiled functions (in this case we\'ve also expanded all the nodes using the \'E\' key):
 
-> 其中一项操作可以让我们显示一个以 busybox 为中心的函数视图（在这种情况下，我们也使用“E”键展开了所有节点）：
+> 其中一项操作可以让我们显示一个以 busybox 为中心的函数视图(在这种情况下，我们也使用“E”键展开了所有节点)：
 
-![image](figures/perf-wget-busybox-dso-zoom.png){.align-center width="70.0%"}
+![image](figures/perf-wget-busybox-dso-zoom.png)
 
 Finally, we can see that now that the BusyBox debuginfo is installed, the previously unresolved symbol in the `sys_clock_gettime()` entry mentioned previously is now resolved, and shows that the sys_clock_gettime system call that was the source of 6.75% of the copy-to-user overhead was initiated by the `handle_input()` BusyBox function:
 
-> 最后，我们可以看到，现在 BusyBox 调试信息已经安装完毕，先前提到的 `sys_clock_gettime()` 条目中的未解析符号现在已经解析，并显示 sys_clock_gettime 系统调用是复制到用户的开销 6.75％的来源，由 `handle_input（）` BusyBox 函数启动：
+> 最后，我们可以看到，现在 BusyBox 调试信息已经安装完毕，先前提到的 `sys_clock_gettime()` 条目中的未解析符号现在已经解析，并显示 sys_clock_gettime 系统调用是复制到用户的开销 6.75％的来源，由 `handle_input()` BusyBox 函数启动：
 
-![image](figures/perf-wget-g-copy-to-user-expanded-debuginfo.png){.align-center width="70.0%"}
+![image](figures/perf-wget-g-copy-to-user-expanded-debuginfo.png)
 
 At the lowest level of detail, we can dive down to the assembly level and see which instructions caused the most overhead in a function. Pressing \'enter\' on the \'udhcpc_main\' function, we\'re again presented with a menu:
 
 > 在最低細節層次，我們可以深入到組裝級別，看看哪些指令在函數中造成了最大的開銷。在'udhcpc_main'函數上按下'enter'，我們再次看到一個菜單：
 
-![image](figures/perf-wget-busybox-annotate-menu.png){.align-center width="70.0%"}
+![image](figures/perf-wget-busybox-annotate-menu.png)
 
 Selecting \'Annotate udhcpc_main\', we get a detailed listing of percentages by instruction for the udhcpc_main function. From the display, we can see that over 50% of the time spent in this function is taken up by a couple tests and the move of a constant (1) to a register:
 
-> 选择“注释 udhcpc_main”，我们可以获得 udhcpc_main 功能的详细百分比列表。从显示结果中，我们可以看到，这个函数花费的时间超过 50％都是用来进行一些测试和将一个常量（1）移动到寄存器中。
+> 选择“注释 udhcpc_main”，我们可以获得 udhcpc_main 功能的详细百分比列表。从显示结果中，我们可以看到，这个函数花费的时间超过 50％都是用来进行一些测试和将一个常量(1)移动到寄存器中。
 
-![image](figures/perf-wget-busybox-annotate-udhcpc.png){.align-center width="70.0%"}
+![image](figures/perf-wget-busybox-annotate-udhcpc.png)
 
 As a segue into tracing, let\'s try another profile using a different counter, something other than the default \'cycles\'.
 
@@ -340,7 +340,7 @@ As a segue into tracing, let\'s try another profile using a different counter, s
 
 The tracing and profiling infrastructure in Linux has become unified in a way that allows us to use the same tool with a completely different set of counters, not just the standard hardware counters that traditional tools have had to restrict themselves to (of course the traditional tools can also make use of the expanded possibilities now available to them, and in some cases have, as mentioned previously).
 
-> 在 Linux 中，跟踪和分析基础设施已经以一种允许我们使用同一个工具来处理完全不同的计数器（而不仅仅是传统工具必须限制自己使用的标准硬件计数器）的方式被统一起来了（当然，传统的工具也可以利用现在可用的扩展可能性，而且在某些情况下也已经如前所述）。
+> 在 Linux 中，跟踪和分析基础设施已经以一种允许我们使用同一个工具来处理完全不同的计数器(而不仅仅是传统工具必须限制自己使用的标准硬件计数器)的方式被统一起来了(当然，传统的工具也可以利用现在可用的扩展可能性，而且在某些情况下也已经如前所述)。
 
 We can get a list of the available events that can be used to profile a workload via \'perf list\':
 
@@ -487,12 +487,12 @@ Tying it Together
 
 These are exactly the same set of events defined by the trace event subsystem and exposed by ftrace/tracecmd/kernelshark as files in /sys/kernel/debug/tracing/events, by SystemTap as kernel.trace(\"tracepoint_name\") and (partially) accessed by LTTng.
 
-> 这些事件集与 trace event 子系统定义的完全相同，通过 ftrace/tracecmd/kernelshark 在/sys/kernel/debug/tracing/events 中以文件形式暴露，通过 SystemTap 以 kernel.trace（“tracepoint_name”）的形式访问，并且（部分）被 LTTng 访问。
+> 这些事件集与 trace event 子系统定义的完全相同，通过 ftrace/tracecmd/kernelshark 在/sys/kernel/debug/tracing/events 中以文件形式暴露，通过 SystemTap 以 kernel.trace(“tracepoint_name”)的形式访问，并且(部分)被 LTTng 访问。
 > :::
 
 Only a subset of these would be of interest to us when looking at this workload, so let\'s choose the most likely subsystems (identified by the string before the colon in the Tracepoint events) and do a \'perf stat\' run using only those wildcarded subsystems:
 
-> 我们在查看这个工作负载时，只有其中的一部分会引起我们的兴趣，因此让我们选择最有可能的子系统（由 Tracepoint 事件中冒号前的字符串标识），并使用这些通配符子系统运行'perf stat'：
+> 我们在查看这个工作负载时，只有其中的一部分会引起我们的兴趣，因此让我们选择最有可能的子系统(由 Tracepoint 事件中冒号前的字符串标识)，并使用这些通配符子系统运行'perf stat'：
 
 ```shell
 root@crownbay:~# perf stat -e skb:* -e net:* -e napi:* -e sched:* -e workqueue:* -e irq:* -e syscalls:* wget &YOCTO_DL_URL;/mirror/sources/linux-2.6.19.2.tar.bz2
@@ -561,11 +561,11 @@ Let\'s pick one of these tracepoints and tell perf to do a profile using it as t
 root@crownbay:~# perf record -g -e sched:sched_wakeup wget &YOCTO_DL_URL;/mirror/sources/linux-2.6.19.2.tar.bz2
 ```
 
-![image](figures/sched-wakeup-profile.png){.align-center width="70.0%"}
+![image](figures/sched-wakeup-profile.png)
 
 The screenshot above shows the results of running a profile using sched:sched_switch tracepoint, which shows the relative costs of various paths to sched_wakeup (note that sched_wakeup is the name of the tracepoint \-\-- it\'s actually defined just inside ttwu_do_wakeup(), which accounts for the function name actually displayed in the profile:
 
-> 以上截图展示了使用 sched:sched_switch tracepoint 运行一个分析的结果，其中显示了各种路径到 sched_wakeup 的相对成本（请注意，sched_wakeup 是 tracepoint 的名称 - 实际上它只是在 ttwu_do_wakeup（）中定义，这就是为什么在分析中实际显示的函数名）。
+> 以上截图展示了使用 sched:sched_switch tracepoint 运行一个分析的结果，其中显示了各种路径到 sched_wakeup 的相对成本(请注意，sched_wakeup 是 tracepoint 的名称 - 实际上它只是在 ttwu_do_wakeup()中定义，这就是为什么在分析中实际显示的函数名)。
 
 ```c
 /*
@@ -583,7 +583,7 @@ ttwu_do_wakeup(struct rq *rq, struct task_struct *p, int wake_flags)
 
 A couple of the more interesting callchains are expanded and displayed above, basically some network receive paths that presumably end up waking up wget (busybox) when network data is ready.
 
-> 一些更有趣的调用链展开并显示在上面，基本上是一些网络接收路径，当网络数据准备就绪时可能会唤醒 wget（busybox）。
+> 一些更有趣的调用链展开并显示在上面，基本上是一些网络接收路径，当网络数据准备就绪时可能会唤醒 wget(busybox)。
 
 Note that because tracepoints are normally used for tracing, the default sampling period for tracepoints is 1 i.e. for tracepoints perf will sample on every event occurrence (this can be changed using the -c option). This is in contrast to hardware counters such as for example the default \'cycles\' hardware counter used for normal profiling, where sampling periods are much higher (in the thousands) because profiling should have as low an overhead as possible and sampling on every cycle would be prohibitively expensive.
 
@@ -591,7 +591,7 @@ Note that because tracepoints are normally used for tracing, the default samplin
 
 Profiling is a great tool for solving many problems or for getting a high-level view of what\'s going on with a workload or across the system. It is however by definition an approximation, as suggested by the most prominent word associated with it, \'sampling\'. On the one hand, it allows a representative picture of what\'s going on in the system to be cheaply taken, but on the other hand, that cheapness limits its utility when that data suggests a need to \'dive down\' more deeply to discover what\'s really going on. In such cases, the only way to see what\'s really going on is to be able to look at (or summarize more intelligently) the individual steps that go into the higher-level behavior exposed by the coarse-grained profiling data.
 
-> 分析是解决许多问题或了解工作负载或系统状态的一个很好的工具。然而，由于它最显著的关联词“采样”，它在定义上是一种近似。一方面，它允许以廉价的方式获得系统状态的代表性图片，但另一方面，当数据表明有必要“深入”更深地发现真正发生的事情时，这种廉价就限制了它的效用。在这种情况下，要看到真正发生的事情，唯一的办法是能够查看（或更聪明地总结）粗粒度分析数据暴露出的更高级行为的各个步骤。
+> 分析是解决许多问题或了解工作负载或系统状态的一个很好的工具。然而，由于它最显著的关联词“采样”，它在定义上是一种近似。一方面，它允许以廉价的方式获得系统状态的代表性图片，但另一方面，当数据表明有必要“深入”更深地发现真正发生的事情时，这种廉价就限制了它的效用。在这种情况下，要看到真正发生的事情，唯一的办法是能够查看(或更聪明地总结)粗粒度分析数据暴露出的更高级行为的各个步骤。
 
 As a concrete example, we can trace all the events we think might be applicable to our workload:
 
@@ -745,7 +745,7 @@ def net__netif_rx(event_name, context, common_cpu,
 
 Each event handler function in the generated code is modified to do this. For convenience, we define a common function called inc_counts() that each handler calls; inc_counts() simply tallies a count for each event using the \'counts\' hash, which is a specialized hash function that does Perl-like autovivification, a capability that\'s extremely useful for kinds of multi-level aggregation commonly used in processing traces (see perf\'s documentation on the Python language binding for details):
 
-> 每个生成代码中的事件处理程序都被修改来完成此操作。为了方便起见，我们定义一个称为 inc_counts（）的通用函数，每个处理程序都会调用它; inc_counts（）只是使用's counts'哈希统计每个事件的计数，这是一个专门的哈希函数，具有类似 Perl 的自动活化功能，这种功能对于处理跟踪中常用的多级聚合非常有用（有关详细信息，请参阅 Python 语言绑定的 perf 文档）：
+> 每个生成代码中的事件处理程序都被修改来完成此操作。为了方便起见，我们定义一个称为 inc_counts()的通用函数，每个处理程序都会调用它; inc_counts()只是使用's counts'哈希统计每个事件的计数，这是一个专门的哈希函数，具有类似 Perl 的自动活化功能，这种功能对于处理跟踪中常用的多级聚合非常有用(有关详细信息，请参阅 Python 语言绑定的 perf 文档)：
 
 ```python
 counts = autodict()
@@ -759,7 +759,7 @@ def inc_counts(event_name):
 
 Finally, at the end of the trace processing run, we want to print the result of all the per-event tallies. For that, we use the special \'trace_end()\' function:
 
-> 最后，在跟踪处理运行结束时，我们想要打印出所有每个事件计数的结果。为此，我们使用特殊的“trace_end（）”函数：
+> 最后，在跟踪处理运行结束时，我们想要打印出所有每个事件计数的结果。为此，我们使用特殊的“trace_end()”函数：
 
 ```python
 def trace_end():
@@ -813,7 +813,7 @@ To do system-wide profiling or tracing, you typically use the -a flag to \'perf 
 
 To demonstrate this, open up one window and start the profile using the -a flag (press Ctrl-C to stop tracing):
 
-> 为了演示这一点，打开一个窗口，并使用-a 标志启动配置文件（按 Ctrl-C 停止跟踪）：
+> 为了演示这一点，打开一个窗口，并使用-a 标志启动配置文件(按 Ctrl-C 停止跟踪)：
 
 ```shell
 root@crownbay:~# perf record -g -a
@@ -835,11 +835,11 @@ Here we see entries not only for our wget load, but for other processes running 
 
 > 在这里，我们不仅可以看到 wget 加载的条目，还可以看到系统上运行的其他进程的条目：
 
-![image](figures/perf-systemwide.png){.align-center width="70.0%"}
+![image](figures/perf-systemwide.png)
 
 In the snapshot above, we can see callchains that originate in libc, and a callchain from Xorg that demonstrates that we\'re using a proprietary X driver in userspace (notice the presence of \'PVR\' and some other unresolvable symbols in the expanded Xorg callchain).
 
-> 在上面的快照中，我们可以看到起源于 libc 的调用链，以及来自 Xorg 的调用链，这表明我们在用户空间使用了专有的 X 驱动程序（注意在展开的 Xorg 调用链中出现了'PVR'和一些其他无法解析的符号）。
+> 在上面的快照中，我们可以看到起源于 libc 的调用链，以及来自 Xorg 的调用链，这表明我们在用户空间使用了专有的 X 驱动程序(注意在展开的 Xorg 调用链中出现了'PVR'和一些其他无法解析的符号)。
 
 Note also that we have both kernel and userspace entries in the above snapshot. We can also tell perf to focus on userspace but providing a modifier, in this case \'u\', to the \'cycles\' hardware counter when we record a profile:
 
@@ -849,17 +849,17 @@ root@crownbay:~# perf record -g -a -e cycles:u
 [ perf record: Captured and wrote 0.376 MB perf.data (~16443 samples) ]
 ```
 
-![image](figures/perf-report-cycles-u.png){.align-center width="70.0%"}
+![image](figures/perf-report-cycles-u.png)
 
-Notice in the screenshot above, we see only userspace entries (\[.\])
+Notice in the screenshot above, we see only userspace entries (\[.])
 
-> 在上面的截图中，我们只看到用户空间条目（\[.\]）
+> 在上面的截图中，我们只看到用户空间条目(\[.])
 
 Finally, we can press \'enter\' on a leaf node and select the \'Zoom into DSO\' menu item to show only entries associated with a specific DSO. In the screenshot below, we\'ve zoomed into the \'libc\' DSO which shows all the entries associated with the libc-xxx.so DSO.
 
 > 最后，我们可以在叶节点上按下“回车”键，然后选择“放大 DSO”菜单项，以显示与特定 DSO 相关的条目。在下面的屏幕截图中，我们已经放大了“libc”DSO，其中显示了所有与 libc-xxx.so DSO 相关的条目。
 
-![image](figures/perf-systemwide-libc.png){.align-center width="70.0%"}
+![image](figures/perf-systemwide-libc.png)
 
 We can also use the system-wide -a switch to do system-wide tracing. Here we\'ll trace a couple of scheduler events:
 
@@ -943,14 +943,14 @@ Tying it Together
 
 These event filters are implemented by a special-purpose pseudo-interpreter in the kernel and are an integral and indispensable part of the perf design as it relates to tracing. kernel-based event filters provide a mechanism to precisely throttle the event stream that appears in user space, where it makes sense to provide bindings to real programming languages for postprocessing the event stream. This architecture allows for the intelligent and flexible partitioning of processing between the kernel and user space. Contrast this with other tools such as SystemTap, which does all of its processing in the kernel and as such requires a special project-defined language in order to accommodate that design, or LTTng, where everything is sent to userspace and as such requires a super-efficient kernel-to-userspace transport mechanism in order to function properly. While perf certainly can benefit from for instance advances in the design of the transport, it doesn\'t fundamentally depend on them. Basically, if you find that your perf tracing application is causing buffer I/O overruns, it probably means that you aren\'t taking enough advantage of the kernel filtering engine.
 
-> 这些事件过滤器由内核中的一个特殊用途伪解释器实现，是 perf 设计相关跟踪的不可或缺的组成部分。基于内核的事件过滤器提供了一种机制，可以精确地控制出现在用户空间的事件流，在这里提供实际编程语言的绑定来对事件流进行后处理是有意义的。这种体系结构允许在内核和用户空间之间进行智能且灵活的处理分割。与其他工具（例如 SystemTap）形成对比，它在内核中执行所有处理，因此需要一种特定项目定义的语言来适应其设计，或者 LTTng，其中所有内容都发送到用户空间，因此需要超级高效的内核到用户空间传输机制才能正常工作。虽然 perf 当然可以从传输设计方面获得一些好处，但它不是从根本上依赖它们。基本上，如果您发现您的 perf 跟踪应用程序导致缓冲区 I/O 溢出，则可能意味着您没有充分利用内核过滤引擎。
+> 这些事件过滤器由内核中的一个特殊用途伪解释器实现，是 perf 设计相关跟踪的不可或缺的组成部分。基于内核的事件过滤器提供了一种机制，可以精确地控制出现在用户空间的事件流，在这里提供实际编程语言的绑定来对事件流进行后处理是有意义的。这种体系结构允许在内核和用户空间之间进行智能且灵活的处理分割。与其他工具(例如 SystemTap)形成对比，它在内核中执行所有处理，因此需要一种特定项目定义的语言来适应其设计，或者 LTTng，其中所有内容都发送到用户空间，因此需要超级高效的内核到用户空间传输机制才能正常工作。虽然 perf 当然可以从传输设计方面获得一些好处，但它不是从根本上依赖它们。基本上，如果您发现您的 perf 跟踪应用程序导致缓冲区 I/O 溢出，则可能意味着您没有充分利用内核过滤引擎。
 > :::
 
 ### Using Dynamic Tracepoints
 
 perf isn\'t restricted to the fixed set of static tracepoints listed by \'perf list\'. Users can also add their own \'dynamic\' tracepoints anywhere in the kernel. For instance, suppose we want to define our own tracepoint on do_fork(). We can do that using the \'perf probe\' perf subcommand:
 
-> perf 不仅仅局限于'perf list'列出的固定的静态跟踪点。用户也可以在内核的任何地方添加自己的“动态”跟踪点。例如，假设我们想在 do_fork（）上定义自己的跟踪点。我们可以使用'perf probe' perf 子命令来完成：
+> perf 不仅仅局限于'perf list'列出的固定的静态跟踪点。用户也可以在内核的任何地方添加自己的“动态”跟踪点。例如，假设我们想在 do_fork()上定义自己的跟踪点。我们可以使用'perf probe' perf 子命令来完成：
 
 ```shell
 root@crownbay:~# perf probe do_fork
@@ -964,7 +964,7 @@ You can now use it in all perf tools, such as:
 
 Adding a new tracepoint via \'perf probe\' results in an event with all the expected files and format in /sys/kernel/debug/tracing/events, just the same as for static tracepoints (as discussed in more detail in the trace events subsystem section:
 
-> 通过'perf probe'添加新的跟踪点会在/sys/kernel/debug/tracing/events 中产生一个具有所有预期文件和格式的事件，就像静态跟踪点一样（详情参见跟踪事件子系统部分）。
+> 通过'perf probe'添加新的跟踪点会在/sys/kernel/debug/tracing/events 中产生一个具有所有预期文件和格式的事件，就像静态跟踪点一样(详情参见跟踪事件子系统部分)。
 
 ```shell
 root@crownbay:/sys/kernel/debug/tracing/events/probe/do_fork# ls -al
@@ -1002,7 +1002,7 @@ root@crownbay:~# perf probe -l
 
 Let\'s record system-wide (\'sleep 30\' is a trick for recording system-wide but basically do nothing and then wake up after 30 seconds):
 
-> 让我们记录系统范围（'睡眠 30'是一个记录系统范围的技巧，但基本上什么也不做，然后 30 秒后醒来）：
+> 让我们记录系统范围('睡眠 30'是一个记录系统范围的技巧，但基本上什么也不做，然后 30 秒后醒来)：
 
 ```shell
 root@crownbay:~# perf record -g -a -e probe:do_fork sleep 30
@@ -1030,7 +1030,7 @@ root@crownbay:~# perf script
 # total memory : 1017184 kB
 # cmdline : /usr/bin/perf record -g -a -e probe:do_fork sleep 30
 # event : name = probe:do_fork, type = 2, config = 0x3b0, config1 = 0x0, config2 = 0x0, excl_usr = 0, excl_kern
- = 0, id = { 5, 6 }
+ = 0, id = 
 # HEADER_CPU_TOPOLOGY info available, use -I to display
 # ========
 #
@@ -1059,7 +1059,7 @@ And using \'perf report\' on the same file, we can see the callgraphs from start
 
 > 使用同一个文件的'perf report'，我们可以看到在这 30 秒内启动几个程序的调用图：
 
-![image](figures/perf-probe-do_fork-profile.png){.align-center width="70.0%"}
+![image](figures/perf-probe-do_fork-profile.png)
 
 ::: admonition
 
@@ -1069,7 +1069,7 @@ Tying it Together
 
 The trace events subsystem accommodate static and dynamic tracepoints in exactly the same way \-\-- there\'s no difference as far as the infrastructure is concerned. See the ftrace section for more details on the trace event subsystem.
 
-> 跟踪事件子系统以完全相同的方式容纳静态和动态跟踪点-- 就基础架构而言没有差别。 有关跟踪事件子系统的更多详细信息，请参阅 ftrace 部分。
+> 跟踪事件子系统以完全相同的方式容纳静态和动态跟踪点-- 就基础架构而言没有差别。有关跟踪事件子系统的更多详细信息，请参阅 ftrace 部分。
 > :::
 
 ::: admonition
@@ -1133,7 +1133,7 @@ There\'s also a nice perf tutorial on the perf wiki that goes into more detail t
 
 ## ftrace Setup
 
-For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section.
+For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`\" section.
 
 > 对于本节，我们假设您已经执行了“profile-manual / intro：General Setup”部分中概述的基本设置。
 
@@ -1145,7 +1145,7 @@ ftrace, trace-cmd, and kernelshark run on the target system, and are ready to go
 
 \'ftrace\' essentially refers to everything included in the /tracing directory of the mounted debugfs filesystem (Yocto follows the standard convention and mounts it at /sys/kernel/debug). Here\'s a listing of all the files found in /sys/kernel/debug/tracing on a Yocto system:
 
-> 'ftrace'基本上是指挂载在/sys/kernel/debug 的/tracing 目录中包含的所有内容（Yocto 遵循标准惯例，将其挂载在/sys/kernel/debug）。以下是 Yocto 系统上/sys/kernel/debug/tracing 中发现的所有文件的列表：
+> 'ftrace'基本上是指挂载在/sys/kernel/debug 的/tracing 目录中包含的所有内容(Yocto 遵循标准惯例，将其挂载在/sys/kernel/debug)。以下是 Yocto 系统上/sys/kernel/debug/tracing 中发现的所有文件的列表：
 
 ```shell
 root@sugarbay:/sys/kernel/debug/tracing# ls
@@ -1515,21 +1515,21 @@ gfp_t)0x20000u) | (( gfp_t)0x02u) | (( gfp_t)0x08u)) | (( gfp_t)0x4000u) | (( gf
 gfp_t)0x400000u)), "GFP_TRANSHUGE"}, {(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u) | (( gfp_t)0x80u) | (( gfp_t)0x20000u) | ((
 gfp_t)0x02u) | (( gfp_t)0x08u)), "GFP_HIGHUSER_MOVABLE"}, {(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u) | (( gfp_t)0x80u) | ((
 gfp_t)0x20000u) | (( gfp_t)0x02u)), "GFP_HIGHUSER"}, {(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u) | (( gfp_t)0x80u) | ((
-gfp_t)0x20000u)), "GFP_USER"}, {(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u) | (( gfp_t)0x80u) | (( gfp_t)0x80000u)), GFP_TEMPORARY"},
-{(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u) | (( gfp_t)0x80u)), "GFP_KERNEL"}, {(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u)),
-"GFP_NOFS"}, {(unsigned long)((( gfp_t)0x20u)), "GFP_ATOMIC"}, {(unsigned long)((( gfp_t)0x10u)), "GFP_NOIO"}, {(unsigned long)((
-gfp_t)0x20u), "GFP_HIGH"}, {(unsigned long)(( gfp_t)0x10u), "GFP_WAIT"}, {(unsigned long)(( gfp_t)0x40u), "GFP_IO"}, {(unsigned long)((
-gfp_t)0x100u), "GFP_COLD"}, {(unsigned long)(( gfp_t)0x200u), "GFP_NOWARN"}, {(unsigned long)(( gfp_t)0x400u), "GFP_REPEAT"}, {(unsigned
-long)(( gfp_t)0x800u), "GFP_NOFAIL"}, {(unsigned long)(( gfp_t)0x1000u), "GFP_NORETRY"},      {(unsigned long)(( gfp_t)0x4000u), "GFP_COMP"},
-{(unsigned long)(( gfp_t)0x8000u), "GFP_ZERO"}, {(unsigned long)(( gfp_t)0x10000u), "GFP_NOMEMALLOC"}, {(unsigned long)(( gfp_t)0x20000u),
-"GFP_HARDWALL"}, {(unsigned long)(( gfp_t)0x40000u), "GFP_THISNODE"}, {(unsigned long)(( gfp_t)0x80000u), "GFP_RECLAIMABLE"}, {(unsigned
-long)(( gfp_t)0x08u), "GFP_MOVABLE"}, {(unsigned long)(( gfp_t)0), "GFP_NOTRACK"}, {(unsigned long)(( gfp_t)0x400000u), "GFP_NO_KSWAPD"},
-{(unsigned long)(( gfp_t)0x800000u), "GFP_OTHER_NODE"} ) : "GFP_NOWAIT"
+gfp_t)0x20000u)), "GFP_USER"}, ,
+, {(unsigned long)((( gfp_t)0x10u) | (( gfp_t)0x40u)),
+"GFP_NOFS"}, , {(unsigned long)((
+gfp_t)0x20u), "GFP_HIGH"}, , {(unsigned long)((
+gfp_t)0x100u), "GFP_COLD"}, , {(unsigned
+long)(( gfp_t)0x800u), "GFP_NOFAIL"}, ,
+, {(unsigned long)(( gfp_t)0x20000u),
+"GFP_HARDWALL"}, , {(unsigned
+long)(( gfp_t)0x08u), "GFP_MOVABLE"}, ,
+ ) : "GFP_NOWAIT"
 ```
 
 The \'enable\' file in the tracepoint directory is what allows the user (or tools such as trace-cmd) to actually turn the tracepoint on and off. When enabled, the corresponding tracepoint will start appearing in the ftrace \'trace\' file described previously. For example, this turns on the kmalloc tracepoint:
 
-> tracepoint 目录中的 'enable' 文件允许用户（或像 trace-cmd 这样的工具）实际开启和关闭 tracepoint。当开启时，相应的 tracepoint 将开始出现在先前描述的 ftrace 'trace' 文件中。例如，这会开启 kmalloc tracepoint：
+> tracepoint 目录中的 'enable' 文件允许用户(或像 trace-cmd 这样的工具)实际开启和关闭 tracepoint。当开启时，相应的 tracepoint 将开始出现在先前描述的 ftrace 'trace' 文件中。例如，这会开启 kmalloc tracepoint：
 
 ```shell
 root@sugarbay:/sys/kernel/debug/tracing/events/kmem/kmalloc# echo 1 > enable
@@ -1640,7 +1640,7 @@ trace-cmd is essentially an extensive command-line \'wrapper\' interface that hi
 
 As yet another layer on top of that, kernelshark provides a GUI that allows users to start and stop traces and specify sets of events using an intuitive interface, and view the output as both trace events and as a per-CPU graphical display. It directly uses \'trace-cmd\' as the plumbing that accomplishes all that underneath the covers (and actually displays the trace-cmd command it uses, as we\'ll see).
 
-> 作为另一层在此之上，Kernelshark 提供了一个 GUI，允许用户使用直观的界面启动和停止跟踪，并指定事件集，并将输出显示为跟踪事件和每个 CPU 的图形显示。它直接使用“trace-cmd”作为实现所有这些背后的管道（实际上会显示它使用的 trace-cmd 命令，正如我们将看到的）。
+> 作为另一层在此之上，Kernelshark 提供了一个 GUI，允许用户使用直观的界面启动和停止跟踪，并指定事件集，并将输出显示为跟踪事件和每个 CPU 的图形显示。它直接使用“trace-cmd”作为实现所有这些背后的管道(实际上会显示它使用的 trace-cmd 命令，正如我们将看到的)。
 
 To start a trace using kernelshark, first start kernelshark:
 
@@ -1660,9 +1660,9 @@ Capture | Record
 
 That will display the following dialog, which allows you to choose one or more events (or even one or more complete subsystems) to trace:
 
-> 以下对话框将会显示，允许您选择一个或多个事件（甚至一个或多个完整的子系统）进行跟踪：
+> 以下对话框将会显示，允许您选择一个或多个事件(甚至一个或多个完整的子系统)进行跟踪：
 
-![image](figures/kernelshark-choose-events.png){.align-center width="70.0%"}
+![image](figures/kernelshark-choose-events.png)
 
 Note that these are exactly the same sets of events described in the previous trace events subsystem section, and in fact is where trace-cmd gets them for kernelshark.
 
@@ -1672,9 +1672,9 @@ In the above screenshot, we\'ve decided to explore the graphics subsystem a bit 
 
 After doing that, we can start and stop the trace using the \'Run\' and \'Stop\' button on the lower right corner of the dialog (the same button will turn into the \'Stop\' button after the trace has started):
 
-> 在做完这件事之后，我们可以使用对话框右下角的“运行”和“停止”按钮来启动和停止跟踪（跟踪启动后，同一个按钮会变成“停止”按钮）：
+> 在做完这件事之后，我们可以使用对话框右下角的“运行”和“停止”按钮来启动和停止跟踪(跟踪启动后，同一个按钮会变成“停止”按钮)：
 
-![image](figures/kernelshark-output-display.png){.align-center width="70.0%"}
+![image](figures/kernelshark-output-display.png)
 
 Notice that the right-hand pane shows the exact trace-cmd command-line that\'s used to run the trace, along with the results of the trace-cmd run.
 
@@ -1684,13 +1684,13 @@ Once the \'Stop\' button is pressed, the graphical view magically fills up with 
 
 > 一旦按下“停止”按钮，图形视图就会神奇地填充上一个丰富多彩的每个 CPU 的跟踪数据显示，以及下面的详细事件列表：
 
-![image](figures/kernelshark-i915-display.png){.align-center width="70.0%"}
+![image](figures/kernelshark-i915-display.png)
 
 Here\'s another example, this time a display resulting from tracing \'all events\':
 
 > 这是另一个例子，这次是跟踪“所有事件”后的显示：
 
-![image](figures/kernelshark-all.png){.align-center width="70.0%"}
+![image](figures/kernelshark-all.png)
 
 The tool is pretty self-explanatory, but for more detailed information on navigating through the data, see the [kernelshark website](https://kernelshark.org/Documentation.html).
 
@@ -1729,7 +1729,7 @@ See also [KernelShark\'s documentation](https://kernelshark.org/Documentation.ht
 
 An amusing yet useful README (a tracing mini-HOWTO) can be found in `/sys/kernel/debug/tracing/README`.
 
-> 在/sys/kernel/debug/tracing/README 中可以找到一个有趣又有用的 README（一个跟踪小型 HOWTO）。
+> 在/sys/kernel/debug/tracing/README 中可以找到一个有趣又有用的 README(一个跟踪小型 HOWTO)。
 
 # systemtap
 
@@ -1743,7 +1743,7 @@ SystemTap scripts are C-like programs that are executed in the kernel to gather/
 
 For example, this probe from the [SystemTap tutorial](https://sourceware.org/systemtap/tutorial/) simply prints a line every time any process on the system open()s a file. For each line, it prints the executable name of the program that opened the file, along with its PID, and the name of the file it opened (or tried to open), which it extracts from the open syscall\'s argstr.
 
-> 例如，这个来自 [SystemTap 教程](https://sourceware.org/systemtap/tutorial/)的探针每次系统上的任何进程执行 open()操作时，都会打印一行。每行都会打印出打开文件的可执行程序的名称以及它的 PID，以及它打开（或尝试打开）的文件名，它从 open 系统调用的 argstr 中提取出来。
+> 例如，这个来自 [SystemTap 教程](https://sourceware.org/systemtap/tutorial/)的探针每次系统上的任何进程执行 open()操作时，都会打印一行。每行都会打印出打开文件的可执行程序的名称以及它的 PID，以及它打开(或尝试打开)的文件名，它从 open 系统调用的 argstr 中提取出来。
 
 ```none
 probe syscall.open
@@ -1771,7 +1771,7 @@ What systemtap does under the covers to run this probe is 1) parse and convert t
 
 In order to accomplish steps 1 and 2, the \'stap\' program needs access to the kernel build system that produced the kernel that the probed system is running. In the case of a typical embedded system (the \'target\'), the kernel build system unfortunately isn\'t typically part of the image running on the target. It is normally available on the \'host\' system that produced the target image however; in such cases, steps 1 and 2 are executed on the host system, and steps 3 and 4 are executed on the target system, using only the systemtap \'runtime\'.
 
-> 为了完成步骤 1 和 2，'stap'程序需要访问生成被探测系统正在运行的内核的内核构建系统。在典型的嵌入式系统（'target'）的情况下，不幸的是内核构建系统通常不是运行在目标上的图像的一部分。它通常可以在生成目标图像的'host'系统上获得；在这种情况下，步骤 1 和 2 在主机系统上执行，步骤 3 和 4 使用系统探测'runtime'在目标系统上执行。
+> 为了完成步骤 1 和 2，'stap'程序需要访问生成被探测系统正在运行的内核的内核构建系统。在典型的嵌入式系统('target')的情况下，不幸的是内核构建系统通常不是运行在目标上的镜像的一部分。它通常可以在生成目标镜像的'host'系统上获得；在这种情况下，步骤 1 和 2 在主机系统上执行，步骤 3 和 4 使用系统探测'runtime'在目标系统上执行。
 
 The systemtap support in Yocto assumes that only steps 3 and 4 are run on the target; it is possible to do everything on the target, but this section assumes only the typical embedded use-case.
 
@@ -1779,7 +1779,7 @@ The systemtap support in Yocto assumes that only steps 3 and 4 are run on the ta
 
 So basically what you need to do in order to run a systemtap script on the target is to 1) on the host system, compile the probe into a kernel module that makes sense to the target, 2) copy the module onto the target system and 3) insert the module into the target kernel, which arms it, and 4) collect the data generated by the probe and display it to the user.
 
-> 那么基本上你需要做的是要在目标上运行 systemtap 脚本，1）在主机系统上编译探针到一个对目标有意义的内核模块，2）将模块复制到目标系统上，3）将模块插入目标内核，以启动它，4）收集由探针生成的数据并将其显示给用户。
+> 那么基本上你需要做的是要在目标上运行 systemtap 脚本，1)在主机系统上编译探针到一个对目标有意义的内核模块，2)将模块复制到目标系统上，3)将模块插入目标内核，以启动它，4)收集由探针生成的数据并将其显示给用户。
 
 ## systemtap Setup
 
@@ -1833,19 +1833,19 @@ Note
 
 SystemTap, which uses \'crosstap\', assumes you can establish an ssh connection to the remote target. Please refer to the crosstap wiki page for details on verifying ssh connections at . Also, the ability to ssh into the target system is not enabled by default in \*-minimal images.
 
-> 系统钉（SystemTap）使用“crosstap”，假设您可以建立到远程目标的 ssh 连接。有关验证 ssh 连接的详细信息，请参阅 crosstap wiki 页面。此外，*-minimal 图像默认情况下不允许 ssh 进入目标系统。
+> 系统钉(SystemTap)使用“crosstap”，假设您可以建立到远程目标的 ssh 连接。有关验证 ssh 连接的详细信息，请参阅 crosstap wiki 页面。此外，*-minimal 镜像默认情况下不允许 ssh 进入目标系统。
 > :::
 
-So essentially what you need to do is build an SDK image or image with \'tools-profile\' as detailed in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section of this manual, and boot the resulting target image.
+So essentially what you need to do is build an SDK image or image with \'tools-profile\' as detailed in the \"`profile-manual/intro:General Setup`\" section of this manual, and boot the resulting target image.
 
-> 所以基本上你需要做的就是按照本手册中“profile-manual/intro：General Setup”部分所述的建立一个 SDK 图像或者带有“tools-profile”的图像，并启动最终的目标图像。
+> 所以基本上你需要做的就是按照本手册中“profile-manual/intro：General Setup”部分所述的建立一个 SDK 镜像或者带有“tools-profile”的镜像，并启动最终的目标镜像。
 
 ::: note
 ::: title
 Note
 :::
 
-If you have a `Build Directory`{.interpreted-text role="term"} containing multiple machines, you need to have the `MACHINE`{.interpreted-text role="term"} you\'re connecting to selected in local.conf, and the kernel in that machine\'s `Build Directory`{.interpreted-text role="term"} must match the kernel on the booted system exactly, or you\'ll get the above \'crosstap\' message when you try to invoke a script.
+If you have a `Build Directory` must match the kernel on the booted system exactly, or you\'ll get the above \'crosstap\' message when you try to invoke a script.
 
 > 如果您有一个包含多台机器的 `构建目录`，您需要在 local.conf 中选择您要连接的 `MACHINE`，该机器的 `构建目录` 中的内核必须与启动系统上的内核完全匹配，否则在尝试调用脚本时，您将获得上面的'crosstap'消息。
 > :::
@@ -1905,7 +1905,7 @@ A lot of the time, connection problems are due specifying a wrong IP address or 
 
 If everything worked as planned, you should see something like this (enter the password when prompted, or press enter if it\'s set up to use no password):
 
-> 如果一切按计划运行，你应该会看到类似的情况（提示时输入密码，或者如果设置不需要密码，则按回车键）：
+> 如果一切按计划运行，你应该会看到类似的情况(提示时输入密码，或者如果设置不需要密码，则按回车键)：
 
 ```none
 $ crosstap root@192.168.7.2 trace_open.stp
@@ -1932,13 +1932,13 @@ Sysprof is a very easy to use system-wide profiler that consists of a single win
 
 ## Sysprof Setup
 
-For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section.
+For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`\" section.
 
 > 对于这一部分，我们假设您已经在“profile-manual/intro：General Setup”部分中执行了基本设置。
 
 Sysprof is a GUI-based application that runs on the target system. For the rest of this document we assume you\'ve ssh\'ed to the host and will be running Sysprof on the target (you can use the \'-X\' option to ssh and have the Sysprof GUI run on the target but display remotely on the host if you want).
 
-> Sysprof 是一个基于 GUI 的应用程序，可以在目标系统上运行。 在本文档的其余部分中，我们假设您已经 ssh 到主机，并将在目标上运行 Sysprof（您可以使用“-X”选项 ssh，并在目标上运行 Sysprof GUI，但在主机上远程显示）。
+> Sysprof 是一个基于 GUI 的应用程序，可以在目标系统上运行。在本文档的其余部分中，我们假设您已经 ssh 到主机，并将在目标上运行 Sysprof(您可以使用“-X”选项 ssh，并在目标上运行 Sysprof GUI，但在主机上远程显示)。
 
 ## Basic Sysprof Usage
 
@@ -1950,7 +1950,7 @@ Once you\'ve pressed the profile button, the three panes will fill up with profi
 
 > 一旦您按下配置按钮，三个窗格将填充配置数据：
 
-![image](figures/sysprof-copy-to-user.png){.align-center width="70.0%"}
+![image](figures/sysprof-copy-to-user.png)
 
 The left pane shows a list of functions and processes. Selecting one of those expands that function in the right pane, showing all its callees. Note that this caller-oriented display is essentially the inverse of perf\'s default callee-oriented callchain display.
 
@@ -1958,9 +1958,9 @@ The left pane shows a list of functions and processes. Selecting one of those ex
 
 In the screenshot above, we\'re focusing on `__copy_to_user_ll()` and looking up the callchain we can see that one of the callers of `__copy_to_user_ll` is sys_read() and the complete callpath between them. Notice that this is essentially a portion of the same information we saw in the perf display shown in the perf section of this page.
 
-> 在上面的截图中，我们关注 `__copy_to_user_ll（）`，查看调用链，我们可以看到 `__copy_to_user_ll` 的调用者之一是 sys_read（），以及它们之间的完整调用路径。请注意，这实际上是本页 perf 部分所展示的 perf 显示中的一部分信息。
+> 在上面的截图中，我们关注 `__copy_to_user_ll()`，查看调用链，我们可以看到 `__copy_to_user_ll` 的调用者之一是 sys_read()，以及它们之间的完整调用路径。请注意，这实际上是本页 perf 部分所展示的 perf 显示中的一部分信息。
 
-![image](figures/sysprof-copy-from-user.png){.align-center width="70.0%"}
+![image](figures/sysprof-copy-from-user.png)
 
 Similarly, the above is a snapshot of the Sysprof display of a copy-from-user callchain.
 
@@ -1970,7 +1970,7 @@ Finally, looking at the third Sysprof pane in the lower left, we can see a list 
 
 > 最后，看一下左下角的第三个 Sysprof 面板，我们可以看到左上角选中的特定函数的所有调用者的列表。在这种情况下，下面的面板显示了 `__mark_inode_dirty` 的所有调用者：
 
-![image](figures/sysprof-callers.png){.align-center width="70.0%"}
+![image](figures/sysprof-callers.png)
 
 Double-clicking on one of those functions will in turn change the focus to the selected function, and so on.
 
@@ -1984,7 +1984,7 @@ Tying it Together
 
 If you like sysprof\'s \'caller-oriented\' display, you may be able to approximate it in other tools as well. For example, \'perf report\' has the -g (\--call-graph) option that you can experiment with; one of the options is \'caller\' for an inverted caller-based callgraph display.
 
-> 如果你喜欢 sysprof 的“以调用者为中心”的显示，你也可以在其他工具中近似实现它。例如，'perf report'有-g（\ --call-graph）选项，你可以尝试一下；其中一个选项是'caller'，用于基于调用者的倒置调用图显示。
+> 如果你喜欢 sysprof 的“以调用者为中心”的显示，你也可以在其他工具中近似实现它。例如，'perf report'有-g(\ --call-graph)选项，你可以尝试一下；其中一个选项是'caller'，用于基于调用者的倒置调用图显示。
 > :::
 
 ## Sysprof Documentation
@@ -1997,15 +1997,15 @@ There doesn\'t seem to be any documentation for Sysprof, but maybe that\'s becau
 
 ## LTTng Setup
 
-For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section. LTTng is run on the target system by ssh\'ing to it.
+For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`\" section. LTTng is run on the target system by ssh\'ing to it.
 
 > 对于本节，我们假设您已经执行了“ profile-manual / intro：General Setup”部分中概述的基本设置。通过 ssh 到目标系统上运行 LTTng。
 
 ## Collecting and Viewing Traces
 
-Once you\'ve applied the above commits and built and booted your image (you need to build the core-image-sato-sdk image or use one of the other methods described in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section), you\'re ready to start tracing.
+Once you\'ve applied the above commits and built and booted your image (you need to build the core-image-sato-sdk image or use one of the other methods described in the \"`profile-manual/intro:General Setup`\" section), you\'re ready to start tracing.
 
-> 一旦你应用了以上提交并建立并启动了你的镜像（你需要建立 core-image-sato-sdk 镜像或使用在“profile-manual/intro：General Setup”部分描述的其他方法之一），你就准备好开始跟踪了。
+> 一旦你应用了以上提交并建立并启动了你的镜像(你需要建立 core-image-sato-sdk 镜像或使用在“profile-manual/intro：General Setup”部分描述的其他方法之一)，你就准备好开始跟踪了。
 
 ### Collecting and viewing a trace on the target (inside a shell)
 
@@ -2035,7 +2035,7 @@ Traces will be written in /home/root/lttng-traces/auto-20121015-232120
 
 Enable the events you want to trace (in this case all kernel events):
 
-> 启用你想跟踪的事件（在这种情况下是所有内核事件）：
+> 启用你想跟踪的事件(在这种情况下是所有内核事件)：
 
 ```shell
 root@crownbay:~# lttng enable-event --kernel --all
@@ -2066,43 +2066,43 @@ You can now view the trace in text form on the target:
 
 ```shell
 root@crownbay:~# lttng view
-[23:21:56.989270399] (+?.?????????) sys_geteuid: { 1 }, { }
-[23:21:56.989278081] (+0.000007682) exit_syscall: { 1 }, { ret = 0 }
-[23:21:56.989286043] (+0.000007962) sys_pipe: { 1 }, { fildes = 0xB77B9E8C }
-[23:21:56.989321802] (+0.000035759) exit_syscall: { 1 }, { ret = 0 }
-[23:21:56.989329345] (+0.000007543) sys_mmap_pgoff: { 1 }, { addr = 0x0, len = 10485760, prot = 3, flags = 131362, fd = 4294967295, pgoff = 0 }
-[23:21:56.989351694] (+0.000022349) exit_syscall: { 1 }, { ret = -1247805440 }
-[23:21:56.989432989] (+0.000081295) sys_clone: { 1 }, { clone_flags = 0x411, newsp = 0xB5EFFFE4, parent_tid = 0xFFFFFFFF, child_tid = 0x0 }
-[23:21:56.989477129] (+0.000044140) sched_stat_runtime: { 1 }, { comm = "lttng-consumerd", tid = 1193, runtime = 681660, vruntime = 43367983388 }
-[23:21:56.989486697] (+0.000009568) sched_migrate_task: { 1 }, { comm = "lttng-consumerd", tid = 1193, prio = 20, orig_cpu = 1, dest_cpu = 1 }
-[23:21:56.989508418] (+0.000021721) hrtimer_init: { 1 }, { hrtimer = 3970832076, clockid = 1, mode = 1 }
-[23:21:56.989770462] (+0.000262044) hrtimer_cancel: { 1 }, { hrtimer = 3993865440 }
-[23:21:56.989771580] (+0.000001118) hrtimer_cancel: { 0 }, { hrtimer = 3993812192 }
-[23:21:56.989776957] (+0.000005377) hrtimer_expire_entry: { 1 }, { hrtimer = 3993865440, now = 79815980007057, function = 3238465232 }
-[23:21:56.989778145] (+0.000001188) hrtimer_expire_entry: { 0 }, { hrtimer = 3993812192, now = 79815980008174, function = 3238465232 }
-[23:21:56.989791695] (+0.000013550) softirq_raise: { 1 }, { vec = 1 }
-[23:21:56.989795396] (+0.000003701) softirq_raise: { 0 }, { vec = 1 }
-[23:21:56.989800635] (+0.000005239) softirq_raise: { 0 }, { vec = 9 }
-[23:21:56.989807130] (+0.000006495) sched_stat_runtime: { 1 }, { comm = "lttng-consumerd", tid = 1193, runtime = 330710, vruntime = 43368314098 }
-[23:21:56.989809993] (+0.000002863) sched_stat_runtime: { 0 }, { comm = "lttng-sessiond", tid = 1181, runtime = 1015313, vruntime = 36976733240 }
-[23:21:56.989818514] (+0.000008521) hrtimer_expire_exit: { 0 }, { hrtimer = 3993812192 }
-[23:21:56.989819631] (+0.000001117) hrtimer_expire_exit: { 1 }, { hrtimer = 3993865440 }
-[23:21:56.989821866] (+0.000002235) hrtimer_start: { 0 }, { hrtimer = 3993812192, function = 3238465232, expires = 79815981000000, softexpires = 79815981000000 }
-[23:21:56.989822984] (+0.000001118) hrtimer_start: { 1 }, { hrtimer = 3993865440, function = 3238465232, expires = 79815981000000, softexpires = 79815981000000 }
-[23:21:56.989832762] (+0.000009778) softirq_entry: { 1 }, { vec = 1 }
-[23:21:56.989833879] (+0.000001117) softirq_entry: { 0 }, { vec = 1 }
-[23:21:56.989838069] (+0.000004190) timer_cancel: { 1 }, { timer = 3993871956 }
-[23:21:56.989839187] (+0.000001118) timer_cancel: { 0 }, { timer = 3993818708 }
-[23:21:56.989841492] (+0.000002305) timer_expire_entry: { 1 }, { timer = 3993871956, now = 79515980, function = 3238277552 }
-[23:21:56.989842819] (+0.000001327) timer_expire_entry: { 0 }, { timer = 3993818708, now = 79515980, function = 3238277552 }
-[23:21:56.989854831] (+0.000012012) sched_stat_runtime: { 1 }, { comm = "lttng-consumerd", tid = 1193, runtime = 49237, vruntime = 43368363335 }
-[23:21:56.989855949] (+0.000001118) sched_stat_runtime: { 0 }, { comm = "lttng-sessiond", tid = 1181, runtime = 45121, vruntime = 36976778361 }
-[23:21:56.989861257] (+0.000005308) sched_stat_sleep: { 1 }, { comm = "kworker/1:1", tid = 21, delay = 9451318 }
-[23:21:56.989862374] (+0.000001117) sched_stat_sleep: { 0 }, { comm = "kworker/0:0", tid = 4, delay = 9958820 }
-[23:21:56.989868241] (+0.000005867) sched_wakeup: { 0 }, { comm = "kworker/0:0", tid = 4, prio = 120, success = 1, target_cpu = 0 }
-[23:21:56.989869358] (+0.000001117) sched_wakeup: { 1 }, { comm = "kworker/1:1", tid = 21, prio = 120, success = 1, target_cpu = 1 }
-[23:21:56.989877460] (+0.000008102) timer_expire_exit: { 1 }, { timer = 3993871956 }
-[23:21:56.989878577] (+0.000001117) timer_expire_exit: { 0 }, { timer = 3993818708 }
+[23:21:56.989270399] (+?.?????????) sys_geteuid: 
+[23:21:56.989278081] (+0.000007682) exit_syscall: 
+[23:21:56.989286043] (+0.000007962) sys_pipe: 
+[23:21:56.989321802] (+0.000035759) exit_syscall: 
+[23:21:56.989329345] (+0.000007543) sys_mmap_pgoff: 
+[23:21:56.989351694] (+0.000022349) exit_syscall: 
+[23:21:56.989432989] (+0.000081295) sys_clone: 
+[23:21:56.989477129] (+0.000044140) sched_stat_runtime: 
+[23:21:56.989486697] (+0.000009568) sched_migrate_task: 
+[23:21:56.989508418] (+0.000021721) hrtimer_init: 
+[23:21:56.989770462] (+0.000262044) hrtimer_cancel: 
+[23:21:56.989771580] (+0.000001118) hrtimer_cancel: 
+[23:21:56.989776957] (+0.000005377) hrtimer_expire_entry: 
+[23:21:56.989778145] (+0.000001188) hrtimer_expire_entry: 
+[23:21:56.989791695] (+0.000013550) softirq_raise: 
+[23:21:56.989795396] (+0.000003701) softirq_raise: 
+[23:21:56.989800635] (+0.000005239) softirq_raise: 
+[23:21:56.989807130] (+0.000006495) sched_stat_runtime: 
+[23:21:56.989809993] (+0.000002863) sched_stat_runtime: 
+[23:21:56.989818514] (+0.000008521) hrtimer_expire_exit: 
+[23:21:56.989819631] (+0.000001117) hrtimer_expire_exit: 
+[23:21:56.989821866] (+0.000002235) hrtimer_start: 
+[23:21:56.989822984] (+0.000001118) hrtimer_start: 
+[23:21:56.989832762] (+0.000009778) softirq_entry: 
+[23:21:56.989833879] (+0.000001117) softirq_entry: 
+[23:21:56.989838069] (+0.000004190) timer_cancel: 
+[23:21:56.989839187] (+0.000001118) timer_cancel: 
+[23:21:56.989841492] (+0.000002305) timer_expire_entry: 
+[23:21:56.989842819] (+0.000001327) timer_expire_entry: 
+[23:21:56.989854831] (+0.000012012) sched_stat_runtime: 
+[23:21:56.989855949] (+0.000001118) sched_stat_runtime: 
+[23:21:56.989861257] (+0.000005308) sched_stat_sleep: 
+[23:21:56.989862374] (+0.000001117) sched_stat_sleep: 
+[23:21:56.989868241] (+0.000005867) sched_wakeup: 
+[23:21:56.989869358] (+0.000001117) sched_wakeup: 
+[23:21:56.989877460] (+0.000008102) timer_expire_exit: 
+[23:21:56.989878577] (+0.000001117) timer_expire_exit: 
 .
 .
 .
@@ -2110,7 +2110,7 @@ root@crownbay:~# lttng view
 
 You can now safely destroy the trace session (note that this doesn\'t delete the trace \-\-- it\'s still there in \~/lttng-traces):
 
-> 你现在可以安全销毁跟踪会话（请注意，这并不会删除跟踪-它仍然存在于~/lttng-traces 中）：
+> 你现在可以安全销毁跟踪会话(请注意，这并不会删除跟踪-它仍然存在于~/lttng-traces 中)：
 
 ```shell
 root@crownbay:~# lttng destroy
@@ -2177,7 +2177,7 @@ Traces will be written in /home/root/lttng-traces/auto-20190303-021943
 
 Enable the events you want to trace (in this case all userspace events):
 
-> 启用你想跟踪的事件（在这种情况下是所有用户空间事件）：
+> 启用你想跟踪的事件(在这种情况下是所有用户空间事件)：
 
 ```shell
 root@crownbay:~# lttng enable-event --userspace --all
@@ -2218,10 +2218,10 @@ You can now view the trace in text form on the target:
 
 ```shell
 root@crownbay:~# lttng view
-[02:31:14.906146544] (+?.?????????) hello:1424 ust_tests_hello:tptest: { cpu_id = 1 }, { intfield = 0, intfield2 = 0x0, longfield = 0, netintfield = 0, netintfieldhex = 0x0, arrfield1 = [ [0] = 1, [1] = 2, [2] = 3 ], arrfield2 = "test", _seqfield1_length = 4, seqfield1 = [ [0] = 116, [1] = 101, [2] = 115, [3] = 116 ], _seqfield2_length = 4,  seqfield2 = "test", stringfield = "test", floatfield = 2222, doublefield = 2, boolfield = 1 }
-[02:31:14.906170360] (+0.000023816) hello:1424 ust_tests_hello:tptest: { cpu_id = 1 }, { intfield = 1, intfield2 = 0x1, longfield = 1, netintfield = 1, netintfieldhex = 0x1, arrfield1 = [ [0] = 1, [1] = 2, [2] = 3 ], arrfield2 = "test", _seqfield1_length = 4, seqfield1 = [ [0] = 116, [1] = 101, [2] = 115, [3] = 116 ], _seqfield2_length = 4, seqfield2 = "test", stringfield = "test", floatfield = 2222, doublefield = 2, boolfield = 1 }
-[02:31:14.906183140] (+0.000012780) hello:1424 ust_tests_hello:tptest: { cpu_id = 1 }, { intfield = 2, intfield2 = 0x2, longfield = 2, netintfield = 2, netintfieldhex = 0x2, arrfield1 = [ [0] = 1, [1] = 2, [2] = 3 ], arrfield2 = "test", _seqfield1_length = 4, seqfield1 = [ [0] = 116, [1] = 101, [2] = 115, [3] = 116 ], _seqfield2_length = 4, seqfield2 = "test", stringfield = "test", floatfield = 2222, doublefield = 2, boolfield = 1 }
-[02:31:14.906194385] (+0.000011245) hello:1424 ust_tests_hello:tptest: { cpu_id = 1 }, { intfield = 3, intfield2 = 0x3, longfield = 3, netintfield = 3, netintfieldhex = 0x3, arrfield1 = [ [0] = 1, [1] = 2, [2] = 3 ], arrfield2 = "test", _seqfield1_length = 4, seqfield1 = [ [0] = 116, [1] = 101, [2] = 115, [3] = 116 ], _seqfield2_length = 4, seqfield2 = "test", stringfield = "test", floatfield = 2222, doublefield = 2, boolfield = 1 }
+[02:31:14.906146544] (+?.?????????) hello:1424 ust_tests_hello:tptest: 
+[02:31:14.906170360] (+0.000023816) hello:1424 ust_tests_hello:tptest: 
+[02:31:14.906183140] (+0.000012780) hello:1424 ust_tests_hello:tptest: 
+[02:31:14.906194385] (+0.000011245) hello:1424 ust_tests_hello:tptest: 
 .
 .
 .
@@ -2229,7 +2229,7 @@ root@crownbay:~# lttng view
 
 You can now safely destroy the trace session (note that this doesn\'t delete the trace \-\-- it\'s still there in \~/lttng-traces):
 
-> 你现在可以安全地销毁跟踪会话（请注意，这不会删除跟踪-它仍然存在于~/lttng-traces 中）：
+> 你现在可以安全地销毁跟踪会话(请注意，这不会删除跟踪-它仍然存在于~/lttng-traces 中)：
 
 ```shell
 root@crownbay:~# lttng destroy
@@ -2254,13 +2254,13 @@ blktrace is a tool for tracing and reporting low-level disk I/O. blktrace provid
 
 ## blktrace Setup
 
-For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`{.interpreted-text role="ref"}\" section.
+For this section, we\'ll assume you\'ve already performed the basic setup outlined in the \"`profile-manual/intro:General Setup`\" section.
 
 > 对于本节，我们假设您已经完成了“profile-manual / intro：General Setup”部分中概述的基本设置。
 
-blktrace is an application that runs on the target system. You can run the entire blktrace and blkparse pipeline on the target, or you can run blktrace in \'listen\' mode on the target and have blktrace and blkparse collect and analyze the data on the host (see the \"`profile-manual/usage:Using blktrace Remotely`{.interpreted-text role="ref"}\" section below). For the rest of this section we assume you\'ve ssh\'ed to the host and will be running blkrace on the target.
+blktrace is an application that runs on the target system. You can run the entire blktrace and blkparse pipeline on the target, or you can run blktrace in \'listen\' mode on the target and have blktrace and blkparse collect and analyze the data on the host (see the \"`profile-manual/usage:Using blktrace Remotely`\" section below). For the rest of this section we assume you\'ve ssh\'ed to the host and will be running blkrace on the target.
 
-> blktrace 是一个运行在目标系统上的应用程序。您可以在目标上运行整个 blktrace 和 blkparse 管道，也可以在目标上以“监听”模式运行 blktrace，并让 blktrace 和 blkparse 在主机上收集和分析数据（请参阅下面的“profile-manual/usage：使用 blktrace 远程”部分）。对于本节的其余部分，我们假设您已经使用 SSH 登录到主机，并将在目标上运行 blkrace。
+> blktrace 是一个运行在目标系统上的应用程序。您可以在目标上运行整个 blktrace 和 blkparse 管道，也可以在目标上以“监听”模式运行 blktrace，并让 blktrace 和 blkparse 在主机上收集和分析数据(请参阅下面的“profile-manual/usage：使用 blktrace 远程”部分)。对于本节的其余部分，我们假设您已经使用 SSH 登录到主机，并将在目标上运行 blkrace。
 
 ## Basic blktrace Usage
 
@@ -2284,7 +2284,7 @@ linux-2.6.19.2.tar.b 100% \|*******************************\| 41727k 0:00:00 ETA
 
 Press Ctrl-C in the blktrace shell to stop the trace. It will display how many events were logged, along with the per-cpu file sizes (blktrace records traces in per-cpu kernel buffers and simply dumps them to userspace for blkparse to merge and sort later). :
 
-> 按下 Ctrl-C 在 blktrace 终端停止跟踪。它会显示有多少事件被记录，以及每个 CPU 的文件大小（blktrace 在每个 CPU 的内核缓冲区中记录跟踪，并简单地将它们转储到用户空间以供 blkparse 合并和排序）。
+> 按下 Ctrl-C 在 blktrace 终端停止跟踪。它会显示有多少事件被记录，以及每个 CPU 的文件大小(blktrace 在每个 CPU 的内核缓冲区中记录跟踪，并简单地将它们转储到用户空间以供 blkparse 合并和排序)。
 
 ```shell
 ^C=== sdc ===
@@ -2412,7 +2412,7 @@ root@crownbay:~# blktrace /dev/sdc -o - | blkparse -i -
 
 This enables long-lived tracing sessions to run without writing anything to disk, and allows the user to look for certain conditions in the trace data in \'real-time\' by viewing the trace output as it scrolls by on the screen or by passing it along to yet another program in the pipeline such as grep which can be used to identify and capture conditions of interest.
 
-> 这使得可以在不将任何内容写入磁盘的情况下运行持久的跟踪会话，并允许用户通过查看屏幕上滚动的跟踪输出或将其传递给管道中的另一个程序（如 grep）来实时查找跟踪数据中的某些条件，从而可以用来识别和捕获感兴趣的条件。
+> 这使得可以在不将任何内容写入磁盘的情况下运行持久的跟踪会话，并允许用户通过查看屏幕上滚动的跟踪输出或将其传递给管道中的另一个程序(如 grep)来实时查找跟踪数据中的某些条件，从而可以用来识别和捕获感兴趣的条件。
 
 There\'s actually another blktrace command that implements the above pipeline as a single command, so the user doesn\'t have to bother typing in the above command sequence:
 
@@ -2569,13 +2569,13 @@ You should see the trace events and summary just as you would have if you\'d run
 
 ### Tracing Block I/O via \'ftrace\'
 
-It\'s also possible to trace block I/O using only `profile-manual/usage:The 'trace events' Subsystem`{.interpreted-text role="ref"}, which can be useful for casual tracing if you don\'t want to bother dealing with the userspace tools.
+It\'s also possible to trace block I/O using only `profile-manual/usage:The 'trace events' Subsystem`, which can be useful for casual tracing if you don\'t want to bother dealing with the userspace tools.
 
-> 可以使用“跟踪事件”子系统（profile-manual/usage：）来跟踪块 I/O，如果不想费心处理用户空间工具，这可能会很有用。
+> 可以使用“跟踪事件”子系统(profile-manual/usage：)来跟踪块 I/O，如果不想费心处理用户空间工具，这可能会很有用。
 
 To enable tracing for a given device, use /sys/block/xxx/trace/enable, where xxx is the device name. This for example enables tracing for /dev/sdc:
 
-> 要为给定设备启用跟踪，请使用/sys/block/xxx/trace/enable，其中 xxx 是设备名称。 例如，这将为/dev/sdc 启用跟踪：
+> 要为给定设备启用跟踪，请使用/sys/block/xxx/trace/enable，其中 xxx 是设备名称。例如，这将为/dev/sdc 启用跟踪：
 
 ```shell
 root@crownbay:/sys/kernel/debug/tracing# echo 1 > /sys/block/sdc/trace/enable
@@ -2602,7 +2602,7 @@ root@crownbay:/sys/kernel/debug/tracing# cat /media/sdc/testfile.txt
 
 And look at the output (note here that we\'re using \'trace_pipe\' instead of trace to capture this trace \-\-- this allows us to wait around on the pipe for data to appear):
 
-> 看看输出（注意，我们这里使用'trace_pipe'而不是 trace 来捕获这个 trace——这样我们可以在管道上等待数据出现）：
+> 看看输出(注意，我们这里使用'trace_pipe'而不是 trace 来捕获这个 trace——这样我们可以在管道上等待数据出现)：
 
 ```shell
 root@crownbay:/sys/kernel/debug/tracing# cat trace_pipe
@@ -2643,7 +2643,7 @@ Online versions of the man pages for the commands discussed in this section can 
 
 The above manpages, along with manpages for the other blktrace utilities (btt, blkiomon, etc) can be found in the /doc directory of the blktrace tools git repo:
 
-> 以上的 manpages，以及其他 blktrace 工具（btt，blkiomon 等）的 manpages 可以在 blktrace 工具 git 仓库的 /doc 目录中找到：
+> 以上的 manpages，以及其他 blktrace 工具(btt，blkiomon 等)的 manpages 可以在 blktrace 工具 git 仓库的 /doc 目录中找到：
 
 ```shell
 $ git clone git://git.kernel.dk/blktrace.git

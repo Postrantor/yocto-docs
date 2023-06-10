@@ -7,29 +7,29 @@ title: Release notes for 3.4.2 (honister)
 
 # Security Fixes in 3.4.2
 
-- tiff: backport fix for `2022-22844`{.interpreted-text role="cve"}
-- glibc : Fix `2021-3999`{.interpreted-text role="cve"}
-- glibc : Fix `2021-3998`{.interpreted-text role="cve"}
-- glibc : Fix `2022-23219`{.interpreted-text role="cve"}
-- glibc : Fix `2022-23218`{.interpreted-text role="cve"}
-- lighttpd: backport a fix for `2022-22707`{.interpreted-text role="cve"}
-- speex: fix `2020-23903`{.interpreted-text role="cve"}
-- linux-yocto/5.10: amdgpu: updates for `2021-42327`{.interpreted-text role="cve"}
-- libsndfile1: fix `2021-4156`{.interpreted-text role="cve"}
+- tiff: backport fix for `2022-22844`
+- glibc : Fix `2021-3999`
+- glibc : Fix `2021-3998`
+- glibc : Fix `2022-23219`
+- glibc : Fix `2022-23218`
+- lighttpd: backport a fix for `2022-22707`
+- speex: fix `2020-23903`
+- linux-yocto/5.10: amdgpu: updates for `2021-42327`
+- libsndfile1: fix `2021-4156`
 - xserver-xorg: whitelist two CVEs
-- grub2: fix `2021-3981`{.interpreted-text role="cve"}
-- xserver-xorg: update `CVE_PRODUCT`{.interpreted-text role="term"}
-- binutils: `2021-42574`{.interpreted-text role="cve"}
-- gcc: Fix `2021-42574`{.interpreted-text role="cve"}
-- gcc: Fix `2021-35465`{.interpreted-text role="cve"}
+- grub2: fix `2021-3981`
+- xserver-xorg: update `CVE_PRODUCT`
+- binutils: `2021-42574`
+- gcc: Fix `2021-42574`
+- gcc: Fix `2021-35465`
 - cve-extra-exclusions: add db CVEs to exclusion list
-- gcc: Add `2021-37322`{.interpreted-text role="cve"} to the list of CVEs to ignore
-- bind: fix `2021-25219`{.interpreted-text role="cve"}
-- openssh: fix `2021-41617`{.interpreted-text role="cve"}
-- ncurses: fix `2021-39537`{.interpreted-text role="cve"}
-- vim: fix `2021-3968`{.interpreted-text role="cve"} and `2021-3973`{.interpreted-text role="cve"}
-- vim: fix `2021-3927`{.interpreted-text role="cve"} and `2021-3928`{.interpreted-text role="cve"}
-- gmp: fix `2021-43618`{.interpreted-text role="cve"}
+- gcc: Add `2021-37322` to the list of CVEs to ignore
+- bind: fix `2021-25219`
+- openssh: fix `2021-41617`
+- ncurses: fix `2021-39537`
+- vim: fix `2021-3968`
+- vim: fix `2021-3927`
+- gmp: fix `2021-43618`
 
 # Fixes in 3.4.2
 
@@ -40,7 +40,7 @@ title: Release notes for 3.4.2 (honister)
 - vim: upgrade to patch 4269
 - vim: update to include latest CVE fixes
 - expat: upgrade to 2.4.4
-- libusb1: correct `SRC_URI`{.interpreted-text role="term"}
+- libusb1: correct `SRC_URI`
 - yocto-check-layer: add debug output for the layers that were found
 - linux-firmware: Add CLM blob to linux-firmware-bcm4373 package
 - linux-yocto/5.10: update to v5.10.93
@@ -51,7 +51,7 @@ title: Release notes for 3.4.2 (honister)
 - kernel: introduce python3-dtschema-wrapper
 - vim: upgrade to 8.2 patch 3752
 - bootchart2: Add missing python3-math dependency
-- socat: update `SRC_URI`{.interpreted-text role="term"}
+- socat: update `SRC_URI`
 - pigz: fix one failure of command \"unpigz -l\"
 - linux-yocto/5.14: update genericx86\* machines to v5.14.21
 - linux-yocto/5.10: update genericx86\* machines to v5.10.87
@@ -71,7 +71,7 @@ title: Release notes for 3.4.2 (honister)
 - rpm: remove tmp folder created during install
 - package_manager: ipk: Fix host manifest generation
 - bitbake: utils: Update to use exec_module() instead of load_module()
-- linux-yocto: add libmpc-native to `DEPENDS`{.interpreted-text role="term"}
+- linux-yocto: add libmpc-native to `DEPENDS`
 - ref-manual: fix patch documentation
 - bitbake: tests/fetch: Drop gnu urls from wget connectivity test
 - bitbake: fetch: npm: Use temporary file for empty user config
@@ -114,7 +114,7 @@ title: Release notes for 3.4.2 (honister)
 - classes/crate-fetch: Ensure crate fetcher is available
 - rootfs-postcommands: update systemd_create_users
 - classes/meson: Add optional rust definitions
-- rust-cross: Replace `TARGET_ARCH`{.interpreted-text role="term"} with `TUNE_PKGARCH`{.interpreted-text role="term"}
+- rust-cross: Replace `TARGET_ARCH`
 - maintainers.inc: fix up rust-cross entry
 - rust-cross: Fix directory not deleted for race glibc vs. musl
 - wic: use shutil.which
@@ -174,10 +174,10 @@ title: Release notes for 3.4.2 (honister)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</poky/tag/?h=yocto-3.4.2\>\`
-- Git Revision: :yocto\_[git:%60e0ab08bb6a32916b457d221021e7f402ffa36b1a](git:%60e0ab08bb6a32916b457d221021e7f402ffa36b1a) \</poky/commit/?id=e0ab08bb6a32916b457d221021e7f402ffa36b1a\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</poky/tag/?h=yocto-3.4.2\>\`
+- Git Revision: :yocto_[git:%60e0ab08bb6a32916b457d221021e7f402ffa36b1a](git:%60e0ab08bb6a32916b457d221021e7f402ffa36b1a) \</poky/commit/?id=e0ab08bb6a32916b457d221021e7f402ffa36b1a\>\`
 
 > Git 修订：yocto_[git：e0ab08bb6a32916b457d221021e7f402ffa36b1a](git:e0ab08bb6a32916b457d221021e7f402ffa36b1a) \</poky/commit/?id=e0ab08bb6a32916b457d221021e7f402ffa36b1a\>\`
 
@@ -189,10 +189,10 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
-- Tag: :oe\_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</openembedded-core/tag/?h=yocto-3.4.2\>\`
-- Git Revision: :oe\_[git:%60418a9c4c31615a9e3e011fc2b21fb7154bc6c93a](git:%60418a9c4c31615a9e3e011fc2b21fb7154bc6c93a) \</openembedded-core/commit/?id=418a9c4c31615a9e3e011fc2b21fb7154bc6c93a\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
+- Tag: :oe_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</openembedded-core/tag/?h=yocto-3.4.2\>\`
+- Git Revision: :oe_[git:%60418a9c4c31615a9e3e011fc2b21fb7154bc6c93a](git:%60418a9c4c31615a9e3e011fc2b21fb7154bc6c93a) \</openembedded-core/commit/?id=418a9c4c31615a9e3e011fc2b21fb7154bc6c93a\>\`
 
 > Git 版本：:oe_[git:%60418a9c4c31615a9e3e011fc2b21fb7154bc6c93a](git:%60418a9c4c31615a9e3e011fc2b21fb7154bc6c93a) \</openembedded-core/commit/?id=418a9c4c31615a9e3e011fc2b21fb7154bc6c93a\>\`
 
@@ -204,10 +204,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60meta-mingw](git:%60meta-mingw)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</meta-mingw/tag/?h=yocto-3.4.2\>\`
-- Git Revision: :yocto\_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
+- Repository Location: :yocto_[git:%60meta-mingw](git:%60meta-mingw)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</meta-mingw/tag/?h=yocto-3.4.2\>\`
+- Git Revision: :yocto_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
 > Git 版本：yocto_[git:`f5d761cbd5c957e4405c5d40b0c236d263c916a8`](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8%60) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
@@ -219,10 +219,10 @@ meta-mingw
 
 meta-gplv2
 
-- Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</meta-gplv2/tag/?h=yocto-3.4.2\>\`
-- Git Revision: :yocto\_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
+- Repository Location: :yocto_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</meta-gplv2/tag/?h=yocto-3.4.2\>\`
+- Git Revision: :yocto_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
 > - Git 版本：:yocto_[git:`f04e4369bf9dd3385165281b9fa2ed1043b0e400`](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400%60) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
@@ -234,10 +234,10 @@ meta-gplv2
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
-- Tag: :oe\_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</bitbake/tag/?h=yocto-3.4.2\>\`
-- Git Revision: :oe\_[git:%60c039182c79e2ccc54fff5d7f4f266340014ca6e0](git:%60c039182c79e2ccc54fff5d7f4f266340014ca6e0) \</bitbake/commit/?id=c039182c79e2ccc54fff5d7f4f266340014ca6e0\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
+- Tag: :oe_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</bitbake/tag/?h=yocto-3.4.2\>\`
+- Git Revision: :oe_[git:%60c039182c79e2ccc54fff5d7f4f266340014ca6e0](git:%60c039182c79e2ccc54fff5d7f4f266340014ca6e0) \</bitbake/commit/?id=c039182c79e2ccc54fff5d7f4f266340014ca6e0\>\`
 
 > Git 版本：:oe_[git:`c039182c79e2ccc54fff5d7f4f266340014ca6e0`](git:%60c039182c79e2ccc54fff5d7f4f266340014ca6e0%60) \</bitbake/commit/?id=c039182c79e2ccc54fff5d7f4f266340014ca6e0\>\`
 
@@ -249,9 +249,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</yocto-docs/tag/?h=yocto-3.4.2\>\`
-- Git Revision: :yocto\_[git:%603061d3d62054a5c3b9e16bfce4bcd186fa7a23d2](git:%603061d3d62054a5c3b9e16bfce4bcd186fa7a23d2)[ \</yocto-docs/commit/?3061d3d62054a5c3b9e16bfce4bcd186fa7a23d2\>]{.title-ref}
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.2](git:%60yocto-3.4.2) \</yocto-docs/tag/?h=yocto-3.4.2\>\`
+- Git Revision: :yocto_[git:%603061d3d62054a5c3b9e16bfce4bcd186fa7a23d2](git:%603061d3d62054a5c3b9e16bfce4bcd186fa7a23d2)[ \</yocto-docs/commit/?3061d3d62054a5c3b9e16bfce4bcd186fa7a23d2\>]
 
 > Git 版本：yocto_[git:%603061d3d62054a5c3b9e16bfce4bcd186fa7a23d2](git:%603061d3d62054a5c3b9e16bfce4bcd186fa7a23d2) \</yocto-docs/commit/?3061d3d62054a5c3b9e16bfce4bcd186fa7a23d2\>

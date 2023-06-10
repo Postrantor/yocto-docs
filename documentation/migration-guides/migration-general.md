@@ -23,7 +23,7 @@ Some considerations are not tied to a specific Yocto Project release. This secti
 
   Issues could arise if you take older recipes that contain customizations and simply copy them forward expecting them to work after you migrate to new Yocto Project metadata. For example, suppose you have a recipe in your layer that is a customized version of a core recipe copied from the earlier release, rather than through the use of an append file. When you migrate to a newer version of Yocto Project, the metadata (e.g. perhaps an include file used by the recipe) could have changed in a way that would break the build. Say, for example, a function is removed from an include file and the customized recipe tries to call that function.
 
-> 如果您复制以前版本中包含自定义的旧配方并期望在迁移到新的 Yocto Project 元数据后可以正常工作，则可能会出现问题。例如，假设您的层中有一个配方，它是从先前版本中复制的核心配方的定制版本，而不是通过使用附加文件。当您迁移到新版本的 Yocto Project 时，元数据（例如，配方使用的 include 文件）可能已经以破坏构建的方式更改。例如，从 include 文件中删除了一个函数，定制配方尝试调用该函数。
+> 如果您复制以前版本中包含自定义的旧配方并期望在迁移到新的 Yocto Project 元数据后可以正常工作，则可能会出现问题。例如，假设您的层中有一个配方，它是从先前版本中复制的核心配方的定制版本，而不是通过使用附加文件。当您迁移到新版本的 Yocto Project 时，元数据(例如，配方使用的 include 文件)可能已经以破坏构建的方式更改。例如，从 include 文件中删除了一个函数，定制配方尝试调用该函数。
 
 You could \"forward-port\" all your customizations in your recipe so that everything works for the new release. However, this is not the optimal solution as you would have to repeat this process with each new release if changes occur that give rise to problems.
 
@@ -31,13 +31,13 @@ You could \"forward-port\" all your customizations in your recipe so that everyt
 
 The better solution (where practical) is to use append files (`*.bbappend`) to capture any customizations you want to make to a recipe. Doing so isolates your changes from the main recipe, making them much more manageable. However, sometimes it is not practical to use an append file. A good example of this is when introducing a newer or older version of a recipe in another layer.
 
-> 最佳解决方案（在实际情况下）是使用附加文件（`*.bbappend`）来捕获您想对配方做出的任何自定义。这样做可以将您的更改与主配方隔离开来，使其更易于管理。但是，有时使用附加文件不太实用。一个很好的例子就是在另一个层中引入一个更新或更旧的配方。
+> 最佳解决方案(在实际情况下)是使用附加文件(`*.bbappend`)来捕获您想对配方做出的任何自定义。这样做可以将您的更改与主配方隔离开来，使其更易于管理。但是，有时使用附加文件不太实用。一个很好的例子就是在另一个层中引入一个更新或更旧的配方。
 
 - *Updating Append Files*:
 
   Since append (`.bbappend`) files generally only contain your customizations, they often do not need to be adjusted for new releases. However, if the append file is specific to a particular version of the recipe (i.e. its name does not use the % wildcard) and the version of the recipe to which it is appending has changed, then you will at a minimum need to rename the append file to match the name of the recipe file. A mismatch between an append file and its corresponding recipe file (`.bb`) will trigger an error during parsing.
 
-> 由于 `.bbappend` 文件通常只包含您的自定义内容，因此通常不需要对新版本进行调整。但是，如果附加文件专门针对某个版本的配方（即其名称不使用 % 通配符），而且配方的版本已经更改，那么您至少需要将附加文件重命名为与配方文件（`.bb`）相匹配。附加文件与其相应的配方文件（`.bb`）之间的不匹配将在解析期间触发错误。
+> 由于 `.bbappend` 文件通常只包含您的自定义内容，因此通常不需要对新版本进行调整。但是，如果附加文件专门针对某个版本的配方(即其名称不使用 % 通配符)，而且配方的版本已经更改，那么您至少需要将附加文件重命名为与配方文件(`.bb`)相匹配。附加文件与其相应的配方文件(`.bb`)之间的不匹配将在解析期间触发错误。
 
 Depending on the type of customization the append file applies, other incompatibilities might occur when you upgrade. For example, if your append file applies a patch and the recipe to which it is appending is updated to a newer version, the patch might no longer apply. If this is the case and assuming the patch is still needed, you must modify the patch file so that it does apply.
 
@@ -54,33 +54,33 @@ Depending on the type of customization the append file applies, other incompatib
 >> :::
 >>
 
-::: {#migration-general-buildhistory}
+:::
 
 - *Checking Image / SDK Changes*:
 
-  > The `ref-classes-buildhistory`{.interpreted-text role="ref"} class can be used if you wish to check the impact of changes to images / SDKs across the migration (e.g. added/removed packages, added/removed files, size changes etc.). To do this, follow these steps:
+  > The `ref-classes-buildhistory` class can be used if you wish to check the impact of changes to images / SDKs across the migration (e.g. added/removed packages, added/removed files, size changes etc.). To do this, follow these steps:
   >
 
-> 使用 `ref-classes-buildhistory`{.interpreted-text role="ref"}类，可以检查迁移中对图像/SDK 的更改所带来的影响（例如，添加/删除的包、添加/删除的文件、大小更改等）。要做到这一点，请按照以下步骤操作：
+> 使用 `ref-classes-buildhistory` 类，可以检查迁移中对镜像/SDK 的更改所带来的影响(例如，添加/删除的包、添加/删除的文件、大小更改等)。要做到这一点，请按照以下步骤操作：
 >
-> 1. Enable `ref-classes-buildhistory`{.interpreted-text role="ref"} before the migration
+> 1. Enable `ref-classes-buildhistory` before the migration
 > 2. Run a pre-migration build
 
-> 3. Capture the `ref-classes-buildhistory`{.interpreted-text role="ref"} output (as specified by `BUILDHISTORY_DIR`{.interpreted-text role="term"}) and ensure it is preserved for subsequent builds. How you would do this depends on how you are running your builds - if you are doing this all on one workstation in the same `Build Directory`{.interpreted-text role="term"} you may not need to do anything other than not deleting the `ref-classes-buildhistory`{.interpreted-text role="ref"} output directory. For builds in a pipeline it may be more complicated.
+> 3. Capture the `ref-classes-buildhistory` output directory. For builds in a pipeline it may be more complicated.
 
-> 捕获 `ref-classes-buildhistory`{.interpreted-text role="ref"}输出（按照 `BUILDHISTORY_DIR`{.interpreted-text role="term"}指定），并确保保留以备后续构建。您将如何做到这一点取决于您如何运行构建 - 如果您在同一个 `Build Directory`{.interpreted-text role="term"}中在一台工作站上完成所有构建，则除了不删除 `ref-classes-buildhistory`{.interpreted-text role="ref"}输出目录之外，可能不需要做任何事情。对于管道中的构建，可能更复杂。
+> 捕获 `ref-classes-buildhistory` 输出目录之外，可能不需要做任何事情。对于管道中的构建，可能更复杂。
 
-> 4. Set a tag in the `ref-classes-buildhistory`{.interpreted-text role="ref"} output (which is a git repository) before migration, to make the commit from the pre-migration build easy to find as you may end up running multiple builds during the migration.
+> 4. Set a tag in the `ref-classes-buildhistory` output (which is a git repository) before migration, to make the commit from the pre-migration build easy to find as you may end up running multiple builds during the migration.
 
-> 设置 `ref-classes-buildhistory`{.interpreted-text role="ref"}输出（这是一个 git 存储库）中的标签，在迁移之前，以便在迁移期间运行多个构建时，可以轻松找到迁移之前构建的提交。
+> 设置 `ref-classes-buildhistory` 输出(这是一个 git 存储库)中的标签，在迁移之前，以便在迁移期间运行多个构建时，可以轻松找到迁移之前构建的提交。
 > 5. Perform the migration
 > 6. Run a build
 
-> 7. Check the output changes between the previously set tag and HEAD in the `ref-classes-buildhistory`{.interpreted-text role="ref"} output using `git diff` or `buildhistory-diff`.
+> 7. Check the output changes between the previously set tag and HEAD in the `ref-classes-buildhistory` output using `git diff` or `buildhistory-diff`.
 
 > 检查在 `ref-classes-buildhistory` 输出中，之前设置的标签和 HEAD 之间的输出变化，使用 `git diff` 或 `buildhistory-diff`。
 
-> For more information on using `ref-classes-buildhistory`{.interpreted-text role="ref"}, see `dev-manual/build-quality:maintaining build output quality`{.interpreted-text role="ref"}.
+> For more information on using `ref-classes-buildhistory`.
 
 > 对于使用 ref-classes-buildhistory 的更多信息，请参见 dev-manual/build-quality：维护构建输出质量。
 > :::

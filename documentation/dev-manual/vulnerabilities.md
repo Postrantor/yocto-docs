@@ -7,23 +7,23 @@ title: Checking for Vulnerabilities
 
 # Vulnerabilities in Poky and OE-Core
 
-The Yocto Project has an infrastructure to track and address unfixed known security vulnerabilities, as tracked by the public `Common Vulnerabilities and Exposures (CVE) <Common_Vulnerabilities_and_Exposures>`{.interpreted-text role="wikipedia"} database.
+The Yocto Project has an infrastructure to track and address unfixed known security vulnerabilities, as tracked by the public `Common Vulnerabilities and Exposures (CVE) <Common_Vulnerabilities_and_Exposures>` database.
 
-> 项目 Yocto 拥有一个基础架构来跟踪和解决未修复的已知安全漏洞，这些漏洞由公开的“通用漏洞与暴露（CVE）”数据库跟踪。
+> 项目 Yocto 拥有一个基础架构来跟踪和解决未修复的已知安全漏洞，这些漏洞由公开的“通用漏洞与暴露(CVE)”数据库跟踪。
 
 The Yocto Project maintains a [list of known vulnerabilities](https://autobuilder.yocto.io/pub/non-release/patchmetrics/) for packages in Poky and OE-Core, tracking the evolution of the number of unpatched CVEs and the status of patches. Such information is available for the current development version and for each supported release.
 
 > 项目 Yocto 维护了一个 Poky 和 OE-Core 中包的已知漏洞列表，跟踪未修补的 CVE 数量的变化以及补丁的状态。这些信息适用于当前的开发版本和每个支持的版本。
 
-Security is a process, not a product, and thus at any time, a number of security issues may be impacting Poky and OE-Core. It is up to the maintainers, users, contributors and anyone interested in the issues to investigate and possibly fix them by updating software components to newer versions or by applying patches to address them. It is recommended to work with Poky and OE-Core upstream maintainers and submit patches to fix them, see \"`dev-manual/changes:submitting a change to the yocto project`{.interpreted-text role="ref"}\" for details.
+Security is a process, not a product, and thus at any time, a number of security issues may be impacting Poky and OE-Core. It is up to the maintainers, users, contributors and anyone interested in the issues to investigate and possibly fix them by updating software components to newer versions or by applying patches to address them. It is recommended to work with Poky and OE-Core upstream maintainers and submit patches to fix them, see \"`dev-manual/changes:submitting a change to the yocto project`\" for details.
 
 > 安全是一个过程，而不是一个产品，因此，随时会有许多安全问题影响 Poky 和 OE-Core。由维护者、用户、贡献者和任何对这些问题感兴趣的人来调查并通过更新软件组件到更新版本或通过应用补丁来解决它们。建议与 Poky 和 OE-Core 上游维护者一起工作，并提交补丁以修复它们，有关详细信息，请参见“dev-manual/changes:submitting a change to the yocto project”。
 
 # Vulnerability check at build time
 
-To enable a check for CVE security vulnerabilities using `ref-classes-cve-check`{.interpreted-text role="ref"} in the specific image or target you are building, add the following setting to your configuration:
+To enable a check for CVE security vulnerabilities using `ref-classes-cve-check` in the specific image or target you are building, add the following setting to your configuration:
 
-> 要在您正在构建的特定图像或目标上启用 CVE 安全漏洞检查，请在配置中添加以下设置：ref-classes-cve-check。
+> 要在您正在构建的特定镜像或目标上启用 CVE 安全漏洞检查，请在配置中添加以下设置：ref-classes-cve-check。
 
 ```
 INHERIT += "cve-check"
@@ -39,7 +39,7 @@ include conf/distro/include/cve-extra-exclusions.inc
 
 With this CVE check enabled, BitBake build will try to map each compiled software component recipe name and version information to the CVE database and generate recipe and image specific reports. These reports will contain:
 
-> 启用此 CVE 检查后，BitBake 构建将尝试将每个编译的软件组件配方名称和版本信息映射到 CVE 数据库，并生成特定配方和图像的报告。这些报告将包括：
+> 启用此 CVE 检查后，BitBake 构建将尝试将每个编译的软件组件配方名称和版本信息映射到 CVE 数据库，并生成特定配方和镜像的报告。这些报告将包括：
 
 - metadata about the software component like names and versions
 - metadata about the CVE issue such as description and NVD link
@@ -81,7 +81,7 @@ MORE INFORMATION: https://nvd.nist.gov/vuln/detail/CVE-2019-6293
 
 For images, a summary of all recipes included in the image and their CVEs is also generated in textual and JSON formats. These `.cve` and `.json` reports can be found in the `tmp/deploy/images` directory for each compiled image.
 
-> 对于图像，还会生成以文本和 JSON 格式汇总的图像中包含的所有配方及其 CVE 的摘要。这些 `.cve` 和 `.json` 报告可以在每个编译图像的 `tmp/deploy/images` 目录中找到。
+> 对于镜像，还会生成以文本和 JSON 格式汇总的镜像中包含的所有配方及其 CVE 的摘要。这些 `.cve` 和 `.json` 报告可以在每个编译镜像的 `tmp/deploy/images` 目录中找到。
 
 At build time CVE check will also throw warnings about `Unpatched` CVEs:
 
@@ -98,9 +98,9 @@ bitbake -c cve_check flex libarchive
 
 # Fixing CVE product name and version mappings
 
-By default, `ref-classes-cve-check`{.interpreted-text role="ref"} uses the recipe name `BPN`{.interpreted-text role="term"} as CVE product name when querying the CVE database. If this mapping contains false positives, e.g. some reported CVEs are not for the software component in question, or false negatives like some CVEs are not found to impact the recipe when they should, then the problems can be in the recipe name to CVE product mapping. These mapping issues can be fixed by setting the `CVE_PRODUCT`{.interpreted-text role="term"} variable inside the recipe. This defines the name of the software component in the upstream [NIST CVE database](https://nvd.nist.gov/).
+By default, `ref-classes-cve-check` variable inside the recipe. This defines the name of the software component in the upstream [NIST CVE database](https://nvd.nist.gov/).
 
-> 默认情况下，`ref-classes-cve-check`{.interpreted-text role="ref"}在查询 CVE 数据库时使用配方名称 `BPN`{.interpreted-text role="term"}作为 CVE 产品名称。如果此映射包含误报，例如报告的某些 CVE 不是针对问题中的软件组件，或者误报负面如某些 CVE 未被发现影响配方，而实际上应该影响，那么问题可能在配方名称到 CVE 产品映射中。可以通过在配方中设置 `CVE_PRODUCT`{.interpreted-text role="term"}变量来解决这些映射问题。这定义了上游 [NIST CVE 数据库](https://nvd.nist.gov/)中软件组件的名称。
+> 默认情况下，`ref-classes-cve-check` 变量来解决这些映射问题。这定义了上游 [NIST CVE 数据库](https://nvd.nist.gov/)中软件组件的名称。
 
 The variable supports using vendor and product names like this:
 
@@ -112,7 +112,7 @@ In this example the vendor name used in the CVE database is `flex_project` and t
 
 > 在这个例子中，CVE 数据库中使用的供应商名称是 `flex_project`，产品是 `flex`。设置为这个的情况下，`flex` 配方只映射到这个特定的产品，而不是其他供应商同名的 `flex` 产品。
 
-Similarly, when the recipe version `PV`{.interpreted-text role="term"} is not compatible with software versions used by the upstream software component releases and the CVE database, these can be fixed using the `CVE_VERSION`{.interpreted-text role="term"} variable.
+Similarly, when the recipe version `PV` variable.
 
 > 同样，当配方版本 `PV` 不兼容上游软件组件发布和 CVE 数据库使用的软件版本时，可以使用 `CVE_VERSION` 变量来修复这些问题。
 
@@ -131,7 +131,7 @@ For stable branches, it is preferred to apply patches for the issues. For some s
 Here is an example of fixing CVE security issues with patch files, an example from the :oe_layerindex:\`ffmpeg recipe\</layerindex/recipe/47350\>\`:
 
 ```
-SRC_URI = "https://www.ffmpeg.org/releases/${BP}.tar.xz \
+SRC_URI = "https://www.ffmpeg.org/releases/$.tar.xz \
            file://0001-libavutil-include-assembly-with-full-path-from-sourc.patch \
            file://fix-CVE-2020-20446.patch \
            file://fix-CVE-2020-20453.patch \
@@ -149,35 +149,35 @@ CVE: CVE-2020-22033
 
 CVE checker will then capture this information and change the CVE status to `Patched` in the generated reports.
 
-If analysis shows that the CVE issue does not impact the recipe due to configuration, platform, version or other reasons, the CVE can be marked as `Ignored` using the `CVE_CHECK_IGNORE`{.interpreted-text role="term"} variable. As mentioned previously, if data in the CVE database is wrong, it is recommend to fix those issues in the CVE database directly.
+If analysis shows that the CVE issue does not impact the recipe due to configuration, platform, version or other reasons, the CVE can be marked as `Ignored` using the `CVE_CHECK_IGNORE` variable. As mentioned previously, if data in the CVE database is wrong, it is recommend to fix those issues in the CVE database directly.
 
 > 如果分析表明，由于配置、平台、版本或其他原因，CVE 问题不会影响配方，可以使用 `CVE_CHECK_IGNORE` 变量将 CVE 标记为 `忽略`。正如之前提到的，如果 CVE 数据库中的数据有误，建议直接在 CVE 数据库中修复这些问题。
 
-Recipes can be completely skipped by CVE check by including the recipe name in the `CVE_CHECK_SKIP_RECIPE`{.interpreted-text role="term"} variable.
+Recipes can be completely skipped by CVE check by including the recipe name in the `CVE_CHECK_SKIP_RECIPE` variable.
 
 # Implementation details
 
-Here\'s what the `ref-classes-cve-check`{.interpreted-text role="ref"} class does to find unpatched CVE IDs.
+Here\'s what the `ref-classes-cve-check` class does to find unpatched CVE IDs.
 
 First the code goes through each patch file provided by a recipe. If a valid CVE ID is found in the name of the file, the corresponding CVE is considered as patched. Don\'t forget that if multiple CVE IDs are found in the filename, only the last one is considered. Then, the code looks for `CVE: CVE-ID` lines in the patch file. The found CVE IDs are also considered as patched.
 
 > 首先，代码会遍历由配方提供的每个补丁文件。如果在文件名中发现有效的 CVE ID，则将相应的 CVE 视为已修补。别忘了，如果文件名中发现多个 CVE ID，只有最后一个才被考虑。然后，代码会在补丁文件中寻找“CVE：CVE-ID”行。找到的 CVE ID 也被视为已修补。
 
-Then, the code looks up all the CVE IDs in the NIST database for all the products defined in `CVE_PRODUCT`{.interpreted-text role="term"}. Then, for each found CVE:
+Then, the code looks up all the CVE IDs in the NIST database for all the products defined in `CVE_PRODUCT`. Then, for each found CVE:
 
 > 然后，代码会在 NIST 数据库中查找定义在 CVE_PRODUCT 中的所有产品的 CVE ID。然后，对于每个发现的 CVE：
 
-- If the package name (`PN`{.interpreted-text role="term"}) is part of `CVE_CHECK_SKIP_RECIPE`{.interpreted-text role="term"}, it is considered as `Patched`.
+- If the package name (`PN`, it is considered as `Patched`.
 
-> 如果包名（PN）是 CVE_CHECK_SKIP_RECIPE 的一部分，则被视为已修补。
+> 如果包名(PN)是 CVE_CHECK_SKIP_RECIPE 的一部分，则被视为已修补。
 
-- If the CVE ID is part of `CVE_CHECK_IGNORE`{.interpreted-text role="term"}, it is set as `Ignored`.
+- If the CVE ID is part of `CVE_CHECK_IGNORE`, it is set as `Ignored`.
 - If the CVE ID is part of the patched CVE for the recipe, it is already considered as `Patched`.
-- Otherwise, the code checks whether the recipe version (`PV`{.interpreted-text role="term"}) is within the range of versions impacted by the CVE. If so, the CVE is considered as `Unpatched`.
+- Otherwise, the code checks whether the recipe version (`PV`) is within the range of versions impacted by the CVE. If so, the CVE is considered as `Unpatched`.
 
-> 否则，代码检查食谱版本（PV）是否在受 CVE 影响的版本范围内。如果是，则将 CVE 视为“未补丁”。
+> 否则，代码检查 recipes 版本(PV)是否在受 CVE 影响的版本范围内。如果是，则将 CVE 视为“未补丁”。
 
-The CVE database is stored in `DL_DIR`{.interpreted-text role="term"} and can be inspected using `sqlite3` command as follows:
+The CVE database is stored in `DL_DIR` and can be inspected using `sqlite3` command as follows:
 
 ```
 sqlite3 downloads/CVE_CHECK/nvdcve_1.1.db .dump | grep CVE-2021-37462

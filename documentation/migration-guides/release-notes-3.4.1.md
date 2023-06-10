@@ -7,18 +7,18 @@ title: Release notes for 3.4.1 (honister)
 
 # Known Issues in 3.4.1
 
-- :yocto_bugs:[bsps-hw.bsps-hw.Test_Seek_bar_and_volume_control manual test case failure \</show_bug.cgi?id=14622\>]{.title-ref}
+- :yocto_bugs:[bsps-hw.bsps-hw.Test_Seek_bar_and_volume_control manual test case failure \</show_bug.cgi?id=14622\>]
 
 # Security Fixes in 3.4.1
 
-- glibc: Backport fix for `2021-43396`{.interpreted-text role="cve"}
-- vim: add patch number to `2021-3778`{.interpreted-text role="cve"} patch
-- vim: fix `2021-3796`{.interpreted-text role="cve"}, `2021-3872`{.interpreted-text role="cve"}, and `2021-3875`{.interpreted-text role="cve"}
-- squashfs-tools: follow-up fix for `2021-41072`{.interpreted-text role="cve"}
+- glibc: Backport fix for `2021-43396`
+- vim: add patch number to `2021-3778` patch
+- vim: fix `2021-3796`
+- squashfs-tools: follow-up fix for `2021-41072`
 - avahi: update CVE id fixed by local-ping.patch
-- squashfs-tools: fix `2021-41072`{.interpreted-text role="cve"}
-- ffmpeg: fix `2021-38114`{.interpreted-text role="cve"}
-- curl: fix `2021-22945`{.interpreted-text role="cve"}, `2021-22946`{.interpreted-text role="cve"} and `2021-22947`{.interpreted-text role="cve"}
+- squashfs-tools: fix `2021-41072`
+- ffmpeg: fix `2021-38114`
+- curl: fix `2021-22945`
 
 # Fixes in 3.4.1
 
@@ -54,9 +54,9 @@ title: Release notes for 3.4.1 (honister)
 - ca-certificates: update 20210119 -\> 20211016
 - classes/populate_sdk_base: Add setscene tasks
 - conf: update for release 3.4
-- convert-srcuri.py: use regex to check space in `SRC_URI`{.interpreted-text role="term"}
+- convert-srcuri.py: use regex to check space in `SRC_URI`
 - create-spdx: Fix key errors in do_create_runtime_spdx
-- create-spdx: Protect against None from `LICENSE_PATH`{.interpreted-text role="term"}
+- create-spdx: Protect against None from `LICENSE_PATH`
 - create-spdx: Set the Organization field via a variable
 - create-spdx: add create_annotation function
 - create-spdx: cross recipes are native also
@@ -83,18 +83,18 @@ title: Release notes for 3.4.1 (honister)
 - insane.bbclass: Add a check for directories that are expected to be empty
 - kernel-devsrc: Add vdso.lds and other build files for riscv64 as well
 - libnewt: Use python3targetconfig to fix reproducibility issue
-- libpcre/libpcre2: correct `SRC_URI`{.interpreted-text role="term"}
-- libx11-compose-data: Update `LICENSE`{.interpreted-text role="term"} to better reflect reality
-- libx11: Update `LICENSE`{.interpreted-text role="term"} to better reflect reality
+- libpcre/libpcre2: correct `SRC_URI`
+- libx11-compose-data: Update `LICENSE` to better reflect reality
+- libx11: Update `LICENSE` to better reflect reality
 - libxml2: Use python3targetconfig to fix reproducibility issue
 - linunistring: Add missing gperf-native dependency
 - linux-firmware: upgrade to 20211027
-- linux-yocto-dev: Ensure `DEPENDS`{.interpreted-text role="term"} matches recent 5.14 kernel changes
+- linux-yocto-dev: Ensure `DEPENDS` matches recent 5.14 kernel changes
 - linux-yocto-rt/5.10: update to -rt54
 - linux-yocto/5.10: update to v5.10.78
 - linux-yocto/5.14: common-pc: enable CONFIG_ATA_PIIX as built-in
 - linux-yocto/5.14: update to v5.14.17
-- linux-yocto: add libmpc-native to `DEPENDS`{.interpreted-text role="term"}
+- linux-yocto: add libmpc-native to `DEPENDS`
 - lttng-tools: replace ad hoc ptest fixup with upstream fixes
 - manuals: releases.rst: move gatesgarth to outdated releases section
 - mesa: Enable svga for x86 only
@@ -122,18 +122,18 @@ title: Release notes for 3.4.1 (honister)
 - poky.yaml: add lz4 and zstd to essential host packages
 - poky.yaml: fix lz4 package name for older Ubuntu versions
 - pseudo: Add fcntl64 wrapper
-- python3-setuptools: \_distutils/sysconfig fix
+- python3-setuptools: _distutils/sysconfig fix
 - python3: update to 3.9.7
 - qemu.inc: Remove empty egg-info directories before running meson
 - recipes: Update github.com urls to use https
 - ref-manual: Update how to set a useradd password
-- ref-manual: document \"reproducible_build\" class and `SOURCE_DATE_EPOCH`{.interpreted-text role="term"}
+- ref-manual: document \"reproducible_build\" class and `SOURCE_DATE_EPOCH`
 - ref-manual: document BUILD_REPRODUCIBLE_BINARIES
-- ref-manual: document `TOOLCHAIN_HOST_TASK_ESDK`{.interpreted-text role="term"}
+- ref-manual: document `TOOLCHAIN_HOST_TASK_ESDK`
 - ref-manual: remove meta class
 - ref-manual: update system requirements
 - releases.rst: fix release number for 3.3.3
-- scripts/convert-srcuri: Update `SRC_URI`{.interpreted-text role="term"} conversion script to handle github url changes
+- scripts/convert-srcuri: Update `SRC_URI` conversion script to handle github url changes
 - scripts/lib/wic/help.py: Update Fedora Kickstart URLs
 - scripts/oe-package-browser: Fix after overrides change
 - scripts/oe-package-browser: Handle no packages being built
@@ -154,7 +154,7 @@ title: Release notes for 3.4.1 (honister)
 - waffle: convert to git, website is down
 - wayland: Fix wayland-tools packaging
 - wireless-regdb: upgrade 2021.07.14 -\> 2021.08.28
-- wpa-supplicant: Match package override to `PACKAGES`{.interpreted-text role="term"} for pkg_postinst
+- wpa-supplicant: Match package override to `PACKAGES` for pkg_postinst
 
 # Contributors to 3.4.1
 
@@ -197,10 +197,10 @@ title: Release notes for 3.4.1 (honister)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</poky/tag/?h=yocto-3.4.1\>\`
-- Git Revision: :yocto\_[git:%60b53230c08d9f02ecaf35b4f0b70512abbf10ae11](git:%60b53230c08d9f02ecaf35b4f0b70512abbf10ae11) \</poky/commit/?id=b53230c08d9f02ecaf35b4f0b70512abbf10ae11\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</poky/tag/?h=yocto-3.4.1\>\`
+- Git Revision: :yocto_[git:%60b53230c08d9f02ecaf35b4f0b70512abbf10ae11](git:%60b53230c08d9f02ecaf35b4f0b70512abbf10ae11) \</poky/commit/?id=b53230c08d9f02ecaf35b4f0b70512abbf10ae11\>\`
 
 > Git 版本：:yocto_[git:`b53230c08d9f02ecaf35b4f0b70512abbf10ae11`](git:%60b53230c08d9f02ecaf35b4f0b70512abbf10ae11%60) \</poky/commit/?id=b53230c08d9f02ecaf35b4f0b70512abbf10ae11\>\`
 
@@ -212,10 +212,10 @@ poky
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</meta-mingw/tag/?h=yocto-3.4.1\>\`
-- Git Revision: :yocto\_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</meta-mingw/tag/?h=yocto-3.4.1\>\`
+- Git Revision: :yocto_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
 > Git 版本：yocto_[git:`f5d761cbd5c957e4405c5d40b0c236d263c916a8`](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8%60) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
@@ -227,10 +227,10 @@ meta-mingw
 
 meta-gplv2
 
-- Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</meta-gplv2/tag/?h=yocto-3.4.1\>\`
-- Git Revision: :yocto\_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
+- Repository Location: :yocto_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</meta-gplv2/tag/?h=yocto-3.4.1\>\`
+- Git Revision: :yocto_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
 > Git 版本：yocto_[git:`f04e4369bf9dd3385165281b9fa2ed1043b0e400`](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400%60) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
@@ -242,10 +242,10 @@ meta-gplv2
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
-- Tag: :oe\_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</bitbake/tag/?h=yocto-3.4.1\>\`
-- Git Revision: :oe\_[git:%6044a83b373e1fc34c93cd4a6c6cf8b73b230c1520](git:%6044a83b373e1fc34c93cd4a6c6cf8b73b230c1520) \</bitbake/commit/?id=44a83b373e1fc34c93cd4a6c6cf8b73b230c1520\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
+- Tag: :oe_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</bitbake/tag/?h=yocto-3.4.1\>\`
+- Git Revision: :oe_[git:%6044a83b373e1fc34c93cd4a6c6cf8b73b230c1520](git:%6044a83b373e1fc34c93cd4a6c6cf8b73b230c1520) \</bitbake/commit/?id=44a83b373e1fc34c93cd4a6c6cf8b73b230c1520\>\`
 
 > - Git 版本：<bitbake/commit/?id=44a83b373e1fc34c93cd4a6c6cf8b73b230c1520>，Git：`44a83b373e1fc34c93cd4a6c6cf8b73b230c1520`
 
@@ -257,9 +257,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</yocto-docs/tag/?h=yocto-3.4.1\>\`
-- Git Revision: :yocto\_[git:%60b250eda5a0beba8acc9641c55a5b0e30594b5178](git:%60b250eda5a0beba8acc9641c55a5b0e30594b5178) \</yocto-docs/commit/?b250eda5a0beba8acc9641c55a5b0e30594b5178\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.1](git:%60yocto-3.4.1) \</yocto-docs/tag/?h=yocto-3.4.1\>\`
+- Git Revision: :yocto_[git:%60b250eda5a0beba8acc9641c55a5b0e30594b5178](git:%60b250eda5a0beba8acc9641c55a5b0e30594b5178) \</yocto-docs/commit/?b250eda5a0beba8acc9641c55a5b0e30594b5178\>\`
 
 > -Git 版本：:yocto_[git:`b250eda5a0beba8acc9641c55a5b0e30594b5178`](git:%60b250eda5a0beba8acc9641c55a5b0e30594b5178%60)</yocto-docs/commit/?b250eda5a0beba8acc9641c55a5b0e30594b5178>

@@ -5,7 +5,7 @@ tip: translate by openai@2023-06-10 10:51:34
 title: Selecting an Initialization Manager
 ------------------------------------------
 
-By default, the Yocto Project uses `SysVinit <Init#SysV-style>`{.interpreted-text role="wikipedia"} as the initialization manager. There is also support for BusyBox init, a simpler implementation, as well as support for `systemd <Systemd>`{.interpreted-text role="wikipedia"}, which is a full replacement for init with parallel starting of services, reduced shell overhead, increased security and resource limits for services, and other features that are used by many distributions.
+By default, the Yocto Project uses `SysVinit <Init#SysV-style>`, which is a full replacement for init with parallel starting of services, reduced shell overhead, increased security and resource limits for services, and other features that are used by many distributions.
 
 > 默认情况下，Yocto 项目使用 SysVinit 作为初始化管理器。还支持 BusyBox init，一个更简单的实现，以及支持 systemd，它是一个用于替换 init 的完整替代品，可以并行启动服务，减少 shell 开销，增加服务的安全性和资源限制，以及许多分发版使用的其他功能。
 
@@ -13,9 +13,9 @@ Within the system, SysVinit and BusyBox init treat system components as services
 
 > 在系统中，SysVinit 和 BusyBox init 将系统组件视为服务。这些服务被维护为存储在 `/etc/init.d/` 目录中的 shell 脚本。
 
-SysVinit is more elaborate than BusyBox init and organizes services in different run levels. This organization is maintained by putting links to the services in the `/etc/rcN.d/` directories, where [N/]{.title-ref} is one of the following options: \"S\", \"0\", \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\".
+SysVinit is more elaborate than BusyBox init and organizes services in different run levels. This organization is maintained by putting links to the services in the `/etc/rcN.d/` directories, where [N/] is one of the following options: \"S\", \"0\", \"1\", \"2\", \"3\", \"4\", \"5\", or \"6\".
 
-> SysVinit 比 BusyBox init 更精细，并且将服务组织到不同的运行级别中。这种组织是通过在 `/etc/rcN.d/` 目录中放置服务的链接来维护的，其中[N/]{.title-ref}是以下选项之一：“S”、“0”、“1”、“2”、“3”、“4”、“5”或“6”。
+> SysVinit 比 BusyBox init 更精细，并且将服务组织到不同的运行级别中。这种组织是通过在 `/etc/rcN.d/` 目录中放置服务的链接来维护的，其中[N/]是以下选项之一：“S”、“0”、“1”、“2”、“3”、“4”、“5”或“6”。
 
 ::: note
 ::: title
@@ -35,13 +35,13 @@ In comparison, systemd treats components as units. Using units is a broader conc
 
 In systems with SysVinit or BusyBox init, services load sequentially (i.e. one by one) during init and parallelization is not supported. With systemd, services start in parallel. This method can have an impact on the startup performance of a given service, though systemd will also provide more services by default, therefore increasing the total system boot time. systemd also substantially increases system size because of its multiple components and the extra dependencies it pulls.
 
-> 在使用 SysVinit 或 BusyBox init 的系统中，服务会按顺序（即一个接一个）加载，不支持并行化。使用 systemd，服务可以并行启动。这种方法可能会影响给定服务的启动性能，但 systemd 也会默认提供更多的服务，因此增加了整个系统的启动时间。systemd 也会大大增加系统的大小，因为它有多个组件，还有它拉取的额外依赖关系。
+> 在使用 SysVinit 或 BusyBox init 的系统中，服务会按顺序(即一个接一个)加载，不支持并行化。使用 systemd，服务可以并行启动。这种方法可能会影响给定服务的启动性能，但 systemd 也会默认提供更多的服务，因此增加了整个系统的启动时间。systemd 也会大大增加系统的大小，因为它有多个组件，还有它拉取的额外依赖关系。
 
-On the contrary, BusyBox init is the simplest and the lightest solution and also comes with BusyBox mdev as device manager, a lighter replacement to `udev <Udev>`{.interpreted-text role="wikipedia"}, which SysVinit and systemd both use.
+On the contrary, BusyBox init is the simplest and the lightest solution and also comes with BusyBox mdev as device manager, a lighter replacement to `udev <Udev>`, which SysVinit and systemd both use.
 
 > 反之，BusyBox init 是最简单和最轻量级的解决方案，并配有 BusyBox mdev 作为设备管理器，这是一个替代 udev 的轻量级替代品，SysVinit 和 systemd 都使用它。
 
-The \"`device-manager`{.interpreted-text role="ref"}\" chapter has more details about device managers.
+The \"`device-manager`\" chapter has more details about device managers.
 
 # Using SysVinit with udev
 
@@ -71,7 +71,7 @@ The last option is to use systemd together with the udev device manager. This is
 INIT_MANAGER = "systemd"
 ```
 
-This will enable systemd and remove sysvinit components from the image. See :yocto\_[git:%60meta/conf/distro/include/init-manager-systemd.inc](git:%60meta/conf/distro/include/init-manager-systemd.inc) \</poky/tree/meta/conf/distro/include/init-manager-systemd.inc\>\` for exact details on what this does.
+This will enable systemd and remove sysvinit components from the image. See :yocto_[git:%60meta/conf/distro/include/init-manager-systemd.inc](git:%60meta/conf/distro/include/init-manager-systemd.inc) \</poky/tree/meta/conf/distro/include/init-manager-systemd.inc\>\` for exact details on what this does.
 
 > 这将启用 systemd 并从映像中删除 sysvinit 组件。有关此操作的确切详细信息，请参阅：yocto_[git：`meta/conf/distro/include/init-manager-systemd.inc`](git:%60meta/conf/distro/include/init-manager-systemd.inc%60) \</poky/tree/meta/conf/distro/include/init-manager-systemd.inc\>\。
 

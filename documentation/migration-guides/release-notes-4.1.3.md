@@ -7,32 +7,32 @@ title: Release notes for Yocto-4.1.3 (Langdale)
 
 # Security Fixes in Yocto-4.1.3
 
-- apr-util: Fix `2022-25147`{.interpreted-text role="cve"}
-- apr: Fix `2022-24963`{.interpreted-text role="cve"} and `2022-28331`{.interpreted-text role="cve"}
-- bind: Fix `2022-3094`{.interpreted-text role="cve"}, `2022-3736`{.interpreted-text role="cve"} and `2022-3924`{.interpreted-text role="cve"}
-- curl: Fix `2022-43551`{.interpreted-text role="cve"} and `2022-43552`{.interpreted-text role="cve"}
-- dbus: Fix `2022-42010`{.interpreted-text role="cve"}, `2022-42011`{.interpreted-text role="cve"} and `2022-42012`{.interpreted-text role="cve"}
-- git: Fix `2022-23521`{.interpreted-text role="cve"}, `2022-39253`{.interpreted-text role="cve"}, `2022-39260`{.interpreted-text role="cve"} and `2022-41903`{.interpreted-text role="cve"}
+- apr-util: Fix `2022-25147`
+- apr: Fix `2022-24963`
+- bind: Fix `2022-3094`
+- curl: Fix `2022-43551`
+- dbus: Fix `2022-42010`
+- git: Fix `2022-23521`
 
-> 修复 `2022-23521`{.interpreted-text role="cve"}, `2022-39253`{.interpreted-text role="cve"}, `2022-39260`{.interpreted-text role="cve"}和 `2022-41903`{.interpreted-text role="cve"}
+> 修复 `2022-23521`
 
-- git: Ignore `2022-41953`{.interpreted-text role="cve"}
-- go: Fix `2022-41717`{.interpreted-text role="cve"} and `2022-41720`{.interpreted-text role="cve"}
-- grub2: Fix `2022-2601`{.interpreted-text role="cve"} and `2022-3775`{.interpreted-text role="cve"}
-- less: Fix `2022-46663`{.interpreted-text role="cve"}
-- libarchive: Fix `2022-36227`{.interpreted-text role="cve"}
-- libksba: Fix `2022-47629`{.interpreted-text role="cve"}
-- openssl: Fix `2022-3996`{.interpreted-text role="cve"}
-- pkgconf: Fix `2023-24056`{.interpreted-text role="cve"}
-- ppp: Fix `2022-4603`{.interpreted-text role="cve"}
-- sudo: Fix `2023-22809`{.interpreted-text role="cve"}
-- tar: Fix `2022-48303`{.interpreted-text role="cve"}
-- vim: Fix `2023-0049`{.interpreted-text role="cve"}, `2023-0051`{.interpreted-text role="cve"}, `2023-0054`{.interpreted-text role="cve"}, `2023-0288`{.interpreted-text role="cve"}, `2023-0433`{.interpreted-text role="cve"} and `2023-0512`{.interpreted-text role="cve"}
+- git: Ignore `2022-41953`
+- go: Fix `2022-41717`
+- grub2: Fix `2022-2601`
+- less: Fix `2022-46663`
+- libarchive: Fix `2022-36227`
+- libksba: Fix `2022-47629`
+- openssl: Fix `2022-3996`
+- pkgconf: Fix `2023-24056`
+- ppp: Fix `2022-4603`
+- sudo: Fix `2023-22809`
+- tar: Fix `2022-48303`
+- vim: Fix `2023-0049`
 
 > 修复 CVE-2023-0049、CVE-2023-0051、CVE-2023-0054、CVE-2023-0288、CVE-2023-0433 和 CVE-2023-0512。
 
-- xserver-xorg: Fix :cve_mitre:[2023-0494]{.title-ref}
-- xwayland: Fix :cve_mitre:[2023-0494]{.title-ref}
+- xserver-xorg: Fix :cve_mitre:[2023-0494]
+- xwayland: Fix :cve_mitre:[2023-0494]
 
 # Fixes in Yocto-4.1.3
 
@@ -261,10 +261,10 @@ title: Release notes for Yocto-4.1.3 (Langdale)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</poky/log/?h=yocto-4.1.3\>\`
-- Git Revision: :yocto\_[git:%6091d0157d6daf4ea61d6b4e090c0b682d3f3ca60f](git:%6091d0157d6daf4ea61d6b4e090c0b682d3f3ca60f) \</poky/commit/?id=91d0157d6daf4ea61d6b4e090c0b682d3f3ca60f\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</poky/log/?h=yocto-4.1.3\>\`
+- Git Revision: :yocto_[git:%6091d0157d6daf4ea61d6b4e090c0b682d3f3ca60f](git:%6091d0157d6daf4ea61d6b4e090c0b682d3f3ca60f) \</poky/commit/?id=91d0157d6daf4ea61d6b4e090c0b682d3f3ca60f\>\`
 
 > Git 版本：:yocto_[git:`91d0157d6daf4ea61d6b4e090c0b682d3f3ca60f`](git:%6091d0157d6daf4ea61d6b4e090c0b682d3f3ca60f%60) \</poky/commit/?id=91d0157d6daf4ea61d6b4e090c0b682d3f3ca60f\>\`
 
@@ -276,12 +276,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
-- Tag: :oe\_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</openembedded-core/log/?h=yocto-4.1.3\>\`
-- Git Revision: :oe\_[git:%60b995ea45773211bd7bdd60eabcc9bbffda6beb5c](git:%60b995ea45773211bd7bdd60eabcc9bbffda6beb5c) \</openembedded-core/commit/?id=b995ea45773211bd7bdd60eabcc9bbffda6beb5c\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
+- Tag: :oe_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</openembedded-core/log/?h=yocto-4.1.3\>\`
+- Git Revision: :oe_[git:%60b995ea45773211bd7bdd60eabcc9bbffda6beb5c](git:%60b995ea45773211bd7bdd60eabcc9bbffda6beb5c) \</openembedded-core/commit/?id=b995ea45773211bd7bdd60eabcc9bbffda6beb5c\>\`
 
-> -Git 版本：:oe_[Git：`b995ea45773211bd7bdd60eabcc9bbffda6beb5c`]（Git：`b995ea45773211bd7bdd60eabcc9bbffda6beb5c`）</openembedded-core/commit/?id=b995ea45773211bd7bdd60eabcc9bbffda6beb5c>
+> -Git 版本：:oe_[Git：`b995ea45773211bd7bdd60eabcc9bbffda6beb5c`](Git%EF%BC%9A%60b995ea45773211bd7bdd60eabcc9bbffda6beb5c%60)</openembedded-core/commit/?id=b995ea45773211bd7bdd60eabcc9bbffda6beb5c>
 
 - Release Artefact: oecore-b995ea45773211bd7bdd60eabcc9bbffda6beb5c
 - sha: 952e19361f205ee91b74e5caaa835d58fa6dd0d92ddaed50d4cd3f3fa56fab63
@@ -291,10 +291,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</meta-mingw/log/?h=yocto-4.1.3\>\`
-- Git Revision: :yocto\_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</meta-mingw/log/?h=yocto-4.1.3\>\`
+- Git Revision: :yocto_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
 > Git 版本：yocto_[git:`b0067202db8573df3d23d199f82987cebe1bee2c`](git:%60b0067202db8573df3d23d199f82987cebe1bee2c%60) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
@@ -306,12 +306,12 @@ meta-mingw
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
-- Tag: :oe\_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</bitbake/log/?h=yocto-4.1.3\>\`
-- Git Revision: :oe\_[git:%60592ee222a1c6da42925fb56801f226884b6724ec](git:%60592ee222a1c6da42925fb56801f226884b6724ec) \</bitbake/commit/?id=592ee222a1c6da42925fb56801f226884b6724ec\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
+- Tag: :oe_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</bitbake/log/?h=yocto-4.1.3\>\`
+- Git Revision: :oe_[git:%60592ee222a1c6da42925fb56801f226884b6724ec](git:%60592ee222a1c6da42925fb56801f226884b6724ec) \</bitbake/commit/?id=592ee222a1c6da42925fb56801f226884b6724ec\>\`
 
-> -Git 版本：<bitbake/commit/?id=592ee222a1c6da42925fb56801f226884b6724ec>（git:`592ee222a1c6da42925fb56801f226884b6724ec`）
+> -Git 版本：<bitbake/commit/?id=592ee222a1c6da42925fb56801f226884b6724ec>(git:`592ee222a1c6da42925fb56801f226884b6724ec`)
 
 - Release Artefact: bitbake-592ee222a1c6da42925fb56801f226884b6724ec
 - sha: 79c32f2ca66596132e32a45654ce0e9dd42b6b39186eff3540a9d6b499fe952c
@@ -321,9 +321,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</yocto-docs/log/?h=yocto-4.1.3\>\`
-- Git Revision: :yocto\_[git:%603de2ad1f8ff87aeec30088779267880306a0f31a](git:%603de2ad1f8ff87aeec30088779267880306a0f31a) \</yocto-docs/commit/?id=3de2ad1f8ff87aeec30088779267880306a0f31a\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.3](git:%60yocto-4.1.3) \</yocto-docs/log/?h=yocto-4.1.3\>\`
+- Git Revision: :yocto_[git:%603de2ad1f8ff87aeec30088779267880306a0f31a](git:%603de2ad1f8ff87aeec30088779267880306a0f31a) \</yocto-docs/commit/?id=3de2ad1f8ff87aeec30088779267880306a0f31a\>\`
 
 > Git 版本：:yocto_[git:%603de2ad1f8ff87aeec30088779267880306a0f31a](git:%603de2ad1f8ff87aeec30088779267880306a0f31a) </yocto-docs/commit/?id=3de2ad1f8ff87aeec30088779267880306a0f31a>

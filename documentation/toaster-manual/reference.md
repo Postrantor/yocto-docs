@@ -15,11 +15,11 @@ In general, a \"layer source\" is a source of information about existing layers.
 
 > 一般而言，“图层源”是有关现有图层的信息源。特别是，我们关注可以使用 Yocto 项目和 Toaster 的图层。本章介绍了一种称为“图层索引”的特定类型的图层源。
 
-A layer index is a web application that contains information about a set of custom layers. A good example of an existing layer index is the OpenEmbedded Layer Index. A public instance of this layer index exists at :oe_layerindex:[/]{.title-ref}. You can find the code for this layer index\'s web application at :yocto\_[git:%60/layerindex-web/](git:%60/layerindex-web/)\`.
+A layer index is a web application that contains information about a set of custom layers. A good example of an existing layer index is the OpenEmbedded Layer Index. A public instance of this layer index exists at :oe_layerindex:[/]. You can find the code for this layer index\'s web application at :yocto_[git:%60/layerindex-web/](git:%60/layerindex-web/)\`.
 
-> 一个图层索引是一个包含有关自定义图层集合的信息的 Web 应用程序。一个现有图层索引的好例子是 OpenEmbedded 图层索引。此图层索引的公共实例位于：oe_layerindex：[/]{.title-ref}。您可以在：yocto_<git：%60/layerindex-web/>\`中找到此图层索引的 Web 应用程序的代码。
+> 一个图层索引是一个包含有关自定义图层集合的信息的 Web 应用程序。一个现有图层索引的好例子是 OpenEmbedded 图层索引。此图层索引的公共实例位于：oe_layerindex：[/]。您可以在：yocto_<git：%60/layerindex-web/>\`中找到此图层索引的 Web 应用程序的代码。
 
-When you tie a layer source into Toaster, it can query the layer source through a `REST <Representational_state_transfer>`{.interpreted-text role="wikipedia"} API, store the information about the layers in the Toaster database, and then show the information to users. Users are then able to view that information and build layers from Toaster itself without having to clone or edit the BitBake layers configuration file `bblayers.conf`.
+When you tie a layer source into Toaster, it can query the layer source through a `REST <Representational_state_transfer>` API, store the information about the layers in the Toaster database, and then show the information to users. Users are then able to view that information and build layers from Toaster itself without having to clone or edit the BitBake layers configuration file `bblayers.conf`.
 
 > 当您将图层源连接到烤面包机时，它可以通过 `REST <Representational_state_transfer>` API 查询图层源，将有关图层的信息存储在烤面包机数据库中，然后将该信息显示给用户。然后，用户可以查看该信息并从烤面包机本身构建图层，而无需克隆或编辑 BitBake 图层配置文件 `bblayers.conf`。
 
@@ -41,7 +41,7 @@ You do not have to use a layer source to use Toaster. Tying into a layer source 
 
 To use your own layer source, you need to set up the layer source and then tie it into Toaster. This section describes how to tie into a layer index in a manner similar to the way Toaster ties into the OpenEmbedded Metadata Index.
 
-> 要使用自己的图层源，您需要设置图层源，然后将其与 Toaster 相连。 本节介绍如何以类似于 Toaster 与 OpenEmbedded Metadata Index 相连的方式与图层索引相连。
+> 要使用自己的图层源，您需要设置图层源，然后将其与 Toaster 相连。本节介绍如何以类似于 Toaster 与 OpenEmbedded Metadata Index 相连的方式与图层索引相连。
 
 ### Understanding Your Layers
 
@@ -49,7 +49,7 @@ The obvious first step for using a layer index is to have several custom layers 
 
 > 首先使用层索引的明显步骤是，开发人员定期使用 Yocto Project 构建和访问多个自定义层。这组层必须存在，并且您需要熟悉它们的位置。在设置与您的层组相关联的 Web 应用程序的代码时，您将需要此信息。
 
-For general information on layers, see the \"`overview-manual/yp-intro:the yocto project layer model`{.interpreted-text role="ref"}\" section in the Yocto Project Overview and Concepts Manual. For information on how to create layers, see the \"`dev-manual/layers:understanding and creating layers`{.interpreted-text role="ref"}\" section in the Yocto Project Development Tasks Manual.
+For general information on layers, see the \"`overview-manual/yp-intro:the yocto project layer model`\" section in the Yocto Project Development Tasks Manual.
 
 > 对于层的一般信息，请参阅 Yocto 项目概述与概念手册中的“概览手册/yp-intro：Yocto 项目层模型”部分。有关如何创建层的信息，请参阅 Yocto 项目开发任务手册中的“dev-manual/layers：理解和创建层”部分。
 
@@ -59,15 +59,15 @@ If you want Toaster to use your layer index, you must host the web application i
 
 > 如果你想让 Toaster 使用你的图层索引，你必须将 Web 应用程序托管在一台 Toaster 可以连接的服务器上。你还需要给 Toaster 提供有关你图层索引的信息。换句话说，你必须配置 Toaster 来使用你的图层索引。本节描述了两种方法可以配置和使用你的图层索引。
 
-In the previous section, the code for the OpenEmbedded Metadata Index (i.e. :oe_layerindex:[/]{.title-ref}) was referenced. You can use this code, which is at :yocto\_[git:%60/layerindex-web/](git:%60/layerindex-web/)\`, as a base to create your own layer index.
+In the previous section, the code for the OpenEmbedded Metadata Index (i.e. :oe_layerindex:[/]) was referenced. You can use this code, which is at :yocto_[git:%60/layerindex-web/](git:%60/layerindex-web/)\`, as a base to create your own layer index.
 
-> 在上一节中，引用了 OpenEmbedded 元数据索引（即：oe_layerindex：[/]{.title-ref}）的代码。您可以使用位于 yocto_<git：%60/layerindex-web/> 的这段代码作为基础来创建自己的层索引。
+> 在上一节中，引用了 OpenEmbedded 元数据索引(即：oe_layerindex：[/])的代码。您可以使用位于 yocto_<git：%60/layerindex-web/> 的这段代码作为基础来创建自己的层索引。
 
 #### Use the Administration Interface
 
 Access the administration interface through a browser by entering the URL of your Toaster instance and adding \"`/admin`\" to the end of the URL. As an example, if you are running Toaster locally, use the following URL:
 
-> 通过在 URL 末尾添加 "/admin"，可以通过浏览器访问管理界面。 例如，如果您在本地运行 Toaster，请使用以下 URL：
+> 通过在 URL 末尾添加 "/admin"，可以通过浏览器访问管理界面。例如，如果您在本地运行 Toaster，请使用以下 URL：
 
 ```
 http://127.0.0.1:8000/admin
@@ -81,7 +81,7 @@ The administration interface has a \"Layer sources\" section that includes an \"
 
 The Django fixture feature overrides the default layer server when you use it to specify a custom URL. To use the fixture feature, create (or edit) the file `bitbake/lib/toaster.orm/fixtures/custom.xml`, and then set the following Toaster setting to your custom URL:
 
-> 当您使用它来指定默认层服务器时，Django 夹具功能将覆盖默认层服务器。要使用夹具功能，请创建（或编辑）文件 `bitbake / lib / toaster.orm / fixtures / custom.xml`，然后将以下 Toaster 设置设置为您的自定义 URL：
+> 当您使用它来指定默认层服务器时，Django 夹具功能将覆盖默认层服务器。要使用夹具功能，请创建(或编辑)文件 `bitbake / lib / toaster.orm / fixtures / custom.xml`，然后将以下 Toaster 设置设置为您的自定义 URL：
 
 ```xml
 <?xml version="1.0" ?>
@@ -129,13 +129,13 @@ As shipped, Toaster is configured to work with the following releases:
 
 > 离开工厂时，烤面包机配置好可以使用以下版本：
 
-- *Yocto Project &DISTRO; \"&DISTRO_NAME;\" or OpenEmbedded \"&DISTRO_NAME;\":* This release causes your Toaster projects to build against the head of the &DISTRO_NAME_NO_CAP; branch at :yocto\_[git:%60/poky/log/?h=&DISTRO_NAME_NO_CAP](git:%60/poky/log/?h=&DISTRO_NAME_NO_CAP);\` or :oe\_[git:%60/openembedded-core/commit/?h=&DISTRO_NAME_NO_CAP](git:%60/openembedded-core/commit/?h=&DISTRO_NAME_NO_CAP);\`.
+- *Yocto Project &DISTRO; \"&DISTRO_NAME;\" or OpenEmbedded \"&DISTRO_NAME;\":* This release causes your Toaster projects to build against the head of the &DISTRO_NAME_NO_CAP; branch at :yocto_[git:%60/poky/log/?h=&DISTRO_NAME_NO_CAP](git:%60/poky/log/?h=&DISTRO_NAME_NO_CAP);\` or :oe_[git:%60/openembedded-core/commit/?h=&DISTRO_NAME_NO_CAP](git:%60/openembedded-core/commit/?h=&DISTRO_NAME_NO_CAP);\`.
 
 > *Yocto 项目&DISTRO;“&DISTRO_NAME;”或 OpenEmbedded“&DISTRO_NAME;”：此版本使您的 Toaster 项目可以与&DISTRO_NAME_NO_CAP;分支的头部构建，位于：yocto_[git:%60/poky/log/?h=&DISTRO_NAME_NO_CAP](git:%60/poky/log/?h=&DISTRO_NAME_NO_CAP);或:oe_[git:%60/openembedded-core/commit/?h=&DISTRO_NAME_NO_CAP](git:%60/openembedded-core/commit/?h=&DISTRO_NAME_NO_CAP);。
 
-- *Yocto Project \"Master\" or OpenEmbedded \"Master\":* This release causes your Toaster Projects to build against the head of the master branch, which is where active development takes place, at :yocto\_[git:%60/poky/log/](git:%60/poky/log/)[ or :oe_git:]{.title-ref}/openembedded-core/log/\`.
+- *Yocto Project \"Master\" or OpenEmbedded \"Master\":* This release causes your Toaster Projects to build against the head of the master branch, which is where active development takes place, at :yocto_[git:%60/poky/log/](git:%60/poky/log/)[ or :oe_git:]/openembedded-core/log/\`.
 
-> "Yocto Project" 主分支或 OpenEmbedded 主分支：此发行版会使您的 Toaster 项目基于主分支头构建，该主分支是活跃开发发生的地方，地址为：yocto_[git:/poky/log/](git:/poky/log/)[或:oe_git:]{.title-ref}/openembedded-core/log/\`。
+> "Yocto Project" 主分支或 OpenEmbedded 主分支：此发行版会使您的 Toaster 项目基于主分支头构建，该主分支是活跃开发发生的地方，地址为：yocto_[git:/poky/log/](git:/poky/log/)[或:oe_git:]/openembedded-core/log/\`。
 
 - *Local Yocto Project or Local OpenEmbedded:* This release causes your Toaster Projects to build against the head of the `poky` or `openembedded-core` clone you have local to the machine running Toaster.
 
@@ -181,7 +181,7 @@ The pre-set data for Toaster is easily customizable. You can create the `orm/fix
 
 You use the `orm/fixtures/custom.xml` file to change the default project settings for the machine, distro, file images, and layers. When creating a new project, you can use the file to define the offered alternate project release selections. For example, you can add one or more additional selections that present custom layer sets or distros, and any other local or proprietary content.
 
-> 你可以使用 `orm/fixtures/custom.xml` 文件来更改机器，发行版，文件图像和层的默认项目设置。在创建新项目时，可以使用该文件定义提供的其他项目发布选择。例如，你可以添加一个或多个附加选择，提供自定义层集或发行版，以及任何其他本地或专有内容。
+> 你可以使用 `orm/fixtures/custom.xml` 文件来更改机器，发行版，文件镜像和层的默认项目设置。在创建新项目时，可以使用该文件定义提供的其他项目发布选择。例如，你可以添加一个或多个附加选择，提供自定义层集或发行版，以及任何其他本地或专有内容。
 
 Additionally, you can completely disable the content from the `oe-core.xml` and `poky.xml` files by defining the section shown below in the `settings.xml` file. For example, this option is particularly useful if your custom configuration defines fewer releases or layers than the default fixture files.
 
@@ -210,7 +210,7 @@ The following subsections describe each of the sections in the fixture files, an
 
 ### Defining the Default Distro and Other Values
 
-This section defines the default distro value for new projects. By default, it reserves the first Toaster Setting record \"1\". The following demonstrates how to set the project default value for `DISTRO`{.interpreted-text role="term"}:
+This section defines the default distro value for new projects. By default, it reserves the first Toaster Setting record \"1\". The following demonstrates how to set the project default value for `DISTRO`:
 
 > 此部分定义新项目的默认分发值。默认情况下，它保留第一个 Toaster 设置记录“1”。以下演示如何为 `DISTRO` 设置项目默认值：
 
@@ -224,7 +224,7 @@ This section defines the default distro value for new projects. By default, it r
 
 You can override other default project values by adding additional Toaster Setting sections such as any of the settings coming from the `settings.xml` file. Also, you can add custom values that are included in the BitBake environment. The \"pk\" values must be unique. By convention, values that set default project values have a \"DEFCONF\" prefix.
 
-> 你可以通过添加其他 Toaster 设置部分来覆盖其他默认项目值，例如来自 `settings.xml` 文件的任何设置。此外，您还可以添加包含在 BitBake 环境中的自定义值。 “pk”值必须是唯一的。按照惯例，设置默认项目值的值具有“DEFCONF”前缀。
+> 你可以通过添加其他 Toaster 设置部分来覆盖其他默认项目值，例如来自 `settings.xml` 文件的任何设置。此外，您还可以添加包含在 BitBake 环境中的自定义值。“pk”值必须是唯一的。按照惯例，设置默认项目值的值具有“DEFCONF”前缀。
 
 ### Defining BitBake Version
 
@@ -325,7 +325,7 @@ The layer \"pk\" values above must be unique, and typically start at \"1\". The 
 
 # Remote Toaster Monitoring
 
-Toaster has an API that allows remote management applications to directly query the state of the Toaster server and its builds in a machine-to-machine manner. This API uses the `REST <Representational_state_transfer>`{.interpreted-text role="wikipedia"} interface and the transfer of JSON files. For example, you might monitor a build inside a container through well supported known HTTP ports in order to easily access a Toaster server inside the container. In this example, when you use this direct JSON API, you avoid having web page parsing against the display the user sees.
+Toaster has an API that allows remote management applications to directly query the state of the Toaster server and its builds in a machine-to-machine manner. This API uses the `REST <Representational_state_transfer>` interface and the transfer of JSON files. For example, you might monitor a build inside a container through well supported known HTTP ports in order to easily access a Toaster server inside the container. In this example, when you use this direct JSON API, you avoid having web page parsing against the display the user sees.
 
 > 智能烤面包机拥有一个 API，允许远程管理应用程序以机器对机器的方式直接查询智能烤面包机服务器及其建立的状态。此 API 使用 REST 接口和 JSON 文件传输。例如，您可以通过支持的已知 HTTP 端口监视容器中的构建，以便轻松访问容器中的智能烤面包机服务器。在此示例中，当您使用此直接 JSON API 时，您可以避免对用户看到的显示进行网页解析。
 
@@ -434,7 +434,7 @@ Sometimes it is useful to determine the status of a specific build. To get the s
 http://host:port/toastergui/api/build/ID
 ```
 
-Be sure to provide values for host, port, and ID. You can find the value for ID from the Builds Completed query. See the \"`toaster-manual/reference:checking status of builds completed`{.interpreted-text role="ref"}\" section for more information.
+Be sure to provide values for host, port, and ID. You can find the value for ID from the Builds Completed query. See the \"`toaster-manual/reference:checking status of builds completed`\" section for more information.
 
 > 请确保提供主机、端口和 ID 的值。您可以从“已完成的构建查询”中找到 ID 的值。有关详细信息，请参阅“toaster-manual / reference：检查已完成构建的状态”部分。
 
@@ -467,20 +467,20 @@ The JSON data for this query is returned in a single line. In the previous examp
 
 # Useful Commands
 
-In addition to the web user interface and the scripts that start and stop Toaster, command-line commands are available through the `manage.py` management script. You can find general documentation on `manage.py` at the [Django](https://docs.djangoproject.com/en/2.2/topics/settings/) site. However, several `manage.py` commands have been created that are specific to Toaster and are used to control configuration and back-end tasks. You can locate these commands in the `Source Directory`{.interpreted-text role="term"} (e.g. `poky`) at `bitbake/lib/manage.py`. This section documents those commands.
+In addition to the web user interface and the scripts that start and stop Toaster, command-line commands are available through the `manage.py` management script. You can find general documentation on `manage.py` at the [Django](https://docs.djangoproject.com/en/2.2/topics/settings/) site. However, several `manage.py` commands have been created that are specific to Toaster and are used to control configuration and back-end tasks. You can locate these commands in the `Source Directory` (e.g. `poky`) at `bitbake/lib/manage.py`. This section documents those commands.
 
-> 除了网页用户界面和启动和停止烤面包机的脚本外，还可以通过 `manage.py` 管理脚本获得命令行命令。您可以在 [Django](https://docs.djangoproject.com/en/2.2/topics/settings/) 网站上找到关于 `manage.py` 的一般文档。但是，已经创建了几个专门用于 Toaster 的 `manage.py` 命令，用于控制配置和后端任务。您可以在源目录（例如 `poky`）中的 `bitbake/lib/manage.py` 中找到这些命令。本节文档记录了这些命令。
+> 除了网页用户界面和启动和停止烤面包机的脚本外，还可以通过 `manage.py` 管理脚本获得命令行命令。您可以在 [Django](https://docs.djangoproject.com/en/2.2/topics/settings/) 网站上找到关于 `manage.py` 的一般文档。但是，已经创建了几个专门用于 Toaster 的 `manage.py` 命令，用于控制配置和后端任务。您可以在源目录(例如 `poky`)中的 `bitbake/lib/manage.py` 中找到这些命令。本节文档记录了这些命令。
 
 ::: note
 ::: title
 Note
 :::
 
-- When using `manage.py` commands given a default configuration, you must be sure that your working directory is set to the `Build Directory`{.interpreted-text role="term"}. Using `manage.py` commands from the `Build Directory`{.interpreted-text role="term"} allows Toaster to find the `toaster.sqlite` file, which is located in the `Build Directory`{.interpreted-text role="term"}.
+- When using `manage.py` commands given a default configuration, you must be sure that your working directory is set to the `Build Directory`.
 
-> 当使用默认配置的 `manage.py` 命令时，您必须确保工作目录设置为 `Build Directory`。 从 `Build Directory` 使用 `manage.py` 命令可以让 Toaster 找到位于 `Build Directory` 中的 `toaster.sqlite` 文件。
+> 当使用默认配置的 `manage.py` 命令时，您必须确保工作目录设置为 `Build Directory`。从 `Build Directory` 使用 `manage.py` 命令可以让 Toaster 找到位于 `Build Directory` 中的 `toaster.sqlite` 文件。
 
-- For non-default database configurations, it is possible that you can use `manage.py` commands from a directory other than the `Build Directory`{.interpreted-text role="term"}. To do so, the `toastermain/settings.py` file must be configured to point to the correct database backend.
+- For non-default database configurations, it is possible that you can use `manage.py` commands from a directory other than the `Build Directory`. To do so, the `toastermain/settings.py` file must be configured to point to the correct database backend.
 
 > 对于非默认的数据库配置，您可以从与“构建目录”不同的目录中使用“manage.py”命令。为此，必须配置“toastermain / settings.py”文件以指向正确的数据库后端。
 > :::
@@ -499,7 +499,7 @@ The command returns a list, which includes numeric identifications, of the build
 
 > 命令返回一个列表，其中包括 Toaster 在当前数据库中记录的建立的数字标识。
 
-You need to run the `buildslist` command first to identify existing builds in the database before using the ``toaster-manual/reference:\`\`builddelete\`\` ``{.interpreted-text role="ref"} command. Here is an example that assumes default repository and `Build Directory`{.interpreted-text role="term"} names:
+You need to run the `buildslist` command first to identify existing builds in the database before using the ``toaster-manual/reference:\`\`builddelete\`\` `` names:
 
 > 你需要先运行 `buildslist` 命令来识别数据库中现有的构建，然后才能使用 `toaster-manual/reference:` builddelete `命令。这里有一个假设默认存储库和` 构建目录 ` 名称的示例：
 
@@ -508,9 +508,9 @@ $ cd poky/build
 $ python ../bitbake/lib/toaster/manage.py buildslist
 ```
 
-If your Toaster database had only one build, the above ``toaster-manual/reference:\`\`buildslist\`\` ``{.interpreted-text role="ref"} command would return something like the following:
+If your Toaster database had only one build, the above ``toaster-manual/reference:\`\`buildslist\`\` `` command would return something like the following:
 
-> 如果您的 Toaster 数据库只有一个构建，上面的 ``toaster-manual / reference：````buildslist``{.interpreted-text role ="ref"} 命令将返回类似以下内容：
+> 如果您的 Toaster 数据库只有一个构建，上面的 ``toaster-manual / reference：````buildslist`` 命令将返回类似以下内容：
 
 ```
 1: qemux86 poky core-image-minimal
@@ -530,7 +530,7 @@ The command deletes all the build data for the specified build_id. This command 
 
 > 命令删除指定 build_id 的所有构建数据。此命令对于从数据库中删除旧的和未使用的数据很有用。
 
-Prior to running the `builddelete` command, you need to get the ID associated with builds by using the ``toaster-manual/reference:\`\`buildslist\`\` ``{.interpreted-text role="ref"} command.
+Prior to running the `builddelete` command, you need to get the ID associated with builds by using the ``toaster-manual/reference:\`\`buildslist\`\` `` command.
 
 > 在运行 `builddelete` 命令之前，您需要使用 `toaster-manual/reference:` buildslist` 命令获取与构建相关联的 ID。
 
@@ -560,7 +560,7 @@ $ bitbake/lib/toaster/manage.py checksettings
 
 Toaster uses settings that are based on the database to configure the building tasks. The `checksettings` command verifies that the database settings are valid in the sense that they have the minimal information needed to start a build.
 
-> 烤面包机使用基于数据库的设置来配置构建任务。 `checksettings` 命令验证数据库设置是否有足够的信息来启动构建。
+> 烤面包机使用基于数据库的设置来配置构建任务。`checksettings` 命令验证数据库设置是否有足够的信息来启动构建。
 
 In order for the `checksettings` command to work, the database must be correctly set up and not have existing data. To be sure the database is ready, you can run the following:
 

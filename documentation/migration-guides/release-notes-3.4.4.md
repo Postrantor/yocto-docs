@@ -7,14 +7,14 @@ title: Release notes for 3.4.4 (honister)
 
 # Security Fixes in 3.4.4
 
-- tiff: fix `2022-0865`{.interpreted-text role="cve"}, `2022-0891`{.interpreted-text role="cve"}, `2022-0907`{.interpreted-text role="cve"}, `2022-0908`{.interpreted-text role="cve"}, `2022-0909`{.interpreted-text role="cve"} and `2022-0924`{.interpreted-text role="cve"}
+- tiff: fix `2022-0865`
 
 > 修复 CVE-2022-0865、CVE-2022-0891、CVE-2022-0907、CVE-2022-0908、CVE-2022-0909 和 CVE-2022-0924。
 
 - xz: fix [CVE-2022-1271](https://security-tracker.debian.org/tracker/CVE-2022-1271)
 - unzip: fix [CVE-2021-4217](https://security-tracker.debian.org/tracker/CVE-2021-4217)
-- zlib: fix `2018-25032`{.interpreted-text role="cve"}
-- grub: ignore `2021-46705`{.interpreted-text role="cve"}
+- zlib: fix `2018-25032`
+- grub: ignore `2021-46705`
 
 # Fixes in 3.4.4
 
@@ -24,20 +24,20 @@ title: Release notes for 3.4.4 (honister)
 - bitbake: knotty: reduce keep-alive timeout from 5000s (83 minutes) to 10 minutes
 - bitbake: server/process: Disable gc around critical section
 - bitbake: server/xmlrpcserver: Add missing xmlrpcclient import
-- bitbake: toaster: Fix `IMAGE_INSTALL`{.interpreted-text role="term"} issues with \_append vs :append
+- bitbake: toaster: Fix `IMAGE_INSTALL` issues with _append vs :append
 - bitbake: toaster: fixtures replace gatesgarth
 - build-appliance-image: Update to honister head revision
 - conf.py/poky.yaml: Move version information to poky.yaml and read in conf.py
 - conf/machine: fix QEMU x86 sound options
-- devupstream: fix handling of `SRC_URI`{.interpreted-text role="term"}
+- devupstream: fix handling of `SRC_URI`
 - documentation: update for 3.4.4 release
 - externalsrc/devtool: Fix to work with fixed export funcition flags handling
 - gmp: add missing COPYINGv3
-- gnu-config: update `SRC_URI`{.interpreted-text role="term"}
+- gnu-config: update `SRC_URI`
 - libxml2: fix CVE-2022-23308 regression
 - libxml2: move to gitlab.gnome.org
 - libxml2: update to 2.9.13
-- libxshmfence: Correct `LICENSE`{.interpreted-text role="term"} to HPND
+- libxshmfence: Correct `LICENSE` to HPND
 - license_image.bbclass: close package.manifest file
 - linux-firmware: correct license for ar3k firmware
 - linux-firmware: upgrade 20220310 -\> 20220411
@@ -59,7 +59,7 @@ title: Release notes for 3.4.4 (honister)
 - u-boot: Inherit pkgconfig
 - uninative: Upgrade to 3.6 with gcc 12 support
 - vim: Upgrade 8.2.4524 -\> 8.2.4681
-- virglrenderer: update `SRC_URI`{.interpreted-text role="term"}
+- virglrenderer: update `SRC_URI`
 - webkitgtk: update to 2.32.4
 - wireless-regdb: upgrade 2022.02.18 -\> 2022.04.08
 
@@ -91,10 +91,10 @@ There were a couple of known autobuilder intermittent bugs that occurred during 
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</poky/tag/?h=yocto-3.4.4\>\`
-- Git Revision: :yocto\_[git:%60780eeec8851950ee6ac07a2a398ba937206bd2e4](git:%60780eeec8851950ee6ac07a2a398ba937206bd2e4) \</poky/commit/?id=780eeec8851950ee6ac07a2a398ba937206bd2e4\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</poky/tag/?h=yocto-3.4.4\>\`
+- Git Revision: :yocto_[git:%60780eeec8851950ee6ac07a2a398ba937206bd2e4](git:%60780eeec8851950ee6ac07a2a398ba937206bd2e4) \</poky/commit/?id=780eeec8851950ee6ac07a2a398ba937206bd2e4\>\`
 
 > Git 版本：:yocto_[git:%60780eeec8851950ee6ac07a2a398ba937206bd2e4](git:%60780eeec8851950ee6ac07a2a398ba937206bd2e4) \</poky/commit/?id=780eeec8851950ee6ac07a2a398ba937206bd2e4\>\`
 
@@ -106,12 +106,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
-- Tag: :oe\_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</openembedded-core/tag/?h=yocto-3.4.4\>\`
-- Git Revision: :oe\_[git:%601a6f5e27249afb6fb4d47c523b62b5dd2482a69d](git:%601a6f5e27249afb6fb4d47c523b62b5dd2482a69d) \</openembedded-core/commit/?id=1a6f5e27249afb6fb4d47c523b62b5dd2482a69d\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
+- Tag: :oe_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</openembedded-core/tag/?h=yocto-3.4.4\>\`
+- Git Revision: :oe_[git:%601a6f5e27249afb6fb4d47c523b62b5dd2482a69d](git:%601a6f5e27249afb6fb4d47c523b62b5dd2482a69d) \</openembedded-core/commit/?id=1a6f5e27249afb6fb4d47c523b62b5dd2482a69d\>\`
 
-> Git 版本：<openembedded-core/commit/?id=1a6f5e27249afb6fb4d47c523b62b5dd2482a69d>（git:%601a6f5e27249afb6fb4d47c523b62b5dd2482a69d）
+> Git 版本：<openembedded-core/commit/?id=1a6f5e27249afb6fb4d47c523b62b5dd2482a69d>(git:%601a6f5e27249afb6fb4d47c523b62b5dd2482a69d)
 
 - Release Artefact: oecore-1a6f5e27249afb6fb4d47c523b62b5dd2482a69d
 - sha: b8354ca457756384139a579b9e51f1ba854013c99add90c0c4c6ef68421fede5
@@ -121,10 +121,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</meta-mingw/tag/?h=yocto-3.4.4\>\`
-- Git Revision: :yocto\_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</meta-mingw/tag/?h=yocto-3.4.4\>\`
+- Git Revision: :yocto_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
 > Git 版本：yocto_[git：f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
@@ -136,10 +136,10 @@ meta-mingw
 
 meta-gplv2
 
-- Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</meta-gplv2/tag/?h=yocto-3.4.4\>\`
-- Git Revision: :yocto\_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
+- Repository Location: :yocto_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</meta-gplv2/tag/?h=yocto-3.4.4\>\`
+- Git Revision: :yocto_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
 > Git 版本：yocto_[git:`f04e4369bf9dd3385165281b9fa2ed1043b0e400`](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400%60) </meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400>
 
@@ -151,12 +151,12 @@ meta-gplv2
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
-- Tag: :oe\_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</bitbake/tag/?h=yocto-3.4.3\>\`
-- Git Revision: :oe\_[git:%60c2d8f9b2137bd4a98eb0f51519493131773e7517](git:%60c2d8f9b2137bd4a98eb0f51519493131773e7517) \</bitbake/commit/?id=c2d8f9b2137bd4a98eb0f51519493131773e7517\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
+- Tag: :oe_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</bitbake/tag/?h=yocto-3.4.3\>\`
+- Git Revision: :oe_[git:%60c2d8f9b2137bd4a98eb0f51519493131773e7517](git:%60c2d8f9b2137bd4a98eb0f51519493131773e7517) \</bitbake/commit/?id=c2d8f9b2137bd4a98eb0f51519493131773e7517\>\`
 
-> Git 版本：<bitbake/commit/?id=c2d8f9b2137bd4a98eb0f51519493131773e7517>（git:`c2d8f9b2137bd4a98eb0f51519493131773e7517`）
+> Git 版本：<bitbake/commit/?id=c2d8f9b2137bd4a98eb0f51519493131773e7517>(git:`c2d8f9b2137bd4a98eb0f51519493131773e7517`)
 
 - Release Artefact: bitbake-c2d8f9b2137bd4a98eb0f51519493131773e7517
 - sha: a8b6217f2d63975bbf49f430e11046608023ee2827faa893b15d9a0d702cf833
@@ -166,9 +166,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</yocto-docs/tag/?h=yocto-3.4.4\>\`
-- Git Revision: :yocto\_[git:%605ead7d39aaf9044078dff27f462e29a8e31d89e4](git:%605ead7d39aaf9044078dff27f462e29a8e31d89e4) \</yocto-docs/commit/?5ead7d39aaf9044078dff27f462e29a8e31d89e4\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4.4](git:%60yocto-3.4.4) \</yocto-docs/tag/?h=yocto-3.4.4\>\`
+- Git Revision: :yocto_[git:%605ead7d39aaf9044078dff27f462e29a8e31d89e4](git:%605ead7d39aaf9044078dff27f462e29a8e31d89e4) \</yocto-docs/commit/?5ead7d39aaf9044078dff27f462e29a8e31d89e4\>\`
 
 > Git 版本：yocto_[git:%605ead7d39aaf9044078dff27f462e29a8e31d89e4](git:%605ead7d39aaf9044078dff27f462e29a8e31d89e4) \</yocto-docs/commit/?5ead7d39aaf9044078dff27f462e29a8e31d89e4\>\

@@ -7,7 +7,7 @@ title: Yocto Project Application Development and the Extensible Software Develop
 
 |
 
-::: {.toctree caption="Table of Contents" numbered=""}
+:::
 
 intro extensible using working-projects appendix-obtain appendix-customizing appendix-customizing-standard
 

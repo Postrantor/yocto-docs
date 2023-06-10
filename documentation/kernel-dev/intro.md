@@ -7,24 +7,24 @@ title: Introduction
 
 # Overview
 
-Regardless of how you intend to make use of the Yocto Project, chances are you will work with the Linux kernel. This manual describes how to set up your build host to support kernel development, introduces the kernel development process, provides background information on the Yocto Linux kernel `Metadata`{.interpreted-text role="term"}, describes common tasks you can perform using the kernel tools, shows you how to use the kernel Metadata needed to work with the kernel inside the Yocto Project, and provides insight into how the Yocto Project team develops and maintains Yocto Linux kernel Git repositories and Metadata.
+Regardless of how you intend to make use of the Yocto Project, chances are you will work with the Linux kernel. This manual describes how to set up your build host to support kernel development, introduces the kernel development process, provides background information on the Yocto Linux kernel `Metadata`, describes common tasks you can perform using the kernel tools, shows you how to use the kernel Metadata needed to work with the kernel inside the Yocto Project, and provides insight into how the Yocto Project team develops and maintains Yocto Linux kernel Git repositories and Metadata.
 
 > 无论您如何打算使用 Yocto Project，您都可能会使用 Linux 内核。本手册描述了如何设置构建主机以支持内核开发，介绍了内核开发过程，提供了有关 Yocto Linux 内核“Metadata”的背景信息，描述了使用内核工具可以执行的常见任务，向您展示了如何使用 Yocto Project 内部工作所需的内核 Metadata，并提供了有关 Yocto Project 团队如何开发和维护 Yocto Linux 内核 Git 存储库和 Metadata 的洞察。
 
-Each Yocto Project release has a set of Yocto Linux kernel recipes, whose Git repositories you can view in the Yocto :yocto\_[git:%60Source](git:%60Source) Repositories \<\>[ under the \"Yocto Linux Kernel\" heading. New recipes for the release track the latest Linux kernel upstream developments from [https://www.kernel.org](https://www.kernel.org) and introduce newly-supported platforms. Previous recipes in the release are refreshed and supported for at least one additional Yocto Project release. As they align, these previous releases are updated to include the latest from the Long Term Support Initiative (LTSI) project. You can learn more about Yocto Linux kernels and LTSI in the \":ref:\`kernel-dev/concepts-appx:yocto project kernel development and maintenance]{.title-ref}\" section.
+Each Yocto Project release has a set of Yocto Linux kernel recipes, whose Git repositories you can view in the Yocto :yocto_[git:%60Source](git:%60Source) Repositories \<\>[ under the \"Yocto Linux Kernel\" heading. New recipes for the release track the latest Linux kernel upstream developments from [https://www.kernel.org](https://www.kernel.org) and introduce newly-supported platforms. Previous recipes in the release are refreshed and supported for at least one additional Yocto Project release. As they align, these previous releases are updated to include the latest from the Long Term Support Initiative (LTSI) project. You can learn more about Yocto Linux kernels and LTSI in the \":ref:\`kernel-dev/concepts-appx:yocto project kernel development and maintenance]\" section.
 
-> 每个 Yocto 项目发行版都有一组 Yocto Linux 内核配方，您可以在 Yocto：yocto \ _ [git：％60Source]（git：％60Source）存储库下的“ Yocto Linux 内核”标题下查看它们的 Git 存储库。新版本的发行跟踪最新的 Linux 内核上游开发，从 [https://www.kernel.org](https://www.kernel.org) 引入新支持的平台。发行版中的先前版本将至少支持一个额外的 Yocto 项目发行版。随着它们的一致性，这些先前的版本将更新以包括来自长期支持倡议（LTSI）项目的最新内容。您可以在“：ref：\`kernel-dev / concepts-appx：yocto 项目内核开发和维护] {.title-ref}”部分了解更多关于 Yocto Linux 内核和 LTSI 的信息。
+> 每个 Yocto 项目发行版都有一组 Yocto Linux 内核配方，您可以在 Yocto：yocto \ _ [git：％60Source](git%EF%BC%9A%EF%BC%8560Source) 存储库下的“ Yocto Linux 内核”标题下查看它们的 Git 存储库。新版本的发行跟踪最新的 Linux 内核上游开发，从 [https://www.kernel.org](https://www.kernel.org) 引入新支持的平台。发行版中的先前版本将至少支持一个额外的 Yocto 项目发行版。随着它们的一致性，这些先前的版本将更新以包括来自长期支持倡议(LTSI)项目的最新内容。您可以在“：ref：\`kernel-dev / concepts-appx：yocto 项目内核开发和维护] ”部分了解更多关于 Yocto Linux 内核和 LTSI 的信息。
 
 Also included is a Yocto Linux kernel development recipe (`linux-yocto-dev.bb`) should you want to work with the very latest in upstream Yocto Linux kernel development and kernel Metadata development.
 
-> 也包括一个 Yocto Linux 内核开发配方（`linux-yocto-dev.bb`），如果您想要使用最新的上游 Yocto Linux 内核开发和内核元数据开发。
+> 也包括一个 Yocto Linux 内核开发配方(`linux-yocto-dev.bb`)，如果您想要使用最新的上游 Yocto Linux 内核开发和内核元数据开发。
 
 ::: note
 ::: title
 Note
 :::
 
-For more on Yocto Linux kernels, see the \"`kernel-dev/concepts-appx:yocto project kernel development and maintenance`{.interpreted-text role="ref"}\" section.
+For more on Yocto Linux kernels, see the \"`kernel-dev/concepts-appx:yocto project kernel development and maintenance`\" section.
 
 > 对于关于 Yocto Linux 内核的更多信息，请参阅“kernel-dev/concepts-appx：Yocto Project 内核开发和维护”一节。
 > :::
@@ -45,18 +45,18 @@ If, instead, you have a very specific Linux kernel source tree and are unable to
 
 > 如果您有一个非常特定的 Linux 内核源树，无法与官方 Yocto Linux 内核配方对齐，您可以使用 Yocto Project Linux 内核工具与您自己的内核源码一起使用。
 
-The remainder of this manual provides instructions for completing specific Linux kernel development tasks. These instructions assume you are comfortable working with :oe_wiki:[BitBake \</Bitbake\>]{.title-ref} recipes and basic open-source development tools. Understanding these concepts will facilitate the process of working with the kernel recipes. If you find you need some additional background, please be sure to review and understand the following documentation:
+The remainder of this manual provides instructions for completing specific Linux kernel development tasks. These instructions assume you are comfortable working with :oe_wiki:[BitBake \</Bitbake\>] recipes and basic open-source development tools. Understanding these concepts will facilitate the process of working with the kernel recipes. If you find you need some additional background, please be sure to review and understand the following documentation:
 
 > 本手册的其余部分提供了完成特定 Linux 内核开发任务的说明。这些说明假定您熟悉使用 BitBake 配方和基本开源开发工具。了解这些概念将有助于处理内核配方。如果您发现需要一些额外的背景，请务必查看并理解以下文档：
 
-- `/brief-yoctoprojectqs/index`{.interpreted-text role="doc"} document.
-- `/overview-manual/index`{.interpreted-text role="doc"}.
-- ``devtool workflow <sdk-manual/extensible:using \`\`devtool\`\` in your sdk workflow>``{.interpreted-text role="ref"} as described in the Yocto Project Application Development and the Extensible Software Development Kit (eSDK) manual.
+- `/brief-yoctoprojectqs/index` document.
+- `/overview-manual/index`.
+- ``devtool workflow <sdk-manual/extensible:using \`\`devtool\`\` in your sdk workflow>`` as described in the Yocto Project Application Development and the Extensible Software Development Kit (eSDK) manual.
 
-> 根据 Yocto 项目应用开发和可扩展软件开发套件（eSDK）手册中所述，使用“devtool”在您的 SDK 工作流中进行工作流程。
+> 根据 Yocto 项目应用开发和可扩展软件开发套件(eSDK)手册中所述，使用“devtool”在您的 SDK 工作流中进行工作流程。
 
-- The \"`dev-manual/layers:understanding and creating layers`{.interpreted-text role="ref"}\" section in the Yocto Project Development Tasks Manual.
-- The \"`kernel-dev/intro:kernel modification workflow`{.interpreted-text role="ref"}\" section.
+- The \"`dev-manual/layers:understanding and creating layers`\" section in the Yocto Project Development Tasks Manual.
+- The \"`kernel-dev/intro:kernel modification workflow`\" section.
 
 # Kernel Modification Workflow
 
@@ -68,9 +68,9 @@ This section presents a high-level overview of the Yocto Project kernel modifica
 
 > 这一节提供了 Yocto 项目内核修改工作流程的高级概述。该插图和附带的列表提供了一般信息和进一步参考信息。
 
-![image](figures/kernel-dev-flow.png){width="100.0%"}
+![image](figures/kernel-dev-flow.png)
 
-1. *Set up Your Host Development System to Support Development Using the Yocto Project*: See the \"`/dev-manual/start`{.interpreted-text role="doc"}\" section in the Yocto Project Development Tasks Manual for options on how to get a build host ready to use the Yocto Project.
+1. *Set up Your Host Development System to Support Development Using the Yocto Project*: See the \"`/dev-manual/start`\" section in the Yocto Project Development Tasks Manual for options on how to get a build host ready to use the Yocto Project.
 
 > 请参阅 Yocto Project 开发任务手册中的“/dev-manual/start”部分，了解如何设置主机开发系统以支持使用 Yocto Project 进行开发的选项。
 
@@ -78,39 +78,39 @@ This section presents a high-level overview of the Yocto Project kernel modifica
 
 > 为内核开发设置您的主机开发系统：建议您使用 devtool 进行内核开发。或者，您也可以使用 Yocto Project 中的传统内核开发方法。无论哪种方式，您都需要采取步骤来准备开发环境。
 
-Using `devtool` requires that you have a clean build of the image. For more information, see the \"``kernel-dev/common:getting ready to develop using \`\`devtool\`\` ``{.interpreted-text role="ref"}\" section.
+Using `devtool` requires that you have a clean build of the image. For more information, see the \"``kernel-dev/common:getting ready to develop using \`\`devtool\`\` ``\" section.
 
 > 使用 `devtool` 需要您有一个镜像的干净构建。有关更多信息，请参阅“kernel-dev / common：准备使用 `devtool` 开发”部分。
 
-Using traditional kernel development requires that you have the kernel source available in an isolated local Git repository. For more information, see the \"`kernel-dev/common:getting ready for traditional kernel development`{.interpreted-text role="ref"}\" section.
+Using traditional kernel development requires that you have the kernel source available in an isolated local Git repository. For more information, see the \"`kernel-dev/common:getting ready for traditional kernel development`\" section.
 
 > 使用传统的内核开发需要您在一个隔离的本地 Git 存储库中拥有内核源代码。有关更多信息，请参见“kernel-dev / common：准备传统内核开发”部分。
 
-3. *Make Changes to the Kernel Source Code if applicable:* Modifying the kernel does not always mean directly changing source files. However, if you have to do this, you make the changes to the files in the Yocto\'s `Build Directory`{.interpreted-text role="term"} if you are using `devtool`. For more information, see the \"``kernel-dev/common:using \`\`devtool\`\` to patch the kernel``{.interpreted-text role="ref"}\" section.
+3. *Make Changes to the Kernel Source Code if applicable:* Modifying the kernel does not always mean directly changing source files. However, if you have to do this, you make the changes to the files in the Yocto\'s `Build Directory`\" section.
 
 > 如果需要，修改内核源代码：修改内核并不总是意味着直接修改源文件。但是，如果你必须这样做，你可以在使用 devtool 时，在 Yocto 的构建目录中修改文件。有关更多信息，请参见“使用 devtool 来修补内核”部分。
 
-If you are using traditional kernel development, you edit the source files in the kernel\'s local Git repository. For more information, see the \"`kernel-dev/common:using traditional kernel development to patch the kernel`{.interpreted-text role="ref"}\" section.
+If you are using traditional kernel development, you edit the source files in the kernel\'s local Git repository. For more information, see the \"`kernel-dev/common:using traditional kernel development to patch the kernel`\" section.
 
 > 如果您使用传统的内核开发，则可以在内核的本地 Git 存储库中编辑源文件。有关详细信息，请参阅“kernel-dev/common：使用传统内核开发来修补内核”部分。
 
-4. *Make Kernel Configuration Changes if Applicable:* If your situation calls for changing the kernel\'s configuration, you can use ``menuconfig <kernel-dev/common:using \`\`menuconfig\`\`>``{.interpreted-text role="ref"}, which allows you to interactively develop and test the configuration changes you are making to the kernel. Saving changes you make with `menuconfig` updates the kernel\'s `.config` file.
+4. *Make Kernel Configuration Changes if Applicable:* If your situation calls for changing the kernel\'s configuration, you can use ``menuconfig <kernel-dev/common:using \`\`menuconfig\`\`>``, which allows you to interactively develop and test the configuration changes you are making to the kernel. Saving changes you make with `menuconfig` updates the kernel\'s `.config` file.
 
-> 如果需要更改内核配置，您可以使用 ``menuconfig <kernel-dev/common:using \`\`menuconfig\`\`>``{.interpreted-text role="ref"}，它允许您交互式地开发和测试对内核所做的配置更改。使用 `menuconfig` 保存的更改会更新内核的 `.config` 文件。
+> 如果需要更改内核配置，您可以使用 ``menuconfig <kernel-dev/common:using \`\`menuconfig\`\`>``，它允许您交互式地开发和测试对内核所做的配置更改。使用 `menuconfig` 保存的更改会更新内核的 `.config` 文件。
 
 ::: note
 ::: title
 Note
 :::
 
-Try to resist the temptation to directly edit an existing `.config` file, which is found in the `Build Directory`{.interpreted-text role="term"} among the source code used for the build. Doing so, can produce unexpected results when the OpenEmbedded build system regenerates the configuration file.
+Try to resist the temptation to directly edit an existing `.config` file, which is found in the `Build Directory` among the source code used for the build. Doing so, can produce unexpected results when the OpenEmbedded build system regenerates the configuration file.
 
 > 试着抵制直接编辑现有的 `.config` 文件的诱惑，这个文件位于构建使用的源代码中的 `构建目录` 中。这样做可能会在 OpenEmbedded 构建系统重新生成配置文件时产生意想不到的结果。
 > :::
 
-Once you are satisfied with the configuration changes made using `menuconfig` and you have saved them, you can directly compare the resulting `.config` file against an existing original and gather those changes into a `configuration fragment file <kernel-dev/common:creating configuration fragments>`{.interpreted-text role="ref"} to be referenced from within the kernel\'s `.bbappend` file.
+Once you are satisfied with the configuration changes made using `menuconfig` and you have saved them, you can directly compare the resulting `.config` file against an existing original and gather those changes into a `configuration fragment file <kernel-dev/common:creating configuration fragments>` to be referenced from within the kernel\'s `.bbappend` file.
 
-> 一旦您使用 `menuconfig` 对配置进行了更改并保存，您就可以直接将生成的 `.config` 文件与现有原始文件进行比较，并将这些更改收集到 `配置片段文件<kernel-dev/common:creating configuration fragments>`{.interpreted-text role="ref"}中，以便在内核的 `.bbappend` 文件中引用。
+> 一旦您使用 `menuconfig` 对配置进行了更改并保存，您就可以直接将生成的 `.config` 文件与现有原始文件进行比较，并将这些更改收集到 `配置片段文件<kernel-dev/common:creating configuration fragments>` 中，以便在内核的 `.bbappend` 文件中引用。
 
 Additionally, if you are working in a BSP layer and need to modify the BSP\'s kernel\'s configuration, you can use `menuconfig`.
 

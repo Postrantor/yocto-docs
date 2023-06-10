@@ -9,28 +9,28 @@ Many factors can influence the quality of a build. For example, if you upgrade a
 
 > 许多因素可以影响构建的质量。例如，如果您升级了配方以使用上游软件包的新版本或尝试一些新的配置选项，可能会发生微妙的变化，直到稍后才能检测到。考虑一种情况，即您的配方正在使用较新版本的上游软件包。在这种情况下，软件的新版本可能会引入另一个库的可选依赖项，该库将被自动检测到。如果该库在构建软件时已经构建，则软件将链接到构建的库，并且该库将与新软件一起拉入您的映像，即使您不想要该库也是如此。
 
-The `ref-classes-buildhistory`{.interpreted-text role="ref"} class helps you maintain the quality of your build output. You can use the class to highlight unexpected and possibly unwanted changes in the build output. When you enable build history, it records information about the contents of each package and image and then commits that information to a local Git repository where you can examine the information.
+The `ref-classes-buildhistory` class helps you maintain the quality of your build output. You can use the class to highlight unexpected and possibly unwanted changes in the build output. When you enable build history, it records information about the contents of each package and image and then commits that information to a local Git repository where you can examine the information.
 
 > 该 ref-classes-buildhistory 类可帮助您维护构建输出的质量。您可以使用该类来突出显示构建输出中意外的和可能不希望出现的变化。当您启用构建历史记录时，它会记录有关每个包和映像的内容的信息，然后将该信息提交到本地 Git 存储库，您可以在其中检查该信息。
 
 The remainder of this section describes the following:
 
-- `How you can enable and disable build history <dev-manual/build-quality:enabling and disabling build history>`{.interpreted-text role="ref"}
-- `How to understand what the build history contains <dev-manual/build-quality:understanding what the build history contains>`{.interpreted-text role="ref"}
+- `How you can enable and disable build history <dev-manual/build-quality:enabling and disabling build history>`
+- `How to understand what the build history contains <dev-manual/build-quality:understanding what the build history contains>`
 
 > 如何理解构建历史包含什么内容？<dev-manual/build-quality:understanding what the build history contains>
 
-- `How to limit the information used for build history <dev-manual/build-quality:using build history to gather image information only>`{.interpreted-text role="ref"}
+- `How to limit the information used for build history <dev-manual/build-quality:using build history to gather image information only>`
 
-> 如何限制用于构建历史记录的信息 <dev-manual/build-quality: 仅使用构建历史记录来收集图像信息 >？
+> 如何限制用于构建历史记录的信息 <dev-manual/build-quality: 仅使用构建历史记录来收集镜像信息 >？
 
-- `How to examine the build history from both a command-line and web interface <dev-manual/build-quality:examining build history information>`{.interpreted-text role="ref"}
+- `How to examine the build history from both a command-line and web interface <dev-manual/build-quality:examining build history information>`
 
 > 如何从命令行和 Web 界面检查构建历史记录 <dev-manual/build-quality:examining build history information>？
 
 # Enabling and Disabling Build History
 
-Build history is disabled by default. To enable it, add the following `INHERIT`{.interpreted-text role="term"} statement and set the `BUILDHISTORY_COMMIT`{.interpreted-text role="term"} variable to \"1\" at the end of your `conf/local.conf` file found in the `Build Directory`{.interpreted-text role="term"}:
+Build history is disabled by default. To enable it, add the following `INHERIT`:
 
 > 默认情况下，构建历史被禁用。要启用它，请在构建目录中的 `conf/local.conf` 文件末尾添加以下 `INHERIT` 语句并将 `BUILDHISTORY_COMMIT` 变量设置为“1”：
 
@@ -39,7 +39,7 @@ INHERIT += "buildhistory"
 BUILDHISTORY_COMMIT = "1"
 ```
 
-Enabling build history as previously described causes the OpenEmbedded build system to collect build output information and commit it as a single commit to a local `overview-manual/development-environment:git`{.interpreted-text role="ref"} repository.
+Enabling build history as previously described causes the OpenEmbedded build system to collect build output information and commit it as a single commit to a local `overview-manual/development-environment:git` repository.
 
 > 启用先前描述的构建历史会导致 OpenEmbedded 构建系统收集构建输出信息并将其提交为单个提交到本地“overview-manual/development-environment:git”存储库。
 
@@ -55,11 +55,11 @@ You can disable build history by removing the previous statements from your `con
 
 # Understanding What the Build History Contains
 
-Build history information is kept in `${``TOPDIR`{.interpreted-text role="term"}`}/buildhistory` in the `Build Directory`{.interpreted-text role="term"} as defined by the `BUILDHISTORY_DIR`{.interpreted-text role="term"} variable. Here is an example abbreviated listing:
+Build history information is kept in `$ variable. Here is an example abbreviated listing:
 
 > 历史构建信息保存在 `TOPDIR`/buildhistory 中，这是由 `BUILDHISTORY_DIR` 变量定义的构建目录。以下是一个简化的列表：
 
-![image](figures/buildhistory.png){.align-center width="50.0%"}
+![image](figures/buildhistory.png)
 
 At the top level, there is a `metadata-revs` file that lists the revisions of the repositories for the enabled layers when the build was produced. The rest of the data splits into separate `packages`, `images` and `sdk` directories, the contents of which are described as follows.
 
@@ -104,9 +104,9 @@ PACKAGES = busybox-ptest busybox-httpd busybox-udhcpd busybox-udhcpc \
    busybox-staticdev busybox-dev busybox-doc busybox-locale busybox
 ```
 
-Finally, for those recipes fetched from a version control system (e.g., Git), there is a file that lists source revisions that are specified in the recipe and the actual revisions used during the build. Listed and actual revisions might differ when `SRCREV`{.interpreted-text role="term"} is set to \${`AUTOREV`{.interpreted-text role="term"}}. Here is an example assuming `buildhistory/packages/qemux86-poky-linux/linux-yocto/latest_srcrev`):
+Finally, for those recipes fetched from a version control system (e.g., Git), there is a file that lists source revisions that are specified in the recipe and the actual revisions used during the build. Listed and actual revisions might differ when `SRCREV`. Here is an example assuming `buildhistory/packages/qemux86-poky-linux/linux-yocto/latest_srcrev`):
 
-> 最后，对于从版本控制系统（例如 Git）获取的配方，有一个文件列出了在配方中指定的源修订版本和构建期间实际使用的修订版本。当 `SRCREV`{.interpreted-text role="term"}设置为\${`AUTOREV`{.interpreted-text role="term"}}时，列出的和实际的修订版本可能会有所不同。以下是一个例子，假设 `buildhistory/packages/qemux86-poky-linux/linux-yocto/latest_srcrev`）：
+> 最后，对于从版本控制系统(例如 Git)获取的配方，有一个文件列出了在配方中指定的源修订版本和构建期间实际使用的修订版本。当 `SRCREV` 时，列出的和实际的修订版本可能会有所不同。以下是一个例子，假设 `buildhistory/packages/qemux86-poky-linux/linux-yocto/latest_srcrev`)：
 
 ```
 # SRCREV_machine = "38cd560d5022ed2dbd1ab0dca9642e47c98a0aa1"
@@ -115,9 +115,9 @@ SRCREV_machine = "38cd560d5022ed2dbd1ab0dca9642e47c98a0aa1"
 SRCREV_meta ="a227f20eff056e511d504b2e490f3774ab260d6f"
 ```
 
-You can use the `buildhistory-collect-srcrevs` command with the `-a` option to collect the stored `SRCREV`{.interpreted-text role="term"} values from build history and report them in a format suitable for use in global configuration (e.g., `local.conf` or a distro include file) to override floating `AUTOREV`{.interpreted-text role="term"} values to a fixed set of revisions. Here is some example output from this command:
+You can use the `buildhistory-collect-srcrevs` command with the `-a` option to collect the stored `SRCREV` values to a fixed set of revisions. Here is some example output from this command:
 
-> 你可以使用带有 `-a` 选项的 `buildhistory-collect-srcrevs` 命令来收集存储的 `SRCREV` 值，并以适用于全局配置（例如 `local.conf` 或发行版包含文件）的格式报告它们，以覆盖浮动的 `AUTOREV` 值到一组固定的修订版本。这里是此命令的一些示例输出：
+> 你可以使用带有 `-a` 选项的 `buildhistory-collect-srcrevs` 命令来收集存储的 `SRCREV` 值，并以适用于全局配置(例如 `local.conf` 或发行版包含文件)的格式报告它们，以覆盖浮动的 `AUTOREV` 值到一组固定的修订版本。这里是此命令的一些示例输出：
 
 ```
 $ buildhistory-collect-srcrevs -a
@@ -163,9 +163,9 @@ Note
 
 Here are some notes on using the `buildhistory-collect-srcrevs` command:
 
-- By default, only values where the `SRCREV`{.interpreted-text role="term"} was not hardcoded (usually when `AUTOREV`{.interpreted-text role="term"} is used) are reported. Use the `-a` option to see all `SRCREV`{.interpreted-text role="term"} values.
+- By default, only values where the `SRCREV` values.
 
-> 默认情况下，只有当未硬编码（通常使用 `AUTOREV` 时）`SRCREV` 时，才会报告值。使用 `-a` 选项可以查看所有 `SRCREV` 值。
+> 默认情况下，只有当未硬编码(通常使用 `AUTOREV` 时)`SRCREV` 时，才会报告值。使用 `-a` 选项可以查看所有 `SRCREV` 值。
 
 - The output statements might not have any effect if overrides are applied elsewhere in the build system configuration. Use the `-f` option to add the `forcevariable` override to each output line if you need to work around this restriction.
 
@@ -173,16 +173,16 @@ Here are some notes on using the `buildhistory-collect-srcrevs` command:
 
 - The script does apply special handling when building for multiple machines. However, the script does place a comment before each set of values that specifies which triplet to which they belong as previously shown (e.g., `i586-poky-linux`).
 
-> 脚本在构建多台机器时会应用特殊处理。但是，脚本会在每组值之前放置一条注释，以指定它们属于哪个三元组（例如，`i586-poky-linux`）。
+> 脚本在构建多台机器时会应用特殊处理。但是，脚本会在每组值之前放置一条注释，以指定它们属于哪个三元组(例如，`i586-poky-linux`)。
 > :::
 
 ## Build History Image Information
 
 The files produced for each image are as follows:
 
-- `image-files:` A directory containing selected files from the root filesystem. The files are defined by `BUILDHISTORY_IMAGE_FILES`{.interpreted-text role="term"}.
+- `image-files:` A directory containing selected files from the root filesystem. The files are defined by `BUILDHISTORY_IMAGE_FILES`.
 
-> `图像文件：` 一个包含从根文件系统中选定文件的目录。这些文件由 `BUILDHISTORY_IMAGE_FILES` 定义。
+> `镜像文件：` 一个包含从根文件系统中选定文件的目录。这些文件由 `BUILDHISTORY_IMAGE_FILES` 定义。
 
 - `build-id.txt:` Human-readable information about the build configuration and metadata source revisions. This file contains the full build header as printed by BitBake.
 
@@ -192,7 +192,7 @@ The files produced for each image are as follows:
 - `files-in-image.txt:` A list of files in the image with permissions, owner, group, size, and symlink information.
 - `image-info.txt:` A text file containing name-value pairs with information about the image. See the following listing example for more information.
 
-> `image-info.txt：一个包含关于图像的名称-值对信息的文本文件。有关更多信息，请参阅下面的列表示例。`
+> `image-info.txt：一个包含关于镜像的名称-值对信息的文本文件。有关更多信息，请参阅下面的列表示例。`
 
 - `installed-package-names.txt:` A list of installed packages by name only.
 - `installed-package-sizes.txt:` A list of installed packages ordered by size.
@@ -226,13 +226,13 @@ IMAGESIZE = 9265
 
 Other than `IMAGESIZE`, which is the total size of the files in the image in Kbytes, the name-value pairs are variables that may have influenced the content of the image. This information is often useful when you are trying to determine why a change in the package or file listings has occurred.
 
-> 除了 `IMAGESIZE`（图像文件总大小，以 K 字节表示）之外，名称-值对是可能影响图像内容的变量。当您试图确定为什么包或文件列表发生变化时，这些信息通常很有用。
+> 除了 `IMAGESIZE`(镜像文件总大小，以 K 字节表示)之外，名称-值对是可能影响镜像内容的变量。当您试图确定为什么包或文件列表发生变化时，这些信息通常很有用。
 
 ## Using Build History to Gather Image Information Only
 
-As you can see, build history produces image information, including dependency graphs, so you can see why something was pulled into the image. If you are just interested in this information and not interested in collecting specific package or SDK information, you can enable writing only image information without any history by adding the following to your `conf/local.conf` file found in the `Build Directory`{.interpreted-text role="term"}:
+As you can see, build history produces image information, including dependency graphs, so you can see why something was pulled into the image. If you are just interested in this information and not interested in collecting specific package or SDK information, you can enable writing only image information without any history by adding the following to your `conf/local.conf` file found in the `Build Directory`:
 
-> 可以看到，构建历史会产生图像信息，包括依赖图，这样您就可以看到为什么某些东西会被拉入图像。如果您只对这些信息感兴趣而不想收集特定的软件包或 SDK 信息，可以通过在“构建目录”中的 `conf / local.conf` 文件中添加以下内容来仅启用图像信息而不记录任何历史记录：
+> 可以看到，构建历史会产生镜像信息，包括依赖图，这样您就可以看到为什么某些东西会被拉入镜像。如果您只对这些信息感兴趣而不想收集特定的软件包或 SDK 信息，可以通过在“构建目录”中的 `conf / local.conf` 文件中添加以下内容来仅启用镜像信息而不记录任何历史记录：
 
 ```
 INHERIT += "buildhistory"
@@ -240,13 +240,13 @@ BUILDHISTORY_COMMIT = "0"
 BUILDHISTORY_FEATURES = "image"
 ```
 
-Here, you set the `BUILDHISTORY_FEATURES`{.interpreted-text role="term"} variable to use the image feature only.
+Here, you set the `BUILDHISTORY_FEATURES` variable to use the image feature only.
 
 ## Build History SDK Information
 
 Build history collects similar information on the contents of SDKs (e.g. `bitbake -c populate_sdk imagename`) as compared to information it collects for images. Furthermore, this information differs depending on whether an extensible or standard SDK is being produced.
 
-> 构建历史收集有关 SDK 内容（例如 `bitbake -c populate_sdk imagename`）的相似信息，与它收集的图像信息相比。此外，此信息根据是生成可扩展的 SDK 还是标准 SDK 而有所不同。
+> 构建历史收集有关 SDK 内容(例如 `bitbake -c populate_sdk imagename`)的相似信息，与它收集的镜像信息相比。此外，此信息根据是生成可扩展的 SDK 还是标准 SDK 而有所不同。
 
 The following list shows the files produced for SDKs:
 
@@ -255,9 +255,9 @@ The following list shows the files produced for SDKs:
 > `-` 文件-in-sdk.txt：SDK 中的文件列表，包括权限、所有者、组、大小和符号链接信息。此列表包括 SDK 的主机和目标部分。
 
 - `sdk-info.txt:` A text file containing name-value pairs with information about the SDK. See the following listing example for more information.
-- `sstate-task-sizes.txt:` A text file containing name-value pairs with information about task group sizes (e.g. `ref-tasks-populate_sysroot`{.interpreted-text role="ref"} tasks have a total size). The `sstate-task-sizes.txt` file exists only when an extensible SDK is created.
+- `sstate-task-sizes.txt:` A text file containing name-value pairs with information about task group sizes (e.g. `ref-tasks-populate_sysroot` tasks have a total size). The `sstate-task-sizes.txt` file exists only when an extensible SDK is created.
 
-> `sstate-task-sizes.txt`：一个包含关于任务组大小的名称-值对的文本文件（例如，`ref-tasks-populate_sysroot` 任务的总大小）。当创建可扩展 SDK 时，`sstate-task-sizes.txt` 文件才存在。
+> `sstate-task-sizes.txt`：一个包含关于任务组大小的名称-值对的文本文件(例如，`ref-tasks-populate_sysroot` 任务的总大小)。当创建可扩展 SDK 时，`sstate-task-sizes.txt` 文件才存在。
 
 - `sstate-package-sizes.txt:` A text file containing name-value pairs with information for the shared-state packages and sizes in the SDK. The `sstate-package-sizes.txt` file exists only when an extensible SDK is created.
 
@@ -305,13 +305,13 @@ SDKSIZE = 352712
 
 Other than `SDKSIZE`, which is the total size of the files in the SDK in Kbytes, the name-value pairs are variables that might have influenced the content of the SDK. This information is often useful when you are trying to determine why a change in the package or file listings has occurred.
 
-> 除了 `SDKSIZE`（SDK 中文件的总大小，以 K 字节为单位）之外，名称-值对是可能影响 SDK 内容的变量。当你试图确定为什么包或文件列表发生变化时，这些信息通常很有用。
+> 除了 `SDKSIZE`(SDK 中文件的总大小，以 K 字节为单位)之外，名称-值对是可能影响 SDK 内容的变量。当你试图确定为什么包或文件列表发生变化时，这些信息通常很有用。
 
 ## Examining Build History Information
 
 You can examine build history output from the command line or from a web interface.
 
-To see any changes that have occurred (assuming you have `BUILDHISTORY_COMMIT`{.interpreted-text role="term"} = \"1\"), you can simply use any Git command that allows you to view the history of a repository. Here is one method:
+To see any changes that have occurred (assuming you have `BUILDHISTORY_COMMIT` = \"1\"), you can simply use any Git command that allows you to view the history of a repository. Here is one method:
 
 > 如果你有 BUILDHISTORY_COMMIT = "1"，你可以使用任何允许查看存储库历史的 Git 命令来查看发生的任何更改。这里有一种方法：
 
@@ -356,10 +356,10 @@ $ pip3 install GitPython --user
 Alternatively, you can install `python3-git` using the appropriate distribution package manager (e.g. `apt`, `dnf`, or `zipper`).
 :::
 
-To see changes to the build history using a web interface, follow the instruction in the `README` file :yocto\_[git:%60here](git:%60here) \</buildhistory-web/\>\`.
+To see changes to the build history using a web interface, follow the instruction in the `README` file :yocto_[git:%60here](git:%60here) \</buildhistory-web/\>\`.
 
 > 要使用网页界面查看构建历史的变更，请按照 `README` 文件中的说明：yocto_[git:`here`](git:%60here%60) \</buildhistory-web/\>\`。
 
 Here is a sample screenshot of the interface:
 
-![image](figures/buildhistory-web.png){width="100.0%"}
+![image](figures/buildhistory-web.png)

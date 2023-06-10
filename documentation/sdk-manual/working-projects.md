@@ -11,7 +11,7 @@ You can use the SDK toolchain directly with Makefile and Autotools-based project
 
 # Autotools-Based Projects
 
-Once you have a suitable `sdk-manual/intro:the cross-development toolchain`{.interpreted-text role="ref"} installed, it is very easy to develop a project using the `GNU Autotools-based <GNU_Build_System>`{.interpreted-text role="wikipedia"} workflow, which is outside of the `OpenEmbedded Build System`{.interpreted-text role="term"}.
+Once you have a suitable `sdk-manual/intro:the cross-development toolchain`.
 
 > 一旦你安装了合适的“sdk-manual/intro：跨开发工具链”，使用基于“GNU Autotools”的“GNU 构建系统”工作流来开发一个项目就非常容易了，这是在“OpenEmbedded 构建系统”之外的。
 
@@ -19,7 +19,7 @@ The following figure presents a simple Autotools workflow.
 
 > 下图展示了一个简单的 Autotools 工作流程。
 
-![image](figures/sdk-autotools-flow.png){.align-center width="70.0%"}
+![image](figures/sdk-autotools-flow.png)
 
 Follow these steps to create a simple Autotools-based \"Hello World\" project:
 
@@ -165,15 +165,15 @@ If you get errors from `configure.ac`, which `autoreconf` runs, that indicate mi
 > 如果你从 `configure.ac` 得到的错误表明缺少文件，你可以使用“-i”选项，它可以确保缺少的辅助文件被复制到构建主机上。
 > :::
 
-4. *Cross-Compile the Project:* This command compiles the project using the cross-compiler. The `CONFIGURE_FLAGS`{.interpreted-text role="term"} environment variable provides the minimal arguments for GNU configure:
+4. *Cross-Compile the Project:* This command compiles the project using the cross-compiler. The `CONFIGURE_FLAGS` environment variable provides the minimal arguments for GNU configure:
 
-> 4. *交叉编译项目：*此命令使用交叉编译器编译项目。`CONFIGURE_FLAGS`{.interpreted-text role="term"}环境变量提供 GNU 配置的最小参数：
+> 4. *交叉编译项目：*此命令使用交叉编译器编译项目。`CONFIGURE_FLAGS` 环境变量提供 GNU 配置的最小参数：
 
 ```
 
-$ ./configure ${CONFIGURE_FLAGS}
+$ ./configure $
 
-> $ ./configure ${CONFIGURE_FLAGS}
+> $ ./configure $
 ```
 
 For an Autotools-based project, you can use the cross-toolchain by just passing the appropriate host option to `configure.sh`. The host option you use is derived from the name of the environment setup script found in the directory in which you installed the cross-toolchain. For example, the host option for an ARM-based target that uses the GNU EABI is `armv5te-poky-linux-gnueabi`. You will notice that the name of the script is `environment-setup-armv5te-poky-linux-gnueabi`. Thus, the following command works to update your project and rebuild it using the appropriate cross-toolchain tools:
@@ -210,7 +210,7 @@ Note
 > 注意
 > :::
 
-To learn about environment variables established when you run the cross-toolchain environment setup script and how they are used or overridden by the Makefile, see the `sdk-manual/working-projects:makefile-based projects`{.interpreted-text role="ref"} section.
+To learn about environment variables established when you run the cross-toolchain environment setup script and how they are used or overridden by the Makefile, see the `sdk-manual/working-projects:makefile-based projects` section.
 
 > 要了解运行跨工具链环境设置脚本时建立的环境变量以及 Makefile 如何使用或覆盖它们，请参阅“sdk-manual/working-projects：基于 Makefile 的项目”部分。
 > :::
@@ -228,7 +228,7 @@ $ file ./tmp/usr/local/bin/hello
 
 6. *Execute Your Project:* To execute the project, you would need to run it on your target hardware. If your target hardware happens to be your build host, you could run the project as follows:
 
-> 6. *执行项目：* 要执行项目，您需要在目标硬件上运行它。 如果您的目标硬件正好是构建主机，则可以按照以下方式运行项目：
+> 6. *执行项目：* 要执行项目，您需要在目标硬件上运行它。如果您的目标硬件正好是构建主机，则可以按照以下方式运行项目：
 
 ```
 
@@ -252,7 +252,7 @@ This section presents a simple Makefile development flow and provides an example
 
 > 这一节介绍了一个简单的 Makefile 开发流程，并提供了一个例子，让你可以看到如何在开发过程中使用跨工具链环境变量和 Makefile 变量。
 
-![image](figures/sdk-makefile-flow.png){.align-center width="70.0%"}
+![image](figures/sdk-makefile-flow.png)
 
 The main point of this section is to explain the following three cases regarding variable behavior:
 
@@ -289,23 +289,23 @@ The remainder of this section presents a simple Makefile example that demonstrat
 
 > 本节的剩余部分提供了一个简单的 Makefile 示例，用于演示这些变量的行为。
 
-In a new shell environment variables are not established for the SDK until you run the setup script. For example, the following commands show a null value for the compiler variable (i.e. `CC`{.interpreted-text role="term"}):
+In a new shell environment variables are not established for the SDK until you run the setup script. For example, the following commands show a null value for the compiler variable (i.e. `CC`):
 
-> 在新的 Shell 环境中，除非您运行设置脚本，否则不会为 SDK 建立环境变量。例如，以下命令显示编译器变量（即 `CC`{.interpreted-text role="term"}）的空值：
+> 在新的 Shell 环境中，除非您运行设置脚本，否则不会为 SDK 建立环境变量。例如，以下命令显示编译器变量(即 `CC`)的空值：
 
 ```
-$ echo ${CC}
+$ echo $
 
 $
 ```
 
 Running the SDK setup script for a 64-bit build host and an i586-tuned target architecture for a `core-image-sato` image using the current &DISTRO; Yocto Project release and then echoing that variable shows the value established through the script:
 
-> 在当前&DISTRO; Yocto Project 发行版上，为 `core-image-sato` 图像使用 64 位构建主机和 i586 调优目标架构运行 SDK 设置脚本，然后回显该变量显示通过脚本建立的值：
+> 在当前&DISTRO; Yocto Project 发行版上，为 `core-image-sato` 镜像使用 64 位构建主机和 i586 调优目标架构运行 SDK 设置脚本，然后回显该变量显示通过脚本建立的值：
 
 ```
 $ source /opt/poky/&DISTRO;/environment-setup-i586-poky-linux
-$ echo ${CC}
+$ echo $
 i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/&DISTRO;/sysroots/i586-poky-linux
 ```
 
@@ -404,10 +404,10 @@ Another example is sourcing the environment setup directly in a Yocto build:
 
 $ source tmp/deploy/images/qemux86-64/environment-setup-core2-64-poky-linux
 
-> $ 来源 tmp/部署/图像/qemux86-64/environment-setup-core2-64-poky-linux
+> $ 来源 tmp/部署/镜像/qemux86-64/environment-setup-core2-64-poky-linux
 ```
 
-3. *Create the Makefile:* For this example, the Makefile contains two lines that can be used to set the `CC`{.interpreted-text role="term"} variable. One line is identical to the value that is set when you run the SDK environment setup script, and the other line sets `CC`{.interpreted-text role="term"} to \"gcc\", the default GNU compiler on the build host:
+3. *Create the Makefile:* For this example, the Makefile contains two lines that can be used to set the `CC` to \"gcc\", the default GNU compiler on the build host:
 
 > 创建 Makefile：对于这个示例，Makefile 包含两行，可用于设置 `CC` 变量。一行与运行 SDK 环境设置脚本时设置的值相同，另一行将 `CC` 设置为构建主机上的默认 GNU 编译器“gcc”：
 
@@ -425,17 +425,17 @@ CC="GCC"
 all: main.o module.o
 
 > 所有：main.o模块。o
-  ${CC} main.o module.o -o target_bin
+  $ main.o module.o -o target_bin
 
 main.o: main.c module.h
 
 > main.o：main.c和module.h
-  ${CC} -I . -c main.c
+  $ -I . -c main.c
 
 module.o: module.c module.h
 
 > module.o：module.c 和 module.h
-  ${CC} -I . -c module.c
+  $ -I . -c module.c
 
 clean:
 
@@ -444,9 +444,9 @@ clean:
   rm target_bin
 ```
 
-4. *Make the Project:* Use the `make` command to create the binary output file. Because variables are commented out in the Makefile, the value used for `CC`{.interpreted-text role="term"} is the value set when the SDK environment setup file was run:
+4. *Make the Project:* Use the `make` command to create the binary output file. Because variables are commented out in the Makefile, the value used for `CC` is the value set when the SDK environment setup file was run:
 
-> 4. *创建项目：*使用 `make` 命令创建二进制输出文件。由于 Makefile 中的变量被注释掉了，因此 `CC`{.interpreted-text role="term"}的值是在运行 SDK 环境设置文件时设置的值。
+> 4. *创建项目：*使用 `make` 命令创建二进制输出文件。由于 Makefile 中的变量被注释掉了，因此 `CC` 的值是在运行 SDK 环境设置文件时设置的值。
 
 ```
 
@@ -468,11 +468,11 @@ i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-
 > i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux 主要模块。o -o 目标_bin
 ```
 
-From the results of the previous command, you can see that the compiler used was the compiler established through the `CC`{.interpreted-text role="term"} variable defined in the setup script.
+From the results of the previous command, you can see that the compiler used was the compiler established through the `CC` variable defined in the setup script.
 
 > 从之前的命令的结果可以看出，使用的编译器是在设置脚本中定义的 `CC` 变量中建立的编译器。
 
-You can override the `CC`{.interpreted-text role="term"} environment variable with the same variable as set from the Makefile by uncommenting the line in the Makefile and running `make` again:
+You can override the `CC` environment variable with the same variable as set from the Makefile by uncommenting the line in the Makefile and running `make` again:
 
 > 你可以通过取消 Makefile 中的注释并再次运行'make'来使用 Makefile 中设置的相同变量覆盖'CC'环境变量：
 
@@ -509,7 +509,7 @@ $ make
 
 gcc -I . -c main.c
 
-> gcc -I . -c main.c（简体中文）
+> gcc -I . -c main.c(简体中文)
 
 gcc -I . -c module.c
 
@@ -524,7 +524,7 @@ As shown in the previous example, the cross-toolchain compiler is not used. Rath
 
 > 如前面的例子所示，不使用跨工具链编译器，而是使用默认编译器。
 
-This next case shows how to override a variable by providing the variable as part of the command line. Go into the Makefile and re-insert the comment character so that running `make` uses the established SDK compiler. However, when you run `make`, use a command-line argument to set `CC`{.interpreted-text role="term"} to \"gcc\":
+This next case shows how to override a variable by providing the variable as part of the command line. Go into the Makefile and re-insert the comment character so that running `make` uses the established SDK compiler. However, when you run `make`, use a command-line argument to set `CC` to \"gcc\":
 
 > 这个下一个案例展示了如何通过提供命令行变量来覆盖变量。进入 Makefile，重新插入注释字符，以便运行 `make` 使用建立的 SDK 编译器。但是，当你运行 `make` 时，使用命令行参数将 `CC` 设置为“gcc”：
 
@@ -561,7 +561,7 @@ $ make
 
 i586-poky-linux-gcc  -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c main.c
 
-> i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c main.c（简体中文）
+> i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c main.c(简体中文)
 
 i586-poky-linux-gcc  -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c module.c
 
@@ -577,7 +577,7 @@ $ make clean
 
 rm -rf *.o
 
-> rm -rf *.o（删除所有以.o结尾的文件）
+> rm -rf *.o(删除所有以.o结尾的文件)
 
 rm target_bin
 
@@ -589,7 +589,7 @@ $ make CC="gcc"
 
 gcc -I . -c main.c
 
-> gcc -I . -c main.c（简体中文）
+> gcc -I . -c main.c(简体中文)
 
 gcc -I . -c module.c
 
@@ -670,11 +670,11 @@ $ make -e
 
 i586-poky-linux-gcc  -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c main.c
 
-> i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c main.c（简体中文）
+> i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c main.c(简体中文)
 
 i586-poky-linux-gcc  -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c module.c
 
-> i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c module.c（简体中文）
+> i586-poky-linux-gcc -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux -I . -c module.c(简体中文)
 
 i586-poky-linux-gcc  -m32 -march=i586 --sysroot=/opt/poky/2.5/sysroots/i586-poky-linux main.o module.o -o target_bin
 
@@ -687,7 +687,7 @@ In the previous case, the \"-e\" option forces `make` to use the SDK environment
 
 5. *Execute Your Project:* To execute the project (i.e. `target_bin`), use the following command:
 
-> 执行项目：要执行项目（即 `target_bin`），请使用以下命令：
+> 执行项目：要执行项目(即 `target_bin`)，请使用以下命令：
 
 ```
 

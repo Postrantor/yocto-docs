@@ -5,7 +5,7 @@ tip: translate by openai@2023-06-07 22:14:52
 title: QA Error and Warning Messages
 ------------------------------------
 
-# Introduction {#qa-introduction}
+# Introduction
 
 When building a recipe, the OpenEmbedded build system performs various QA checks on the output to ensure that common issues are detected and reported. Sometimes when you create a new recipe to build new software, it will build with no problems. When this is not the case, or when you have QA issues building any software, it could take a little time to resolve them.
 
@@ -24,7 +24,7 @@ The next section provides a list of all QA error and warning messages based on a
 Note
 :::
 
-- At the end of each message, the name of the associated QA test (as listed in the \"`ref-classes-insane`{.interpreted-text role="ref"}\" section) appears within square brackets.
+- At the end of each message, the name of the associated QA test (as listed in the \"`ref-classes-insane`\" section) appears within square brackets.
 
 > 在每条消息的末尾，列在“ref-classes-insane”部分中的相关 QA 测试的名称会以方括号括起来。
 
@@ -35,102 +35,102 @@ Note
 - Because some QA checks are disabled by default, this list does not include all possible QA check errors and warnings.
   :::
 
-# Errors and Warnings {#qa-errors-and-warnings}
+# Errors and Warnings
 
-::: {#qa-check-libexec}
+:::
 \- `<packagename>: <path> is using libexec please relocate to <libexecdir> [libexec]`
 :::
 
-> The specified package contains files in `/usr/libexec` when the distro configuration uses a different path for `<libexecdir>` By default, `<libexecdir>` is `$prefix/libexec`. However, this default can be changed (e.g. `${libdir}`).
+> The specified package contains files in `/usr/libexec` when the distro configuration uses a different path for `<libexecdir>` By default, `<libexecdir>` is `$prefix/libexec`. However, this default can be changed (e.g. `$`).
 
-::: {#qa-check-rpaths}
+:::
 \- `package <packagename> contains bad RPATH <rpath> in file <file> [rpaths]`
 :::
 
-> The specified binary produced by the recipe contains dynamic library load paths (rpaths) that contain build system paths such as `TMPDIR`{.interpreted-text role="term"}, which are incorrect for the target and could potentially be a security issue. Check for bad `-rpath` options being passed to the linker in your `ref-tasks-compile`{.interpreted-text role="ref"} log. Depending on the build system used by the software being built, there might be a configure option to disable rpath usage completely within the build of the software.
+> The specified binary produced by the recipe contains dynamic library load paths (rpaths) that contain build system paths such as `TMPDIR` log. Depending on the build system used by the software being built, there might be a configure option to disable rpath usage completely within the build of the software.
 
-::: {#qa-check-useless-rpaths}
+:::
 \- `<packagename>: <file> contains probably-redundant RPATH <rpath> [useless-rpaths]`
 :::
 
 > The specified binary produced by the recipe contains dynamic library load paths (rpaths) that on a standard system are searched by default by the linker (e.g. `/lib` and `/usr/lib`). While these paths will not cause any breakage, they do waste space and are unnecessary. Depending on the build system used by the software being built, there might be a configure option to disable rpath usage completely within the build of the software.
 
-::: {#qa-check-file-rdeps}
+:::
 \- `<packagename> requires <files>, but no providers in its RDEPENDS [file-rdeps]`
 :::
 
-> A file-level dependency has been identified from the specified package on the specified files, but there is no explicit corresponding entry in `RDEPENDS`{.interpreted-text role="term"}. If particular files are required at runtime then `RDEPENDS`{.interpreted-text role="term"} should be declared in the recipe to ensure the packages providing them are built.
+> A file-level dependency has been identified from the specified package on the specified files, but there is no explicit corresponding entry in `RDEPENDS` should be declared in the recipe to ensure the packages providing them are built.
 
-::: {#qa-check-build-deps}
+:::
 \- `<packagename1> rdepends on <packagename2>, but it isn't a build dependency? [build-deps]`
 :::
 
-> There is a runtime dependency between the two specified packages, but there is nothing explicit within the recipe to enable the OpenEmbedded build system to ensure that dependency is satisfied. This condition is usually triggered by an `RDEPENDS`{.interpreted-text role="term"} value being added at the packaging stage rather than up front, which is usually automatic based on the contents of the package. In most cases, you should change the recipe to add an explicit `RDEPENDS`{.interpreted-text role="term"} for the dependency.
+> There is a runtime dependency between the two specified packages, but there is nothing explicit within the recipe to enable the OpenEmbedded build system to ensure that dependency is satisfied. This condition is usually triggered by an `RDEPENDS` for the dependency.
 
-::: {#qa-check-dev-so}
+:::
 \- `non -dev/-dbg/nativesdk- package contains symlink .so: <packagename> path '<path>' [dev-so]`
 :::
 
-> Symlink `.so` files are for development only, and should therefore go into the `-dev` package. This situation might occur if you add `*.so*` rather than `*.so.*` to a non-dev package. Change `FILES`{.interpreted-text role="term"} (and possibly `PACKAGES`{.interpreted-text role="term"}) such that the specified `.so` file goes into an appropriate `-dev` package.
+> Symlink `.so` files are for development only, and should therefore go into the `-dev` package. This situation might occur if you add `*.so*` rather than `*.so.*` to a non-dev package. Change `FILES`) such that the specified `.so` file goes into an appropriate `-dev` package.
 
-::: {#qa-check-staticdev}
+:::
 \- `non -staticdev package contains static .a library: <packagename> path '<path>' [staticdev]`
 :::
 
-> Static `.a` library files should go into a `-staticdev` package. Change `FILES`{.interpreted-text role="term"} (and possibly `PACKAGES`{.interpreted-text role="term"}) such that the specified `.a` file goes into an appropriate `-staticdev` package.
+> Static `.a` library files should go into a `-staticdev` package. Change `FILES`) such that the specified `.a` file goes into an appropriate `-staticdev` package.
 
-::: {#qa-check-libdir}
+:::
 \- `<packagename>: found library in wrong location [libdir]`
 :::
 
-> The specified file may have been installed into an incorrect (possibly hardcoded) installation path. For example, this test will catch recipes that install `/lib/bar.so` when `${base_libdir}` is \"lib32\". Another example is when recipes install `/usr/lib64/foo.so` when `${libdir}` is \"/usr/lib\". False positives occasionally exist. For these cases add \"libdir\" to `INSANE_SKIP`{.interpreted-text role="term"} for the package.
+> The specified file may have been installed into an incorrect (possibly hardcoded) installation path. For example, this test will catch recipes that install `/lib/bar.so` when `$ for the package.
 
-::: {#qa-check-debug-files}
+:::
 
 - `non debug package contains .debug directory: <packagename> path <path> [debug-files]`
 
-  The specified package contains a `.debug` directory, which should not appear in anything but the `-dbg` package. This situation might occur if you add a path which contains a `.debug` directory and do not explicitly add the `.debug` directory to the `-dbg` package. If this is the case, add the `.debug` directory explicitly to `FILES:${PN}-dbg`. See `FILES`{.interpreted-text role="term"} for additional information on `FILES`{.interpreted-text role="term"}.
+  The specified package contains a `.debug` directory, which should not appear in anything but the `-dbg` package. This situation might occur if you add a path which contains a `.debug` directory and do not explicitly add the `.debug` directory to the `-dbg` package. If this is the case, add the `.debug` directory explicitly to `FILES:$.
 
-> 指定的软件包包含一个 `.debug` 目录，除了 `-dbg` 软件包之外，其他地方都不应该出现。如果您添加了一个包含 `.debug` 目录的路径，并且没有显式地将 `.debug` 目录添加到 `-dbg` 软件包中，就会发生这种情况。如果是这种情况，请显式地将 `.debug` 目录添加到 `FILES:${PN}-dbg` 中。有关 `FILES`{.interpreted-text role="term"}的更多信息，请参见 `FILES`{.interpreted-text role="term"}。
+> 指定的软件包包含一个 `.debug` 目录，除了 `-dbg` 软件包之外，其他地方都不应该出现。如果您添加了一个包含 `.debug` 目录的路径，并且没有显式地将 `.debug` 目录添加到 `-dbg` 软件包中，就会发生这种情况。如果是这种情况，请显式地将 `.debug` 目录添加到 `FILES:$。
 > :::
 
-::: {#qa-check-empty-dirs}
+:::
 
 - `<packagename> installs files in <path>, but it is expected to be empty [empty-dirs]`
 
-  The specified package is installing files into a directory that is normally expected to be empty (such as `/tmp`). These files may be more appropriately installed to a different location, or perhaps alternatively not installed at all, usually by updating the `ref-tasks-install`{.interpreted-text role="ref"} task/function.
+  The specified package is installing files into a directory that is normally expected to be empty (such as `/tmp`). These files may be more appropriately installed to a different location, or perhaps alternatively not installed at all, usually by updating the `ref-tasks-install` task/function.
 
-> 指定的软件包正在安装文件到通常期望为空的目录（例如 `/tmp`）。通常可以通过更新 `ref-tasks-install` 任务/函数来将这些文件更合适地安装到不同的位置，或者可能不安装它们。
+> 指定的软件包正在安装文件到通常期望为空的目录(例如 `/tmp`)。通常可以通过更新 `ref-tasks-install` 任务/函数来将这些文件更合适地安装到不同的位置，或者可能不安装它们。
 > :::
 
-::: {#qa-check-arch}
+:::
 
 - `Architecture did not match (<file_arch>, expected <machine_arch>) in <file> [arch]`
 
-  By default, the OpenEmbedded build system checks the Executable and Linkable Format (ELF) type, bit size, and endianness of any binaries to ensure they match the target architecture. This test fails if any binaries do not match the type since there would be an incompatibility. The test could indicate that the wrong compiler or compiler options have been used. Sometimes software, like bootloaders, might need to bypass this check. If the file you receive the error for is firmware that is not intended to be executed within the target operating system or is intended to run on a separate processor within the device, you can add \"arch\" to `INSANE_SKIP`{.interpreted-text role="term"} for the package. Another option is to check the `ref-tasks-compile`{.interpreted-text role="ref"} log and verify that the compiler options being used are correct.
+  By default, the OpenEmbedded build system checks the Executable and Linkable Format (ELF) type, bit size, and endianness of any binaries to ensure they match the target architecture. This test fails if any binaries do not match the type since there would be an incompatibility. The test could indicate that the wrong compiler or compiler options have been used. Sometimes software, like bootloaders, might need to bypass this check. If the file you receive the error for is firmware that is not intended to be executed within the target operating system or is intended to run on a separate processor within the device, you can add \"arch\" to `INSANE_SKIP` log and verify that the compiler options being used are correct.
 
-> 默认情况下，OpenEmbedded 构建系统会检查任何二进制文件的可执行和链接格式（ELF）类型，位大小和字节序，以确保它们与目标体系结构匹配。如果任何二进制文件类型不匹配，此测试将失败，因为存在不兼容性。该测试可能表明使用了错误的编译器或编译器选项。有时软件（如引导加载程序）可能需要绕过此检查。如果您收到错误的文件是旨在在目标操作系统中不执行的固件，或者旨在在设备内的单独处理器上运行，则可以为包添加“arch”到 INSANE_SKIP 中。另一个选择是检查 ref-tasks-compile 日志，并验证正在使用的编译器选项是否正确。
+> 默认情况下，OpenEmbedded 构建系统会检查任何二进制文件的可执行和链接格式(ELF)类型，位大小和字节序，以确保它们与目标体系结构匹配。如果任何二进制文件类型不匹配，此测试将失败，因为存在不兼容性。该测试可能表明使用了错误的编译器或编译器选项。有时软件(如引导加载程序)可能需要绕过此检查。如果您收到错误的文件是旨在在目标操作系统中不执行的固件，或者旨在在设备内的单独处理器上运行，则可以为包添加“arch”到 INSANE_SKIP 中。另一个选择是检查 ref-tasks-compile 日志，并验证正在使用的编译器选项是否正确。
 
 - `Bit size did not match (<file_bits>, expected <machine_bits>) in <file> [arch]`
 
-  By default, the OpenEmbedded build system checks the Executable and Linkable Format (ELF) type, bit size, and endianness of any binaries to ensure they match the target architecture. This test fails if any binaries do not match the type since there would be an incompatibility. The test could indicate that the wrong compiler or compiler options have been used. Sometimes software, like bootloaders, might need to bypass this check. If the file you receive the error for is firmware that is not intended to be executed within the target operating system or is intended to run on a separate processor within the device, you can add \"arch\" to `INSANE_SKIP`{.interpreted-text role="term"} for the package. Another option is to check the `ref-tasks-compile`{.interpreted-text role="ref"} log and verify that the compiler options being used are correct.
+  By default, the OpenEmbedded build system checks the Executable and Linkable Format (ELF) type, bit size, and endianness of any binaries to ensure they match the target architecture. This test fails if any binaries do not match the type since there would be an incompatibility. The test could indicate that the wrong compiler or compiler options have been used. Sometimes software, like bootloaders, might need to bypass this check. If the file you receive the error for is firmware that is not intended to be executed within the target operating system or is intended to run on a separate processor within the device, you can add \"arch\" to `INSANE_SKIP` log and verify that the compiler options being used are correct.
 
-> 默认情况下，OpenEmbedded 构建系统会检查任何二进制文件的可执行和链接格式（ELF）类型，位大小和字节序，以确保它们与目标架构匹配。如果任何二进制文件不匹配类型，则此测试将失败，因为存在不兼容性。该测试可能表明使用了错误的编译器或编译器选项。有时，像引导加载程序这样的软件可能需要绕过此检查。如果您收到错误的文件是旨在在目标操作系统之外执行的固件，或者旨在在设备内的单独处理器上运行的固件，则可以为该软件包添加"arch"到 INSANE_SKIP 中。另一个选择是检查 ref-tasks-compile 日志，并验证正在使用的编译器选项是否正确。
+> 默认情况下，OpenEmbedded 构建系统会检查任何二进制文件的可执行和链接格式(ELF)类型，位大小和字节序，以确保它们与目标架构匹配。如果任何二进制文件不匹配类型，则此测试将失败，因为存在不兼容性。该测试可能表明使用了错误的编译器或编译器选项。有时，像引导加载程序这样的软件可能需要绕过此检查。如果您收到错误的文件是旨在在目标操作系统之外执行的固件，或者旨在在设备内的单独处理器上运行的固件，则可以为该软件包添加"arch"到 INSANE_SKIP 中。另一个选择是检查 ref-tasks-compile 日志，并验证正在使用的编译器选项是否正确。
 
  
 :::
 
 \- `Endianness did not match (<file_endianness>, expected <machine_endianness>) in <file> [arch]`
 
-> By default, the OpenEmbedded build system checks the Executable and Linkable Format (ELF) type, bit size, and endianness of any binaries to ensure they match the target architecture. This test fails if any binaries do not match the type since there would be an incompatibility. The test could indicate that the wrong compiler or compiler options have been used. Sometimes software, like bootloaders, might need to bypass this check. If the file you receive the error for is firmware that is not intended to be executed within the target operating system or is intended to run on a separate processor within the device, you can add \"arch\" to `INSANE_SKIP`{.interpreted-text role="term"} for the package. Another option is to check the `ref-tasks-compile`{.interpreted-text role="ref"} log and verify that the compiler options being used are correct.
+> By default, the OpenEmbedded build system checks the Executable and Linkable Format (ELF) type, bit size, and endianness of any binaries to ensure they match the target architecture. This test fails if any binaries do not match the type since there would be an incompatibility. The test could indicate that the wrong compiler or compiler options have been used. Sometimes software, like bootloaders, might need to bypass this check. If the file you receive the error for is firmware that is not intended to be executed within the target operating system or is intended to run on a separate processor within the device, you can add \"arch\" to `INSANE_SKIP` log and verify that the compiler options being used are correct.
 
-::: {#qa-check-textrel}
+:::
 \- `ELF binary '<file>' has relocations in .text [textrel]`
 :::
 
 > The specified ELF binary contains relocations in its `.text` sections. This situation can result in a performance impact at runtime.
 >
-> Typically, the way to solve this performance issue is to add \"-fPIC\" or \"-fpic\" to the compiler command-line options. For example, given software that reads `CFLAGS`{.interpreted-text role="term"} when you build it, you could add the following to your recipe:
+> Typically, the way to solve this performance issue is to add \"-fPIC\" or \"-fpic\" to the compiler command-line options. For example, given software that reads `CFLAGS` when you build it, you could add the following to your recipe:
 >
 > ```
 > CFLAGS:append = " -fPIC "
@@ -138,142 +138,142 @@ Note
 >
 > For more information on text relocations at runtime, see [https://www.akkadia.org/drepper/textrelocs.html](https://www.akkadia.org/drepper/textrelocs.html).
 
-::: {#qa-check-ldflags}
+:::
 \- `File '<file>' in package '<package>' doesn't have GNU_HASH (didn't pass LDFLAGS?) [ldflags]`
 :::
 
-> This indicates that binaries produced when building the recipe have not been linked with the `LDFLAGS`{.interpreted-text role="term"} options provided by the build system. Check to be sure that the `LDFLAGS`{.interpreted-text role="term"} variable is being passed to the linker command. A common workaround for this situation is to pass in `LDFLAGS`{.interpreted-text role="term"} using `TARGET_CC_ARCH`{.interpreted-text role="term"} within the recipe as follows:
+> This indicates that binaries produced when building the recipe have not been linked with the `LDFLAGS` within the recipe as follows:
 >
 > ```
-> TARGET_CC_ARCH += "${LDFLAGS}"
+> TARGET_CC_ARCH += "$"
 > ```
 
-::: {#qa-check-xorg-driver-abi}
+:::
 \- `Package <packagename> contains Xorg driver (<driver>) but no xorg-abi- dependencies [xorg-driver-abi]`
 :::
 
 > The specified package contains an Xorg driver, but does not have a corresponding ABI package dependency. The xserver-xorg recipe provides driver ABI names. All drivers should depend on the ABI versions that they have been built against. Driver recipes that include `xorg-driver-input.inc` or `xorg-driver-video.inc` will automatically get these versions. Consequently, you should only need to explicitly add dependencies to binary driver recipes.
 
-::: {#qa-check-infodir}
+:::
 \- `The /usr/share/info/dir file is not meant to be shipped in a particular package. [infodir]`
 :::
 
-> The `/usr/share/info/dir` should not be packaged. Add the following line to your `ref-tasks-install`{.interpreted-text role="ref"} task or to your `do_install:append` within the recipe as follows:
+> The `/usr/share/info/dir` should not be packaged. Add the following line to your `ref-tasks-install` task or to your `do_install:append` within the recipe as follows:
 >
 > ```
-> rm ${D}${infodir}/dir
+> rm $/dir
 > ```
 
-::: {#qa-check-symlink-to-sysroot}
+:::
 \- `Symlink <path> in <packagename> points to TMPDIR [symlink-to-sysroot]`
 :::
 
-> The specified symlink points into `TMPDIR`{.interpreted-text role="term"} on the host. Such symlinks will work on the host. However, they are clearly invalid when running on the target. You should either correct the symlink to use a relative path or remove the symlink.
+> The specified symlink points into `TMPDIR` on the host. Such symlinks will work on the host. However, they are clearly invalid when running on the target. You should either correct the symlink to use a relative path or remove the symlink.
 
-::: {#qa-check-la}
+:::
 \- `<file> failed sanity test (workdir) in path <path> [la]`
 :::
 
-> The specified `.la` file contains `TMPDIR`{.interpreted-text role="term"} paths. Any `.la` file containing these paths is incorrect since `libtool` adds the correct sysroot prefix when using the files automatically itself.
+> The specified `.la` file contains `TMPDIR` paths. Any `.la` file containing these paths is incorrect since `libtool` adds the correct sysroot prefix when using the files automatically itself.
 
-::: {#qa-check-pkgconfig}
+:::
 \- `<file> failed sanity test (tmpdir) in path <path> [pkgconfig]`
 :::
 
-> The specified `.pc` file contains `TMPDIR`{.interpreted-text role="term"}`/``WORKDIR`{.interpreted-text role="term"} paths. Any `.pc` file containing these paths is incorrect since `pkg-config` itself adds the correct sysroot prefix when the files are accessed.
+> The specified `.pc` file contains `TMPDIR` paths. Any `.pc` file containing these paths is incorrect since `pkg-config` itself adds the correct sysroot prefix when the files are accessed.
 
-::: {#qa-check-debug-deps}
+:::
 \- `<packagename> rdepends on <debug_packagename> [debug-deps]`
 :::
 
 > There is a dependency between the specified non-dbg package (i.e. a package whose name does not end in `-dbg`) and a package that is a `dbg` package. The `dbg` packages contain debug symbols and are brought in using several different methods:
 >
-> - Using the `dbg-pkgs` `IMAGE_FEATURES`{.interpreted-text role="term"} value.
-> - Using `IMAGE_INSTALL`{.interpreted-text role="term"}.
+> - Using the `dbg-pkgs` `IMAGE_FEATURES` value.
+> - Using `IMAGE_INSTALL`.
 > - As a dependency of another `dbg` package that was brought in using one of the above methods.
 >
-> The dependency might have been automatically added because the `dbg` package erroneously contains files that it should not contain (e.g. a non-symlink `.so` file) or it might have been added manually (e.g. by adding to `RDEPENDS`{.interpreted-text role="term"}).
+> The dependency might have been automatically added because the `dbg` package erroneously contains files that it should not contain (e.g. a non-symlink `.so` file) or it might have been added manually (e.g. by adding to `RDEPENDS`).
 
-::: {#qa-check-dev-deps}
+:::
 \- `<packagename> rdepends on <dev_packagename> [dev-deps]`
 :::
 
 > There is a dependency between the specified non-dev package (a package whose name does not end in `-dev`) and a package that is a `dev` package. The `dev` packages contain development headers and are usually brought in using several different methods:
 >
-> - Using the `dev-pkgs` `IMAGE_FEATURES`{.interpreted-text role="term"} value.
-> - Using `IMAGE_INSTALL`{.interpreted-text role="term"}.
+> - Using the `dev-pkgs` `IMAGE_FEATURES` value.
+> - Using `IMAGE_INSTALL`.
 > - As a dependency of another `dev` package that was brought in using one of the above methods.
 >
-> The dependency might have been automatically added (because the `dev` package erroneously contains files that it should not have (e.g. a non-symlink `.so` file) or it might have been added manually (e.g. by adding to `RDEPENDS`{.interpreted-text role="term"}).
+> The dependency might have been automatically added (because the `dev` package erroneously contains files that it should not have (e.g. a non-symlink `.so` file) or it might have been added manually (e.g. by adding to `RDEPENDS`).
 
-::: {#qa-check-dep-cmp}
+:::
 \- `<var>:<packagename> is invalid: <comparison> (<value>)   only comparisons <, =, >, <=, and >= are allowed [dep-cmp]`
 :::
 
-> If you are adding a versioned dependency relationship to one of the dependency variables (`RDEPENDS`{.interpreted-text role="term"}, `RRECOMMENDS`{.interpreted-text role="term"}, `RSUGGESTS`{.interpreted-text role="term"}, `RPROVIDES`{.interpreted-text role="term"}, `RREPLACES`{.interpreted-text role="term"}, or `RCONFLICTS`{.interpreted-text role="term"}), you must only use the named comparison operators. Change the versioned dependency values you are adding to match those listed in the message.
+> If you are adding a versioned dependency relationship to one of the dependency variables (`RDEPENDS`), you must only use the named comparison operators. Change the versioned dependency values you are adding to match those listed in the message.
 
-::: {#qa-check-compile-host-path}
+:::
 
 \- `<recipename>: The compile log indicates that host include and/or library paths were used. Please check the log '<logfile>' for more information. [compile-host-path]`
 
 > \- <recipename>：编译日志指示使用了主机包含和/或库路径。请检查日志'<logfile>'以获取更多信息。[compile-host-path]
 > :::
 
-> The log for the `ref-tasks-compile`{.interpreted-text role="ref"} task indicates that paths on the host were searched for files, which is not appropriate when cross-compiling. Look for \"is unsafe for cross-compilation\" or \"CROSS COMPILE Badness\" in the specified log file.
+> The log for the `ref-tasks-compile` task indicates that paths on the host were searched for files, which is not appropriate when cross-compiling. Look for \"is unsafe for cross-compilation\" or \"CROSS COMPILE Badness\" in the specified log file.
 
-::: {#qa-check-install-host-path}
+:::
 
 \- `<recipename>: The install log indicates that host include and/or library paths were used. Please check the log '<logfile>' for more information. [install-host-path]`
 
 > \- <recipename>: 安装日志指出使用了主机包含和/或库路径。请查看日志'<logfile>'以获取更多信息。[install-host-path]
 > :::
 
-> The log for the `ref-tasks-install`{.interpreted-text role="ref"} task indicates that paths on the host were searched for files, which is not appropriate when cross-compiling. Look for \"is unsafe for cross-compilation\" or \"CROSS COMPILE Badness\" in the specified log file.
+> The log for the `ref-tasks-install` task indicates that paths on the host were searched for files, which is not appropriate when cross-compiling. Look for \"is unsafe for cross-compilation\" or \"CROSS COMPILE Badness\" in the specified log file.
 
-::: {#qa-check-configure-unsafe}
+:::
 
 \- `This autoconf log indicates errors, it looked at host include and/or library paths while determining system capabilities. Rerun configure task after fixing this. [configure-unsafe]`
 
 > 这个自动配置日志指出错误，它在确定系统功能时查看了主机包含文件和/或库路径。修复后重新运行配置任务。[configure-unsafe]
 > :::
 
-> The log for the `ref-tasks-configure`{.interpreted-text role="ref"} task indicates that paths on the host were searched for files, which is not appropriate when cross-compiling. Look for \"is unsafe for cross-compilation\" or \"CROSS COMPILE Badness\" in the specified log file.
+> The log for the `ref-tasks-configure` task indicates that paths on the host were searched for files, which is not appropriate when cross-compiling. Look for \"is unsafe for cross-compilation\" or \"CROSS COMPILE Badness\" in the specified log file.
 
-::: {#qa-check-pkgname}
+:::
 \- `<packagename> doesn't match the [a-z0-9.+-]+ regex [pkgname]`
 :::
 
-> The convention within the OpenEmbedded build system (sometimes enforced by the package manager itself) is to require that package names are all lower case and to allow a restricted set of characters. If your recipe name does not match this, or you add packages to `PACKAGES`{.interpreted-text role="term"} that do not conform to the convention, then you will receive this error. Rename your recipe. Or, if you have added a non-conforming package name to `PACKAGES`{.interpreted-text role="term"}, change the package name appropriately.
+> The convention within the OpenEmbedded build system (sometimes enforced by the package manager itself) is to require that package names are all lower case and to allow a restricted set of characters. If your recipe name does not match this, or you add packages to `PACKAGES`, change the package name appropriately.
 
-::: {#qa-check-unknown-configure-option}
+:::
 \- `<recipe>: configure was passed unrecognized options: <options> [unknown-configure-option]`
 :::
 
-> The configure script is reporting that the specified options are unrecognized. This situation could be because the options were previously valid but have been removed from the configure script. Or, there was a mistake when the options were added and there is another option that should be used instead. If you are unsure, consult the upstream build documentation, the `./configure --help` output, and the upstream change log or release notes. Once you have worked out what the appropriate change is, you can update `EXTRA_OECONF`{.interpreted-text role="term"}, `PACKAGECONFIG_CONFARGS`{.interpreted-text role="term"}, or the individual `PACKAGECONFIG`{.interpreted-text role="term"} option values accordingly.
+> The configure script is reporting that the specified options are unrecognized. This situation could be because the options were previously valid but have been removed from the configure script. Or, there was a mistake when the options were added and there is another option that should be used instead. If you are unsure, consult the upstream build documentation, the `./configure --help` output, and the upstream change log or release notes. Once you have worked out what the appropriate change is, you can update `EXTRA_OECONF` option values accordingly.
 
-::: {#qa-check-pn-overrides}
+:::
 \- `Recipe <recipefile> has PN of "<recipename>" which is in OVERRIDES, this can result in unexpected behavior. [pn-overrides]`
 :::
 
-> The specified recipe has a name (`PN`{.interpreted-text role="term"}) value that appears in `OVERRIDES`{.interpreted-text role="term"}. If a recipe is named such that its `PN`{.interpreted-text role="term"} value matches something already in `OVERRIDES`{.interpreted-text role="term"} (e.g. `PN`{.interpreted-text role="term"} happens to be the same as `MACHINE`{.interpreted-text role="term"} or `DISTRO`{.interpreted-text role="term"}), it can have unexpected consequences. For example, assignments such as `FILES:${PN} = "xyz"` effectively turn into `FILES = "xyz"`. Rename your recipe (or if `PN`{.interpreted-text role="term"} is being set explicitly, change the `PN`{.interpreted-text role="term"} value) so that the conflict does not occur. See `FILES`{.interpreted-text role="term"} for additional information.
+> The specified recipe has a name (`PN` for additional information.
 
-::: {#qa-check-pkgvarcheck}
+:::
 
 - `<recipefile>: Variable <variable> is set as not being package specific, please fix this. [pkgvarcheck]`
 
-  Certain variables (`RDEPENDS`{.interpreted-text role="term"}, `RRECOMMENDS`{.interpreted-text role="term"}, `RSUGGESTS`{.interpreted-text role="term"}, `RCONFLICTS`{.interpreted-text role="term"}, `RPROVIDES`{.interpreted-text role="term"}, `RREPLACES`{.interpreted-text role="term"}, `FILES`{.interpreted-text role="term"}, `pkg_preinst`, `pkg_postinst`, `pkg_prerm`, `pkg_postrm`, and `ALLOW_EMPTY`{.interpreted-text role="term"}) should always be set specific to a package (i.e. they should be set with a package name override such as `RDEPENDS:${PN} = "value"` rather than `RDEPENDS = "value"`). If you receive this error, correct any assignments to these variables within your recipe.
+  Certain variables (`RDEPENDS` = "value"`rather than` RDEPENDS = "value"`). If you receive this error, correct any assignments to these variables within your recipe.
 
-> 某些变量（`RDEPENDS`、`RRECOMMENDS`、`RSUGGESTS`、`RCONFLICTS`、`RPROVIDES`、`RREPLACES`、`FILES`、`pkg_preinst`、`pkg_postinst`、`pkg_prerm`、`pkg_postrm` 和 `ALLOW_EMPTY`）应该专门设置给某个包（即应该使用带有包名覆盖的赋值，例如 `RDEPENDS:${PN} = "value"`，而不是 `RDEPENDS = "value"`）。如果您收到此错误，请更正食谱中对这些变量的任何赋值。
+> 某些变量(`RDEPENDS`、`RRECOMMENDS`、`RSUGGESTS`、`RCONFLICTS`、`RPROVIDES`、`RREPLACES`、`FILES`、`pkg_preinst`、`pkg_postinst`、`pkg_prerm`、`pkg_postrm` 和 `ALLOW_EMPTY`)应该专门设置给某个包(即应该使用带有包名覆盖的赋值，例如 `RDEPENDS:$ = "value"`，而不是 `RDEPENDS = "value"`)。如果您收到此错误，请更正 recipes 中对这些变量的任何赋值。
 
-- `recipe uses DEPENDS:${PN}, should use DEPENDS [pkgvarcheck]`
+- `recipe uses DEPENDS:$, should use DEPENDS [pkgvarcheck]`
 
-  > This check looks for instances of setting `DEPENDS:${PN}` which is erroneous (`DEPENDS`{.interpreted-text role="term"} is a recipe-wide variable and thus it is not correct to specify it for a particular package, nor will such an assignment actually work.) Set `DEPENDS`{.interpreted-text role="term"} instead.
+  > This check looks for instances of setting `DEPENDS:$ instead.
   >
 
-> 此检查查找设置“DEPENDS：${PN}”的实例，这是错误的（DEPENDS 是针对特定配方的变量，因此不能为特定包指定它，也不会生效）。请改用 DEPENDS。
+> 此检查查找设置“DEPENDS：$”的实例，这是错误的(DEPENDS 是针对特定配方的变量，因此不能为特定包指定它，也不会生效)。请改用 DEPENDS。
 > :::
 
-::: {#qa-check-already-stripped}
+:::
 \- `File '<file>' from <recipename> was already stripped, this will prevent future debugging! [already-stripped]`
 :::
 
@@ -289,53 +289,53 @@ Note
 > Disabling stripping here does not mean that the final packaged binaries will be unstripped. Once the OpenEmbedded build system splits out debug symbols to the `-dbg` package, it will then strip the symbols from the binaries.
 > :::
 
-::: {#qa-check-packages-list}
+:::
 \- `<packagename> is listed in PACKAGES multiple times, this leads to packaging errors. [packages-list]`
 :::
 
-> Package names must appear only once in the `PACKAGES`{.interpreted-text role="term"} variable. You might receive this error if you are attempting to add a package to `PACKAGES`{.interpreted-text role="term"} that is already in the variable\'s value.
+> Package names must appear only once in the `PACKAGES` that is already in the variable\'s value.
 
-::: {#qa-check-files-invalid}
+:::
 
 \- `FILES variable for package <packagename> contains '//' which is invalid. Attempting to fix this but you should correct the metadata. [files-invalid]`
 
 > \- `<packagename>` 包的 FILES 变量包含无效的'//'。正在尝试修复，但您应该修正元数据。[files-invalid]
 > :::
 
-> The string \"//\" is invalid in a Unix path. Correct all occurrences where this string appears in a `FILES`{.interpreted-text role="term"} variable so that there is only a single \"/\".
+> The string \"//\" is invalid in a Unix path. Correct all occurrences where this string appears in a `FILES` variable so that there is only a single \"/\".
 
-::: {#qa-check-installed-vs-shipped}
+:::
 
 - `<recipename>: Files/directories were installed but not shipped in any package [installed-vs-shipped]`
 
-  Files have been installed within the `ref-tasks-install`{.interpreted-text role="ref"} task but have not been included in any package by way of the `FILES`{.interpreted-text role="term"} variable. Files that do not appear in any package cannot be present in an image later on in the build process. You need to do one of the following:
+  Files have been installed within the `ref-tasks-install` variable. Files that do not appear in any package cannot be present in an image later on in the build process. You need to do one of the following:
 
-> 文件已经安装在 `ref-tasks-install` 任务中，但没有通过 `FILES` 变量包含在任何包中。不出现在任何包中的文件在构建过程中的后续阶段不能出现在图像中。您需要执行以下操作之一：
+> 文件已经安装在 `ref-tasks-install` 任务中，但没有通过 `FILES` 变量包含在任何包中。不出现在任何包中的文件在构建过程中的后续阶段不能出现在镜像中。您需要执行以下操作之一：
 
-- Add the files to `FILES`{.interpreted-text role="term"} for the package you want them to appear in (e.g. `FILES:${``PN`{.interpreted-text role="term"}`}` for the main package).
+- Add the files to `FILES`` for the main package).
 
-> 将文件添加到要在其中出现的包的 `FILES`（例如，主包的 `FILES:${``PN`}`）。
+> 将文件添加到要在其中出现的包的 `FILES`(例如，主包的 `FILES:$`)。
 
-- Delete the files at the end of the `ref-tasks-install`{.interpreted-text role="ref"} task if the files are not needed in any package.
+- Delete the files at the end of the `ref-tasks-install` task if the files are not needed in any package.
 - `<oldpackage>-<oldpkgversion> was registered as shlib provider for <library>, changing it to <newpackage>-<newpkgversion> because it was built later`
 
 > - 因为<newpackage>-<newpkgversion>更新更晚，所以将<oldpackage>-<oldpkgversion>注册为<library>的 shlib 提供者改为<newpackage>-<newpkgversion>。
 
-This message means that both `<oldpackage>` and `<newpackage>` provide the specified shared library. You can expect this message when a recipe has been renamed. However, if that is not the case, the message might indicate that a private version of a library is being erroneously picked up as the provider for a common library. If that is the case, you should add the library\'s `.so` filename to `PRIVATE_LIBS`{.interpreted-text role="term"} in the recipe that provides the private version of the library.
+This message means that both `<oldpackage>` and `<newpackage>` provide the specified shared library. You can expect this message when a recipe has been renamed. However, if that is not the case, the message might indicate that a private version of a library is being erroneously picked up as the provider for a common library. If that is the case, you should add the library\'s `.so` filename to `PRIVATE_LIBS` in the recipe that provides the private version of the library.
 
-> 这条消息意味着<oldpackage>和<newpackage>都提供了指定的共享库。当一个食谱被重命名时，你可以期待这条消息。但是，如果情况并非如此，该消息可能表明一个私有库被误认为是公共库的提供者。如果是这种情况，你应该在提供私有库的食谱中将库的 `.so` 文件名添加到 `PRIVATE_LIBS` 中。
+> 这条消息意味着<oldpackage>和<newpackage>都提供了指定的共享库。当一个 recipes 被重命名时，你可以期待这条消息。但是，如果情况并非如此，该消息可能表明一个私有库被误认为是公共库的提供者。如果是这种情况，你应该在提供私有库的 recipes 中将库的 `.so` 文件名添加到 `PRIVATE_LIBS` 中。
 > :::
 
-::: {#qa-check-unlisted-pkg-lics}
+:::
 
 - `LICENSE:<packagename> includes licenses (<licenses>) that are not listed in LICENSE [unlisted-pkg-lics]`
 
-  The `LICENSE`{.interpreted-text role="term"} of the recipe should be a superset of all the licenses of all packages produced by this recipe. In other words, any license in `LICENSE:*` should also appear in `LICENSE`{.interpreted-text role="term"}.
+  The `LICENSE`.
 
-> `LICENSE`{.interpreted-text role="term"}的许可证应该是此配方生成的所有许可证的超集。换句话说，`LICENSE:*` 中的任何许可证都应出现在 `LICENSE`{.interpreted-text role="term"}中。
+> `LICENSE` 中。
 > :::
 
-::: {#qa-check-configure-gettext}
+:::
 
 - `AM_GNU_GETTEXT used but no inherit gettext [configure-gettext]`
 
@@ -345,102 +345,102 @@ This message means that both `<oldpackage>` and `<newpackage>` provide the speci
 > 如果一个配方正在构建使用 automake 的东西，而 automake 文件包含一个 `AM_GNU_GETTEXT` 指令，那么如果配方中没有 `inherit gettext` 语句来确保在构建期间可以使用 gettext，这个检查将失败。添加 `inherit gettext` 以消除警告。
 > :::
 
-::: {#qa-check-mime}
+:::
 
 - `package contains mime types but does not inherit mime: <packagename> path '<file>' [mime]`
 
-  > The specified package contains mime type files (`.xml` files in `${datadir}/mime/packages`) and yet does not inherit the `ref-classes-mime`{.interpreted-text role="ref"} class which will ensure that these get properly installed. Either add `inherit mime` to the recipe or remove the files at the `ref-tasks-install`{.interpreted-text role="ref"} step if they are not needed.
+  > The specified package contains mime type files (`.xml` files in `$ step if they are not needed.
   >
 
-> 指定的软件包包含 MIME 类型文件（在 `${datadir}/mime/packages` 中的 `.xml` 文件），但是没有继承 `ref-classes-mime`{.interpreted-text role="ref"}类，这将确保这些文件得到正确的安装。要么在配方中添加 `inherit mime`，要么在 `ref-tasks-install`{.interpreted-text role="ref"}步骤中删除这些文件，如果它们不需要的话。
+> 指定的软件包包含 MIME 类型文件(在 `$ 步骤中删除这些文件，如果它们不需要的话。
 > :::
 
-::: {#qa-check-mime-xdg}
+:::
 
 - `package contains desktop file with key 'MimeType' but does not inhert mime-xdg: <packagename> path '<file>' [mime-xdg]`
 
-  > The specified package contains a .desktop file with a \'MimeType\' key present, but does not inherit the `ref-classes-mime-xdg`{.interpreted-text role="ref"} class that is required in order for that to be activated. Either add `inherit mime` to the recipe or remove the files at the `ref-tasks-install`{.interpreted-text role="ref"} step if they are not needed.
+  > The specified package contains a .desktop file with a \'MimeType\' key present, but does not inherit the `ref-classes-mime-xdg` step if they are not needed.
   >
 
-> 指定的软件包包含一个带有'MimeType'键的.desktop 文件，但没有继承所需的'ref-classes-mime-xdg'{.interpreted-text role="ref"}类。要使其激活，请在配方中添加'inherit mime'，或者如果不需要，请在'ref-tasks-install'{.interpreted-text role="ref"}步骤中删除文件。
+> 指定的软件包包含一个带有'MimeType'键的.desktop 文件，但没有继承所需的'ref-classes-mime-xdg'步骤中删除文件。
 > :::
 
-::: {#qa-check-src-uri-bad}
+:::
 
 - `<recipename>: SRC_URI uses unstable GitHub archives [src-uri-bad]`
 
-  > GitHub provides \"archive\" tarballs, however these can be re-generated on the fly and thus the file\'s signature will not necessarily match that in the `SRC_URI`{.interpreted-text role="term"} checksums in future leading to build failures. It is recommended that you use an official release tarball or switch to pulling the corresponding revision in the actual git repository instead.
+  > GitHub provides \"archive\" tarballs, however these can be re-generated on the fly and thus the file\'s signature will not necessarily match that in the `SRC_URI` checksums in future leading to build failures. It is recommended that you use an official release tarball or switch to pulling the corresponding revision in the actual git repository instead.
   >
 
 > GitHub 提供“归档”tarball，但是这些可以实时重新生成，因此文件的签名可能不会与 `SRC_URI` 中的校验和匹配，从而导致构建失败。建议您使用官方发布的 tarball 或者切换到实际的 git 存储库中拉取相应的修订版本。
 
 - `SRC_URI uses PN not BPN [src-uri-bad]`
 
-  > If some part of `SRC_URI`{.interpreted-text role="term"} needs to reference the recipe name, it should do so using \${`BPN`{.interpreted-text role="term"}} rather than \${`PN`{.interpreted-text role="term"}} as the latter will change for different variants of the same recipe e.g. when `BBCLASSEXTEND`{.interpreted-text role="term"} or multilib are being used. This check will fail if a reference to `${PN}` is found within the `SRC_URI`{.interpreted-text role="term"} value \-\-- change it to `${BPN}` instead.
+  > If some part of `SRC_URI`` instead.
   >
 
-> 如果 SRC_URI 中的某些部分需要引用食谱名称，则应使用${BPN}而不是${PN}，因为后者会在使用 BBCLASSEXTEND 或 multilib 时为同一食谱的不同变体而改变。如果在 SRC_URI 值中发现对${PN}的引用，此检查将失败--请将其更改为${BPN}。
+> 如果 SRC_URI 中的某些部分需要引用 recipes 名称，则应使用 $。
 > :::
 
-::: {#qa-check-unhandled-features-check}
+:::
 
 - `<recipename>: recipe doesn't inherit features_check [unhandled-features-check]`
 
-  > This check ensures that if one of the variables that the `ref-classes-features_check`{.interpreted-text role="ref"} class supports (e.g. `REQUIRED_DISTRO_FEATURES`{.interpreted-text role="term"}) is used, then the recipe inherits `ref-classes-features_check`{.interpreted-text role="ref"} in order for the requirement to actually work. If you are seeing this message, either add `inherit features_check` to your recipe or remove the reference to the variable if it is not needed.
+  > This check ensures that if one of the variables that the `ref-classes-features_check` in order for the requirement to actually work. If you are seeing this message, either add `inherit features_check` to your recipe or remove the reference to the variable if it is not needed.
   >
 
-> 此检查确保，如果使用了 `ref-classes-features_check`{.interpreted-text role="ref"}类支持的变量（例如 `REQUIRED_DISTRO_FEATURES`{.interpreted-text role="term"}），则该配方继承 `ref-classes-features_check`{.interpreted-text role="ref"}，以使要求实际有效。如果您看到此消息，请向配方添加 `inherit features_check` 或删除变量的引用（如果不需要）。
+> 此检查确保，如果使用了 `ref-classes-features_check`，以使要求实际有效。如果您看到此消息，请向配方添加 `inherit features_check` 或删除变量的引用(如果不需要)。
 > :::
 
-::: {#qa-check-missing-update-alternatives}
+:::
 
 - `<recipename>: recipe defines ALTERNATIVE:<packagename> but doesn't inherit update-alternatives. This might fail during do_rootfs later! [missing-update-alternatives]`
 
 > `- <recipename>: 该配方定义了ALTERNATIVE:<packagename>，但没有继承update-alternatives。这可能会在do_rootfs阶段失败！[missing-update-alternatives]`
 
-> This check ensures that if a recipe sets the `ALTERNATIVE`{.interpreted-text role="term"} variable that the recipe also inherits `ref-classes-update-alternatives`{.interpreted-text role="ref"} such that the alternative will be correctly set up. If you are seeing this message, either add `inherit update-alternatives` to your recipe or remove the reference to the variable if it is not needed.
+> This check ensures that if a recipe sets the `ALTERNATIVE` such that the alternative will be correctly set up. If you are seeing this message, either add `inherit update-alternatives` to your recipe or remove the reference to the variable if it is not needed.
 
 > 这个检查确保，如果配方设置了 `ALTERNATIVE` 变量，那么配方也会继承 `ref-classes-update-alternatives`，以便正确设置替代选项。如果您看到此消息，请向您的配方添加 `inherit update-alternatives` 或者如果不需要，则删除对该变量的引用。
 > :::
 
-::: {#qa-check-shebang-size}
+:::
 
 - `<packagename>: <file> maximum shebang size exceeded, the maximum size is 128. [shebang-size]`
 
   > This check ensures that the shebang line (`#!` in the first line) for a script is not longer than 128 characters, which can cause an error at runtime depending on the operating system. If you are seeing this message then the specified script may need to be patched to have a shorter in order to avoid runtime problems.
   >
 
-> 这个检查确保脚本的 shebang 行（第一行中的 `#!`）不超过 128 个字符，否则可能会根据操作系统在运行时出错。如果您看到此消息，则可能需要修补指定的脚本以缩短以避免运行时问题。
+> 这个检查确保脚本的 shebang 行(第一行中的 `#!`)不超过 128 个字符，否则可能会根据操作系统在运行时出错。如果您看到此消息，则可能需要修补指定的脚本以缩短以避免运行时问题。
 > :::
 
-::: {#qa-check-perllocalpod}
+:::
 
 - `<packagename> contains perllocal.pod (<files>), should not be installed [perllocalpod]`
 
-  > `perllocal.pod` is an index file of locally installed modules and so shouldn\'t be installed by any distribution packages. The `ref-classes-cpan`{.interpreted-text role="ref"} class already sets `NO_PERLLOCAL` to stop this file being generated by most Perl recipes, but if a recipe is using `MakeMaker` directly then they might not be doing this correctly. This check ensures that perllocal.pod is not in any package in order to avoid multiple packages shipping this file and thus their packages conflicting if installed together.
+  > `perllocal.pod` is an index file of locally installed modules and so shouldn\'t be installed by any distribution packages. The `ref-classes-cpan` class already sets `NO_PERLLOCAL` to stop this file being generated by most Perl recipes, but if a recipe is using `MakeMaker` directly then they might not be doing this correctly. This check ensures that perllocal.pod is not in any package in order to avoid multiple packages shipping this file and thus their packages conflicting if installed together.
   >
 
-> `perllocal.pod` 是本地安装模块的索引文件，不应该由任何发行版本安装。`ref-classes-cpan`{.interpreted-text role="ref"}类已经设置了 `NO_PERLLOCAL`，以阻止大多数 Perl 配方生成此文件，但如果配方直接使用 `MakeMaker`，则可能没有正确执行此操作。此检查确保 perllocal.pod 不在任何包中，以避免多个包同时发送此文件，从而如果一起安装则可能会发生冲突。
+> `perllocal.pod` 是本地安装模块的索引文件，不应该由任何发行版本安装。`ref-classes-cpan` 类已经设置了 `NO_PERLLOCAL`，以阻止大多数 Perl 配方生成此文件，但如果配方直接使用 `MakeMaker`，则可能没有正确执行此操作。此检查确保 perllocal.pod 不在任何包中，以避免多个包同时发送此文件，从而如果一起安装则可能会发生冲突。
 > :::
 
-::: {#qa-check-usrmerge}
+:::
 
 - `<packagename> package is not obeying usrmerge distro feature. /<path> should be relocated to /usr. [usrmerge]`
 
-  > If `usrmerge` is in `DISTRO_FEATURES`{.interpreted-text role="term"}, this check will ensure that no package installs files to root (`/bin`, `/sbin`, `/lib`, `/lib64`) directories. If you are seeing this message, it indicates that the `ref-tasks-install`{.interpreted-text role="ref"} step (or perhaps the build process that `ref-tasks-install`{.interpreted-text role="ref"} is calling into, e.g. `make install` is using hardcoded paths instead of the variables set up for this (`bindir`, `sbindir`, etc.), and should be changed so that it does.
+  > If `usrmerge` is in `DISTRO_FEATURES` is calling into, e.g. `make install` is using hardcoded paths instead of the variables set up for this (`bindir`, `sbindir`, etc.), and should be changed so that it does.
   >
 
-> 如果 `usrmerge` 在 `DISTRO_FEATURES` 中，此检查将确保没有包安装文件到根（`/bin`，`/sbin`，`/lib`，`/lib64`）目录。如果您看到此消息，则表示 `ref-tasks-install` 步骤（或可能是 `ref-tasks-install` 调用的构建过程，例如 `make install` 正在使用硬编码路径而不是为此设置的变量（`bindir`，`sbindir` 等），应该更改以这样做。
+> 如果 `usrmerge` 在 `DISTRO_FEATURES` 中，此检查将确保没有包安装文件到根(`/bin`，`/sbin`，`/lib`，`/lib64`)目录。如果您看到此消息，则表示 `ref-tasks-install` 步骤(或可能是 `ref-tasks-install` 调用的构建过程，例如 `make install` 正在使用硬编码路径而不是为此设置的变量(`bindir`，`sbindir` 等)，应该更改以这样做。
 > :::
 
-::: {#qa-check-patch-fuzz}
+:::
 
 - `Fuzz detected: <patch output> [patch-fuzz]`
 
-  > This check looks for evidence of \"fuzz\" when applying patches within the `ref-tasks-patch`{.interpreted-text role="ref"} task. Patch fuzz is a situation when the `patch` tool ignores some of the context lines in order to apply the patch. Consider this example:
+  > This check looks for evidence of \"fuzz\" when applying patches within the `ref-tasks-patch` task. Patch fuzz is a situation when the `patch` tool ignores some of the context lines in order to apply the patch. Consider this example:
   >
 
-> 这个检查旨在检查在 `ref-tasks-patch`{.interpreted-text role="ref"}任务中应用补丁时是否存在“fuzz”的证据。补丁 fuzz 是指 `patch` 工具忽略一些上下文行以便应用补丁的情况。举个例子：
+> 这个检查旨在检查在 `ref-tasks-patch` 任务中应用补丁时是否存在“fuzz”的证据。补丁 fuzz 是指 `patch` 工具忽略一些上下文行以便应用补丁的情况。举个例子：
 >
 > Patch to be applied:
 >
@@ -510,10 +510,10 @@ This message means that both `<oldpackage>` and `<newpackage>` provide the speci
 
 > Once the review is done, you can create and publish a layer commit with the patch updates that modify the context. Devtool may also refresh other things in the patches, those can be discarded.
 
-> 一旦审核完成，您可以创建并发布一个带有修补程序更新的图层提交，以修改上下文。 Devtool 也可能会刷新补丁中的其他内容，这些可以被丢弃。
+> 一旦审核完成，您可以创建并发布一个带有修补程序更新的图层提交，以修改上下文。Devtool 也可能会刷新补丁中的其他内容，这些可以被丢弃。
 > :::
 
-::: {#qa-check-patch-status}
+:::
 
 - `Missing Upstream-Status in patch <patchfile> Please add according to <url> [patch-status-core/patch-status-noncore]`
 
@@ -524,7 +524,7 @@ This message means that both `<oldpackage>` and `<newpackage>` provide the speci
 
 > There are two options for this same check - `patch-status-core` (for recipes in OE-Core) and `patch-status-noncore` (for recipes in any other layer).
 
-> 这个检查有两个选项 - `patch-status-core`（用于 OE-Core 中的配方）和 `patch-status-noncore`（用于其他层中的配方）。
+> 这个检查有两个选项 - `patch-status-core`(用于 OE-Core 中的配方)和 `patch-status-noncore`(用于其他层中的配方)。
 
 > For more information on setting Upstream-Status see: [https://www.openembedded.org/wiki/Commit_Patch_Message_Guidelines#Patch_Header_Recommendations:_Upstream-Status](https://www.openembedded.org/wiki/Commit_Patch_Message_Guidelines#Patch_Header_Recommendations:_Upstream-Status)
 
@@ -538,25 +538,25 @@ This message means that both `<oldpackage>` and `<newpackage>` provide the speci
 > 指定的补丁文件头中的 Upstream-Status 值无效——必须是特定格式。有关更多信息，请参阅上面的“Missing Upstream-Status”条目。
 > :::
 
-::: {#qa-check-buildpaths}
+:::
 
 - `File <filename> in package <packagename> contains reference to TMPDIR [buildpaths]`
 
-  > This check ensures that build system paths (including `TMPDIR`{.interpreted-text role="term"}) do not appear in output files, which not only leaks build system configuration into the target, but also hinders binary reproducibility as the output will change if the build system configuration changes.
+  > This check ensures that build system paths (including `TMPDIR`) do not appear in output files, which not only leaks build system configuration into the target, but also hinders binary reproducibility as the output will change if the build system configuration changes.
   >
 
-> 这个检查确保构建系统路径（包括 `TMPDIR`）不会出现在输出文件中，这不仅会泄露构建系统配置到目标，而且会阻碍二进制可重复性，因为如果构建系统配置改变，输出也会改变。
+> 这个检查确保构建系统路径(包括 `TMPDIR`)不会出现在输出文件中，这不仅会泄露构建系统配置到目标，而且会阻碍二进制可重复性，因为如果构建系统配置改变，输出也会改变。
 
 > Typically these paths will enter the output through some mechanism in the configuration or compilation of the software being built by the recipe. To resolve this issue you will need to determine how the detected path is entering the output. Sometimes it may require adjusting scripts or code to use a relative path rather than an absolute one, or to pick up the path from runtime configuration or environment variables.
 
-> 通常，这些路径将通过食谱中构建的软件的配置或编译中的某种机制进入输出。为了解决这个问题，您需要确定检测到的路径是如何进入输出的。有时，可能需要调整脚本或代码以使用相对路径而不是绝对路径，或从运行时配置或环境变量中提取路径。
+> 通常，这些路径将通过 recipes 中构建的软件的配置或编译中的某种机制进入输出。为了解决这个问题，您需要确定检测到的路径是如何进入输出的。有时，可能需要调整脚本或代码以使用相对路径而不是绝对路径，或从运行时配置或环境变量中提取路径。
 > :::
 
 # Configuring and Disabling QA Checks
 
-You can configure the QA checks globally so that specific check failures either raise a warning or an error message, using the `WARN_QA`{.interpreted-text role="term"} and `ERROR_QA`{.interpreted-text role="term"} variables, respectively. You can also disable checks within a particular recipe using `INSANE_SKIP`{.interpreted-text role="term"}. For information on how to work with the QA checks, see the \"`ref-classes-insane`{.interpreted-text role="ref"}\" section.
+You can configure the QA checks globally so that specific check failures either raise a warning or an error message, using the `WARN_QA`\" section.
 
-> 你可以使用 `WARN_QA`{.interpreted-text role="term"}和 `ERROR_QA`{.interpreted-text role="term"}变量，全局配置 QA 检查，以使特定的检查失败时出现警告或错误消息。您还可以使用 `INSANE_SKIP`{.interpreted-text role="term"}禁用特定配方中的检查。有关如何使用 QA 检查的信息，请参阅“`ref-classes-insane`{.interpreted-text role="ref"}”部分。
+> 你可以使用 `WARN_QA`”部分。
 
 ::: note
 ::: title

@@ -14,17 +14,17 @@ The Yocto Project provides multiple ways to manage the device manager (`/dev`):
 
 # Using Persistent and Pre-Populated `/dev`
 
-To use the static method for device population, you need to set the `USE_DEVFS`{.interpreted-text role="term"} variable to \"0\" as follows:
+To use the static method for device population, you need to set the `USE_DEVFS` variable to \"0\" as follows:
 
 ```
 USE_DEVFS = "0"
 ```
 
-The content of the resulting `/dev` directory is defined in a Device Table file. The `IMAGE_DEVICE_TABLES`{.interpreted-text role="term"} variable defines the Device Table to use and should be set in the machine or distro configuration file. Alternatively, you can set this variable in your `local.conf` configuration file.
+The content of the resulting `/dev` directory is defined in a Device Table file. The `IMAGE_DEVICE_TABLES` variable defines the Device Table to use and should be set in the machine or distro configuration file. Alternatively, you can set this variable in your `local.conf` configuration file.
 
-> 结果 `/dev` 目录的内容由设备表文件定义。`IMAGE_DEVICE_TABLES`{.interpreted-text role="term"}变量定义了要使用的设备表，应该在机器或发行版配置文件中设置。或者，您也可以在 `local.conf` 配置文件中设置此变量。
+> 结果 `/dev` 目录的内容由设备表文件定义。`IMAGE_DEVICE_TABLES` 变量定义了要使用的设备表，应该在机器或发行版配置文件中设置。或者，您也可以在 `local.conf` 配置文件中设置此变量。
 
-If you do not define the `IMAGE_DEVICE_TABLES`{.interpreted-text role="term"} variable, the default `device_table-minimal.txt` is used:
+If you do not define the `IMAGE_DEVICE_TABLES` variable, the default `device_table-minimal.txt` is used:
 
 ```
 IMAGE_DEVICE_TABLES = "device_table-mymachine.txt"
@@ -34,9 +34,9 @@ The population is handled by the `makedevs` utility during image creation:
 
 # Using `devtmpfs` and a Device Manager
 
-To use the dynamic method for device population, you need to use (or be sure to set) the `USE_DEVFS`{.interpreted-text role="term"} variable to \"1\", which is the default:
+To use the dynamic method for device population, you need to use (or be sure to set) the `USE_DEVFS` variable to \"1\", which is the default:
 
-> 要使用动态方法来配置设备，您需要使用（或确保设置）`USE_DEVFS` 变量为“1”，这是默认值：
+> 要使用动态方法来配置设备，您需要使用(或确保设置)`USE_DEVFS` 变量为“1”，这是默认值：
 
 ```
 USE_DEVFS = "1"

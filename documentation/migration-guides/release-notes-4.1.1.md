@@ -7,22 +7,22 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 
 # Security Fixes in Yocto-4.1.1
 
-- curl: Fix `2022-32221`{.interpreted-text role="cve"}, `2022-35260`{.interpreted-text role="cve"}, `2022-42915`{.interpreted-text role="cve"} and `2022-42916`{.interpreted-text role="cve"}
+- curl: Fix `2022-32221`
 
 > 修复 curl：CVE-2022-32221，CVE-2022-35260，CVE-2022-42915 和 CVE-2022-42916
 
-- libx11: Fix `2022-3554`{.interpreted-text role="cve"}
-- lighttpd: Fix `2022-41556`{.interpreted-text role="cve"}
-- openssl: Fix `2022-3358`{.interpreted-text role="cve"}, `2022-3602`{.interpreted-text role="cve"} and `2022-3786`{.interpreted-text role="cve"}
-- pixman: Fix `2022-44638`{.interpreted-text role="cve"}
-- qemu: Fix `2022-3165`{.interpreted-text role="cve"}
-- sudo: Fix `2022-43995`{.interpreted-text role="cve"}
-- tiff: Fix `2022-3599`{.interpreted-text role="cve"}, `2022-3597`{.interpreted-text role="cve"}, `2022-3626`{.interpreted-text role="cve"}, `2022-3627`{.interpreted-text role="cve"}, `2022-3570`{.interpreted-text role="cve"} and `2022-3598`{.interpreted-text role="cve"}
+- libx11: Fix `2022-3554`
+- lighttpd: Fix `2022-41556`
+- openssl: Fix `2022-3358`
+- pixman: Fix `2022-44638`
+- qemu: Fix `2022-3165`
+- sudo: Fix `2022-43995`
+- tiff: Fix `2022-3599`
 
 > 修复 CVE-2022-3599、CVE-2022-3597、CVE-2022-3626、CVE-2022-3627、CVE-2022-3570 和 CVE-2022-3598。
 
-- xserver-xorg: Fix `2022-3550`{.interpreted-text role="cve"} and `2022-3551`{.interpreted-text role="cve"}
-- xserver-xorg: Ignore `2022-3553`{.interpreted-text role="cve"}
+- xserver-xorg: Fix `2022-3550`
+- xserver-xorg: Ignore `2022-3553`
 
 # Fixes in Yocto-4.1.1
 
@@ -36,7 +36,7 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 - bitbake: tests/fetch: Allow handling of a [file://](file://) url within a submodule
 - bitbake: tests: bb.tests.fetch.URLHandle: add 2 new tests
 - bitbake: utils/ply: Update md5 to better report errors with hashlib
-- bluez5: add dbus to `RDEPENDS`{.interpreted-text role="term"}
+- bluez5: add dbus to `RDEPENDS`
 - build-appliance-image: Update to langdale head revision
 - buildconf: compare abspath
 - buildtools-tarball: export certificates to python and curl
@@ -47,9 +47,9 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 - dev-manual: common-tasks.rst: add reference to \"do_clean\" task
 - dev-manual: common-tasks.rst: add reference to \"do_listtasks\" task
 - docs: add support for langdale (4.1) release
-- dropbear: add pam to `PACKAGECONFIG`{.interpreted-text role="term"}
+- dropbear: add pam to `PACKAGECONFIG`
 - externalsrc.bbclass: fix git repo detection
-- externalsrc.bbclass: Remove a trailing slash from \${B}
+- externalsrc.bbclass: Remove a trailing slash from \$
 - externalsrc: move back to classes
 - gcc: Allow -Wno-error=poison-system-directories to take effect
 - glib-2.0: fix rare GFileInfo test case failure
@@ -63,7 +63,7 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 - kern-tools: fix relative path processing
 - kernel-fitimage: Use KERNEL_OUTPUT_DIR where appropriate
 - kernel-yocto: improve fatal error messages of symbol_why.py
-- kernel: Clear `SYSROOT_DIRS`{.interpreted-text role="term"} instead of replacing sysroot_stage_all
+- kernel: Clear `SYSROOT_DIRS` instead of replacing sysroot_stage_all
 - libcap: upgrade 2.65 -\> 2.66
 - libical: upgrade 3.0.14 -\> 3.0.15
 - libksba: upgrade 1.6.0 -\> 1.6.2
@@ -131,37 +131,37 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 - poky.conf: remove Ubuntu 21.10
 - populate_sdk_base: ensure ptest-pkgs pulls in ptest-runner
 - psplash: add psplash-default in rdepends
-- qemu-native: Add `PACKAGECONFIG`{.interpreted-text role="term"} option for jack
+- qemu-native: Add `PACKAGECONFIG` option for jack
 - quilt: backport a patch to address grep 3.8 failures
 - ref-manual/faq.rst: update references to products built with OE / Yocto Project
 - ref-manual/variables.rst: clarify sentence
 - ref-manual: add a note to ssh-server-dropbear feature
-- ref-manual: add `CVE_CHECK_SHOW_WARNINGS`{.interpreted-text role="term"}
-- ref-manual: add `CVE_DB_UPDATE_INTERVAL`{.interpreted-text role="term"}
-- ref-manual: add `DEV_PKG_DEPENDENCY`{.interpreted-text role="term"}
-- ref-manual: add `DISABLE_STATIC`{.interpreted-text role="term"}
-- ref-manual: add `FIT_PAD_ALG`{.interpreted-text role="term"}
-- ref-manual: add `KERNEL_DEPLOY_DEPEND`{.interpreted-text role="term"}
+- ref-manual: add `CVE_CHECK_SHOW_WARNINGS`
+- ref-manual: add `CVE_DB_UPDATE_INTERVAL`
+- ref-manual: add `DEV_PKG_DEPENDENCY`
+- ref-manual: add `DISABLE_STATIC`
+- ref-manual: add `FIT_PAD_ALG`
+- ref-manual: add `KERNEL_DEPLOY_DEPEND`
 - ref-manual: add missing features
-- ref-manual: add `MOUNT_BASE`{.interpreted-text role="term"} variable
+- ref-manual: add `MOUNT_BASE` variable
 - ref-manual: add overlayfs class variables
-- ref-manual: add `OVERLAYFS_ETC_EXPOSE_LOWER`{.interpreted-text role="term"}
-- ref-manual: add `OVERLAYFS_QA_SKIP`{.interpreted-text role="term"}
+- ref-manual: add `OVERLAYFS_ETC_EXPOSE_LOWER`
+- ref-manual: add `OVERLAYFS_QA_SKIP`
 - ref-manual: add previous overlayfs-etc variables
 - ref-manual: add pypi class
-- ref-manual: add `SDK_TOOLCHAIN_LANGS`{.interpreted-text role="term"}
+- ref-manual: add `SDK_TOOLCHAIN_LANGS`
 - ref-manual: add section for create-spdx class
-- ref-manual: add serial-autologin-root to `IMAGE_FEATURES`{.interpreted-text role="term"} documentation
-- ref-manual: add `UBOOT_MKIMAGE_KERNEL_TYPE`{.interpreted-text role="term"}
-- ref-manual: add `WATCHDOG_TIMEOUT`{.interpreted-text role="term"} to variable glossary
-- ref-manual: add `WIRELESS_DAEMON`{.interpreted-text role="term"}
+- ref-manual: add serial-autologin-root to `IMAGE_FEATURES` documentation
+- ref-manual: add `UBOOT_MKIMAGE_KERNEL_TYPE`
+- ref-manual: add `WATCHDOG_TIMEOUT` to variable glossary
+- ref-manual: add `WIRELESS_DAEMON`
 - ref-manual: classes.rst: add links to all references to a class
 - ref-manual: complementary package installation recommends
-- ref-manual: correct default for `BUILDHISTORY_COMMIT`{.interpreted-text role="term"}
+- ref-manual: correct default for `BUILDHISTORY_COMMIT`
 - ref-manual: document new github-releases class
 - ref-manual: expand documentation on image-buildinfo class
 - ref-manual: faq.rst: reorganize into subsections, contents at top
-- ref-manual: remove reference to largefile in `DISTRO_FEATURES`{.interpreted-text role="term"}
+- ref-manual: remove reference to largefile in `DISTRO_FEATURES`
 - ref-manual: remove reference to testimage-auto class
 - ref-manual: system-requirements: Ubuntu 22.04 now supported
 - ref-manual: tasks.rst: add reference to the \"do_image_complete\" task
@@ -170,7 +170,7 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 - ref-manual: tasks.rst: add reference to the \"do_validate_branches\" task
 - ref-manual: tasks.rst: add references to the \"do_cleansstate\" task
 - ref-manual: update buildpaths QA check documentation
-- ref-manual: update pypi documentation for `CVE_PRODUCT`{.interpreted-text role="term"} default in 4.1
+- ref-manual: update pypi documentation for `CVE_PRODUCT` default in 4.1
 - ref-manual: variables.rst: add reference to \"do_populate_lic\" task
 - release-notes-4.1.rst remove bitbake-layers subcommand argument
 - runqemu: Do not perturb script environment
@@ -184,14 +184,14 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 - shadow: update 4.12.1 -\> 4.12.3
 - systemd: add systemd-creds and systemd-cryptenroll to systemd-extra-utils
 - test-manual: fix typo in machine name
-- tiff: fix a typo for `2022-2953`{.interpreted-text role="cve"}.patch
+- tiff: fix a typo for `2022-2953`.patch
 - u-boot: Add savedefconfig task
 - u-boot: Remove duplicate inherit of cml1
 - uboot-sign: Fix using wrong KEY_REQ_ARGS
 - Update documentation for classes split
 - vim: upgrade to 9.0.0820
-- vulkan-samples: add lfs=0 to `SRC_URI`{.interpreted-text role="term"} to avoid git smudge errors in do_unpack
-- wic: honor the `SOURCE_DATE_EPOCH`{.interpreted-text role="term"} in case of updated fstab
+- vulkan-samples: add lfs=0 to `SRC_URI` to avoid git smudge errors in do_unpack
+- wic: honor the `SOURCE_DATE_EPOCH` in case of updated fstab
 - wic: swap partitions are not added to fstab
 - wpebackend-fdo: upgrade 1.12.1 -\> 1.14.0
 - xserver-xorg: move some recommended dependencies in required
@@ -261,10 +261,10 @@ title: Release notes for Yocto-4.1.1 (Langdale)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</poky/log/?h=yocto-4.1.1\>\`
-- Git Revision: :yocto\_[git:%60d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff](git:%60d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff) \</poky/commit/?id=d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</poky/log/?h=yocto-4.1.1\>\`
+- Git Revision: :yocto_[git:%60d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff](git:%60d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff) \</poky/commit/?id=d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff\>\`
 
 > - Git 版本：yocto_[git:`d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff`](git:%60d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff%60) </poky/commit/?id=d3cda9a3e0837eb2ac5482f5f2bd8e55e874feff>
 
@@ -276,10 +276,10 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
-- Tag: :oe\_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</openembedded-core/log/?h=yocto-4.1.1\>\`
-- Git Revision: :oe\_[git:%609237ffc4feee2dd6ff5bdd672072509ef9e82f6d](git:%609237ffc4feee2dd6ff5bdd672072509ef9e82f6d) \</openembedded-core/commit/?id=9237ffc4feee2dd6ff5bdd672072509ef9e82f6d\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
+- Tag: :oe_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</openembedded-core/log/?h=yocto-4.1.1\>\`
+- Git Revision: :oe_[git:%609237ffc4feee2dd6ff5bdd672072509ef9e82f6d](git:%609237ffc4feee2dd6ff5bdd672072509ef9e82f6d) \</openembedded-core/commit/?id=9237ffc4feee2dd6ff5bdd672072509ef9e82f6d\>\`
 
 > -Git 版本：:oe_[git:%609237ffc4feee2dd6ff5bdd672072509ef9e82f6d](git:%609237ffc4feee2dd6ff5bdd672072509ef9e82f6d) \</openembedded-core/commit/?id=9237ffc4feee2dd6ff5bdd672072509ef9e82f6d\>\`
 
@@ -291,10 +291,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</meta-mingw/log/?h=yocto-4.1.1\>\`
-- Git Revision: :yocto\_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</meta-mingw/log/?h=yocto-4.1.1\>\`
+- Git Revision: :yocto_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
 > Git 版本：yocto_[git:`b0067202db8573df3d23d199f82987cebe1bee2c`](git:%60b0067202db8573df3d23d199f82987cebe1bee2c%60) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
@@ -306,12 +306,12 @@ meta-mingw
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
-- Tag: :oe\_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</bitbake/log/?h=yocto-4.1.1\>\`
-- Git Revision: :oe\_[git:%60138dd7883ee2c521900b29985b6d24a23d96563c](git:%60138dd7883ee2c521900b29985b6d24a23d96563c) \</bitbake/commit/?id=138dd7883ee2c521900b29985b6d24a23d96563c\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
+- Tag: :oe_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</bitbake/log/?h=yocto-4.1.1\>\`
+- Git Revision: :oe_[git:%60138dd7883ee2c521900b29985b6d24a23d96563c](git:%60138dd7883ee2c521900b29985b6d24a23d96563c) \</bitbake/commit/?id=138dd7883ee2c521900b29985b6d24a23d96563c\>\`
 
-> Git 版本：<bitbake/commit/?id=138dd7883ee2c521900b29985b6d24a23d96563c>（git：%60138dd7883ee2c521900b29985b6d24a23d96563c）
+> Git 版本：<bitbake/commit/?id=138dd7883ee2c521900b29985b6d24a23d96563c>(git：%60138dd7883ee2c521900b29985b6d24a23d96563c)
 
 - Release Artefact: bitbake-138dd7883ee2c521900b29985b6d24a23d96563c
 - sha: 5dc5aff4b4a801253c627cdaab6b1a0ceee2c531f1a6b166d85d1265a35d4be5
@@ -322,9 +322,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</yocto-docs/log/?h=yocto-4.1.1\>\`
-- Git Revision: :yocto\_[git:%608e0841c3418caa227c66a60327db09dfbe72054a](git:%608e0841c3418caa227c66a60327db09dfbe72054a) \</yocto-docs/commit/?id=8e0841c3418caa227c66a60327db09dfbe72054a\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.1](git:%60yocto-4.1.1) \</yocto-docs/log/?h=yocto-4.1.1\>\`
+- Git Revision: :yocto_[git:%608e0841c3418caa227c66a60327db09dfbe72054a](git:%608e0841c3418caa227c66a60327db09dfbe72054a) \</yocto-docs/commit/?id=8e0841c3418caa227c66a60327db09dfbe72054a\>\`
 
 > Git 版本：:yocto_[git: %608e0841c3418caa227c66a60327db09dfbe72054a](git: %608e0841c3418caa227c66a60327db09dfbe72054a) \</yocto-docs/commit/?id=8e0841c3418caa227c66a60327db09dfbe72054a\>\`

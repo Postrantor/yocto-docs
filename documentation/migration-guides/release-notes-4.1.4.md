@@ -7,38 +7,38 @@ title: Release notes for Yocto-4.1.4 (Langdale)
 
 # Security Fixes in Yocto-4.1.4
 
-- cve-extra-exclusions/linux-yocto: Ignore `2020-27784`{.interpreted-text role="cve"}, `2021-3669`{.interpreted-text role="cve"}, `2021-3759`{.interpreted-text role="cve"}, `2021-4218`{.interpreted-text role="cve"}, `2022-0480`{.interpreted-text role="cve"}, `2022-1184`{.interpreted-text role="cve"}, `2022-1462`{.interpreted-text role="cve"}, `2022-2308`{.interpreted-text role="cve"}, `2022-2327`{.interpreted-text role="cve"}, `2022-26365`{.interpreted-text role="cve"}, `2022-2663`{.interpreted-text role="cve"}, `2022-2785`{.interpreted-text role="cve"}, `2022-3176`{.interpreted-text role="cve"}, `2022-33740`{.interpreted-text role="cve"}, `2022-33741`{.interpreted-text role="cve"}, `2022-33742`{.interpreted-text role="cve"}, `2022-3526`{.interpreted-text role="cve"}, `2022-3563`{.interpreted-text role="cve"}, `2022-3621`{.interpreted-text role="cve"}, `2022-3623`{.interpreted-text role="cve"}, `2022-3624`{.interpreted-text role="cve"}, `2022-3625`{.interpreted-text role="cve"}, `2022-3629`{.interpreted-text role="cve"}, `2022-3630`{.interpreted-text role="cve"}, `2022-3633`{.interpreted-text role="cve"}, `2022-3635`{.interpreted-text role="cve"}, `2022-3636`{.interpreted-text role="cve"}, `2022-3637`{.interpreted-text role="cve"}, `2022-3646`{.interpreted-text role="cve"} and `2022-3649`{.interpreted-text role="cve"}
+- cve-extra-exclusions/linux-yocto: Ignore `2020-27784`
 
 > 忽略 Linux Yocto 中的 CVE-Extra 排除：2020-27784、2021-3669、2021-3759、2021-4218、2022-0480、2022-1184、2022-1462、2022-2308、2022-2327、2022-26365、2022-2663、2022-2785、2022-3176、2022-33740、2022-33741、2022-33742、2022-3526、2022-3563、2022-3621、2022-3623、2022-3624、2022-3625、2022-3629、2022-3630、2022-3633、2022-3635、2022-3636、2022-3637、2022-3646 和 2022-3649。
 
-- cve-extra-exclusions/linux-yocto 5.15: Ignore `2022-3435`{.interpreted-text role="cve"}, `2022-3534`{.interpreted-text role="cve"}, `2022-3564`{.interpreted-text role="cve"}, `2022-3564`{.interpreted-text role="cve"}, `2022-3619`{.interpreted-text role="cve"}, `2022-3640`{.interpreted-text role="cve"}, `2022-42895`{.interpreted-text role="cve"}, `2022-42896`{.interpreted-text role="cve"}, `2022-4382`{.interpreted-text role="cve"}, `2023-0266`{.interpreted-text role="cve"} and `2023-0394`{.interpreted-text role="cve"}
+- cve-extra-exclusions/linux-yocto 5.15: Ignore `2022-3435`
 
 > 忽略 Linux Yocto 5.15 中的 CVE：2022-3435、2022-3534、2022-3564、2022-3619、2022-3640、2022-42895、2022-42896、2022-4382、2023-0266 和 2023-0394。
 
-- epiphany: Fix `2023-26081`{.interpreted-text role="cve"}
-- git: Ignore `2023-22743`{.interpreted-text role="cve"}
-- go: Fix `2022-41722`{.interpreted-text role="cve"}, `2022-41723`{.interpreted-text role="cve"}, `2022-41724`{.interpreted-text role="cve"}, `2022-41725`{.interpreted-text role="cve"} and `2023-24532`{.interpreted-text role="cve"}
+- epiphany: Fix `2023-26081`
+- git: Ignore `2023-22743`
+- go: Fix `2022-41722`
 
 > 請修復：2022-41722、2022-41723、2022-41724、2022-41725 和 2023-24532。
 
-- harfbuzz: Fix `2023-25193`{.interpreted-text role="cve"}
-- libmicrohttpd: Fix `2023-27371`{.interpreted-text role="cve"}
-- libxml2: Fix `2022-40303`{.interpreted-text role="cve"} and `2022-40304`{.interpreted-text role="cve"}
-- openssl: Fix `2023-0464`{.interpreted-text role="cve"}, `2023-0465`{.interpreted-text role="cve"} and `2023-0466`{.interpreted-text role="cve"}
-- python3-setuptools: Fix `2022-40897`{.interpreted-text role="cve"}
-- qemu: Fix `2022-4144`{.interpreted-text role="cve"}
-- screen: Fix `2023-24626`{.interpreted-text role="cve"}
-- shadow: Ignore `2016-15024`{.interpreted-text role="cve"}
-- tiff: Fix `2022-48281`{.interpreted-text role="cve"}, `2023-0795`{.interpreted-text role="cve"}, `2023-0796`{.interpreted-text role="cve"}, `2023-0797`{.interpreted-text role="cve"}, `2023-0798`{.interpreted-text role="cve"}, `2023-0799`{.interpreted-text role="cve"}, `2023-0800`{.interpreted-text role="cve"}, `2023-0801`{.interpreted-text role="cve"}, `2023-0802`{.interpreted-text role="cve"}, `2023-0803`{.interpreted-text role="cve"} and `2023-0804`{.interpreted-text role="cve"}
+- harfbuzz: Fix `2023-25193`
+- libmicrohttpd: Fix `2023-27371`
+- libxml2: Fix `2022-40303`
+- openssl: Fix `2023-0464`
+- python3-setuptools: Fix `2022-40897`
+- qemu: Fix `2022-4144`
+- screen: Fix `2023-24626`
+- shadow: Ignore `2016-15024`
+- tiff: Fix `2022-48281`
 
 > 修复 CVE-2022-48281、CVE-2023-0795、CVE-2023-0796、CVE-2023-0797、CVE-2023-0798、CVE-2023-0799、CVE-2023-0800、CVE-2023-0801、CVE-2023-0802、CVE-2023-0803 和 CVE-2023-0804。
 
-- vim: Fix `2023-1127`{.interpreted-text role="cve"}, `2023-1170`{.interpreted-text role="cve"}, `2023-1175`{.interpreted-text role="cve"}, `2023-1264`{.interpreted-text role="cve"} and `2023-1355`{.interpreted-text role="cve"}
+- vim: Fix `2023-1127`
 
 > 修复 CVE-2023-1127、CVE-2023-1170、CVE-2023-1175、CVE-2023-1264 和 CVE-2023-1355。
 
-- xdg-utils: Fix `2022-4055`{.interpreted-text role="cve"}
-- xserver-xorg: Fix for `2023-1393`{.interpreted-text role="cve"}
+- xdg-utils: Fix `2022-4055`
+- xserver-xorg: Fix for `2023-1393`
 
 # Fixes in Yocto-4.1.4
 
@@ -62,14 +62,14 @@ title: Release notes for Yocto-4.1.4 (Langdale)
 - cpio: Fix wrong CRC with ASCII CRC for large files
 - cracklib: update github branch to \'main\'
 - cups: add/fix web interface packaging
-- cups: check `PACKAGECONFIG`{.interpreted-text role="term"} for pam feature
+- cups: check `PACKAGECONFIG` for pam feature
 - cups: use BUILDROOT instead of DESTDIR
 - cve-check: Fix false negative version issue
 - devtool/upgrade: do not delete the workspace/recipes directory
 - dhcpcd: Fix install conflict when enable multilib.
 - ffmpeg: fix build failure when vulkan is enabled
 - filemap.py: enforce maximum of 4kb block size
-- gcc-shared-source: do not use \${S}/.. in deploy_source_date_epoch
+- gcc-shared-source: do not use \$/.. in deploy_source_date_epoch
 - glibc: Add missing binutils dependency
 - go: upgrade to 1.19.7
 - image_types: fix multiubi var init
@@ -117,15 +117,15 @@ title: Release notes for Yocto-4.1.4 (Langdale)
 - populate_sdk_ext: Handle spaces within user \$PATH
 - pybootchart: Fix extents handling to account for cpu/io/mem pressure changes
 - pybootchartui: Fix python syntax issue
-- report-error: catch Nothing `PROVIDES`{.interpreted-text role="term"} error
+- report-error: catch Nothing `PROVIDES` error
 - rpm: Fix hdr_hash function prototype
 - run-postinsts: Set dependency for ldconfig to avoid boot issues
-- runqemu: respect `IMAGE_LINK_NAME`{.interpreted-text role="term"}
+- runqemu: respect `IMAGE_LINK_NAME`
 - runqemu: Revert \"workaround for APIC hang on pre 4.15 kernels on qemux86q\"
 - scripts/lib/buildstats: handle top-level build_stats not being complete
 - selftest/recipetool: Stop test corrupting tinfoil class
 - selftest/runtime_test/virgl: Disable for all Rocky Linux
-- selftest: devtool: set `BB_HASHSERVE_UPSTREAM`{.interpreted-text role="term"} when setting `SSTATE_MIRRORS`{.interpreted-text role="term"}
+- selftest: devtool: set `BB_HASHSERVE_UPSTREAM`
 - selftest: runqemu: better check for ROOTFS: in the log
 - selftest: runqemu: use better error message when asserts fail
 - shadow: Fix can not print full login timeout message
@@ -135,16 +135,16 @@ title: Release notes for Yocto-4.1.4 (Langdale)
 - systemd.bbclass: Add /usr/lib/systemd to searchpaths as well
 - systemd: add group sgx to udev package
 - systemd: fix wrong nobody-group assignment
-- timezone: use \'tz\' subdir instead of \${WORKDIR} directly
+- timezone: use \'tz\' subdir instead of \$ directly
 - toolchain-scripts: Handle spaces within user \$PATH
 - tzcode-native: fix build with gcc-13 on host
 - tzdata: upgrade to 2023c
-- tzdata: use separate `B`{.interpreted-text role="term"} instead of `WORKDIR`{.interpreted-text role="term"} for zic output
+- tzdata: use separate `B` for zic output
 - u-boot: Map arm64 into map for u-boot dts installation
 - uninative: Upgrade to 3.9 to include glibc 2.37
 - vala: Fix install conflict when enable multilib.
 - vim: add missing pkgconfig inherit
-- vim: set modified-by to the recipe `MAINTAINER`{.interpreted-text role="term"}
+- vim: set modified-by to the recipe `MAINTAINER`
 - vim: upgrade to 9.0.1429
 - xcb-proto: Fix install conflict when enable multilib.
 
@@ -207,10 +207,10 @@ title: Release notes for Yocto-4.1.4 (Langdale)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</poky/log/?h=yocto-4.1.4\>\`
-- Git Revision: :yocto\_[git:%603e95f268ce04b49ba6731fd4bbc53b1693c21963](git:%603e95f268ce04b49ba6731fd4bbc53b1693c21963) \</poky/commit/?id=3e95f268ce04b49ba6731fd4bbc53b1693c21963\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</poky/log/?h=yocto-4.1.4\>\`
+- Git Revision: :yocto_[git:%603e95f268ce04b49ba6731fd4bbc53b1693c21963](git:%603e95f268ce04b49ba6731fd4bbc53b1693c21963) \</poky/commit/?id=3e95f268ce04b49ba6731fd4bbc53b1693c21963\>\`
 
 > Git 版本：yocto_[git:%603e95f268ce04b49ba6731fd4bbc53b1693c21963](git:%603e95f268ce04b49ba6731fd4bbc53b1693c21963) \</poky/commit/?id=3e95f268ce04b49ba6731fd4bbc53b1693c21963\>\
 
@@ -222,12 +222,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
-- Tag: :oe\_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</openembedded-core/log/?h=yocto-4.1.4\>\`
-- Git Revision: :oe\_[git:%6078211cda40eb018a3aa535c75b61e87337236628](git:%6078211cda40eb018a3aa535c75b61e87337236628) \</openembedded-core/commit/?id=78211cda40eb018a3aa535c75b61e87337236628\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
+- Tag: :oe_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</openembedded-core/log/?h=yocto-4.1.4\>\`
+- Git Revision: :oe_[git:%6078211cda40eb018a3aa535c75b61e87337236628](git:%6078211cda40eb018a3aa535c75b61e87337236628) \</openembedded-core/commit/?id=78211cda40eb018a3aa535c75b61e87337236628\>\`
 
-> Git 版本：<openembedded-core/commit/?id=78211cda40eb018a3aa535c75b61e87337236628>（git：`78211cda40eb018a3aa535c75b61e87337236628`）
+> Git 版本：<openembedded-core/commit/?id=78211cda40eb018a3aa535c75b61e87337236628>(git：`78211cda40eb018a3aa535c75b61e87337236628`)
 
 - Release Artefact: oecore-78211cda40eb018a3aa535c75b61e87337236628
 - sha: 1303d836bae54c438c64d6b9f068eb91c32be4cc1779e89d0f2d915a55d59b15
@@ -237,12 +237,12 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</meta-mingw/log/?h=yocto-4.1.4\>\`
-- Git Revision: :yocto\_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</meta-mingw/log/?h=yocto-4.1.4\>\`
+- Git Revision: :yocto_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
-> Git 版本：yocto_<meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c>（git:`b0067202db8573df3d23d199f82987cebe1bee2c`）
+> Git 版本：yocto_<meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c>(git:`b0067202db8573df3d23d199f82987cebe1bee2c`)
 
 - Release Artefact: meta-mingw-b0067202db8573df3d23d199f82987cebe1bee2c
 - sha: 704f2940322b81ce774e9cbd27c3cfa843111d497dc7b1eeaa39cd694d9a2366
@@ -252,12 +252,12 @@ meta-mingw
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
-- Tag: :oe\_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</bitbake/log/?h=yocto-4.1.4\>\`
-- Git Revision: :oe\_[git:%605b105e76dd7de3b9a25b17b397f2c12c80048894](git:%605b105e76dd7de3b9a25b17b397f2c12c80048894) \</bitbake/commit/?id=5b105e76dd7de3b9a25b17b397f2c12c80048894\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
+- Tag: :oe_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</bitbake/log/?h=yocto-4.1.4\>\`
+- Git Revision: :oe_[git:%605b105e76dd7de3b9a25b17b397f2c12c80048894](git:%605b105e76dd7de3b9a25b17b397f2c12c80048894) \</bitbake/commit/?id=5b105e76dd7de3b9a25b17b397f2c12c80048894\>\`
 
-> Git 版本：<bitbake/commit/?id=5b105e76dd7de3b9a25b17b397f2c12c80048894>（git:%605b105e76dd7de3b9a25b17b397f2c12c80048894）
+> Git 版本：<bitbake/commit/?id=5b105e76dd7de3b9a25b17b397f2c12c80048894>(git:%605b105e76dd7de3b9a25b17b397f2c12c80048894)
 
 - Release Artefact: bitbake-5b105e76dd7de3b9a25b17b397f2c12c80048894
 - sha: 2cd6448138816f5a906f9927c6b6fdc5cf24981ef32b6402312f52ca490edb4f
@@ -267,9 +267,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</yocto-docs/log/?h=yocto-4.1.4\>\`
-- Git Revision: :yocto\_[git:%60da685fc5e69d49728e3ffd6c4d623e7e1745059d](git:%60da685fc5e69d49728e3ffd6c4d623e7e1745059d) \</yocto-docs/commit/?id=da685fc5e69d49728e3ffd6c4d623e7e1745059d\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1.4](git:%60yocto-4.1.4) \</yocto-docs/log/?h=yocto-4.1.4\>\`
+- Git Revision: :yocto_[git:%60da685fc5e69d49728e3ffd6c4d623e7e1745059d](git:%60da685fc5e69d49728e3ffd6c4d623e7e1745059d) \</yocto-docs/commit/?id=da685fc5e69d49728e3ffd6c4d623e7e1745059d\>\`
 
 > Git 版本：yocto_[git:`da685fc5e69d49728e3ffd6c4d623e7e1745059d`](git:%60da685fc5e69d49728e3ffd6c4d623e7e1745059d%60) \</yocto-docs/commit/?id=da685fc5e69d49728e3ffd6c4d623e7e1745059d\>\`

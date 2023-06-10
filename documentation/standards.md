@@ -99,7 +99,7 @@ Every variable should be mentioned with:
 
 This assumes that `VARIABLE` is described either in the Yocto Project documentation variable index (`ref-manual/variables.rst`) or in the BitBake User Manual (`doc/bitbake-user-manual/bitbake-user-manual-ref-variables.rst`)
 
-> 这假定`VARIABLE`在 Yocto Project 文档变量索引（`ref-manual/variables.rst`）或 BitBake 用户手册（`doc/bitbake-user-manual/bitbake-user-manual-ref-variables.rst`）中有描述。
+> 这假定`VARIABLE`在 Yocto Project 文档变量索引(`ref-manual/variables.rst`)或 BitBake 用户手册(`doc/bitbake-user-manual/bitbake-user-manual-ref-variables.rst`)中有描述。
 
 If it is not described yet, the variable should be added to the glossary before or in the same patch it is used, so that `:term:` can be used.
 
@@ -115,7 +115,7 @@ This section has not been filled yet
 
 The preferred format for adding screenshots is [Portable Network Graphics (PNG)](https://en.wikipedia.org/wiki/Portable_Network_Graphics). Compared to the JPEG format, PNG is lossless and compresses screenshots better.
 
-> 最佳添加屏幕截图的格式是[可移植网络图形（PNG）](https://en.wikipedia.org/wiki/Portable_Network_Graphics)。与 JPEG 格式相比，PNG 是无损的，可以更好地压缩屏幕截图。
+> 最佳添加屏幕截图的格式是[可移植网络图形(PNG)](https://en.wikipedia.org/wiki/Portable_Network_Graphics)。与 JPEG 格式相比，PNG 是无损的，可以更好地压缩屏幕截图。
 
 Screenshots are stored in a `figures/` subdirectory.
 
@@ -136,13 +136,13 @@ A diagram with many details usually needs to use the whole page width to be read
 
 Conversely, you may also shrink some images to to prevent them from filling the whole page width:
 
-> 反之，您也可以缩小一些图像，以防止它们填满整个页面宽度：
+> 反之，您也可以缩小一些镜像，以防止它们填满整个页面宽度：
 
        :scale: 50%
 
 For some types of screenshots, for example showing programs displaying photographs or playing video, the JPEG format may be more appropriate, because it is better at compressing real-life images:
 
-> 对于一些类型的屏幕截图，例如显示照片或播放视频的程序，JPEG 格式可能更合适，因为它更擅长压缩真实图像。
+> 对于一些类型的屏幕截图，例如显示照片或播放视频的程序，JPEG 格式可能更合适，因为它更擅长压缩真实镜像。
 
     .. image:: figures/vlc.jpg
        :align: center
@@ -162,7 +162,7 @@ The recommended tool for creating SVG diagrams for the Yocto Project documentati
 
 The "GNOME HIG Colors" palette is used in our diagrams (get it from <https://gitlab.gnome.org/Teams/Design/HIG-app-icons/-/blob/master/GNOME%20HIG.gpl> if you don't get it from Inkscape).
 
-> "GNOME HIG 颜色" 调色板被用于我们的图表（如果您没有从 Inkscape 中获取，可以从 <https://gitlab.gnome.org/Teams/Design/HIG-app-icons/-/blob/master/GNOME%20HIG.gpl> 获取）。
+> "GNOME HIG 颜色" 调色板被用于我们的图表(如果您没有从 Inkscape 中获取，可以从 <https://gitlab.gnome.org/Teams/Design/HIG-app-icons/-/blob/master/GNOME%20HIG.gpl> 获取)。
 
 It's easier to use than the default one in Inkscape, as it has fewer but sufficient colors. This is a way to guarantee that we use consistent colors across the diagrams used in our documentation.
 

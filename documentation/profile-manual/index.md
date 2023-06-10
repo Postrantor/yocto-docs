@@ -7,7 +7,7 @@ title: Yocto Project Profiling and Tracing Manual
 
 |
 
-::: {.toctree caption="Table of Contents" numbered=""}
+:::
 
 intro arch usage examples
 

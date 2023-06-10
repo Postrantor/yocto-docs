@@ -8,56 +8,56 @@ title: Release notes for 4.2 (mickledore)
 # New Features / Enhancements in 4.2
 
 - Linux kernel 6.1, glibc 2.37 and \~350 other recipe upgrades
-- Python 3.8+ and GCC 8.0+ are now the minimum required versions on the build host. For host distributions that do not provide it, this is included as part of the `buildtools`{.interpreted-text role="term"} tarball.
+- Python 3.8+ and GCC 8.0+ are now the minimum required versions on the build host. For host distributions that do not provide it, this is included as part of the `buildtools` tarball.
 
-> Python 3.8+ 和 GCC 8.0+ 现在是构建主机上的最低要求版本。对于不提供它的主机发行版，它包含在 `buildtools`{.interpreted-text role="term"}压缩文件中。
+> Python 3.8+ 和 GCC 8.0+ 现在是构建主机上的最低要求版本。对于不提供它的主机发行版，它包含在 `buildtools` 压缩文件中。
 
-- BitBake in this release now supports a new `addpylib` directive to enable Python libraries within layers. For more information, see `bitbake-user-manual/bitbake-user-manual-metadata:extending python library code`{.interpreted-text role="ref"}.
+- BitBake in this release now supports a new `addpylib` directive to enable Python libraries within layers. For more information, see `bitbake-user-manual/bitbake-user-manual-metadata:extending python library code`.
 
 > 在这次发布中，BitBake 现在支持一个新的“addpylib”指令，以在层中启用 Python 库。有关更多信息，请参阅“bitbake-user-manual / bitbake-user-manual-metadata：扩展 python 库代码”。
 
 This directive should be added to your layer configuration as in the below example from `meta/conf/layer.conf`:
 
 ```
-addpylib ${LAYERDIR}/lib oe
+addpylib $/lib oe
 ```
 
 - BitBake has seen multiple internal changes that may improve memory and disk usage as well as parsing time, in particular:
 
   - BitBake\'s Cooker server is now multithreaded.
   - Ctrl+C can now be used to interrupt some long-running operations that previously ignored it.
-  - BitBake\'s cache has been extended to include more hash debugging data, but has also been optimized to :yocto\_[git:%60compress](git:%60compress) cache data \<[https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356](https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356)\>\`.
+  - BitBake\'s cache has been extended to include more hash debugging data, but has also been optimized to :yocto_[git:%60compress](git:%60compress) cache data \<[https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356](https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356)\>\`.
 
-> 缓存的 BitBake 已经扩展以包括更多的哈希调试数据，但是也已经优化为：yocto [git:%60compress](git:%60compress) 缓存数据[[https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356](https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356)](%5Bhttps://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356%5D(https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356))。
+> 缓存的 BitBake 已经扩展以包括更多的哈希调试数据，但是也已经优化为：yocto [git:%60compress](git:%60compress) 缓存数据[[https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356](https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356)](%5B[https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356%5D(https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356)](https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356%5D(https://git.yoctoproject.org/poky/commit/?h=mickledore&id=7d010055e2af3294e17db862f42664ca689a9356)))。
 
 - BitBake\'s UI will now ping the server regularly to ensure it is still alive.
 - New variables:
 
-  - `VOLATILE_TMP_DIR`{.interpreted-text role="term"} allows to specify whether `/tmp` should be on persistent storage or in RAM.
-  - `SPDX_CUSTOM_ANNOTATION_VARS`{.interpreted-text role="term"} allows to add specific comments to the `SPDX`{.interpreted-text role="term"} description of a recipe.
+  - `VOLATILE_TMP_DIR` allows to specify whether `/tmp` should be on persistent storage or in RAM.
+  - `SPDX_CUSTOM_ANNOTATION_VARS` description of a recipe.
 
-> -`SPDX_CUSTOM_ANNOTATION_VARS` 可以向食谱的 `SPDX` 描述中添加特定的注释。
+> -`SPDX_CUSTOM_ANNOTATION_VARS` 可以向 recipes 的 `SPDX` 描述中添加特定的注释。
 
 - Rust improvements:
 
   - This release adds Cargo support on the target, and includes automated QA tests for this functionality.
   - It also supports checksums for Rust crates and makes them mandatory for each crate in a recipe.
-  - New `ref-classes-cargo-update-recipe-crates`{.interpreted-text role="ref"} class to enable updating `SRC_URI`{.interpreted-text role="term"} crate lists from `Cargo.lock`
+  - New `ref-classes-cargo-update-recipe-crates` crate lists from `Cargo.lock`
 
-> 新的 `ref-classes-cargo-update-recipe-crates`{.interpreted-text role="ref"}类，可以从 `Cargo.lock`{.interpreted-text role="term"}中更新 `SRC_URI`{.interpreted-text role="term"}捆绑包列表。
+> 新的 `ref-classes-cargo-update-recipe-crates` 捆绑包列表。
 
 - Enabled building Rust for baremetal targets
-- You can now also easily select to build beta or nightly versions of Rust with a new `RUST_CHANNEL`{.interpreted-text role="term"} variable (use at own risk)
+- You can now also easily select to build beta or nightly versions of Rust with a new `RUST_CHANNEL` variable (use at own risk)
 
-> 你现在也可以使用新的 `RUST_CHANNEL` 变量轻松地选择构建 beta 或 nightly 版本的 Rust（自担风险）。
+> 你现在也可以使用新的 `RUST_CHANNEL` 变量轻松地选择构建 beta 或 nightly 版本的 Rust(自担风险)。
 
-- Support for local GitHub repos in `SRC_URI`{.interpreted-text role="term"} as replacements for Cargo dependencies
+- Support for local GitHub repos in `SRC_URI` as replacements for Cargo dependencies
 - Use built-in Rust targets for `-native` builds to save several minutes building the Rust toolchain
 - Architecture-specific enhancements:
 
-  - This release adds initial support for the `LoongArch <Loongson#LoongArch>`{.interpreted-text role="wikipedia"} (`loongarch64`) architecture, though there is no testing for it yet.
+  - This release adds initial support for the `LoongArch <Loongson#LoongArch>` (`loongarch64`) architecture, though there is no testing for it yet.
 
-> 此发行版为 `LoongArch <Loongson#LoongArch>`{.interpreted-text role="wikipedia"}（`loongarch64`）体系结构增加了初步支持，但尚未进行测试。
+> 此发行版为 `LoongArch <Loongson#LoongArch>`(`loongarch64`)体系结构增加了初步支持，但尚未进行测试。
 
 - New `x86-64-v3` tunes (AVX, AVX2, BMI1, BMI2, F16C, FMA, LZCNT, MOVBE, XSAVE)
 - go: add support to build on ppc64le
@@ -91,28 +91,28 @@ addpylib ${LAYERDIR}/lib oe
   - Set `QB_CPU` with ?= to make it easier to modify (x86 configuration only)
   - New `QB_NFSROOTFS_EXTRA_OPT` to allow extra options to be appended to the NFS rootfs options in kernel boot args, e.g. `"wsize=4096,rsize=4096"`
   - New `QB_SETUP_CMD` and `QB_CLEANUP_CMD` to enable running custom shell setup and cleanup commands before and after QEMU.
-  - `QB_DEFAULT_KERNEL` now defaults to pick the bundled initramfs kernel image if the Linux kernel image is generated with `INITRAMFS_IMAGE_BUNDLE`{.interpreted-text role="term"} set to \"1\"
+  - `QB_DEFAULT_KERNEL` now defaults to pick the bundled initramfs kernel image if the Linux kernel image is generated with `INITRAMFS_IMAGE_BUNDLE` set to \"1\"
 
 > `QB_DEFAULT_KERNEL` 现在默认选择捆绑的 initramfs 内核映像，如果使用 `INITRAMFS_IMAGE_BUNDLE` 设置为 "1" 生成的 Linux 内核映像。
 
 - Split out the QEMU guest agent to its own `qemu-guest-agent` package
 - runqemu: new `guestagent` option to enable communication with the guest agent
-- runqemu: respect `IMAGE_LINK_NAME`{.interpreted-text role="term"} when searching for image
+- runqemu: respect `IMAGE_LINK_NAME` when searching for image
 - Image-related enhancements:
 
   - Add 7-Zip support in image conversion types (`7zip`)
-  - New `IMAGE_MACHINE_SUFFIX`{.interpreted-text role="term"} variable to allow easily removing machine name suffix from image file names
+  - New `IMAGE_MACHINE_SUFFIX` variable to allow easily removing machine name suffix from image file names
 - wic Image Creator enhancements:
 
   - `bootimg-efi.py`: add support for directly loading Linux kernel UEFI stub
   - `bootimg-efi.py`: implement `--include-path`
   - Allow usage of `fstype=none` to specify an unformatted partition
-  - Implement repeatable disk identifiers based on `SOURCE_DATE_EPOCH`{.interpreted-text role="term"}
+  - Implement repeatable disk identifiers based on `SOURCE_DATE_EPOCH`
 - FIT image related improvements:
 
   - FIT image signing support has been reworked to remove interdependencies and make it more easily extensible
   - Skip FDT section creation for applicable symlinks to avoid the same dtb being duplicated
-  - New `FIT_CONF_DEFAULT_DTB`{.interpreted-text role="term"} variable to enable selecting default dtb when multiple dtbs exist
+  - New `FIT_CONF_DEFAULT_DTB` variable to enable selecting default dtb when multiple dtbs exist
 - SDK-related improvements:
 
   - Extended the following recipes to nativesdk:
@@ -127,16 +127,16 @@ addpylib ${LAYERDIR}/lib oe
     - `python3-typogrify`
     - `ruby`
     - `unifdef`
-  - New `SDK_ZIP_OPTIONS`{.interpreted-text role="term"} variable to enable passing additional options to the zip command when preparing the SDK zip archive
+  - New `SDK_ZIP_OPTIONS` variable to enable passing additional options to the zip command when preparing the SDK zip archive
 
 > - 新的 `SDK_ZIP_OPTIONS` 变量，用于在准备 SDK 压缩存档时传递额外的选项给 zip 命令
 
 - New Rust SDK target packagegroup (`packagegroup-rust-sdk-target`)
 - Testing:
 
-  - The ptest images have changed structure in this release. The underlying `core-image-ptest` recipe now uses `BBCLASSEXTEND`{.interpreted-text role="term"} to create a variant for each ptest enabled recipe in OE-Core.
+  - The ptest images have changed structure in this release. The underlying `core-image-ptest` recipe now uses `BBCLASSEXTEND` to create a variant for each ptest enabled recipe in OE-Core.
 
-> 在这个版本中，ptest 图像的结构发生了变化。底层的 `core-image-ptest` 配方现在使用 `BBCLASSEXTEND` 来为 OE-Core 中的每个启用 ptest 的配方创建一个变体。
+> 在这个版本中，ptest 镜像的结构发生了变化。底层的 `core-image-ptest` 配方现在使用 `BBCLASSEXTEND` 来为 OE-Core 中的每个启用 ptest 的配方创建一个变体。
 
 ```
 For example, this means that `core-image-ptest-bzip2`, `core-image-ptest-lttng-tools` and many more image targets now exist and can be built/tested individually.
@@ -144,13 +144,15 @@ For example, this means that `core-image-ptest-bzip2`, `core-image-ptest-lttng-t
 The `core-image-ptest-all` and `core-image-ptest-fast` targets are now wrappers that target groups of individual images and means that the tests can be executed in parallel during our automated testing. This also means the dependencies are more accurately tested.
 ```
 
-- It is now possible to track regression changes between releases using :oe\_[git:%60yocto_testresults_query.py](git:%60yocto_testresults_query.py) \</openembedded-core/tree/scripts/yocto_testresults_query.py\>[, which is a thin wrapper over :oe_git:\`resulttool \</openembedded-core/tree/scripts/resulttool\>]{.title-ref}. Here is an example command, which allowed to spot and fix a regression in the `quilt` ptest:
+- It is now possible to track regression changes between releases using :oe_[git:%60yocto_testresults_query.py](git:%60yocto_testresults_query.py) \</openembedded-core/tree/scripts/yocto_testresults_query.py\>[, which is a thin wrapper over :oe_git:\`resulttool \</openembedded-core/tree/scripts/resulttool\>]. Here is an example command, which allowed to spot and fix a regression in the `quilt` ptest:
 
-> 现在可以使用 oe_[git:%60yocto_testresults_query.py](git:%60yocto_testresults_query.py) \</openembedded-core/tree/scripts/yocto_testresults_query.py\>[, 即 oe_git:\`resulttool \</openembedded-core/tree/scripts/resulttool\>]{.title-ref}来跟踪发布之间的回归变化。这里有一个例子的命令，它可以在 quilt ptest 中发现并修复一个回归问题：
+> 现在可以使用 oe_[git:%60yocto_testresults_query.py](git:%60yocto_testresults_query.py) \</openembedded-core/tree/scripts/yocto_testresults_query.py\>[, 即 oe_git:\`resulttool \</openembedded-core/tree/scripts/resulttool\>]来跟踪发布之间的回归变化。这里有一个例子的命令，它可以在 quilt ptest 中发现并修复一个回归问题：
 
 ```
 ```
+
 yocto_testresults_query.py regression-report 4.2_M1 4.2_M2
+
 ```
 
 See this [blog post about regression detection](https://bootlin.com/blog/continuous-integration-in-yocto-improving-the-regressions-detection/).
@@ -169,7 +171,7 @@ See this [blog post about regression detection](https://bootlin.com/blog/continu
 - `ptest-runner` now adds a non-root \"ptest\" user to run tests.
 - `resulttool`: add a `--list-ptest` option to the log subcommand to list ptest names in a results file
 - `resulttool`: regression: add metadata filtering for oeselftest
-- New `PACKAGECONFIG`{.interpreted-text role="term"} options in the following recipes:
+- New `PACKAGECONFIG` options in the following recipes:
 
   - `at-spi2-core`
   - `base-passwd`
@@ -205,7 +207,7 @@ See this [blog post about regression detection](https://bootlin.com/blog/continu
   - `oe-setup-layers`: make efficiently idempotent
   - `oe-setup-layers`: print a note about submodules if present
   - New `buildstats-summary` script to show a summary of the buildstats data
-  - `ref-classes-report-error`{.interpreted-text role="ref"} class: catch `Nothing PROVIDES` error
+  - `ref-classes-report-error` class: catch `Nothing PROVIDES` error
   - `combo-layer`: add `sync-revs` command
   - `convert-overrides`: allow command-line customizations
 - bitbake-layers improvements:
@@ -217,84 +219,84 @@ See this [blog post about regression detection](https://bootlin.com/blog/continu
 
   - Inline Python snippets can now include dictionary expressions
   - Evaluate the value of export/unexport/network flags so that they can be reset to \"0\"
-  - Make `EXCLUDE_FROM_WORLD`{.interpreted-text role="term"} boolean so that it can be reset to \"0\"
+  - Make `EXCLUDE_FROM_WORLD` boolean so that it can be reset to \"0\"
   - Support int values in `bb.utils.to_boolean()` in addition to strings
   - `bitbake-getvar`: Add a `quiet` command line argument
   - Allow the `@` character in variable flag names
   - Python library code will now be included when calculating task hashes
   - `fetch2/npmsw`: add more short forms for git operations
-  - Display a warning when `SRCREV = "${AUTOREV}"` is set too late to be effective
-  - Display all missing `SRC_URI`{.interpreted-text role="term"} checksums at once
+  - Display a warning when `SRCREV = "$"` is set too late to be effective
+  - Display all missing `SRC_URI` checksums at once
   - Improve error message for a missing multiconfig
-  - Switch to a new `BB_CACHEDIR`{.interpreted-text role="term"} variable for codeparser cache location
+  - Switch to a new `BB_CACHEDIR` variable for codeparser cache location
   - Mechanism introduced to reduce the codeparser cache unnecessarily growing in size
 - Packaging changes:
 
   - `rng-tools` is no longer recommended by `openssh`, and the `rng-tools` service files have been split out to their own package
   - `linux-firmware`: split `rtl8761` and `amdgpu` firmware
-  - `linux-firmware`: add new firmware file to `${PN}-qcom-adreno-a530`
+  - `linux-firmware`: add new firmware file to `$-qcom-adreno-a530`
   - `iproute2`: separate `routel` and add Python dependency
   - `xinetd`: move `xconv.pl` script to separate package
   - `perf`: enable debug/source packaging
 - Prominent documentation updates:
 
-  - Substantially expanded the \"`/dev-manual/vulnerabilities`{.interpreted-text role="doc"}\" section.
-  - Added a new \"`/dev-manual/sbom`{.interpreted-text role="doc"}\" section about SPDX SBoM generation.
-  - Expanded \"`init-manager`{.interpreted-text role="ref"}\" documentation.
-  - New section about `ref-long-term-support-releases`{.interpreted-text role="ref"}.
-  - System Requirements: details about `system-requirements-minimum-ram`{.interpreted-text role="ref"}.
-  - Details about `ref-building-meson-package`{.interpreted-text role="ref"} and the `ref-classes-meson`{.interpreted-text role="ref"} class.
-  - Documentation about how to write recipes for Rust programs. See the `ref-classes-cargo`{.interpreted-text role="ref"} class.
-  - Documentation about how to write recipes for Go programs. See the `ref-classes-go`{.interpreted-text role="ref"} class.
+  - Substantially expanded the \"`/dev-manual/vulnerabilities`\" section.
+  - Added a new \"`/dev-manual/sbom`\" section about SPDX SBoM generation.
+  - Expanded \"`init-manager`\" documentation.
+  - New section about `ref-long-term-support-releases`.
+  - System Requirements: details about `system-requirements-minimum-ram`.
+  - Details about `ref-building-meson-package` class.
+  - Documentation about how to write recipes for Rust programs. See the `ref-classes-cargo` class.
+  - Documentation about how to write recipes for Go programs. See the `ref-classes-go` class.
   - Variable index: added references to variables only documented in the BitBake manual. All variables should be easy to access through the Yocto Manual variable index.
 
 > 变量索引：仅在 BitBake 手册中文档化的变量添加了引用。所有变量都应该可以通过 Yocto 手册变量索引轻松访问。
 
-- Expanded the description of the `BB_NUMBER_THREADS`{.interpreted-text role="term"} variable.
+- Expanded the description of the `BB_NUMBER_THREADS` variable.
 - Miscellaneous changes:
 
   - Supporting 64 bit dates on 32 bit platforms: several packages have been updated to pass year 2038 tests, and a QA check for 32 bit time and file offset functions has been added (default off)
 
-> 支持 32 位平台上的 64 位日期：已更新了几个包以通过 2038 年测试，并且已添加了 32 位时间和文件偏移函数的 QA 检查（默认关闭）。
+> 支持 32 位平台上的 64 位日期：已更新了几个包以通过 2038 年测试，并且已添加了 32 位时间和文件偏移函数的 QA 检查(默认关闭)。
 
 - Patch fuzz/Upstream-Status checking has been reworked:
 
-  - Upstream-Status checking is now configurable from `WARN_QA`{.interpreted-text role="term"}/`ERROR_QA`{.interpreted-text role="term"} (`patch-status-core`)
+  - Upstream-Status checking is now configurable from `WARN_QA` (`patch-status-core`)
   - Can now be enabled for non-core layers (`patch-status-noncore`)
-  - `patch-fuzz` is now in `ERROR_QA`{.interpreted-text role="term"} by default, and actually stops the build
+  - `patch-fuzz` is now in `ERROR_QA` by default, and actually stops the build
 - Many packages were updated to add large file support.
 - `vulkan-loader`: allow headless targets to build the loader
 - `dhcpcd`: fix to work with systemd
-- `u-boot`: add /boot to `SYSROOT_DIRS`{.interpreted-text role="term"} to allow boot files to be used by other recipes
+- `u-boot`: add /boot to `SYSROOT_DIRS` to allow boot files to be used by other recipes
 - `linux-firmware`: don\'t put the firmware into the sysroot
-- `cups`: add `PACKAGECONFIG`{.interpreted-text role="term"} to control web interface and default to off
+- `cups`: add `PACKAGECONFIG` to control web interface and default to off
 - `buildtools-tarball`: export certificates to python and curl
 - `yocto-check-layer`: allow OE-Core to be tested
 - `yocto-check-layer`: check for patch file upstream status
 - `boost`: enable building `Boost.URL` library
 - `native`: drop special variable handling
-- Poky: make it easier to set `INIT_MANAGER`{.interpreted-text role="term"} from local.conf
-- `ref-classes-create-spdx`{.interpreted-text role="ref"}: add support for custom annotations (`SPDX_CUSTOM_ANNOTATION_VARS`{.interpreted-text role="term"})
+- Poky: make it easier to set `INIT_MANAGER` from local.conf
+- `ref-classes-create-spdx`)
 
-> - `ref-classes-create-spdx`：添加对自定义注释（`SPDX_CUSTOM_ANNOTATION_VARS`）的支持
+> - `ref-classes-create-spdx`：添加对自定义注释(`SPDX_CUSTOM_ANNOTATION_VARS`)的支持
 
-- `ref-classes-create-spdx`{.interpreted-text role="ref"}: report downloads as separate packages
-- `ref-classes-create-spdx`{.interpreted-text role="ref"}: remove the top-level image SPDX file and the JSON index file from `DEPLOYDIR`{.interpreted-text role="term"} to avoid confusion
+- `ref-classes-create-spdx`: report downloads as separate packages
+- `ref-classes-create-spdx` to avoid confusion
 
-> - `ref-classes-create-spdx`：从 `DEPLOYDIR` 中删除顶级图像 SPDX 文件和 JSON 索引文件，以避免混淆。
+> - `ref-classes-create-spdx`：从 `DEPLOYDIR` 中删除顶级镜像 SPDX 文件和 JSON 索引文件，以避免混淆。
 
-- `os-release`: replace `DISTRO_CODENAME` with `VERSION_CODENAME` (still set from `DISTRO_CODENAME`{.interpreted-text role="term"})
+- `os-release`: replace `DISTRO_CODENAME` with `VERSION_CODENAME` (still set from `DISTRO_CODENAME`)
 - `weston`: add kiosk shell
-- `ref-classes-overlayfs`{.interpreted-text role="ref"}: Allow unused mount points
+- `ref-classes-overlayfs`: Allow unused mount points
 - `sstatesig`: emit more helpful error message when not finding sstate manifest
-- `ref-classes-pypi`{.interpreted-text role="ref"}.bbclass: Set `SRC_URI`{.interpreted-text role="term"} downloadfilename with an optional prefix
+- `ref-classes-pypi` downloadfilename with an optional prefix
 - `poky-bleeding` distro: update and rework
-- `package.bbclass <ref-classes-package>`{.interpreted-text role="ref"}: check if package names conflict via `PKG:${PN}` override in `do_package <ref-tasks-package>`{.interpreted-text role="ref"}
+- `package.bbclass <ref-classes-package>`
 
-> - `package.bbclass <ref-classes-package>`{.interpreted-text role="ref"}: 通过 `PKG:${PN}` 覆盖在 `do_package <ref-tasks-package>`{.interpreted-text role="ref"}中检查包名是否冲突
+> - `package.bbclass <ref-classes-package>` 中检查包名是否冲突
 
 - `cve-update-nvd2-native`: new NVD CVE database fetcher using the 2.0 API
-- `ref-classes-mirrors`{.interpreted-text role="ref"} class: use shallow tarball for `binutils-native`/`nativesdk-binutils`
+- `ref-classes-mirrors` class: use shallow tarball for `binutils-native`/`nativesdk-binutils`
 - `meta/conf`: move default configuration templates into `meta/conf/templates/default`
 - `binutils`: enable `--enable-new-dtags` as per many Linux distributions
 - `base-files`: drop `localhost.localdomain` from hosts file as per many Linux distributions
@@ -306,73 +308,73 @@ See this [blog post about regression detection](https://bootlin.com/blog/continu
 
 # Recipe License changes in 4.2
 
-The following corrections have been made to the `LICENSE`{.interpreted-text role="term"} values set by recipes:
+The following corrections have been made to the `LICENSE` values set by recipes:
 
-- `curl`: set `LICENSE`{.interpreted-text role="term"} appropriately to `curl` as it is a special derivative of the MIT/X license, not exactly that license.
+- `curl`: set `LICENSE` appropriately to `curl` as it is a special derivative of the MIT/X license, not exactly that license.
 
 > 设置 `LICENSE` 适当地指向 `curl`，因为它是 MIT/X 许可证的特殊衍生物，而不是完全一样的许可证。
 
-- `libgit2`: added `Zlib`, `ISC`, `LGPL-2.1-or-later` and `CC0-1.0` to `LICENSE`{.interpreted-text role="term"} covering portions of the included code.
+- `libgit2`: added `Zlib`, `ISC`, `LGPL-2.1-or-later` and `CC0-1.0` to `LICENSE` covering portions of the included code.
 
 > libgit2：在 `LICENSE` 中添加了 `Zlib`、`ISC`、`LGPL-2.1-or-later` 和 `CC0-1.0`，以覆盖其中包含的代码部分。
 
-- `linux-firmware`: set package `LICENSE`{.interpreted-text role="term"} appropriately for all qcom packages
+- `linux-firmware`: set package `LICENSE` appropriately for all qcom packages
 
 # Security Fixes in 4.2
 
-- binutils: `2022-4285`{.interpreted-text role="cve"}, :cve_mitre:[2023-25586]{.title-ref}
-- curl: `2022-32221`{.interpreted-text role="cve"}, `2022-35260`{.interpreted-text role="cve"}, `2022-42915`{.interpreted-text role="cve"}, `2022-42916`{.interpreted-text role="cve"}
+- binutils: `2022-4285`
+- curl: `2022-32221`
 
 > curl：CVE-2022-32221，CVE-2022-35260，CVE-2022-42915，CVE-2022-42916
 
-- epiphany: `2023-26081`{.interpreted-text role="cve"}
-- expat: `2022-43680`{.interpreted-text role="cve"}
-- ffmpeg: `2022-3964`{.interpreted-text role="cve"}, `2022-3965`{.interpreted-text role="cve"}
-- git: `2022-39260`{.interpreted-text role="cve"}, `2022-41903`{.interpreted-text role="cve"}, `2022-23521`{.interpreted-text role="cve"}, `2022-41953`{.interpreted-text role="cve"} (ignored)
+- epiphany: `2023-26081`
+- expat: `2022-43680`
+- ffmpeg: `2022-3964`
+- git: `2022-39260` (ignored)
 
-> git：CVE-2022-39260，CVE-2022-41903，CVE-2022-23521，CVE-2022-41953（已忽略）
+> git：CVE-2022-39260，CVE-2022-41903，CVE-2022-23521，CVE-2022-41953(已忽略)
 
-- glibc: `2023-25139`{.interpreted-text role="cve"} (ignored)
-- go: `2023-24532`{.interpreted-text role="cve"}, `2023-24537`{.interpreted-text role="cve"}
-- grub2: `2022-2601`{.interpreted-text role="cve"}, `2022-3775`{.interpreted-text role="cve"}, :cve_mitre:[2022-28736]{.title-ref}
-- inetutils: `2019-0053`{.interpreted-text role="cve"}
-- less: `2022-46663`{.interpreted-text role="cve"}
-- libarchive: `2022-36227`{.interpreted-text role="cve"}
-- libinput: `2022-1215`{.interpreted-text role="cve"}
-- libpam: `2022-28321`{.interpreted-text role="cve"}
-- libpng: `2019-6129`{.interpreted-text role="cve"}
-- libx11: `2022-3554`{.interpreted-text role="cve"}
-- openssh: `2023-28531`{.interpreted-text role="cve"}
-- openssl: `2022-3358`{.interpreted-text role="cve"}, `2022-3786`{.interpreted-text role="cve"}, `2022-3602`{.interpreted-text role="cve"}, `2022-3996`{.interpreted-text role="cve"}, `2023-0286`{.interpreted-text role="cve"}, `2022-4304`{.interpreted-text role="cve"}, `2022-4203`{.interpreted-text role="cve"}, `2023-0215`{.interpreted-text role="cve"}, `2022-4450`{.interpreted-text role="cve"}, `2023-0216`{.interpreted-text role="cve"}, `2023-0217`{.interpreted-text role="cve"}, `2023-0401`{.interpreted-text role="cve"}, `2023-0464`{.interpreted-text role="cve"}
+- glibc: `2023-25139` (ignored)
+- go: `2023-24532`
+- grub2: `2022-2601`
+- inetutils: `2019-0053`
+- less: `2022-46663`
+- libarchive: `2022-36227`
+- libinput: `2022-1215`
+- libpam: `2022-28321`
+- libpng: `2019-6129`
+- libx11: `2022-3554`
+- openssh: `2023-28531`
+- openssl: `2022-3358`
 
 > OpenSSL：CVE-2022-3358、CVE-2022-3786、CVE-2022-3602、CVE-2022-3996、CVE-2023-0286、CVE-2022-4304、CVE-2022-4203、CVE-2023-0215、CVE-2022-4450、CVE-2023-0216、CVE-2023-0217、CVE-2023-0401、CVE-2023-0464
 
-- ppp: `2022-4603`{.interpreted-text role="cve"}
-- python3-cryptography{-vectors}: `2022-3602`{.interpreted-text role="cve"}, `2022-3786`{.interpreted-text role="cve"}, `2023-23931`{.interpreted-text role="cve"}
+- ppp: `2022-4603`
+- python3-cryptography
 
-> python3-cryptography{-矢量}: `2022-3602`{.interpreted-text role="cve"}, `2022-3786`{.interpreted-text role="cve"}, `2023-23931`{.interpreted-text role="cve"}
+> python3-cryptography
 
-- python3: :cve_mitre:[2022-37460]{.title-ref}
-- qemu: `2022-3165`{.interpreted-text role="cve"}
-- rust: `2022-46176`{.interpreted-text role="cve"}
-- rxvt-unicode: `2022-4170`{.interpreted-text role="cve"}
-- screen: `2023-24626`{.interpreted-text role="cve"}
-- shadow: `2023-29383`{.interpreted-text role="cve"}, `2016-15024`{.interpreted-text role="cve"} (ignored)
-- sudo: `2022-43995`{.interpreted-text role="cve"}
-- systemd: `2022-4415`{.interpreted-text role="cve"} (ignored)
-- tar: `2022-48303`{.interpreted-text role="cve"}
-- tiff: `2022-3599`{.interpreted-text role="cve"}, `2022-3597`{.interpreted-text role="cve"}, `2022-3626`{.interpreted-text role="cve"}, `2022-3627`{.interpreted-text role="cve"}, `2022-3570`{.interpreted-text role="cve"}, `2022-3598`{.interpreted-text role="cve"}, `2022-3970`{.interpreted-text role="cve"}, `2022-48281`{.interpreted-text role="cve"}
+- python3: :cve_mitre:[2022-37460]
+- qemu: `2022-3165`
+- rust: `2022-46176`
+- rxvt-unicode: `2022-4170`
+- screen: `2023-24626`
+- shadow: `2023-29383` (ignored)
+- sudo: `2022-43995`
+- systemd: `2022-4415` (ignored)
+- tar: `2022-48303`
+- tiff: `2022-3599`
 
 > -Tiff：CVE-2022-3599、CVE-2022-3597、CVE-2022-3626、CVE-2022-3627、CVE-2022-3570、CVE-2022-3598、CVE-2022-3970、CVE-2022-48281
 
-- vim: `2022-3352`{.interpreted-text role="cve"}, `2022-4141`{.interpreted-text role="cve"}, `2023-0049`{.interpreted-text role="cve"}, `2023-0051`{.interpreted-text role="cve"}, `2023-0054`{.interpreted-text role="cve"}, `2023-0288`{.interpreted-text role="cve"}, `2023-1127`{.interpreted-text role="cve"}, `2023-1170`{.interpreted-text role="cve"}, `2023-1175`{.interpreted-text role="cve"}, `2023-1127`{.interpreted-text role="cve"}, `2023-1170`{.interpreted-text role="cve"}, `2023-1175`{.interpreted-text role="cve"}, `2023-1264`{.interpreted-text role="cve"}, `2023-1355`{.interpreted-text role="cve"}, `2023-0433`{.interpreted-text role="cve"}, `2022-47024`{.interpreted-text role="cve"}, `2022-3705`{.interpreted-text role="cve"}
+- vim: `2022-3352`
 
 > CVE-2022-3352，CVE-2022-4141，CVE-2023-0049，CVE-2023-0051，CVE-2023-0054，CVE-2023-0288，CVE-2023-1127，CVE-2023-1170，CVE-2023-1175，CVE-2023-1127，CVE-2023-1170，CVE-2023-1175，CVE-2023-1264，CVE-2023-1355，CVE-2023-0433，CVE-2022-47024，CVE-2022-3705
 
-- xdg-utils: `2022-4055`{.interpreted-text role="cve"}
-- xserver-xorg: `2022-3550`{.interpreted-text role="cve"}, `2022-3551`{.interpreted-text role="cve"}, `2023-1393`{.interpreted-text role="cve"}, `2023-0494`{.interpreted-text role="cve"}, `2022-3553`{.interpreted-text role="cve"} (ignored)
+- xdg-utils: `2022-4055`
+- xserver-xorg: `2022-3550` (ignored)
 
-> -Xserver-xorg：CVE-2022-3550、CVE-2022-3551、CVE-2023-1393、CVE-2023-0494、CVE-2022-3553（已忽略）
+> -Xserver-xorg：CVE-2022-3550、CVE-2022-3551、CVE-2023-1393、CVE-2023-0494、CVE-2022-3553(已忽略)
 
 # Recipe Upgrades in 4.2
 
@@ -917,10 +919,10 @@ Thanks to the following people who contributed to this release:
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60mickledore](git:%60mickledore) \</poky/log/?h=mickledore\>\`
-- Tag: :yocto\_[git:%60yocto-4.2](git:%60yocto-4.2) \</poky/log/?h=yocto-4.2\>\`
-- Git Revision: :yocto\_[git:%6021790e71d55f417f27cd51fae9dd47549758d4a0](git:%6021790e71d55f417f27cd51fae9dd47549758d4a0) \</poky/commit/?id=21790e71d55f417f27cd51fae9dd47549758d4a0\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60mickledore](git:%60mickledore) \</poky/log/?h=mickledore\>\`
+- Tag: :yocto_[git:%60yocto-4.2](git:%60yocto-4.2) \</poky/log/?h=yocto-4.2\>\`
+- Git Revision: :yocto_[git:%6021790e71d55f417f27cd51fae9dd47549758d4a0](git:%6021790e71d55f417f27cd51fae9dd47549758d4a0) \</poky/commit/?id=21790e71d55f417f27cd51fae9dd47549758d4a0\>\`
 
 > Git 版本：yocto_[git：21790e71d55f417f27cd51fae9dd47549758d4a0](git%EF%BC%9A21790e71d55f417f27cd51fae9dd47549758d4a0)</poky/commit/?id=21790e71d55f417f27cd51fae9dd47549758d4a0>
 
@@ -932,12 +934,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60mickledore](git:%60mickledore) \</openembedded-core/log/?h=mickledore\>\`
-- Tag: :oe\_[git:%60yocto-4.2](git:%60yocto-4.2) \</openembedded-core/log/?h=yocto-4.2\>\`
-- Git Revision: :oe\_[git:%60c57d1a561db563ed2f521bbac5fc12d4ac8e11a7](git:%60c57d1a561db563ed2f521bbac5fc12d4ac8e11a7) \</openembedded-core/commit/?id=c57d1a561db563ed2f521bbac5fc12d4ac8e11a7\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60mickledore](git:%60mickledore) \</openembedded-core/log/?h=mickledore\>\`
+- Tag: :oe_[git:%60yocto-4.2](git:%60yocto-4.2) \</openembedded-core/log/?h=yocto-4.2\>\`
+- Git Revision: :oe_[git:%60c57d1a561db563ed2f521bbac5fc12d4ac8e11a7](git:%60c57d1a561db563ed2f521bbac5fc12d4ac8e11a7) \</openembedded-core/commit/?id=c57d1a561db563ed2f521bbac5fc12d4ac8e11a7\>\`
 
-> Git 版本：<openembedded-core/commit/?id=c57d1a561db563ed2f521bbac5fc12d4ac8e11a7>（git:`c57d1a561db563ed2f521bbac5fc12d4ac8e11a7`）
+> Git 版本：<openembedded-core/commit/?id=c57d1a561db563ed2f521bbac5fc12d4ac8e11a7>(git:`c57d1a561db563ed2f521bbac5fc12d4ac8e11a7`)
 
 - Release Artefact: oecore-c57d1a561db563ed2f521bbac5fc12d4ac8e11a7
 - sha: e8cdd870492017be7e7b74b8c2fb73ae6771b2d2125b2aa1f0e65d0689f96af8
@@ -947,10 +949,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60mickledore](git:%60mickledore) \</meta-mingw/log/?h=mickledore\>\`
-- Tag: :yocto\_[git:%60yocto-4.2](git:%60yocto-4.2) \</meta-mingw/log/?h=yocto-4.2\>\`
-- Git Revision: :yocto\_[git:%60250617ffa524c082b848487359b9d045703d59c2](git:%60250617ffa524c082b848487359b9d045703d59c2) \</meta-mingw/commit/?id=250617ffa524c082b848487359b9d045703d59c2\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60mickledore](git:%60mickledore) \</meta-mingw/log/?h=mickledore\>\`
+- Tag: :yocto_[git:%60yocto-4.2](git:%60yocto-4.2) \</meta-mingw/log/?h=yocto-4.2\>\`
+- Git Revision: :yocto_[git:%60250617ffa524c082b848487359b9d045703d59c2](git:%60250617ffa524c082b848487359b9d045703d59c2) \</meta-mingw/commit/?id=250617ffa524c082b848487359b9d045703d59c2\>\`
 
 > Git 版本：:yocto_[git:%60250617ffa524c082b848487359b9d045703d59c2](git:%60250617ffa524c082b848487359b9d045703d59c2) \</meta-mingw/commit/?id=250617ffa524c082b848487359b9d045703d59c2\>\`
 
@@ -962,10 +964,10 @@ meta-mingw
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.4](git:%602.4) \</bitbake/log/?h=2.4\>\`
-- Tag: :oe\_[git:%60yocto-4.2](git:%60yocto-4.2) \</bitbake/log/?h=yocto-4.2\>\`
-- Git Revision: :oe\_[git:%60d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c](git:%60d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c) \</bitbake/commit/?id=d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.4](git:%602.4) \</bitbake/log/?h=2.4\>\`
+- Tag: :oe_[git:%60yocto-4.2](git:%60yocto-4.2) \</bitbake/log/?h=yocto-4.2\>\`
+- Git Revision: :oe_[git:%60d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c](git:%60d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c) \</bitbake/commit/?id=d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c\>\`
 
 > Git 版本：:oe_[git:`d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c`](git:%60d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c%60) \</bitbake/commit/?id=d97d62e2cbe4bae17f0886f3b4759e8f9ba6d38c\>\`
 
@@ -977,9 +979,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60mickledore](git:%60mickledore) \</yocto-docs/log/?h=mickledore\>\`
-- Tag: :yocto\_[git:%60yocto-4.2](git:%60yocto-4.2) \</yocto-docs/log/?h=yocto-4.2\>\`
-- Git Revision: :yocto\_[git:%604d6807e34adf5d92d9b6e5852736443a867c78fa](git:%604d6807e34adf5d92d9b6e5852736443a867c78fa) \</yocto-docs/commit/?id=4d6807e34adf5d92d9b6e5852736443a867c78fa\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60mickledore](git:%60mickledore) \</yocto-docs/log/?h=mickledore\>\`
+- Tag: :yocto_[git:%60yocto-4.2](git:%60yocto-4.2) \</yocto-docs/log/?h=yocto-4.2\>\`
+- Git Revision: :yocto_[git:%604d6807e34adf5d92d9b6e5852736443a867c78fa](git:%604d6807e34adf5d92d9b6e5852736443a867c78fa) \</yocto-docs/commit/?id=4d6807e34adf5d92d9b6e5852736443a867c78fa\>\`
 
 > Git 版本：:yocto_[git：%604d6807e34adf5d92d9b6e5852736443a867c78fa](git%EF%BC%9A%604d6807e34adf5d92d9b6e5852736443a867c78fa) \</yocto-docs/commit/?id=4d6807e34adf5d92d9b6e5852736443a867c78fa\>\`

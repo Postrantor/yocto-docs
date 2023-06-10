@@ -7,16 +7,16 @@ title: Release notes for Yocto-4.0.8 (Kirkstone)
 
 # Security Fixes in Yocto-4.0.8
 
-- apr-util: Fix `2022-25147`{.interpreted-text role="cve"}
-- apr: Fix `2022-24963`{.interpreted-text role="cve"}, `2022-28331`{.interpreted-text role="cve"} and `2021-35940`{.interpreted-text role="cve"}
-- bind: Fix `2022-3094`{.interpreted-text role="cve"}, `2022-3736`{.interpreted-text role="cve"} and `2022-3924`{.interpreted-text role="cve"}
-- git: Ignore `2022-41953`{.interpreted-text role="cve"}
-- git: Fix `2022-23521`{.interpreted-text role="cve"} and `2022-41903`{.interpreted-text role="cve"}
-- libgit2: Fix `2023-22742`{.interpreted-text role="cve"}
-- ppp: Fix `2022-4603`{.interpreted-text role="cve"}
-- python3-certifi: Fix `2022-23491`{.interpreted-text role="cve"}
-- sudo: Fix `2023-22809`{.interpreted-text role="cve"}
-- tar: Fix `2022-48303`{.interpreted-text role="cve"}
+- apr-util: Fix `2022-25147`
+- apr: Fix `2022-24963`
+- bind: Fix `2022-3094`
+- git: Ignore `2022-41953`
+- git: Fix `2022-23521`
+- libgit2: Fix `2023-22742`
+- ppp: Fix `2022-4603`
+- python3-certifi: Fix `2022-23491`
+- sudo: Fix `2023-22809`
+- tar: Fix `2022-48303`
 
 # Fixes in Yocto-4.0.8
 
@@ -143,10 +143,10 @@ title: Release notes for Yocto-4.0.8 (Kirkstone)
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</poky/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</poky/log/?h=yocto-4.0.8\>\`
-- Git Revision: :yocto\_[git:%60a361fb3df9c87cf12963a9d785a9f99faa839222](git:%60a361fb3df9c87cf12963a9d785a9f99faa839222) \</poky/commit/?id=a361fb3df9c87cf12963a9d785a9f99faa839222\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</poky/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</poky/log/?h=yocto-4.0.8\>\`
+- Git Revision: :yocto_[git:%60a361fb3df9c87cf12963a9d785a9f99faa839222](git:%60a361fb3df9c87cf12963a9d785a9f99faa839222) \</poky/commit/?id=a361fb3df9c87cf12963a9d785a9f99faa839222\>\`
 
 > Git 修订版本：yocto_[git:`a361fb3df9c87cf12963a9d785a9f99faa839222`](git:%60a361fb3df9c87cf12963a9d785a9f99faa839222%60) \</poky/commit/?id=a361fb3df9c87cf12963a9d785a9f99faa839222\>\`
 
@@ -158,12 +158,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60kirkstone](git:%60kirkstone) \</openembedded-core/log/?h=kirkstone\>\`
-- Tag: :oe\_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</openembedded-core/log/?h=yocto-4.0.8\>\`
-- Git Revision: :oe\_[git:%60b20e2134daec33fbb8ce358d984751d887752bd5](git:%60b20e2134daec33fbb8ce358d984751d887752bd5) \</openembedded-core/commit/?id=b20e2134daec33fbb8ce358d984751d887752bd5\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60kirkstone](git:%60kirkstone) \</openembedded-core/log/?h=kirkstone\>\`
+- Tag: :oe_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</openembedded-core/log/?h=yocto-4.0.8\>\`
+- Git Revision: :oe_[git:%60b20e2134daec33fbb8ce358d984751d887752bd5](git:%60b20e2134daec33fbb8ce358d984751d887752bd5) \</openembedded-core/commit/?id=b20e2134daec33fbb8ce358d984751d887752bd5\>\`
 
-> Git 版本：<openembedded-core/commit/?id=b20e2134daec33fbb8ce358d984751d887752bd5>（git:`b20e2134daec33fbb8ce358d984751d887752bd5`）
+> Git 版本：<openembedded-core/commit/?id=b20e2134daec33fbb8ce358d984751d887752bd5>(git:`b20e2134daec33fbb8ce358d984751d887752bd5`)
 
 - Release Artefact: oecore-b20e2134daec33fbb8ce358d984751d887752bd5
 - sha: 63cce6f1caf8428eefc1471351ab024affc8a41d8d7777f525e3aa9ea454d2cd
@@ -173,10 +173,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-mingw/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</meta-mingw/log/?h=yocto-4.0.8\>\`
-- Git Revision: :yocto\_[git:%60a90614a6498c3345704e9611f2842eb933dc51c1](git:%60a90614a6498c3345704e9611f2842eb933dc51c1) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</meta-mingw/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</meta-mingw/log/?h=yocto-4.0.8\>\`
+- Git Revision: :yocto_[git:%60a90614a6498c3345704e9611f2842eb933dc51c1](git:%60a90614a6498c3345704e9611f2842eb933dc51c1) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
 
 > - Git 版本：:yocto_[git:`a90614a6498c3345704e9611f2842eb933dc51c1`](git:%60a90614a6498c3345704e9611f2842eb933dc51c1%60) \</meta-mingw/commit/?id=a90614a6498c3345704e9611f2842eb933dc51c1\>\`
 
@@ -188,10 +188,10 @@ meta-mingw
 
 meta-gplv2
 
-- Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</meta-gplv2/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</meta-gplv2/log/?h=yocto-4.0.8\>\`
-- Git Revision: :yocto\_[git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
+- Repository Location: :yocto_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</meta-gplv2/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</meta-gplv2/log/?h=yocto-4.0.8\>\`
+- Git Revision: :yocto_[git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a) \</meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
 
 > Git 版本：yocto_[git:`d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a`](git:%60d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a%60) \</meta-gplv2/commit/?id=d2f8b5cdb285b72a4ed93450f6703ca27aa42e8a\>\`
 
@@ -203,10 +203,10 @@ meta-gplv2
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.0](git:%602.0) \</bitbake/log/?h=2.0\>\`
-- Tag: :oe\_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</bitbake/log/?h=yocto-4.0.8\>\`
-- Git Revision: :oe\_[git:%609bbdedc0ba7ca819b898e2a29a151d6a2014ca11](git:%609bbdedc0ba7ca819b898e2a29a151d6a2014ca11) \</bitbake/commit/?id=9bbdedc0ba7ca819b898e2a29a151d6a2014ca11\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.0](git:%602.0) \</bitbake/log/?h=2.0\>\`
+- Tag: :oe_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</bitbake/log/?h=yocto-4.0.8\>\`
+- Git Revision: :oe_[git:%609bbdedc0ba7ca819b898e2a29a151d6a2014ca11](git:%609bbdedc0ba7ca819b898e2a29a151d6a2014ca11) \</bitbake/commit/?id=9bbdedc0ba7ca819b898e2a29a151d6a2014ca11\>\`
 
 > - Git 修订版本：<bitbake/commit/?id=9bbdedc0ba7ca819b898e2a29a151d6a2014ca11>，Git：%609bbdedc0ba7ca819b898e2a29a151d6a2014ca11
 
@@ -218,9 +218,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60kirkstone](git:%60kirkstone) \</yocto-docs/log/?h=kirkstone\>\`
-- Tag: :yocto\_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</yocto-docs/log/?h=yocto-4.0.8\>\`
-- Git Revision: :yocto\_[git:%6016ecbe028f2b9cc021267817a5413054e070b563](git:%6016ecbe028f2b9cc021267817a5413054e070b563) \</yocto-docs/commit/?id=16ecbe028f2b9cc021267817a5413054e070b563\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60kirkstone](git:%60kirkstone) \</yocto-docs/log/?h=kirkstone\>\`
+- Tag: :yocto_[git:%60yocto-4.0.8](git:%60yocto-4.0.8) \</yocto-docs/log/?h=yocto-4.0.8\>\`
+- Git Revision: :yocto_[git:%6016ecbe028f2b9cc021267817a5413054e070b563](git:%6016ecbe028f2b9cc021267817a5413054e070b563) \</yocto-docs/commit/?id=16ecbe028f2b9cc021267817a5413054e070b563\>\`
 
-> Git 版本：:yocto\_[git:%6016ecbe028f2b9cc021267817a5413054e070b563](git:%6016ecbe028f2b9cc021267817a5413054e070b563) \</yocto-docs/commit/?id=16ecbe028f2b9cc021267817a5413054e070b563\>\`
+> Git 版本：:yocto_[git:%6016ecbe028f2b9cc021267817a5413054e070b563](git:%6016ecbe028f2b9cc021267817a5413054e070b563) \</yocto-docs/commit/?id=16ecbe028f2b9cc021267817a5413054e070b563\>\`

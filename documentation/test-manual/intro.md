@@ -15,13 +15,13 @@ Currently, the Yocto Project Test Environment Manual has no projected release da
 
 > 目前，Yocto 项目测试环境手册尚无预期发布日期。本手册正在初步根据 README 文件和关键工程师的注释加载信息，正处于进行中状态。
 
-- *yocto-autobuilder2:* This :yocto\_[git:%60README.md](git:%60README.md) \</yocto-autobuilder2/tree/README.md\>[ is the main README which details how to set up the Yocto Project Autobuilder. The ]{.title-ref}[yocto-autobuilder2]{.title-ref}\` repository represents the Yocto Project\'s console UI plugin to Buildbot and the configuration necessary to configure Buildbot to perform the testing the project requires.
+- *yocto-autobuilder2:* This :yocto_[git:%60README.md](git:%60README.md) \</yocto-autobuilder2/tree/README.md\>[ is the main README which details how to set up the Yocto Project Autobuilder. The ]\` repository represents the Yocto Project\'s console UI plugin to Buildbot and the configuration necessary to configure Buildbot to perform the testing the project requires.
 
-> - Yocto-autobuilder2：这个：yocto_[git:README.md](git:README.md) </yocto-autobuilder2/tree/README.md> [是主要的 README，详细说明如何设置 Yocto 项目自动构建器。]{.title-ref}[yocto-autobuilder2]{.title-ref}` 存储库代表了 Yocto 项目的控制台 UI 插件到 Buildbot 以及配置 Buildbot 执行项目所需的测试所必需的配置。
+> - Yocto-autobuilder2：这个：yocto_[git:README.md](git:README.md) </yocto-autobuilder2/tree/README.md> [是主要的 README，详细说明如何设置 Yocto 项目自动构建器。]` 存储库代表了 Yocto 项目的控制台 UI 插件到 Buildbot 以及配置 Buildbot 执行项目所需的测试所必需的配置。
 
-- *yocto-autobuilder-helper:* This :yocto\_[git:%60README](git:%60README) \</yocto-autobuilder-helper/tree/README/\>[ and repository contains Yocto Project Autobuilder Helper scripts and configuration. The ]{.title-ref}[yocto-autobuilder-helper]{.title-ref}[ repository contains the \"glue\" logic that defines which tests to run and how to run them. As a result, it can be used by any Continuous Improvement (CI) system to run builds, support getting the correct code revisions, configure builds and layers, run builds, and collect results. The code is independent of any CI system, which means the code can work \`Buildbot \<[https://docs.buildbot.net/0.9.15.post1/](https://docs.buildbot.net/0.9.15.post1/)\>]{.title-ref}\_\_, Jenkins, or others. This repository has a branch per release of the project defining the tests to run on a per release basis.
+- *yocto-autobuilder-helper:* This :yocto_[git:%60README](git:%60README) \</yocto-autobuilder-helper/tree/README/\>[ and repository contains Yocto Project Autobuilder Helper scripts and configuration. The ]__, Jenkins, or others. This repository has a branch per release of the project defining the tests to run on a per release basis.
 
-> 这个 yocto-autobuilder-helper 仓库包含 Yocto 项目自动构建帮助器脚本和配置。它包含定义哪些测试要运行以及如何运行它们的“胶水”逻辑。因此，它可以由任何持续改进（CI）系统使用，以运行构建，支持获取正确的代码修订，配置构建和层，运行构建和收集结果。该代码独立于任何 CI 系统，这意味着该代码可以工作 Buildbot，Jenkins 或其他系统。此存储库每个项目发行版本均有一个分支，用于定义每个发行版本要运行的测试。
+> 这个 yocto-autobuilder-helper 仓库包含 Yocto 项目自动构建帮助器脚本和配置。它包含定义哪些测试要运行以及如何运行它们的“胶水”逻辑。因此，它可以由任何持续改进(CI)系统使用，以运行构建，支持获取正确的代码修订，配置构建和层，运行构建和收集结果。该代码独立于任何 CI 系统，这意味着该代码可以工作 Buildbot，Jenkins 或其他系统。此存储库每个项目发行版本均有一个分支，用于定义每个发行版本要运行的测试。
 
 # Yocto Project Autobuilder Overview
 
@@ -31,7 +31,7 @@ The Yocto Project Autobuilder collectively refers to the software, tools, script
 
 The Yocto Project uses now uses standard upstream [Buildbot](https://docs.buildbot.net/0.9.15.post1/) (version 9) to drive its integration and testing. Buildbot Nine has a plug-in interface that the Yocto Project customizes using code from the `yocto-autobuilder2` repository, adding its own console UI plugin. The resulting UI plug-in allows you to visualize builds in a way suited to the project\'s needs.
 
-> 项目 Yocto 现在使用标准上游 [Buildbot](https://docs.buildbot.net/0.9.15.post1/)（版本 9）来驱动其整合和测试。 Buildbot Nine 具有插件接口，Yocto 项目使用 yocto-autobuilder2 存储库中的代码进行自定义，并添加自己的控制台 UI 插件。生成的 UI 插件允许您以项目需求的方式可视化构建。
+> 项目 Yocto 现在使用标准上游 [Buildbot](https://docs.buildbot.net/0.9.15.post1/)(版本 9)来驱动其整合和测试。Buildbot Nine 具有插件接口，Yocto 项目使用 yocto-autobuilder2 存储库中的代码进行自定义，并添加自己的控制台 UI 插件。生成的 UI 插件允许您以项目需求的方式可视化构建。
 
 A `helper` layer provides configuration and job management through scripts found in the `yocto-autobuilder-helper` repository. The `helper` layer contains the bulk of the build configuration information and is release-specific, which makes it highly customizable on a per-project basis. The layer is CI system-agnostic and contains a number of Helper scripts that can generate build configurations from simple JSON files.
 
@@ -42,16 +42,16 @@ A `helper` layer provides configuration and job management through scripts found
 Note
 :::
 
-The project uses Buildbot for historical reasons but also because many of the project developers have knowledge of Python. It is possible to use the outer layers from another Continuous Integration (CI) system such as `Jenkins <Jenkins_(software)>`{.interpreted-text role="wikipedia"} instead of Buildbot.
+The project uses Buildbot for historical reasons but also because many of the project developers have knowledge of Python. It is possible to use the outer layers from another Continuous Integration (CI) system such as `Jenkins <Jenkins_(software)>` instead of Buildbot.
 
-> 项目出于历史原因使用 Buildbot，但也是因为许多项目开发人员都熟悉 Python。也可以使用其他持续集成（CI）系统（如 Jenkins）的外层替代 Buildbot。
+> 项目出于历史原因使用 Buildbot，但也是因为许多项目开发人员都熟悉 Python。也可以使用其他持续集成(CI)系统(如 Jenkins)的外层替代 Buildbot。
 > :::
 
 The following figure shows the Yocto Project Autobuilder stack with a topology that includes a controller and a cluster of workers:
 
 > 以下图表显示了 Yocto 项目自动构建器堆栈，其拓扑包括控制器和一组工作者：
 
-![image](figures/ab-test-cluster.png){.align-center width="70.0%"}
+![image](figures/ab-test-cluster.png)
 
 # Yocto Project Tests \-\-- Types of Testing Overview
 
@@ -59,13 +59,13 @@ The Autobuilder tests different elements of the project by using the following t
 
 > 自动构建器通过使用以下类型的测试来测试项目的不同元素：
 
-- *Build Testing:* Tests whether specific configurations build by varying `MACHINE`{.interpreted-text role="term"}, `DISTRO`{.interpreted-text role="term"}, other configuration options, and the specific target images being built (or world). Used to trigger builds of all the different test configurations on the Autobuilder. Builds usually cover many different targets for different architectures, machines, and distributions, as well as different configurations, such as different init systems. The Autobuilder tests literally hundreds of configurations and targets.
+- *Build Testing:* Tests whether specific configurations build by varying `MACHINE`, other configuration options, and the specific target images being built (or world). Used to trigger builds of all the different test configurations on the Autobuilder. Builds usually cover many different targets for different architectures, machines, and distributions, as well as different configurations, such as different init systems. The Autobuilder tests literally hundreds of configurations and targets.
 
-> - *构建测试：* 通过变更 `MACHINE`{.interpreted-text role="term"}, `DISTRO`{.interpreted-text role="term"}, 其他配置选项，以及所构建的特定目标图像（或世界）来测试特定配置是否可以构建。用于在自动构建器上触发所有不同测试配置的构建。构建通常覆盖许多不同的目标，用于不同的架构、机器和发行版，以及不同的配置，例如不同的初始系统。自动构建器实际上测试了数百种配置和目标。
+> - *构建测试：* 通过变更 `MACHINE`, 其他配置选项，以及所构建的特定目标镜像(或世界)来测试特定配置是否可以构建。用于在自动构建器上触发所有不同测试配置的构建。构建通常覆盖许多不同的目标，用于不同的架构、机器和发行版，以及不同的配置，例如不同的初始系统。自动构建器实际上测试了数百种配置和目标。
 
-- *Sanity Checks During the Build Process:* Tests initiated through the `ref-classes-insane`{.interpreted-text role="ref"} class. These checks ensure the output of the builds are correct. For example, does the ELF architecture in the generated binaries match the target system? ARM binaries would not work in a MIPS system!
+- *Sanity Checks During the Build Process:* Tests initiated through the `ref-classes-insane` class. These checks ensure the output of the builds are correct. For example, does the ELF architecture in the generated binaries match the target system? ARM binaries would not work in a MIPS system!
 
-> - *在构建过程中的健全性检查：* 通过 `ref-classes-insane`{.interpreted-text role="ref"}类启动的测试。这些检查确保构建的输出是正确的。例如，生成的二进制文件中的 ELF 架构是否与目标系统匹配？ARM 二进制文件在 MIPS 系统中无法工作！
+> - *在构建过程中的健全性检查：* 通过 `ref-classes-insane` 类启动的测试。这些检查确保构建的输出是正确的。例如，生成的二进制文件中的 ELF 架构是否与目标系统匹配？ARM 二进制文件在 MIPS 系统中无法工作！
 
 - *Build Performance Testing:* Tests whether or not commonly used steps during builds work efficiently and avoid regressions. Tests to time commonly used usage scenarios are run through `oe-build-perf-test`. These tests are run on isolated machines so that the time measurements of the tests are accurate and no other processes interfere with the timing results. The project currently tests performance on two different distributions, Fedora and Ubuntu, to ensure we have no single point of failure and can ensure the different distros work effectively.
 
@@ -77,13 +77,13 @@ The Autobuilder tests different elements of the project by using the following t
   $ bitbake image -c testsdkext
   ```
 
-  The tests utilize the `ref-classes-testsdk`{.interpreted-text role="ref"} class and the `do_testsdkext` task.
+  The tests utilize the `ref-classes-testsdk` class and the `do_testsdkext` task.
 
-> 测试使用 `ref-classes-testsdk`{.interpreted-text role="ref"}类和 `do_testsdkext` 任务。
+> 测试使用 `ref-classes-testsdk` 类和 `do_testsdkext` 任务。
 
-- *Feature Testing:* Various scenario-based tests are run through the `OpenEmbedded Self test (oe-selftest) <ref-manual/release-process:Testing and Quality Assurance>`{.interpreted-text role="ref"}. We test oe-selftest on each of the main distributions we support.
+- *Feature Testing:* Various scenario-based tests are run through the `OpenEmbedded Self test (oe-selftest) <ref-manual/release-process:Testing and Quality Assurance>`. We test oe-selftest on each of the main distributions we support.
 
-> *功能测试：* 通过 `OpenEmbedded Self test（oe-selftest）<ref-manual/release-process:Testing and Quality Assurance>`{.interpreted-text role="ref"}运行各种基于场景的测试。我们在支持的主要分发版本上测试 oe-selftest。
+> *功能测试：* 通过 `OpenEmbedded Self test(oe-selftest)<ref-manual/release-process:Testing and Quality Assurance>` 运行各种基于场景的测试。我们在支持的主要分发版本上测试 oe-selftest。
 
 - *Image Testing:* Image tests initiated through the following command:
 
@@ -91,17 +91,17 @@ The Autobuilder tests different elements of the project by using the following t
   $ bitbake image -c testimage
   ```
 
-  The tests utilize the `ref-classes-testimage`{.interpreted-text role="ref"} class and the `ref-tasks-testimage`{.interpreted-text role="ref"} task.
+  The tests utilize the `ref-classes-testimage` task.
 
-> 测试使用 `ref-classes-testimage`{.interpreted-text role="ref"}类和 `ref-tasks-testimage`{.interpreted-text role="ref"}任务。
+> 测试使用 `ref-classes-testimage` 任务。
 
 - *Layer Testing:* The Autobuilder has the possibility to test whether specific layers work with the test of the system. The layers tested may be selected by members of the project. Some key community layers are also tested periodically.
 
 > *层测试：自动构建器具有可以测试特定层是否可以与系统测试兼容的可能性。测试的层可以由项目成员选择。一些关键的社区层也会定期进行测试。*
 
-- *Package Testing:* A Package Test (ptest) runs tests against packages built by the OpenEmbedded build system on the target machine. See the `Testing Packages With ptest <dev-manual/packages:Testing Packages With ptest>`{.interpreted-text role="ref"} section in the Yocto Project Development Tasks Manual and the \":yocto_wiki:[Ptest \</Ptest\>]{.title-ref}\" Wiki page for more information on Ptest.
+- *Package Testing:* A Package Test (ptest) runs tests against packages built by the OpenEmbedded build system on the target machine. See the `Testing Packages With ptest <dev-manual/packages:Testing Packages With ptest>`\" Wiki page for more information on Ptest.
 
-> 包测试：包测试（ptest）在目标机器上对由 OpenEmbedded 构建系统构建的包运行测试。有关 Ptest 的更多信息，请参阅 Yocto 项目开发任务手册中的“使用 Ptest 测试包”部分以及“Ptest”Wiki 页面。
+> 包测试：包测试(ptest)在目标机器上对由 OpenEmbedded 构建系统构建的包运行测试。有关 Ptest 的更多信息，请参阅 Yocto 项目开发任务手册中的“使用 Ptest 测试包”部分以及“Ptest”Wiki 页面。
 
 - *SDK Testing:* Image tests initiated through the following command:
 
@@ -109,13 +109,13 @@ The Autobuilder tests different elements of the project by using the following t
   $ bitbake image -c testsdk
   ```
 
-  The tests utilize the `ref-classes-testsdk`{.interpreted-text role="ref"} class and the `do_testsdk` task.
+  The tests utilize the `ref-classes-testsdk` class and the `do_testsdk` task.
 
-> 测试使用 `ref-classes-testsdk`{.interpreted-text role="ref"}类和 `do_testsdk` 任务。
+> 测试使用 `ref-classes-testsdk` 类和 `do_testsdk` 任务。
 
-- *Unit Testing:* Unit tests on various components of the system run through `bitbake-selftest <ref-manual/release-process:Testing and Quality Assurance>`{.interpreted-text role="ref"} and `oe-selftest <ref-manual/release-process:Testing and Quality Assurance>`{.interpreted-text role="ref"}.
+- *Unit Testing:* Unit tests on various components of the system run through `bitbake-selftest <ref-manual/release-process:Testing and Quality Assurance>`.
 
-> *单元测试：通过 `bitbake-selftest <ref-manual/release-process:Testing and Quality Assurance>`{.interpreted-text role="ref"} 和 `oe-selftest <ref-manual/release-process:Testing and Quality Assurance>`{.interpreted-text role="ref"} 对系统的各个组件进行单元测试。
+> *单元测试：通过 `bitbake-selftest <ref-manual/release-process:Testing and Quality Assurance>` 对系统的各个组件进行单元测试。
 
 - *Automatic Upgrade Helper:* This target tests whether new versions of software are available and whether we can automatically upgrade to those new versions. If so, this target emails the maintainers with a patch to let them know this is possible.
 
@@ -234,7 +234,7 @@ $ oe-selftest -r tinfoil
 
   - These tests build an image, boot it, and run tests against the image\'s content.
   - The code for these tests resides in `meta/lib/oeqa/runtime/cases/`.
-  - You need to set the `IMAGE_CLASSES`{.interpreted-text role="term"} variable as follows:
+  - You need to set the `IMAGE_CLASSES` variable as follows:
 
     ```
     IMAGE_CLASSES += "testimage"
@@ -276,12 +276,12 @@ $ oe-selftest -r tinfoil
 
     Use the `oe-git-archive` command to store test results into a Git repository.
 
-    Use the `oe-build-perf-report` command to generate text reports and HTML reports with graphs of the performance data. For examples, see :yocto_dl:[/releases/yocto/yocto-2.7/testresults/buildperf-centos7/perf-centos7.yoctoproject.org_warrior_20190414204758_0e39202.html]{.title-ref} and :yocto_dl:[/releases/yocto/yocto-2.7/testresults/buildperf-centos7/perf-centos7.yoctoproject.org_warrior_20190414204758_0e39202.txt]{.title-ref}.
+    Use the `oe-build-perf-report` command to generate text reports and HTML reports with graphs of the performance data. For examples, see :yocto_dl:[/releases/yocto/yocto-2.7/testresults/buildperf-centos7/perf-centos7.yoctoproject.org_warrior_20190414204758_0e39202.html].
   - The tests are contained in `lib/oeqa/buildperf/test_basic.py`.
 
 # Test Examples
 
-This section provides example tests for each of the tests listed in the `test-manual/intro:How Tests Map to Areas of Code`{.interpreted-text role="ref"} section.
+This section provides example tests for each of the tests listed in the `test-manual/intro:How Tests Map to Areas of Code` section.
 
 > 这一部分为“test-manual/intro：测试如何映射到代码区域”中列出的每个测试提供了示例测试。
 
@@ -308,7 +308,7 @@ class DataExpansions(unittest.TestCase):
          self.d["value_of_foo"] = "value_of_'value_of_foo'"
 
    def test_one_var(self):
-         val = self.d.expand("${foo}")
+         val = self.d.expand("$")
          self.assertEqual(str(val), "value_of_foo")
 ```
 
@@ -360,7 +360,7 @@ You can run these tests in parallel. Parallelism works per test class, so tests 
 
 These tests are run once an image is up and running, either on target hardware or under QEMU. As a result, they are assumed to be running in a target image environment, as opposed to a host build environment. A simple example from `meta/lib/oeqa/runtime/cases/python.py` contains the following:
 
-> 这些测试在图像启动后运行一次，无论是在目标硬件上还是在 QEMU 下。因此，他们被假定为在目标图像环境中运行，而不是在主机构建环境中运行。来自 `meta/lib/oeqa/runtime/cases/python.py` 的简单示例包含以下内容：
+> 这些测试在镜像启动后运行一次，无论是在目标硬件上还是在 QEMU 下。因此，他们被假定为在目标镜像环境中运行，而不是在主机构建环境中运行。来自 `meta/lib/oeqa/runtime/cases/python.py` 的简单示例包含以下内容：
 
 ```
 class PythonTest(OERuntimeTestCase):
@@ -379,13 +379,13 @@ In this example, the `OERuntimeTestCase` class wraps `unittest.TestCase`. Within
 
 To ensure certain test or package dependencies are met, you can use the `OETestDepends` and `OEHasPackage` decorators. For example, the test in this example would only make sense if python3-core is installed in the image.
 
-> 为了确保满足某些测试或包依赖，您可以使用 `OETestDepends` 和 `OEHasPackage` 装饰器。例如，此示例中的测试只有在图像中安装了 python3-core 时才有意义。
+> 为了确保满足某些测试或包依赖，您可以使用 `OETestDepends` 和 `OEHasPackage` 装饰器。例如，此示例中的测试只有在镜像中安装了 python3-core 时才有意义。
 
 ## `testsdk_ext`
 
 These tests are run against built extensible SDKs (eSDKs). The tests can assume that the eSDK environment has already been setup. An example from `meta/lib/oeqa/sdk/cases/devtool.py` contains the following:
 
-> 这些测试是针对构建的可扩展 SDK（eSDK）运行的。测试可以假设 eSDK 环境已经设置好。来自 `meta/lib/oeqa/sdk/cases/devtool.py` 的一个例子包含以下内容：
+> 这些测试是针对构建的可扩展 SDK(eSDK)运行的。测试可以假设 eSDK 环境已经设置好。来自 `meta/lib/oeqa/sdk/cases/devtool.py` 的一个例子包含以下内容：
 
 ```
 class DevtoolTest(OESDKExtTestCase):
@@ -475,15 +475,15 @@ When writing good tests, there are several things to keep in mind. Since things 
 
 > 运行"cleanall"是不允许的。
 
-This can delete files from `DL_DIR`{.interpreted-text role="term"} which would potentially break other builds running in parallel. If this is required, `DL_DIR`{.interpreted-text role="term"} must be set to an isolated directory.
+This can delete files from `DL_DIR` must be set to an isolated directory.
 
-> 这可能会从 `DL_DIR`{.interpreted-text role="term"}中删除文件，从而破坏并行运行的其他构建。如果需要，必须将 `DL_DIR`{.interpreted-text role="term"}设置为一个隔离的目录。
+> 这可能会从 `DL_DIR` 设置为一个隔离的目录。
 
 **Running \"cleansstate\" is not permitted.**
 
 > 运行"cleansstate"是不允许的。
 
-This can delete files from `SSTATE_DIR`{.interpreted-text role="term"} which would potentially break other builds running in parallel. If this is required, `SSTATE_DIR`{.interpreted-text role="term"} must be set to an isolated directory. Alternatively, you can use the \"-f\" option with the `bitbake` command to \"taint\" tasks by changing the sstate checksums to ensure sstate cache items will not be reused.
+This can delete files from `SSTATE_DIR` must be set to an isolated directory. Alternatively, you can use the \"-f\" option with the `bitbake` command to \"taint\" tasks by changing the sstate checksums to ensure sstate cache items will not be reused.
 
 > 这可能会破坏其他并行运行的构建。如果需要这样做，必须将 SSTATE_DIR 设置为一个隔离的目录。或者，您可以使用 bitbake 命令的“-f”选项来“污染”任务，以更改 sstate 校验和以确保不会重复使用 sstate 缓存项。
 

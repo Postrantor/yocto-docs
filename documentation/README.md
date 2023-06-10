@@ -92,7 +92,7 @@ The entire Yocto Project documentation, as well as the BitBake manual, is publis
 
 Transition pages have been added (as rst files) to show links to old versions of the Yocto Project documentation with links to each manual generated with DocBook.
 
-> 已添加过渡页面（作为 rst 文件），以显示到 Yocto Project 文档旧版本的链接，并使用 DocBook 生成每个手册的链接。
+> 已添加过渡页面(作为 rst 文件)，以显示到 Yocto Project 文档旧版本的链接，并使用 DocBook 生成每个手册的链接。
 
 # How to build the Yocto Project documentation
 
@@ -102,7 +102,7 @@ Sphinx is written in Python. While it might work with Python2, for obvious reaso
 
 Sphinx might be available in your Linux distro packages repositories, however it is not recommended to use distro packages, as they might be old versions, especially if you are using an LTS version of your distro. The recommended method to install the latest versions of Sphinx and of its required dependencies is to use the Python Package Index (pip).
 
-> 可能在你的 Linux 发行版软件仓库中可以找到 Sphinx，但不推荐使用发行版软件包，因为它们可能是旧版本，特别是如果你使用的是发行版的 LTS 版本。推荐的安装 Sphinx 及其所需依赖项的最新版本的方法是使用 Python 软件包索引（pip）。
+> 可能在你的 Linux 发行版软件仓库中可以找到 Sphinx，但不推荐使用发行版软件包，因为它们可能是旧版本，特别是如果你使用的是发行版的 LTS 版本。推荐的安装 Sphinx 及其所需依赖项的最新版本的方法是使用 Python 软件包索引(pip)。
 
 To install all required packages run:
 
@@ -122,7 +122,7 @@ To make sure you always have the latest versions of such packages, you should re
 
 Also install the "inkscape" package from your distribution. Inkscape is need to convert SVG graphics to PNG (for EPUB export) and to PDF (for PDF export).
 
-> 也安裝你的發行版本中的“inkscape”包。 Inkscape 需要將 SVG 圖形轉換為 PNG（用於 EPUB 導出）和 PDF（用於 PDF 導出）。
+> 也安裝你的發行版本中的“inkscape”包。Inkscape 需要將 SVG 圖形轉換為 PNG(用於 EPUB 導出)和 PDF(用於 PDF 導出)。
 
 Additionally install "fncychap.sty" TeX font if you want to build PDFs. Debian and Ubuntu have it in "texlive-latex-extra" package while RedHat distributions and OpenSUSE have it in "texlive-fncychap" package for example.
 
@@ -136,9 +136,9 @@ To build the documentation locally, run:
 
 > $ cd 文档 $ 生成 html
 
-The resulting HTML index page will be \_build/html/index.html, and you can browse your own copy of the locally generated documentation with your browser.
+The resulting HTML index page will be _build/html/index.html, and you can browse your own copy of the locally generated documentation with your browser.
 
-> 结果的 HTML 索引页面将会是\_build/html/index.html，你可以在浏览器中浏览本地生成的文档的自己的副本。
+> 结果的 HTML 索引页面将会是_build/html/index.html，你可以在浏览器中浏览本地生成的文档的自己的副本。
 
 Alternatively, you can use Pipenv to automatically install all required dependencies in a virtual environment:
 
@@ -162,7 +162,7 @@ Most of the theme changes can be done using the file 'sphinx-static/theme_overri
 
 The initial Docbook to Sphinx migration was done with an automated tool called Pandoc (https://pandoc.org/). The tool produced some clean output markdown text files. After the initial automated conversion additional changes were done to fix up headings, images and links. In addition Sphinx has built in mechanisms (directives) which were used to replace similar functions implemented in Docbook such as glossary, variables substitutions, notes and references.
 
-> 初步的 Docbook 到 Sphinx 迁移是使用一个叫做 Pandoc（https://pandoc.org/）的自动化工具完成的。该工具产生了一些干净的输出Markdown文本文件。在初步的自动转换之后，还做了一些额外的更改来修复标题，图像和链接。此外，Sphinx还具有内置的机制（指令），用于替换Docbook中实现的类似功能，如词汇表，变量替换，注释和引用。
+> 初步的 Docbook 到 Sphinx 迁移是使用一个叫做 Pandoc(https://pandoc.org/)的自动化工具完成的。该工具产生了一些干净的输出Markdown文本文件。在初步的自动转换之后，还做了一些额外的更改来修复标题，镜像和链接。此外，Sphinx还具有内置的机制(指令)，用于替换Docbook中实现的类似功能，如词汇表，变量替换，注释和引用。
 
 # Headings
 
@@ -211,7 +211,7 @@ So anywhere in any of the Yocto Project manuals, :term:`VAR` can be used to refe
 
 The Yocto Project documentation makes heavy use of global variables. In Docbook these variables are stored in the file poky.ent. This Docbook feature is not handled automatically with Pandoc. Sphinx has builtin support for substitutions (https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#substitutions), however there are important shortcomings. For example they cannot be used/nested inside code-block sections.
 
-> 项目 Yocto 的文档大量使用全局变量。在 Docbook 中，这些变量存储在文件 poky.ent 中。Pandoc 没有自动处理这个 Docbook 特性。Sphinx 有内置的替换支持（https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#substitutions），但是也有重要的缺点。例如，它们不能在代码块部分内部使用/嵌套。
+> 项目 Yocto 的文档大量使用全局变量。在 Docbook 中，这些变量存储在文件 poky.ent 中。Pandoc 没有自动处理这个 Docbook 特性。Sphinx 有内置的替换支持(https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#substitutions)，但是也有重要的缺点。例如，它们不能在代码块部分内部使用/嵌套。
 
 A Sphinx extension was implemented to support variable substitutions to mimic the DocBook based documentation behavior. Variable substitutions are done while reading/parsing the .rst files. The pattern for variables substitutions is the same as with DocBook, e.g. `&VAR;`.
 
@@ -219,7 +219,7 @@ A Sphinx extension was implemented to support variable substitutions to mimic th
 
 The implementation of the extension can be found here in the file documentation/sphinx/yocto-vars.py, this extension is enabled by default when building the Yocto Project documentation. All variables are set in a file call poky.yaml, which was initially generated from poky.ent. The file was converted into YAML so that it is easier to process by the custom Sphinx extension (which is a Python module).
 
-> 实现该扩展的文件可以在 documentation/sphinx/yocto-vars.py 中找到，构建 Yocto Project 文档时默认启用此扩展。所有变量都设置在一个名为 poky.yaml 的文件中，该文件最初是从 poky.ent 生成的。该文件被转换为 YAML，以便自定义 Sphinx 扩展（即 Python 模块）更容易处理。
+> 实现该扩展的文件可以在 documentation/sphinx/yocto-vars.py 中找到，构建 Yocto Project 文档时默认启用此扩展。所有变量都设置在一个名为 poky.yaml 的文件中，该文件最初是从 poky.ent 生成的。该文件被转换为 YAML，以便自定义 Sphinx 扩展(即 Python 模块)更容易处理。
 
 For example, the following .rst content will produce the 'expected' content:
 
@@ -251,7 +251,7 @@ The Yocto Project documentation has many figures/images. Sphinx has a 'figure' d
 
 .. image:: figures/YP-flow-diagram.png
 
-> .. 图像:: figures/YP-flow-diagram.png
+> .. 镜像:: figures/YP-flow-diagram.png
 
 # Links and References
 
@@ -263,11 +263,11 @@ More information can be found here: https://sublime-and-sphinx-guide.readthedocs
 
 > 更多信息可以在这里找到：https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html.
 
-For external links, we use this syntax: `link text <link URL>`\_\_
+For external links, we use this syntax: `link text <link URL>`__
 
 > 对于外部链接，我们使用此语法：`链接文本 <链接URL>`
 
-instead of: `link text <link URL>`\_
+instead of: `link text <link URL>`_
 
 > 代替：链接文本<链接 URL>
 
@@ -281,13 +281,13 @@ See https://stackoverflow.com/questions/27420317/restructured-text-rst-http-link
 
 Anchor (\<#link\>) links are forbidden as they are not checked by Sphinx during the build and may be broken without knowing about it.
 
-> 锚点（\<#link\>）链接是被禁止的，因为在构建过程中它们不被 Sphinx 检查，可能会在不知情的情况下变得无效。
+> 锚点(\<#link\>)链接是被禁止的，因为在构建过程中它们不被 Sphinx 检查，可能会在不知情的情况下变得无效。
 
 # References
 
 The following extension is enabled by default: sphinx.ext.autosectionlabel (https://www.sphinx-doc.org/en/master/usage/extensions/autosectionlabel.html).
 
-> 以下扩展默认启用：sphinx.ext.autosectionlabel（https://www.sphinx-doc.org/en/master/usage/extensions/autosectionlabel.html）。
+> 以下扩展默认启用：sphinx.ext.autosectionlabel(https://www.sphinx-doc.org/en/master/usage/extensions/autosectionlabel.html)。
 
 This extension allows you to refer sections by their titles. Note that autosectionlabel_prefix_document is enabled by default, so that we can insert references from any document.
 
@@ -323,13 +323,13 @@ This dump contains all links and for each link it shows the default "Link Text" 
 
 The sphinx.ext.extlinks extension is enabled by default (https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#use-the-external-links-extension), and it is configured with the 'extlinks' definitions in the 'documentation/conf.py' file:
 
-> 默认启用了 sphinx.ext.extlinks 扩展（https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#use-the-external-links-extension），并且它在'documentation/conf.py'文件中使用'extlinks'定义进行配置：
+> 默认启用了 sphinx.ext.extlinks 扩展(https://sublime-and-sphinx-guide.readthedocs.io/en/latest/references.html#use-the-external-links-extension)，并且它在'documentation/conf.py'文件中使用'extlinks'定义进行配置：
 
 'yocto_home': ('https://yoctoproject.org%s', None), 'yocto_wiki': ('https://wiki.yoctoproject.org%s', None), 'yocto_dl': ('https://downloads.yoctoproject.org%s', None), 'yocto_lists': ('https://lists.yoctoproject.org%s', None), 'yocto_bugs': ('https://bugzilla.yoctoproject.org%s', None), 'yocto_ab': ('https://autobuilder.yoctoproject.org%s', None), 'yocto_docs': ('https://docs.yoctoproject.org%s', None), 'yocto_git': ('https://git.yoctoproject.org%s', None), 'oe_home': ('https://www.openembedded.org%s', None), 'oe_lists': ('https://lists.openembedded.org%s', None), 'oe_git': ('https://git.openembedded.org%s', None), 'oe_wiki': ('https://www.openembedded.org/wiki%s', None), 'oe_layerindex': ('https://layers.openembedded.org%s', None), 'oe_layer': ('https://layers.openembedded.org/layerindex/branch/master/layer%s', None),
 
 > 'yocto_home': ('https://yoctoproject.org%s', None), 'yocto_wiki': ('https://wiki.yoctoproject.org%s', None), 'yocto_dl': ('https://downloads.yoctoproject.org%s', None), 'yocto_lists': ('https://lists.yoctoproject.org%s', None), 'yocto_bugs': ('https://bugzilla.yoctoproject.org%s', None), 'yocto_ab': ('https://autobuilder.yoctoproject.org%s', None), 'yocto_docs': ('https://docs.yoctoproject.org%s', None), 'yocto_git': ('https://git.yoctoproject.org%s', None), 'oe_home': ('https://www.openembedded.org%s', None), 'oe_lists': ('https://lists.openembedded.org%s', None), 'oe_git': ('https://git.openembedded.org%s', None), 'oe_wiki': ('https://www.openembedded.org/wiki%s', None), 'oe_layerindex': ('https://layers.openembedded.org%s', None), 'oe_layer': ('https://layers.openembedded.org/layerindex/branch/master/layer%s', None),
 
-yocto_home：（'https：//yoctoproject.org％s'，无），yocto_wiki：（'https：//wiki.yoctoproject.org％s'，无），yocto_dl：（'https：//downloads.yoctoproject.org％s'，无），yocto_lists：（'https：//lists.yoctoproject.org％s'，无），yocto_bugs：（'https：//bugzilla.yoctoproject.org％s'，无），yocto_ab：（'https：//autobuilder.yoctoproject.org％s'，无），yocto_docs：（'https：//docs.yoctoproject.org％s'，无），yocto_git：（'https：//git.yoctoproject.org％s'，无），oe_home：（'https：//www.openembedded.org％s'，无），oe_lists：（'https：//lists.openembedded.org％s'，无），oe_git：（'https：//git.openembedded.org％s'，无），oe_wiki：（'https：//www.openembedded.org/wiki％s'，无），oe_layerindex：（'https：//layers.openembedded.org％s'，无），oe_layer：（'https：//layers.openembedded.org/layerindex/branch/master/layer％s'，无）
+yocto_home：('https：//yoctoproject.org％s'，无)，yocto_wiki：('https：//wiki.yoctoproject.org％s'，无)，yocto_dl：('https：//downloads.yoctoproject.org％s'，无)，yocto_lists：('https：//lists.yoctoproject.org％s'，无)，yocto_bugs：('https：//bugzilla.yoctoproject.org％s'，无)，yocto_ab：('https：//autobuilder.yoctoproject.org％s'，无)，yocto_docs：('https：//docs.yoctoproject.org％s'，无)，yocto_git：('https：//git.yoctoproject.org％s'，无)，oe_home：('https：//www.openembedded.org％s'，无)，oe_lists：('https：//lists.openembedded.org％s'，无)，oe_git：('https：//git.openembedded.org％s'，无)，oe_wiki：('https：//www.openembedded.org/wiki％s'，无)，oe_layerindex：('https：//layers.openembedded.org％s'，无)，oe_layer：('https：//layers.openembedded.org/layerindex/branch/master/layer％s'，无)
 
 It creates convenient shortcuts which can be used throughout the documentation rst files, as:
 
@@ -343,7 +343,7 @@ Please check this :yocto_wiki:`wiki page </Weekly_Status>`
 
 The sphinx.ext.intersphinx extension is enabled by default (https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html), so that we can cross reference content from other Sphinx based documentation projects, such as the BitBake manual.
 
-> Sphinx.ext.intersphinx 扩展默认情况下已启用（https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html），因此我们可以跨引用其他基于Sphinx的文档项目，如BitBake手册。
+> Sphinx.ext.intersphinx 扩展默认情况下已启用(https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html)，因此我们可以跨引用其他基于Sphinx的文档项目，如BitBake手册。
 
 References to the BitBake manual can directly be done: - With a specific description instead of the section name: :ref:`Azure Storage fetcher (az://) <bitbake-user-manual/bitbake-user-manual-fetching:fetchers>` - With the section name: :ref:`bitbake-user-manual/bitbake-user-manual-intro:usage and syntax` option
 
@@ -351,7 +351,7 @@ References to the BitBake manual can directly be done: - With a specific descrip
 
 If you want to refer to an entire document (or chapter) in the BitBake manual, you have to use the ":doc:" macro with the "bitbake:" prefix: - :doc:`BitBake User Manual <bitbake:index>` - :doc:`bitbake:bitbake-user-manual/bitbake-user-manual-metadata`" chapter
 
-> 如果您想引用 BitBake 手册中的整个文档（或章节），您必须使用带有“bitbake：”前缀的“:doc：”宏：-：doc：`BitBake用户手册<bitbake：index>`-：doc：`bitbake：bitbake-user-manual / bitbake-user-manual-metadata`“章节
+> 如果您想引用 BitBake 手册中的整个文档(或章节)，您必须使用带有“bitbake：”前缀的“:doc：”宏：-：doc：`BitBake用户手册<bitbake：index>`-：doc：`bitbake：bitbake-user-manual / bitbake-user-manual-metadata`“章节
 
 Note that a reference to a variable (:term:`VARIABLE`) automatically points to the BitBake manual if the variable is not described in the Reference Manual's Variable Glossary. However, if you need to bypass this, you can explicitely refer to a description in the BitBake manual as follows:
 

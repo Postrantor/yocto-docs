@@ -8,9 +8,9 @@ title: Release notes for 4.1 (langdale)
 # New Features / Enhancements in 4.1
 
 - Linux kernel 5.19, glibc 2.36 and \~260 other recipe upgrades
-- `make` 4.0 is now the minimum make version required on the build host. For host distros that do not provide it, this is included as part of the `buildtools`{.interpreted-text role="term"} tarball, and additionally a new `buildtools-make`{.interpreted-text role="term"} tarball has been introduced to provide this in particular for host distros with a broken make 4.x version. For more details see `ref-manual/system-requirements:required git, tar, python, make and gcc versions`{.interpreted-text role="ref"}.
+- `make` 4.0 is now the minimum make version required on the build host. For host distros that do not provide it, this is included as part of the `buildtools`.
 
-> `make` 4.0 现在是构建主机所需的最低 make 版本。对于不提供此版本的主机发行版，它包含在 `buildtools`{.interpreted-text role="term"} tarball 中，此外还引入了一个新的 `buildtools-make`{.interpreted-text role="term"} tarball，专门为具有破损的 make 4.x 版本的主机发行版提供此功能。有关详细信息，请参阅 `ref-manual/system-requirements:required git, tar, python, make and gcc versions`{.interpreted-text role="ref"}。
+> `make` 4.0 现在是构建主机所需的最低 make 版本。对于不提供此版本的主机发行版，它包含在 `buildtools`。
 
 - New layer setup tooling:
 
@@ -22,7 +22,7 @@ title: Release notes for 4.1 (langdale)
   - Support for building rust for the target
   - Significant SDK toolchain build optimisation
   - Support for building native components in the SDK
-  - Support `crate://` fetcher with `ref-classes-externalsrc`{.interpreted-text role="ref"}
+  - Support `crate://` fetcher with `ref-classes-externalsrc`
 - New core recipes:
 
   - `buildtools-make-tarball`
@@ -37,29 +37,29 @@ title: Release notes for 4.1 (langdale)
   - `sato-icon-theme` (previously removed)
 - CVE checking enhancements:
 
-  - New `CVE_DB_UPDATE_INTERVAL`{.interpreted-text role="term"} variable to allow specifying the CVE database minimum update interval (and default to once per day)
+  - New `CVE_DB_UPDATE_INTERVAL` variable to allow specifying the CVE database minimum update interval (and default to once per day)
 
-> 新增 `CVE_DB_UPDATE_INTERVAL` 变量，允许指定 CVE 数据库的最小更新间隔（默认为每天一次）。
+> 新增 `CVE_DB_UPDATE_INTERVAL` 变量，允许指定 CVE 数据库的最小更新间隔(默认为每天一次)。
 
 - Added JSON format to summary output
 - Added support for Ignored CVEs
 - Enable recursive CVE checking also for `do_populate_sdk`
-- New `CVE_CHECK_SHOW_WARNINGS`{.interpreted-text role="term"} variable to disable unpatched CVE warning messages
-- The `ref-classes-pypi`{.interpreted-text role="ref"} class now defaults `CVE_PRODUCT`{.interpreted-text role="term"} from `PYPI_PACKAGE`{.interpreted-text role="term"}
+- New `CVE_CHECK_SHOW_WARNINGS` variable to disable unpatched CVE warning messages
+- The `ref-classes-pypi`
 
-> 现在，`ref-classes-pypi`{.interpreted-text role="ref"}类默认将 `CVE_PRODUCT`{.interpreted-text role="term"}从 `PYPI_PACKAGE`{.interpreted-text role="term"}默认为简体中文。
+> 现在，`ref-classes-pypi` 默认为简体中文。
 
 - Added current kernel CVEs to ignore list since we stay as close to the kernel stable releases as we can
 - Optimisations to avoid dependencies on fetching
 - Complementary package installation (as used in SDKs and images) no longer installs recommended packages, in order to avoid conflicts
-- Dependency of -dev package on main package is now an `RRECOMMENDS`{.interpreted-text role="term"} and can be easily set via new `DEV_PKG_DEPENDENCY`{.interpreted-text role="term"} variable
+- Dependency of -dev package on main package is now an `RRECOMMENDS` variable
 
-> - -dev 包对主包的依赖现在是一个 `RRECOMMENDS`{.interpreted-text role="term"}，可以通过新的 `DEV_PKG_DEPENDENCY`{.interpreted-text role="term"}变量轻松设置。
+> - -dev 包对主包的依赖现在是一个 `RRECOMMENDS` 变量轻松设置。
 
 - Support for CPU, I/O and memory pressure regulation in BitBake
-- Pressure data gathering in `ref-classes-buildstats`{.interpreted-text role="ref"} and rendering in `pybootchartgui`
-- New Picobuild system for lightweight Python PEP-517 build support in the `ref-classes-python_pep517`{.interpreted-text role="ref"} class
-- Many classes are now split into global and recipe contexts for better validation. For more information, see `Classes now split by usage context <migration-4.1-classes-split>`{.interpreted-text role="ref"}.
+- Pressure data gathering in `ref-classes-buildstats` and rendering in `pybootchartgui`
+- New Picobuild system for lightweight Python PEP-517 build support in the `ref-classes-python_pep517` class
+- Many classes are now split into global and recipe contexts for better validation. For more information, see `Classes now split by usage context <migration-4.1-classes-split>`.
 
 > 现在许多类已经按全局和配方上下文分割，以便更好地验证。有关更多信息，请参阅“现在按使用上下文分割的类 <migration-4.1-classes-split>”。
 
@@ -77,7 +77,7 @@ title: Release notes for 4.1 (langdale)
   - linux-yocto: Enable mdio for qemu
   - linux-yocto/5.15: base: enable kernel crypto userspace API
   - kern-tools: allow \'y\' or \'m\' to avoid config audit warnings
-  - kernel-yocto.bbclass: say what `SRC_URI`{.interpreted-text role="term"} entry is being dropped
+  - kernel-yocto.bbclass: say what `SRC_URI` entry is being dropped
   - kernel.bbclass: Do not overwrite recipe\'s custom postinst
   - kmod: Enable xz support by default
   - Run depmod(wrapper) against each compiled kernel when multiple kernels are enabled
@@ -90,14 +90,14 @@ title: Release notes for 4.1 (langdale)
   - Added `none` fstype for custom image (for use in conjunction with `rawcopy`)
 - SDK-related enhancements:
 
-  - `Support for using the regular build system as an SDK <sdk-manual/extensible:Setting up the Extensible SDK environment directly in a Yocto build>`{.interpreted-text role="ref"}
+  - `Support for using the regular build system as an SDK <sdk-manual/extensible:Setting up the Extensible SDK environment directly in a Yocto build>`
 
 > 支持使用常规构建系统作为 SDK <sdk-manual/extensible: 直接在 Yocto 构建中设置可扩展 SDK 环境 >
 
-- `ref-classes-image-buildinfo`{.interpreted-text role="ref"} class now also writes build information to SDKs
-- New `SDK_TOOLCHAIN_LANGS`{.interpreted-text role="term"} variable to control support of rust / go in SDK
-- rust-llvm: enabled `ref-classes-nativesdk`{.interpreted-text role="ref"} variant
-- python3-pluggy: enabled for `ref-classes-native`{.interpreted-text role="ref"} / `ref-classes-nativesdk`{.interpreted-text role="ref"}
+- `ref-classes-image-buildinfo` class now also writes build information to SDKs
+- New `SDK_TOOLCHAIN_LANGS` variable to control support of rust / go in SDK
+- rust-llvm: enabled `ref-classes-nativesdk` variant
+- python3-pluggy: enabled for `ref-classes-native`
 - QEMU/runqemu enhancements:
 
   - qemux86-64: Allow higher tunes
@@ -105,42 +105,42 @@ title: Release notes for 4.1 (langdale)
   - runqemu: add `QB_KERNEL_CMDLINE` that can be set to \"none\" to avoid overriding kernel command line specified in dtb
 - Image-related enhancements:
 
-  - New variable `UBOOT_MKIMAGE_KERNEL_TYPE`{.interpreted-text role="term"}
-  - New variable `FIT_PAD_ALG`{.interpreted-text role="term"} to control FIT image padding algorithm
-  - New `KERNEL_DEPLOY_DEPEND`{.interpreted-text role="term"} variable to allow disabling image dependency on deploying the kernel
-  - `ref-classes-image_types`{.interpreted-text role="ref"}: isolate the write of UBI configuration to a `write_ubi_config` function that can be easily overridden
+  - New variable `UBOOT_MKIMAGE_KERNEL_TYPE`
+  - New variable `FIT_PAD_ALG` to control FIT image padding algorithm
+  - New `KERNEL_DEPLOY_DEPEND` variable to allow disabling image dependency on deploying the kernel
+  - `ref-classes-image_types`: isolate the write of UBI configuration to a `write_ubi_config` function that can be easily overridden
 
-> - `ref-classes-image_types`{.interpreted-text role="ref"}：将 UBI 配置的写操作隔离到一个可以轻松覆盖的 `write_ubi_config` 函数中。
+> - `ref-classes-image_types`：将 UBI 配置的写操作隔离到一个可以轻松覆盖的 `write_ubi_config` 函数中。
 
 - openssh: add support for config snippet includes to ssh and sshd
-- `ref-classes-create-spdx`{.interpreted-text role="ref"}: Add `SPDX_PRETTY`{.interpreted-text role="term"} option
-- wpa-supplicant: build static library if not disabled via `DISABLE_STATIC`{.interpreted-text role="term"}
+- `ref-classes-create-spdx` option
+- wpa-supplicant: build static library if not disabled via `DISABLE_STATIC`
 - wpa-supplicant: package dynamic modules
 - openssl: extract legacy provider module to a separate package
 - linux-firmware: split out ath3k firmware
 - linux-firmware: add support for building snapshots
 - eudev: create static-nodes in init script
-- udev-extraconf: new `MOUNT_BASE`{.interpreted-text role="term"} variable allows configuring automount base directory
+- udev-extraconf: new `MOUNT_BASE` variable allows configuring automount base directory
 - udev-extraconf/mount.sh: use partition labels in mountpoint paths
 - systemd: Set RebootWatchdogSec to 60s by default
 - systemd: systemd-systemctl: Support instance conf files during enable
-- weston.init: enable `xwayland` in weston.ini if `x11` is in `DISTRO_FEATURES`{.interpreted-text role="term"}
+- weston.init: enable `xwayland` in weston.ini if `x11` is in `DISTRO_FEATURES`
 - New `npm_registry` Python module to enable caching with nodejs 16+
-- `ref-classes-npm`{.interpreted-text role="ref"}: replaced `npm pack` call with `tar czf` for nodejs 16+ compatibility and improved `do_configure` performance
+- `ref-classes-npm`: replaced `npm pack` call with `tar czf` for nodejs 16+ compatibility and improved `do_configure` performance
 
-> `- ` ref-classes-npm `{.interpreted-text role="ref"}: 为了兼容Nodejs 16+，用` tar czf `取代了` npm pack `调用，并且改善了` do_configure` 性能
+> `- ` ref-classes-npm `: 为了兼容Nodejs 16+，用` tar czf `取代了` npm pack `调用，并且改善了` do_configure` 性能
 
-- Enabled `ref-classes-bin-package`{.interpreted-text role="ref"} class to work properly in the native case
-- Enabled `buildpaths <qa-check-buildpaths>`{.interpreted-text role="ref"} QA check as a warning by default
-- New `OVERLAYFS_ETC_EXPOSE_LOWER`{.interpreted-text role="term"} to provide read-only access to the original `/etc` content with `ref-classes-overlayfs-etc`{.interpreted-text role="ref"}
+- Enabled `ref-classes-bin-package` class to work properly in the native case
+- Enabled `buildpaths <qa-check-buildpaths>` QA check as a warning by default
+- New `OVERLAYFS_ETC_EXPOSE_LOWER`
 
-> 新增 `OVERLAYFS_ETC_EXPOSE_LOWER`{.interpreted-text role="term"} 以提供只读访问原始 `/etc` 内容的 `ref-classes-overlayfs-etc`{.interpreted-text role="ref"}。
+> 新增 `OVERLAYFS_ETC_EXPOSE_LOWER`。
 
-- New `OVERLAYFS_QA_SKIP`{.interpreted-text role="term"} variable to allow skipping check on `ref-classes-overlayfs`{.interpreted-text role="ref"} mounts
+- New `OVERLAYFS_QA_SKIP` mounts
 
 > 新的 OVERLAYFS_QA_SKIP 变量允许跳过 ref-classes-overlayfs 挂载的检查。
 
-- New `PACKAGECONFIG`{.interpreted-text role="term"} options for individual recipes:
+- New `PACKAGECONFIG` options for individual recipes:
 
   > - apr: xsi-strerror
   > - btrfs-tools: lzo
@@ -165,31 +165,31 @@ title: Release notes for 4.1 (langdale)
   > - tiff: jbig
   >
 - ptest enhancements in `curl`, `json-c`, `libgcrypt`, `libgpg-error`, `libxml2`
-- ptest compile/install functions now use `PARALLEL_MAKE`{.interpreted-text role="term"} and `PARALLEL_MAKEINST`{.interpreted-text role="term"} in ptest for significant speedup
+- ptest compile/install functions now use `PARALLEL_MAKE` in ptest for significant speedup
 
-> 现在，ptest 的编译/安装功能使用 `PARALLEL_MAKE`{.interpreted-text role="term"}和 `PARALLEL_MAKEINST`{.interpreted-text role="term"}，以显着加速。
+> 现在，ptest 的编译/安装功能使用 `PARALLEL_MAKE`，以显着加速。
 
-- New `TC_CXX_RUNTIME`{.interpreted-text role="term"} variable to enable other layers to more easily control C++ runtime
-- Set `BB_DEFAULT_UMASK`{.interpreted-text role="term"} using ??= to make it easier to override
-- Set `TCLIBC`{.interpreted-text role="term"} and `TCMODE`{.interpreted-text role="term"} using ??= to make them easier to override
+- New `TC_CXX_RUNTIME` variable to enable other layers to more easily control C++ runtime
+- Set `BB_DEFAULT_UMASK` using ??= to make it easier to override
+- Set `TCLIBC` using ??= to make them easier to override
 - squashfs-tools: build with lzo support by default
-- insane.bbclass: make `do_qa_staging` check shebang length for native scripts in all `SYSROOT_DIRS`{.interpreted-text role="term"}
+- insane.bbclass: make `do_qa_staging` check shebang length for native scripts in all `SYSROOT_DIRS`
 - utils: Add `create_cmdline_shebang_wrapper` function to allow recipes to easily create a wrapper to fix long shebang lines
 - meson: provide relocation script and native/cross wrappers also for meson-native
 - meson.bbclass: add cython binary to cross/native toolchain config
 - New `musl-locales` recipe to provide a limited set of locale data for musl based systems
-- gobject-introspection: use `OBJDUMP`{.interpreted-text role="term"} environment variable so that objdump tool can be picked up from the environment
+- gobject-introspection: use `OBJDUMP` environment variable so that objdump tool can be picked up from the environment
 
 > 使用 `OBJDUMP` 环境变量，以便从环境中捡起 objdump 工具，gobject-introspection。
 
 - The Python `zoneinfo` module is now split out to its own `python3-zoneinfo` package.
 - busybox: added devmem 128-bit support
 - vim: split xxd out into its own package
-- New `ref-classes-github-releases`{.interpreted-text role="ref"} class to consolidate version checks for github-based packages
+- New `ref-classes-github-releases` class to consolidate version checks for github-based packages
 - `devtool reset` now preserves `workspace/sources` source trees in `workspace/attic/sources/` instead of leaving them in-place
 - scripts/patchreview: Add commit to stored json data
 - scripts/patchreview: Make json output human parsable
-- `wpa-supplicant` recipe now uses the upstream `defconfig` modified based upon `PACKAGECONFIG`{.interpreted-text role="term"} instead of a stale `defconfig` file
+- `wpa-supplicant` recipe now uses the upstream `defconfig` modified based upon `PACKAGECONFIG` instead of a stale `defconfig` file
 
 > 现在，`wpa-supplicant` 配方使用基于 `PACKAGECONFIG` 的上游 `defconfig`，而不是过时的 `defconfig` 文件
 
@@ -200,21 +200,21 @@ title: Release notes for 4.1 (langdale)
 
 # Known Issues in 4.1
 
-- The change to `migration-4.1-complementary-deps`{.interpreted-text role="ref"} means that images built with the `ptest-pkgs` `IMAGE_FEATURES`{.interpreted-text role="term"} don't automatically install `ptest-runner`, as that package is a recommendation of the individual `-ptest` packages. This will be resolved in the next point release, and can be worked around by explicitly installing `ptest-runner` into the image. Filed as :yocto_bugs:[bug 14928 \</show_bug.cgi?id=14928\>]{.title-ref}.
+- The change to `migration-4.1-complementary-deps`.
 
-> 变更为“migration-4.1-complementary-deps”意味着使用“ptest-pkgs”“IMAGE_FEATURES”构建的镜像不会自动安装“ptest-runner”，因为它是各个“-ptest”软件包的建议。这将在下一个点发行版中解决，可以通过明确安装“ptest-runner”到镜像来解决。已报告为：yocto_bugs:[bug 14928 \</show_bug.cgi?id=14928\>]{.title-ref}。
+> 变更为“migration-4.1-complementary-deps”意味着使用“ptest-pkgs”“IMAGE_FEATURES”构建的镜像不会自动安装“ptest-runner”，因为它是各个“-ptest”软件包的建议。这将在下一个点发行版中解决，可以通过明确安装“ptest-runner”到镜像来解决。已报告为：yocto_bugs:[bug 14928 \</show_bug.cgi?id=14928\>]。
 
-- There is a known issue with eSDKs where sstate objects may be missing, resulting in packages being unavailable to install in the sysroot. This is due to image generation optimisations having unintended consequences in eSDK generation. This will be resolved in the next point release. Filed as :yocto_bugs:[bug 14626 \</show_bug.cgi?id=14626\>]{.title-ref}, which also details the fix.
+- There is a known issue with eSDKs where sstate objects may be missing, resulting in packages being unavailable to install in the sysroot. This is due to image generation optimisations having unintended consequences in eSDK generation. This will be resolved in the next point release. Filed as :yocto_bugs:[bug 14626 \</show_bug.cgi?id=14626\>], which also details the fix.
 
-> 在 eSDK 中有一个已知的问题，即 sstate 对象可能丢失，导致在 sysroot 中无法安装软件包。这是由于图像生成优化产生的意外后果导致的 eSDK 生成。下一个点发布会解决这个问题。报告号：yocto_bugs:[bug 14626 \</show_bug.cgi?id=14626\>]{.title-ref}，该报告中还详细说明了解决方案。
+> 在 eSDK 中有一个已知的问题，即 sstate 对象可能丢失，导致在 sysroot 中无法安装软件包。这是由于镜像生成优化产生的意外后果导致的 eSDK 生成。下一个点发布会解决这个问题。报告号：yocto_bugs:[bug 14626 \</show_bug.cgi?id=14626\>]，该报告中还详细说明了解决方案。
 
-- The change to `migration-4.1-classes-split`{.interpreted-text role="ref"} inadvertently moved the `ref-classes-externalsrc`{.interpreted-text role="ref"} class to `meta/classes-recipe`, when it is not recipe-specific and can also be used in a global context. The class will be moved back to `meta/classes` in the next point release. Filed as :yocto_bugs:[bug 14940 \</show_bug.cgi?id=14940\>]{.title-ref}.
+- The change to `migration-4.1-classes-split`.
 
-> 更改到 `migration-4.1-classes-split` 无意中将 `ref-classes-externalsrc` 类移动到 `meta/classes-recipe`，而它不是特定于配方的，也可以在全局上下文中使用。该类将在下一个点发行版中移回 `meta/classes`。 已提交为：yocto_bugs: [bug 14940 \</show_bug.cgi?id=14940\>]。
+> 更改到 `migration-4.1-classes-split` 无意中将 `ref-classes-externalsrc` 类移动到 `meta/classes-recipe`，而它不是特定于配方的，也可以在全局上下文中使用。该类将在下一个点发行版中移回 `meta/classes`。已提交为：yocto_bugs: [bug 14940 \</show_bug.cgi?id=14940\>]。
 
 # Recipe License changes in 4.1
 
-The following corrections have been made to the `LICENSE`{.interpreted-text role="term"} values set by recipes:
+The following corrections have been made to the `LICENSE` values set by recipes:
 
 - alsa-state: add GPL-2.0-or-later because of alsa-state-init file
 - git: add GPL-2.0-or-later & BSD-3-Clause & MIT & BSL-1.0 & LGPL-2.1-or-later due to embedded code
@@ -223,57 +223,57 @@ The following corrections have been made to the `LICENSE`{.interpreted-text role
 
 # Security Fixes in 4.1
 
-- bind: `2022-1183`{.interpreted-text role="cve"}, `2022-2795`{.interpreted-text role="cve"}, `2022-2881`{.interpreted-text role="cve"}, `2022-2906`{.interpreted-text role="cve"}, `2022-3080`{.interpreted-text role="cve"}, `2022-38178`{.interpreted-text role="cve"}
+- bind: `2022-1183`
 
 > 绑定：CVE-2022-1183、CVE-2022-2795、CVE-2022-2881、CVE-2022-2906、CVE-2022-3080、CVE-2022-38178
 
-- binutils: `2019-1010204`{.interpreted-text role="cve"}, `2022-38126`{.interpreted-text role="cve"}, `2022-38127`{.interpreted-text role="cve"}, `2022-38128`{.interpreted-text role="cve"}, `2022-38533`{.interpreted-text role="cve"}
+- binutils: `2019-1010204`
 
 > binutils：CVE-2019-1010204，CVE-2022-38126，CVE-2022-38127，CVE-2022-38128，CVE-2022-38533
 
-- busybox: `2022-30065`{.interpreted-text role="cve"}
-- connman: `2022-32292`{.interpreted-text role="cve"}, `2022-32293`{.interpreted-text role="cve"}
-- cups: `2022-26691`{.interpreted-text role="cve"}
-- e2fsprogs: `2022-1304`{.interpreted-text role="cve"}
-- expat: `2022-40674`{.interpreted-text role="cve"}
-- freetype: `2022-27404`{.interpreted-text role="cve"}
-- glibc: `2022-39046`{.interpreted-text role="cve"}
-- gnupg: `2022-34903`{.interpreted-text role="cve"}
-- grub2: `2021-3695`{.interpreted-text role="cve"}, `2021-3696`{.interpreted-text role="cve"}, `2021-3697`{.interpreted-text role="cve"}, `2022-28733`{.interpreted-text role="cve"}, `2022-28734`{.interpreted-text role="cve"}, `2022-28735`{.interpreted-text role="cve"}
+- busybox: `2022-30065`
+- connman: `2022-32292`
+- cups: `2022-26691`
+- e2fsprogs: `2022-1304`
+- expat: `2022-40674`
+- freetype: `2022-27404`
+- glibc: `2022-39046`
+- gnupg: `2022-34903`
+- grub2: `2021-3695`
 
 > CVE-2021-3695、CVE-2021-3696、CVE-2021-3697、CVE-2022-28733、CVE-2022-28734、CVE-2022-28735
 
-- inetutils: `2022-39028`{.interpreted-text role="cve"}
-- libtirpc: `2021-46828`{.interpreted-text role="cve"}
-- libxml2: `2016-3709`{.interpreted-text role="cve"} (ignored)
-- libxslt: `2022-29824`{.interpreted-text role="cve"} (not applicable)
-- linux-yocto/5.15: `2022-28796`{.interpreted-text role="cve"}
-- logrotate: `2022-1348`{.interpreted-text role="cve"}
-- lua: `2022-33099`{.interpreted-text role="cve"}
-- nasm: `2020-18974`{.interpreted-text role="cve"} (ignored)
-- ncurses: `2022-29458`{.interpreted-text role="cve"}
-- openssl: `2022-1292`{.interpreted-text role="cve"}, `2022-1343`{.interpreted-text role="cve"}, `2022-1434`{.interpreted-text role="cve"}, `2022-1473`{.interpreted-text role="cve"}, `2022-2068`{.interpreted-text role="cve"}, `2022-2274`{.interpreted-text role="cve"}, `2022-2097`{.interpreted-text role="cve"}
+- inetutils: `2022-39028`
+- libtirpc: `2021-46828`
+- libxml2: `2016-3709` (ignored)
+- libxslt: `2022-29824` (not applicable)
+- linux-yocto/5.15: `2022-28796`
+- logrotate: `2022-1348`
+- lua: `2022-33099`
+- nasm: `2020-18974` (ignored)
+- ncurses: `2022-29458`
+- openssl: `2022-1292`
 
 > CVE-2022-1292，CVE-2022-1343，CVE-2022-1434，CVE-2022-1473，CVE-2022-2068，CVE-2022-2274，CVE-2022-2097
 
-- python3: `2015-20107`{.interpreted-text role="cve"} (ignored)
-- qemu: `2021-20255`{.interpreted-text role="cve"} (ignored), `2019-12067`{.interpreted-text role="cve"} (ignored), `2021-3507`{.interpreted-text role="cve"}, `2022-0216`{.interpreted-text role="cve"}, `2022-2962`{.interpreted-text role="cve"}, `2022-35414`{.interpreted-text role="cve"}
+- python3: `2015-20107` (ignored)
+- qemu: `2021-20255`
 
-> QEMU：2021-20255（已忽略），2019-12067（已忽略），2021-3507，2022-0216，2022-2962，2022-35414
+> QEMU：2021-20255(已忽略)，2019-12067(已忽略)，2021-3507，2022-0216，2022-2962，2022-35414
 
-- rpm: `2021-35937`{.interpreted-text role="cve"}, `2021-35938`{.interpreted-text role="cve"}, `2021-35939`{.interpreted-text role="cve"}
-- rsync: `2022-29154`{.interpreted-text role="cve"}
-- subversion: `2021-28544`{.interpreted-text role="cve"}, `2022-24070`{.interpreted-text role="cve"}
-- tiff: `2022-1210`{.interpreted-text role="cve"} (not applicable), `2022-1622`{.interpreted-text role="cve"}, `2022-1623`{.interpreted-text role="cve"} (invalid), `2022-2056`{.interpreted-text role="cve"}, `2022-2057`{.interpreted-text role="cve"}, `2022-2058`{.interpreted-text role="cve"}, `2022-2953`{.interpreted-text role="cve"}, `2022-34526`{.interpreted-text role="cve"}
+- rpm: `2021-35937`
+- rsync: `2022-29154`
+- subversion: `2021-28544`
+- tiff: `2022-1210`
 
-> - 提夫：“2022-1210”（不适用），“2022-1622”，“2022-1623”（无效），“2022-2056”，“2022-2057”，“2022-2058”，“2022-2953”，“2022-34526”。
+> - 提夫：“2022-1210”(不适用)，“2022-1622”，“2022-1623”(无效)，“2022-2056”，“2022-2057”，“2022-2058”，“2022-2953”，“2022-34526”。
 
-- unzip: `2022-0529`{.interpreted-text role="cve"}, `2022-0530`{.interpreted-text role="cve"}
-- vim: `2022-1381`{.interpreted-text role="cve"}, `2022-1420`{.interpreted-text role="cve"}, `2022-1621`{.interpreted-text role="cve"}, `2022-1629`{.interpreted-text role="cve"}, `2022-1674`{.interpreted-text role="cve"}, `2022-1733`{.interpreted-text role="cve"}, `2022-1735`{.interpreted-text role="cve"}, `2022-1769`{.interpreted-text role="cve"}, `2022-1771`{.interpreted-text role="cve"}, `2022-1785`{.interpreted-text role="cve"}, `2022-1796`{.interpreted-text role="cve"}, `2022-1927`{.interpreted-text role="cve"}, `2022-1942`{.interpreted-text role="cve"}, `2022-2257`{.interpreted-text role="cve"}, `2022-2264`{.interpreted-text role="cve"}, `2022-2284`{.interpreted-text role="cve"}, `2022-2285`{.interpreted-text role="cve"}, `2022-2286`{.interpreted-text role="cve"}, `2022-2287`{.interpreted-text role="cve"}, `2022-2816`{.interpreted-text role="cve"}, `2022-2817`{.interpreted-text role="cve"}, `2022-2819`{.interpreted-text role="cve"}, `2022-2845`{.interpreted-text role="cve"}, `2022-2849`{.interpreted-text role="cve"}, `2022-2862`{.interpreted-text role="cve"}, `2022-2874`{.interpreted-text role="cve"}, `2022-2889`{.interpreted-text role="cve"}, `2022-2980`{.interpreted-text role="cve"}, `2022-2946`{.interpreted-text role="cve"}, `2022-2982`{.interpreted-text role="cve"}, `2022-3099`{.interpreted-text role="cve"}, `2022-3134`{.interpreted-text role="cve"}, `2022-3234`{.interpreted-text role="cve"}, `2022-3278`{.interpreted-text role="cve"}
+- unzip: `2022-0529`
+- vim: `2022-1381`
 
 > -Vim: CVE-2022-1381、CVE-2022-1420、CVE-2022-1621、CVE-2022-1629、CVE-2022-1674、CVE-2022-1733、CVE-2022-1735、CVE-2022-1769、CVE-2022-1771、CVE-2022-1785、CVE-2022-1796、CVE-2022-1927、CVE-2022-1942、CVE-2022-2257、CVE-2022-2264、CVE-2022-2284、CVE-2022-2285、CVE-2022-2286、CVE-2022-2287、CVE-2022-2816、CVE-2022-2817、CVE-2022-2819、CVE-2022-2845、CVE-2022-2849、CVE-2022-2862、CVE-2022-2874、CVE-2022-2889、CVE-2022-2980、CVE-2022-2946、CVE-2022-2982、CVE-2022-3099、CVE-2022-3134、CVE-2022-3234、CVE-2022-3278。
 
-- zlib: `2022-37434`{.interpreted-text role="cve"}
+- zlib: `2022-37434`
 
 # Recipe Upgrades in 4.1
 
@@ -717,10 +717,10 @@ Thanks to the following people who contributed to this release:
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1](git:%60yocto-4.1) \</poky/log/?h=yocto-4.1\>\`
-- Git Revision: :yocto\_[git:%605200799866b92259e855051112520006e1aaaac0](git:%605200799866b92259e855051112520006e1aaaac0) \</poky/commit/?id=5200799866b92259e855051112520006e1aaaac0\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</poky/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1](git:%60yocto-4.1) \</poky/log/?h=yocto-4.1\>\`
+- Git Revision: :yocto_[git:%605200799866b92259e855051112520006e1aaaac0](git:%605200799866b92259e855051112520006e1aaaac0) \</poky/commit/?id=5200799866b92259e855051112520006e1aaaac0\>\`
 
 > - Git 版本：:yocto_[git:%605200799866b92259e855051112520006e1aaaac0](git:%605200799866b92259e855051112520006e1aaaac0) \</poky/commit/?id=5200799866b92259e855051112520006e1aaaac0\>\`
 
@@ -732,12 +732,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
-- Tag: :oe\_[git:%60yocto-4.1](git:%60yocto-4.1) \</openembedded-core/log/?h=yocto-4.1\>\`
-- Git Revision: :oe\_[git:%60744a2277844ec9a384a9ca7dae2a634d5a0d3590](git:%60744a2277844ec9a384a9ca7dae2a634d5a0d3590) \</openembedded-core/commit/?id=744a2277844ec9a384a9ca7dae2a634d5a0d3590\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60langdale](git:%60langdale) \</openembedded-core/log/?h=langdale\>\`
+- Tag: :oe_[git:%60yocto-4.1](git:%60yocto-4.1) \</openembedded-core/log/?h=yocto-4.1\>\`
+- Git Revision: :oe_[git:%60744a2277844ec9a384a9ca7dae2a634d5a0d3590](git:%60744a2277844ec9a384a9ca7dae2a634d5a0d3590) \</openembedded-core/commit/?id=744a2277844ec9a384a9ca7dae2a634d5a0d3590\>\`
 
-> - Git 版本：<openembedded-core/commit/?id=744a2277844ec9a384a9ca7dae2a634d5a0d3590>（git：%60744a2277844ec9a384a9ca7dae2a634d5a0d3590）
+> - Git 版本：<openembedded-core/commit/?id=744a2277844ec9a384a9ca7dae2a634d5a0d3590>(git：%60744a2277844ec9a384a9ca7dae2a634d5a0d3590)
 
 - Release Artefact: oecore-744a2277844ec9a384a9ca7dae2a634d5a0d3590
 - sha: 34f1fd5bb83514bf0ec8ad7f8cce088a8e28677e1338db94c188283da704c663
@@ -747,10 +747,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1](git:%60yocto-4.1) \</meta-mingw/log/?h=yocto-4.1\>\`
-- Git Revision: :yocto\_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</meta-mingw/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1](git:%60yocto-4.1) \</meta-mingw/log/?h=yocto-4.1\>\`
+- Git Revision: :yocto_[git:%60b0067202db8573df3d23d199f82987cebe1bee2c](git:%60b0067202db8573df3d23d199f82987cebe1bee2c) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
 > Git 版本：yocto_[git:`b0067202db8573df3d23d199f82987cebe1bee2c`](git:%60b0067202db8573df3d23d199f82987cebe1bee2c%60) \</meta-mingw/commit/?id=b0067202db8573df3d23d199f82987cebe1bee2c\>\`
 
@@ -762,12 +762,12 @@ meta-mingw
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
-- Tag: :oe\_[git:%60yocto-4.1](git:%60yocto-4.1) \</bitbake/log/?h=yocto-4.1\>\`
-- Git Revision: :oe\_[git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67](git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67) \</bitbake/commit/?id=074da4c469d1f4177a1c5be72b9f3ccdfd379d67\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%602.2](git:%602.2) \</bitbake/log/?h=2.2\>\`
+- Tag: :oe_[git:%60yocto-4.1](git:%60yocto-4.1) \</bitbake/log/?h=yocto-4.1\>\`
+- Git Revision: :oe_[git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67](git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67) \</bitbake/commit/?id=074da4c469d1f4177a1c5be72b9f3ccdfd379d67\>\`
 
-> Git 版本：<bitbake/commit/?id=074da4c469d1f4177a1c5be72b9f3ccdfd379d67>（git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67）
+> Git 版本：<bitbake/commit/?id=074da4c469d1f4177a1c5be72b9f3ccdfd379d67>(git:%60074da4c469d1f4177a1c5be72b9f3ccdfd379d67)
 
 - Release Artefact: bitbake-074da4c469d1f4177a1c5be72b9f3ccdfd379d67
 - sha: e32c300e0c8522d8d49ef10aae473bd5f293202672eb9d38e90ed92594ed1fe8
@@ -777,9 +777,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
-- Tag: :yocto\_[git:%60yocto-4.1](git:%60yocto-4.1) \</yocto-docs/log/?h=yocto-4.1\>\`
-- Git Revision: :yocto\_[git:%6042d3e26a0d04bc5951e640b471686f347dc9b74a](git:%6042d3e26a0d04bc5951e640b471686f347dc9b74a) \</yocto-docs/commit/?id=42d3e26a0d04bc5951e640b471686f347dc9b74a\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60langdale](git:%60langdale) \</yocto-docs/log/?h=langdale\>\`
+- Tag: :yocto_[git:%60yocto-4.1](git:%60yocto-4.1) \</yocto-docs/log/?h=yocto-4.1\>\`
+- Git Revision: :yocto_[git:%6042d3e26a0d04bc5951e640b471686f347dc9b74a](git:%6042d3e26a0d04bc5951e640b471686f347dc9b74a) \</yocto-docs/commit/?id=42d3e26a0d04bc5951e640b471686f347dc9b74a\>\`
 
 > Git 版本：yocto_[git：`42d3e26a0d04bc5951e640b471686f347dc9b74a`](git%EF%BC%9A%6042d3e26a0d04bc5951e640b471686f347dc9b74a%60) \</yocto-docs/commit/?id=42d3e26a0d04bc5951e640b471686f347dc9b74a\>\`

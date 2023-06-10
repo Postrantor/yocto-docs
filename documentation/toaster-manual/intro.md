@@ -5,7 +5,7 @@ tip: translate by openai@2023-06-07 20:48:53
 title: Introduction
 -------------------
 
-Toaster is a web interface to the Yocto Project\'s `OpenEmbedded Build System`{.interpreted-text role="term"}. The interface enables you to configure and run your builds. Information about builds is collected and stored in a database. You can use Toaster to configure and start builds on multiple remote build servers.
+Toaster is a web interface to the Yocto Project\'s `OpenEmbedded Build System`. The interface enables you to configure and run your builds. Information about builds is collected and stored in a database. You can use Toaster to configure and start builds on multiple remote build servers.
 
 > Toaster 是 Yocto 项目的开放嵌入式构建系统的 Web 界面。该界面使您可以配置和运行构建。有关构建的信息将收集并存储在数据库中。您可以使用 Toaster 在多个远程构建服务器上配置和启动构建。
 
@@ -20,7 +20,7 @@ Toaster allows you to configure and run builds, and it provides extensive inform
 > 使用 Toaster 网页界面可以配置和启动构建。使用 Toaster 网页界面启动的构建被组织到项目中。创建项目时，您被要求选择要用于项目构建的构建系统版本。按照出货，Toaster 支持 Yocto Project 1.8 及更高版本。使用 Toaster 网页界面，您可以：
 
 ```
--   Browse layers listed in the various `layer sources <toaster-manual/reference:layer source>`{.interpreted-text role="ref"} that are available in your project (e.g. the OpenEmbedded Layer Index at :oe_layerindex:[/]{.title-ref}).
+-   Browse layers listed in the various `layer sources <toaster-manual/reference:layer source>`).
 -   Browse images, recipes, and machines provided by those layers.
 -   Import your own layers for building.
 -   Add and remove layers from your configuration.
@@ -69,10 +69,10 @@ When Toaster is set up as a local instance, all the components reside on a singl
 
 > 当 Toaster 被设置为本地实例时，所有组件都位于单个构建主机上。从根本上讲，Toaster 的本地实例适合于在单个构建主机上进行开发的单个用户。
 
-![image](figures/simple-configuration.png){.align-center width="70.0%"}
+![image](figures/simple-configuration.png)
 
 Toaster as a hosted service is suited for multiple users developing across several build hosts. When Toaster is set up as a hosted service, its components can be spread across several machines:
 
 > 当将 Toaster 设置为托管服务时，其组件可以分布在多台机器上，因此它适合多用户在多个构建主机上开发。
 
-![image](figures/hosted-service.png){.align-center width="50.0%"}
+![image](figures/hosted-service.png)

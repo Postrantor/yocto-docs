@@ -19,9 +19,9 @@ Although well within the capabilities of the Yocto Project, adding a totally new
 > 尽管属于 Yocto Project 的能力范围，但添加一个全新的架构可能需要对 gcc/glibc 和站点信息进行更改，这超出了本手册的范围。
 > :::
 
-For a complete example that shows how to add a new machine, see the \"``bsp-guide/bsp:creating a new bsp layer using the \`\`bitbake-layers\`\` script``{.interpreted-text role="ref"}\" section in the Yocto Project Board Support Package (BSP) Developer\'s Guide.
+For a complete example that shows how to add a new machine, see the \"``bsp-guide/bsp:creating a new bsp layer using the \`\`bitbake-layers\`\` script``\" section in the Yocto Project Board Support Package (BSP) Developer\'s Guide.
 
-> 对于展示如何添加新机器的完整示例，请参阅 Yocto 项目板支持包（BSP）开发者指南中的“使用 `bitbake-layers` 脚本创建新的 BSP 层”部分。
+> 对于展示如何添加新机器的完整示例，请参阅 Yocto 项目板支持包(BSP)开发者指南中的“使用 `bitbake-layers` 脚本创建新的 BSP 层”部分。
 
 # Adding the Machine Configuration File
 
@@ -35,15 +35,15 @@ The OpenEmbedded build system uses the root name of the machine configuration fi
 
 The most important variables you must set in your machine configuration file or include from a lower-level configuration file are as follows:
 
-- `TARGET_ARCH`{.interpreted-text role="term"} (e.g. \"arm\")
+- `TARGET_ARCH` (e.g. \"arm\")
 - `PREFERRED_PROVIDER_virtual/kernel`
-- `MACHINE_FEATURES`{.interpreted-text role="term"} (e.g. \"apm screen wifi\")
+- `MACHINE_FEATURES` (e.g. \"apm screen wifi\")
 
 You might also need these variables:
 
-- `SERIAL_CONSOLES`{.interpreted-text role="term"} (e.g. \"115200;ttyS0 115200;ttyS1\")
-- `KERNEL_IMAGETYPE`{.interpreted-text role="term"} (e.g. \"zImage\")
-- `IMAGE_FSTYPES`{.interpreted-text role="term"} (e.g. \"tar.gz jffs2\")
+- `SERIAL_CONSOLES` (e.g. \"115200;ttyS0 115200;ttyS1\")
+- `KERNEL_IMAGETYPE` (e.g. \"zImage\")
+- `IMAGE_FSTYPES` (e.g. \"tar.gz jffs2\")
 
 You can find full details on these variables in the reference section. You can leverage existing machine `.conf` files from `meta-yocto-bsp/conf/machine/`.
 
@@ -55,19 +55,19 @@ The OpenEmbedded build system needs to be able to build a kernel for the machine
 
 > 开放嵌入式构建系统需要能够为机器构建内核。您需要为此机器创建一个新的内核配方，或扩展现有的内核配方。您可以在源目录中的 `meta/recipes-kernel/linux` 中找到几个内核配方示例，可以用作参考。
 
-If you are creating a new kernel recipe, normal recipe-writing rules apply for setting up a `SRC_URI`{.interpreted-text role="term"}. Thus, you need to specify any necessary patches and set `S`{.interpreted-text role="term"} to point at the source code. You need to create a `ref-tasks-configure`{.interpreted-text role="ref"} task that configures the unpacked kernel with a `defconfig` file. You can do this by using a `make defconfig` command or, more commonly, by copying in a suitable `defconfig` file and then running `make oldconfig`. By making use of `inherit kernel` and potentially some of the `linux-*.inc` files, most other functionality is centralized and the defaults of the class normally work well.
+If you are creating a new kernel recipe, normal recipe-writing rules apply for setting up a `SRC_URI` task that configures the unpacked kernel with a `defconfig` file. You can do this by using a `make defconfig` command or, more commonly, by copying in a suitable `defconfig` file and then running `make oldconfig`. By making use of `inherit kernel` and potentially some of the `linux-*.inc` files, most other functionality is centralized and the defaults of the class normally work well.
 
-> 如果您正在创建一个新的内核配方，则需要为设置 `SRC_URI`{.interpreted-text role="term"}遵循正常的配方编写规则。因此，您需要指定任何必要的补丁并将 `S`{.interpreted-text role="term"}指向源代码。您需要创建一个 `ref-tasks-configure`{.interpreted-text role="ref"}任务来使用 `defconfig` 文件配置解压缩的内核。您可以通过使用 `make defconfig` 命令来完成此操作，或者更常见的是，通过复制适当的 `defconfig` 文件，然后运行 `make oldconfig`。通过使用 `inherit kernel` 以及部分 `linux-*.inc` 文件，大多数其他功能都是集中在一起的，类的默认值通常可以很好地工作。
+> 如果您正在创建一个新的内核配方，则需要为设置 `SRC_URI` 任务来使用 `defconfig` 文件配置解压缩的内核。您可以通过使用 `make defconfig` 命令来完成此操作，或者更常见的是，通过复制适当的 `defconfig` 文件，然后运行 `make oldconfig`。通过使用 `inherit kernel` 以及部分 `linux-*.inc` 文件，大多数其他功能都是集中在一起的，类的默认值通常可以很好地工作。
 
-If you are extending an existing kernel recipe, it is usually a matter of adding a suitable `defconfig` file. The file needs to be added into a location similar to `defconfig` files used for other machines in a given kernel recipe. A possible way to do this is by listing the file in the `SRC_URI`{.interpreted-text role="term"} and adding the machine to the expression in `COMPATIBLE_MACHINE`{.interpreted-text role="term"}:
+If you are extending an existing kernel recipe, it is usually a matter of adding a suitable `defconfig` file. The file needs to be added into a location similar to `defconfig` files used for other machines in a given kernel recipe. A possible way to do this is by listing the file in the `SRC_URI`:
 
-> 如果您正在扩展现有的内核配方，通常需要添加一个合适的 `defconfig` 文件。该文件需要添加到与给定内核配方中用于其他机器的 `defconfig` 文件相似的位置。可以通过在 `SRC_URI`{.interpreted-text role="term"}中列出该文件并将机器添加到 `COMPATIBLE_MACHINE`{.interpreted-text role="term"}表达式中来实现：
+> 如果您正在扩展现有的内核配方，通常需要添加一个合适的 `defconfig` 文件。该文件需要添加到与给定内核配方中用于其他机器的 `defconfig` 文件相似的位置。可以通过在 `SRC_URI` 表达式中来实现：
 
 ```
 COMPATIBLE_MACHINE = '(qemux86|qemumips)'
 ```
 
-For more information on `defconfig` files, see the \"`kernel-dev/common:changing the configuration`{.interpreted-text role="ref"}\" section in the Yocto Project Linux Kernel Development Manual.
+For more information on `defconfig` files, see the \"`kernel-dev/common:changing the configuration`\" section in the Yocto Project Linux Kernel Development Manual.
 
 > 对于 `defconfig` 文件的更多信息，请参阅 Yocto Project Linux 内核开发手册中的“kernel-dev/common：更改配置”部分。
 
@@ -75,11 +75,11 @@ For more information on `defconfig` files, see the \"`kernel-dev/common:changing
 
 A formfactor configuration file provides information about the target hardware for which the image is being built and information that the build system cannot obtain from other sources such as the kernel. Some examples of information contained in a formfactor configuration file include framebuffer orientation, whether or not the system has a keyboard, the positioning of the keyboard in relation to the screen, and the screen resolution.
 
-> 一个形式因素配置文件为正在构建的映像提供有关目标硬件的信息以及构建系统无法从其他来源（如内核）获得的信息。形式因素配置文件中包含的一些信息的例子包括帧缓冲器方向，系统是否具有键盘，键盘与屏幕之间的位置关系以及屏幕分辨率。
+> 一个形式因素配置文件为正在构建的映像提供有关目标硬件的信息以及构建系统无法从其他来源(如内核)获得的信息。形式因素配置文件中包含的一些信息的例子包括帧缓冲器方向，系统是否具有键盘，键盘与屏幕之间的位置关系以及屏幕分辨率。
 
 The build system uses reasonable defaults in most cases. However, if customization is necessary, you need to create a `machconfig` file in the `meta/recipes-bsp/formfactor/files` directory. This directory contains directories for specific machines such as `qemuarm` and `qemux86`. For information about the settings available and the defaults, see the `meta/recipes-bsp/formfactor/files/config` file found in the same area.
 
-> 系统构建在大多数情况下都使用合理的默认值。但是，如果需要定制，您需要在 `meta/recipes-bsp/formfactor/files` 目录中创建一个 `machconfig` 文件。该目录包含特定机器（如 `qemuarm` 和 `qemux86`）的目录。有关可用设置和默认值的信息，请参阅同一区域中的 `meta/recipes-bsp/formfactor/files/config` 文件。
+> 系统构建在大多数情况下都使用合理的默认值。但是，如果需要定制，您需要在 `meta/recipes-bsp/formfactor/files` 目录中创建一个 `machconfig` 文件。该目录包含特定机器(如 `qemuarm` 和 `qemux86`)的目录。有关可用设置和默认值的信息，请参阅同一区域中的 `meta/recipes-bsp/formfactor/files/config` 文件。
 
 Following is an example for \"qemuarm\" machine:
 

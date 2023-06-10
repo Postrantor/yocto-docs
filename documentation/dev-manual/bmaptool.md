@@ -4,7 +4,7 @@ title: Flashing Images Using `bmaptool`
 ---
 A fast and easy way to flash an image to a bootable device is to use Bmaptool, which is integrated into the OpenEmbedded build system. Bmaptool is a generic tool that creates a file\'s block map (bmap) and then uses that map to copy the file. As compared to traditional tools such as dd or cp, Bmaptool can copy (or flash) large files like raw system image files much faster.
 
-> 使用 Bmaptool 快速而轻松地将图像刷入可引导设备，Bmaptool 已集成到 OpenEmbedded 构建系统中。Bmaptool 是一个通用工具，可以创建文件的块映射（bmap），然后使用该映射来复制文件。与传统工具（如 dd 或 cp）相比，Bmaptool 可以更快地复制（或刷入）大文件，如原始系统映像文件。
+> 使用 Bmaptool 快速而轻松地将镜像刷入可引导设备，Bmaptool 已集成到 OpenEmbedded 构建系统中。Bmaptool 是一个通用工具，可以创建文件的块映射(bmap)，然后使用该映射来复制文件。与传统工具(如 dd 或 cp)相比，Bmaptool 可以更快地复制(或刷入)大文件，如原始系统映像文件。
 
 ::: note
 ::: title
@@ -36,17 +36,17 @@ Following, is an example that shows how to flash a Wic image. Realize that while
    ```
    IMAGE_FSTYPES += "wic wic.bmap"
    ```
-2. _Get Your Image:_ Either have your image ready (pre-built with the `IMAGE_FSTYPES`{.interpreted-text role="term"} setting previously mentioned) or take the step to build the image:
+2. _Get Your Image:_ Either have your image ready (pre-built with the `IMAGE_FSTYPES` setting previously mentioned) or take the step to build the image:
 
-> 2. _获取您的镜像：_ 准备好您的镜像（使用之前提到的 `IMAGE_FSTYPES`{.interpreted-text role="term"}设置预先构建），或者采取步骤构建镜像：
+> 2. _获取您的镜像：_ 准备好您的镜像(使用之前提到的 `IMAGE_FSTYPES` 设置预先构建)，或者采取步骤构建镜像：
 
 ```
 $ bitbake image
 ```
 
-3. _Flash the Device:_ Flash the device with the image by using Bmaptool depending on your particular setup. The following commands assume the image resides in the `Build Directory`{.interpreted-text role="term"}\'s `deploy/images/` area:
+3. _Flash the Device:_ Flash the device with the image by using Bmaptool depending on your particular setup. The following commands assume the image resides in the `Build Directory`\'s `deploy/images/` area:
 
-> 3. 刷新设备：使用 Bmaptool 根据您的特定设置刷新设备。以下命令假定图像位于 `Build Directory` 的 `deploy/images/` 区域：
+> 3. 刷新设备：使用 Bmaptool 根据您的特定设置刷新设备。以下命令假定镜像位于 `Build Directory` 的 `deploy/images/` 区域：
 
 - If you have write access to the media, use this command form:
 

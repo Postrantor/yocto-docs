@@ -11,13 +11,13 @@ Once you have set up the Yocto Project and installed the Toaster system dependen
 
 > 一旦您已经设置了 Yocto 项目并按照“toaster-manual / start：准备使用”中的说明安装了 Toaster 系统依赖项，
 
-Toaster`{.interpreted-text role="ref"}\" chapter, you are ready to start Toaster.
+Toaster`\" chapter, you are ready to start Toaster.
 
 > 准备好了，你可以开始使用 Toaster 了。
 
-Navigate to the root of your `Source Directory`{.interpreted-text role="term"} (e.g. `poky`):
+Navigate to the root of your `Source Directory` (e.g. `poky`):
 
-> 请前往您的源目录（例如 `poky`）的根目录：
+> 请前往您的源目录(例如 `poky`)的根目录：
 
 ```shell
 $ cd poky
@@ -31,15 +31,15 @@ Once in that directory, source the build environment script:
 $ source oe-init-build-env
 ```
 
-Next, from the `Build Directory`{.interpreted-text role="term"} (e.g. `poky/build`), start Toaster using this command:
+Next, from the `Build Directory` (e.g. `poky/build`), start Toaster using this command:
 
-> 下一步，从“构建目录”（例如“poky/build”）开始，使用以下命令启动 Toaster：
+> 下一步，从“构建目录”(例如“poky/build”)开始，使用以下命令启动 Toaster：
 
 ```shell
 $ source toaster start
 ```
 
-You can now run your builds from the command line, or with Toaster as explained in section \"`toaster-manual/setup-and-use:using the toaster web interface`{.interpreted-text role="ref"}\".
+You can now run your builds from the command line, or with Toaster as explained in section \"`toaster-manual/setup-and-use:using the toaster web interface`\".
 
 > 现在你可以从命令行或使用 Toaster 运行构建，如“使用 Toaster Web 界面”部分所述。
 
@@ -107,7 +107,7 @@ $ source toaster start nobuild webport=port
 
 By default, Toaster binds to the loop back address (i.e. `localhost`), which does not allow access from external hosts. To allow external access, use the `WEBPORT` parameter to open an address that connects to the network, specifically the IP address that your NIC uses to connect to the network. You can also bind to all IP addresses the computer supports by using the shortcut \"0.0.0.0:port\".
 
-> 默认情况下，Toaster 绑定到回环地址（即 `localhost`），这不允许从外部主机访问。要允许外部访问，请使用 `WEBPORT` 参数打开连接到网络的地址，特别是 NIC 用于连接网络的 IP 地址。您还可以通过使用快捷方式“0.0.0.0：port”来绑定到计算机支持的所有 IP 地址。
+> 默认情况下，Toaster 绑定到回环地址(即 `localhost`)，这不允许从外部主机访问。要允许外部访问，请使用 `WEBPORT` 参数打开连接到网络的地址，特别是 NIC 用于连接网络的 IP 地址。您还可以通过使用快捷方式“0.0.0.0：port”来绑定到计算机支持的所有 IP 地址。
 
 The following example binds to all IP addresses on the host:
 
@@ -129,7 +129,7 @@ $ source toaster start webport=192.168.1.1:8400
 
 Toaster creates a `_toaster_clones` directory inside your Source Directory (i.e. `poky`) to clone any layers needed for your builds.
 
-> Toaster 将会在源目录（即 `poky`）内创建一个 `_toaster_clones` 目录，用于克隆构建所需的任何图层。
+> Toaster 将会在源目录(即 `poky`)内创建一个 `_toaster_clones` 目录，用于克隆构建所需的任何图层。
 
 Alternatively, if you would like all of your Toaster related files and directories to be in a particular location other than the default, you can set the `TOASTER_DIR` environment variable, which takes precedence over your current working directory. Setting this environment variable causes Toaster to create and use `$TOASTER_DIR./_toaster_clones`.
 
@@ -137,11 +137,11 @@ Alternatively, if you would like all of your Toaster related files and directori
 
 # The Build Directory
 
-Toaster creates a `Build Directory`{.interpreted-text role="term"} within your Source Directory (e.g. `poky`) to execute the builds.
+Toaster creates a `Build Directory` within your Source Directory (e.g. `poky`) to execute the builds.
 
-> 烤箱会在您的源目录（例如 `poky`）中创建一个 `构建目录` 来执行构建。
+> 烤箱会在您的源目录(例如 `poky`)中创建一个 `构建目录` 来执行构建。
 
-Alternatively, if you would like all of your Toaster related files and directories to be in a particular location, you can set the `TOASTER_DIR` environment variable, which takes precedence over your current working directory. Setting this environment variable causes Toaster to use `$TOASTER_DIR/build` as the `Build Directory`{.interpreted-text role="term"}.
+Alternatively, if you would like all of your Toaster related files and directories to be in a particular location, you can set the `TOASTER_DIR` environment variable, which takes precedence over your current working directory. Setting this environment variable causes Toaster to use `$TOASTER_DIR/build` as the `Build Directory`.
 
 > 如果您希望所有与 Toaster 相关的文件和目录位于特定位置，您可以设置 `TOASTER_DIR` 环境变量，它优先于您当前的工作目录。设置此环境变量会导致 Toaster 使用 `$TOASTER_DIR/build` 作为 `Build Directory`。
 
@@ -149,7 +149,7 @@ Alternatively, if you would like all of your Toaster related files and directori
 
 Toaster is built on the [Django framework](https://www.djangoproject.com/). Django provides an administration interface you can use to edit Toaster configuration parameters.
 
-> 吐司器基于 [Django 框架](https://www.djangoproject.com/)构建。 Django 提供了一个管理界面，您可以使用它来编辑 Toaster 配置参数。
+> 吐司器基于 [Django 框架](https://www.djangoproject.com/)构建。Django 提供了一个管理界面，您可以使用它来编辑 Toaster 配置参数。
 
 To access the Django administration interface, you must create a superuser by following these steps:
 
@@ -166,9 +166,9 @@ $ export PATH=$PATH:$HOME/.local/bin
 
 ```
 
-2. From the directory containing the Toaster database, which by default is the `Build Directory`{.interpreted-text role="term"}, invoke the `createsuperuser` command from `manage.py`:
+2. From the directory containing the Toaster database, which by default is the `Build Directory`, invoke the `createsuperuser` command from `manage.py`:
 
-> 从包含 Toaster 数据库的目录（默认为 Build Directory）中，从 manage.py 中调用 createsuperuser 命令：
+> 从包含 Toaster 数据库的目录(默认为 Build Directory)中，从 manage.py 中调用 createsuperuser 命令：
 
 ```
 
@@ -211,7 +211,7 @@ Creating a superuser allows you to access the Django administration interface th
 http://127.0.0.1:8000/admin
 ```
 
-You can use the Django administration interface to set Toaster configuration parameters such as the `Build Directory`{.interpreted-text role="term"}, layer sources, default variable values, and BitBake versions.
+You can use the Django administration interface to set Toaster configuration parameters such as the `Build Directory`, layer sources, default variable values, and BitBake versions.
 
 > 你可以使用 Django 管理界面来设置烤箱配置参数，如 `构建目录`、层源、默认变量值和 BitBake 版本。
 
@@ -237,7 +237,7 @@ You must comply with all Apache, `mod-wsgi`, and Mysql requirements.
 > 你必须遵守所有 Apache、mod-wsgi 和 MySQL 的要求。
 > :::
 
-- Have all the build requirements as described in the \"`toaster-manual/start:Preparing to Use Toaster`{.interpreted-text role="ref"}\" chapter.
+- Have all the build requirements as described in the \"`toaster-manual/start:Preparing to Use Toaster`\" chapter.
 - Have an Apache webserver.
 - Have `mod-wsgi` for the Apache webserver.
 - Use the Mysql database server.
@@ -373,15 +373,15 @@ $ TOASTER_DIR=`pwd\` TEMPLATECONF='poky' \
 $ ./bitbake/lib/toaster/manage.py collectstatic
 ```
 
-In the previous example, from the `poky` directory, the `migrate` command ensures the database schema changes have propagated correctly (i.e. migrations). The next line sets the Toaster root directory `TOASTER_DIR` and the location of the Toaster configuration file `TOASTER_CONF`, which is relative to `TOASTER_DIR`. The `TEMPLATECONF`{.interpreted-text role="term"} value reflects the contents of `poky/.templateconf`, and by default, should include the string \"poky\". For more information on the Toaster configuration file, see the \"`toaster-manual/reference:Configuring Toaster`{.interpreted-text role="ref"}\" section.
+In the previous example, from the `poky` directory, the `migrate` command ensures the database schema changes have propagated correctly (i.e. migrations). The next line sets the Toaster root directory `TOASTER_DIR` and the location of the Toaster configuration file `TOASTER_CONF`, which is relative to `TOASTER_DIR`. The `TEMPLATECONF`\" section.
 
-This line also runs the `checksettings` command, which configures the location of the Toaster `Build Directory`{.interpreted-text role="term"}. The Toaster root directory `TOASTER_DIR` determines where the Toaster build directory is created on the file system. In the example above, `TOASTER_DIR` is set as follows:
+This line also runs the `checksettings` command, which configures the location of the Toaster `Build Directory`. The Toaster root directory `TOASTER_DIR` determines where the Toaster build directory is created on the file system. In the example above, `TOASTER_DIR` is set as follows:
 
 ```shell
 /var/www/toaster/poky
 ```
 
-This setting causes the Toaster `Build Directory`{.interpreted-text role="term"} to be:
+This setting causes the Toaster `Build Directory` to be:
 
 ```shell
 /var/www/toaster/poky/build
@@ -546,9 +546,9 @@ The Toaster web interface allows you to do the following:
 
 > 界面可以让您完成以下操作：
 
-- Browse published layers in the :oe_layerindex:[OpenEmbedded Layer Index \<\>]{.title-ref} that are available for your selected version of the build system.
+- Browse published layers in the :oe_layerindex:[OpenEmbedded Layer Index \<\>] that are available for your selected version of the build system.
 
-> 浏览在:oe_layerindex:[OpenEmbedded Layer Index \<\>]{.title-ref}中为您所选择的构建系统版本可用的已发布的图层。
+> 浏览在:oe_layerindex:[OpenEmbedded Layer Index \<\>]中为您所选择的构建系统版本可用的已发布的图层。
 
 - Import your own layers for building.
 - Add and remove layers from your configuration.
@@ -557,7 +557,7 @@ The Toaster web interface allows you to do the following:
 - Start your builds.
 - See what was built (recipes and packages) and what packages were installed into your final image.
 
-> 查看建立了什么（食谱和软件包），以及哪些软件包被安装到最终镜像中。
+> 查看建立了什么(recipes和软件包)，以及哪些软件包被安装到最终镜像中。
 
 - Browse the directory structure of your image.
 - See the value of all variables in your build configuration, and which files set each value.
@@ -577,11 +577,11 @@ Following are several videos that show how to use the Toaster GUI:
 
 - *Build Configuration:* This [video](https://www.youtube.com/watch?v=qYgDZ8YzV6w) overviews and demonstrates build configuration for Toaster.
 
-> *构建配置：*这个视频（[https://www.youtube.com/watch?v=qYgDZ8YzV6w](https://www.youtube.com/watch?v=qYgDZ8YzV6w)）概述并演示了烤面包机的构建配置。
+> *构建配置：*这个视频([https://www.youtube.com/watch?v=qYgDZ8YzV6w](https://www.youtube.com/watch?v=qYgDZ8YzV6w))概述并演示了烤面包机的构建配置。
 
 - *Build Custom Layers:* This [video](https://www.youtube.com/watch?v=QJzaE_XjX5c) shows you how to build custom layers that are used with Toaster.
 
-> *构建自定义层：* 这个视频（[https://www.youtube.com/watch?v=QJzaE_XjX5c](https://www.youtube.com/watch?v=QJzaE_XjX5c)）向您展示了如何构建与 Toaster 一起使用的自定义层。
+> *构建自定义层：* 这个视频([https://www.youtube.com/watch?v=QJzaE_XjX5c](https://www.youtube.com/watch?v=QJzaE_XjX5c))向您展示了如何构建与 Toaster 一起使用的自定义层。
 
 - *Toaster Homepage and Table Controls:* This [video](https://www.youtube.com/watch?v=QEARDnrR1Xw) goes over the Toaster entry page, and provides an overview of the data manipulation capabilities of Toaster, which include search, sorting and filtering by different criteria.
 
@@ -593,11 +593,11 @@ Following are several videos that show how to use the Toaster GUI:
 
 - *Image Information:* This [video](https://www.youtube.com/watch?v=XqYGFsmA0Rw) walks through the information Toaster provides about images: packages installed and root file system.
 
-> *图像信息：本视频（[https://www.youtube.com/watch?v=XqYGFsmA0Rw](https://www.youtube.com/watch?v=XqYGFsmA0Rw)）介绍了 Toaster 提供的关于图像的信息：安装的软件包和根文件系统。
+> *镜像信息：本视频([https://www.youtube.com/watch?v=XqYGFsmA0Rw](https://www.youtube.com/watch?v=XqYGFsmA0Rw))介绍了 Toaster 提供的关于镜像的信息：安装的软件包和根文件系统。
 
 - *Configuration:* This [video](https://www.youtube.com/watch?v=UW-j-T2TzIg) provides Toaster build configuration information.
 
-> *配置：* 这个视频（[https://www.youtube.com/watch?v=UW-j-T2TzIg](https://www.youtube.com/watch?v=UW-j-T2TzIg)）提供烤箱构建配置信息。
+> *配置：* 这个视频([https://www.youtube.com/watch?v=UW-j-T2TzIg](https://www.youtube.com/watch?v=UW-j-T2TzIg))提供烤箱构建配置信息。
 
 - *Tasks:* This [video](https://www.youtube.com/watch?v=D4-9vGSxQtw) shows the information Toaster provides about the tasks run by the build system.
 
@@ -613,7 +613,7 @@ Following are several videos that show how to use the Toaster GUI:
 
 ## Additional Information About the Local Yocto Project Release
 
-This section only applies if you have set up Toaster for local development, as explained in the \"`toaster-manual/setup-and-use:starting toaster for local development`{.interpreted-text role="ref"}\" section.
+This section only applies if you have set up Toaster for local development, as explained in the \"`toaster-manual/setup-and-use:starting toaster for local development`\" section.
 
 > 如果您已经按照“toaster-manual/setup-and-use：开始本地开发 Toaster”部分中的说明设置了 Toaster，则此部分才适用。
 
@@ -621,13 +621,13 @@ When you create a project in Toaster, you will be asked to provide a name and to
 
 > 当您在 Toaster 中创建一个项目时，您将被要求提供一个名称并选择 Yocto Project 发行版。您将找到的发行版之一称为“本地 Yocto Project”。
 
-![image](figures/new-project.png){.align-center}
+![image](figures/new-project.png)
 
 When you select the \"Local Yocto Project\" release, Toaster will run your builds using the local Yocto Project clone you have in your computer: the same clone you are using to run Toaster. Unless you manually update this clone, your builds will always use the same Git revision.
 
 > 当你选择“本地 Yocto 项目”发布版本时，Toaster 将使用你在计算机中的本地 Yocto 项目克隆来运行你的构建：这个克隆就是你用来运行 Toaster 的克隆。除非你手动更新这个克隆，否则你的构建将始终使用相同的 Git 版本。
 
-If you select any of the other release options, Toaster will fetch the tip of your selected release from the upstream :yocto\_[git:%60Yocto](git:%60Yocto) Project repository \<\>\` every time you run a build. Fetching this tip effectively means that if your selected release is updated upstream, the Git revision you are using for your builds will change. If you are doing development locally, you might not want this change to happen. In that case, the \"Local Yocto Project\" release might be the right choice.
+If you select any of the other release options, Toaster will fetch the tip of your selected release from the upstream :yocto_[git:%60Yocto](git:%60Yocto) Project repository \<\>\` every time you run a build. Fetching this tip effectively means that if your selected release is updated upstream, the Git revision you are using for your builds will change. If you are doing development locally, you might not want this change to happen. In that case, the \"Local Yocto Project\" release might be the right choice.
 
 > 如果你选择其他发布选项，每次运行构建时，Toaster 会从上游 Yocto [git:%60Yocto](git:%60Yocto) 项目存储库中获取你选择的发布的最新版本。获取这个版本有效意味着，如果你选择的发布版本在上游更新，你用于构建的 Git 版本也会改变。如果你本地进行开发，可能不希望这种改变发生。在这种情况下，“本地 Yocto 项目”发布可能是正确的选择。
 
@@ -635,41 +635,41 @@ However, the \"Local Yocto Project\" release will not provide you with any compa
 
 > 然而，“本地 Yocto 项目”发布不会提供任何与 Yocto 项目一起提供的三个核心层兼容的层。
 
-- :oe_layer:[openembedded-core \</openembedded-core\>]{.title-ref}
-- :oe_layer:[meta-poky \</meta-poky\>]{.title-ref}
-- :oe_layer:[meta-yocto-bsp \</meta-yocto-bsp\>]{.title-ref}
+- :oe_layer:[openembedded-core \</openembedded-core\>]
+- :oe_layer:[meta-poky \</meta-poky\>]
+- :oe_layer:[meta-yocto-bsp \</meta-yocto-bsp\>]
 
-![image](figures/compatible-layers.png){.align-center}
+![image](figures/compatible-layers.png)
 
 If you want to build any other layers, you will need to manually import them into your Toaster project, using the \"Import layer\" page.
 
 > 如果你想构建其他层，你需要使用“导入层”页面，手动将它们导入到你的 Toaster 项目中。
 
-![image](figures/import-layer.png){.align-center}
+![image](figures/import-layer.png)
 
 ## Building a Specific Recipe Given Multiple Versions
 
 Occasionally, a layer might provide more than one version of the same recipe. For example, the `openembedded-core` layer provides two versions of the `bash` recipe (i.e. 3.2.48 and 4.3.30-r0) and two versions of the `which` recipe (i.e. 2.21 and 2.18). The following figure shows this exact scenario:
 
-> 偶尔，一个层可能提供多个版本的相同的配方。例如，`openembedded-core` 层提供了两个版本的 `bash` 配方（即 3.2.48 和 4.3.30-r0）以及两个版本的 `which` 配方（即 2.21 和 2.18）。下图显示了这种情况：
+> 偶尔，一个层可能提供多个版本的相同的配方。例如，`openembedded-core` 层提供了两个版本的 `bash` 配方(即 3.2.48 和 4.3.30-r0)以及两个版本的 `which` 配方(即 2.21 和 2.18)。下图显示了这种情况：
 
-![image](figures/bash-oecore.png){.align-center}
+![image](figures/bash-oecore.png)
 
-By default, the OpenEmbedded build system builds one of the two recipes. For the `bash` case, version 4.3.30-r0 is built by default. Unfortunately, Toaster as it exists, is not able to override the default recipe version. If you would like to build bash 3.2.48, you need to set the `PREFERRED_VERSION`{.interpreted-text role="term"} variable. You can do so from Toaster, using the \"Add variable\" form, which is available in the \"BitBake variables\" page of the project configuration section as shown in the following screen:
+By default, the OpenEmbedded build system builds one of the two recipes. For the `bash` case, version 4.3.30-r0 is built by default. Unfortunately, Toaster as it exists, is not able to override the default recipe version. If you would like to build bash 3.2.48, you need to set the `PREFERRED_VERSION` variable. You can do so from Toaster, using the \"Add variable\" form, which is available in the \"BitBake variables\" page of the project configuration section as shown in the following screen:
 
-> 默认情况下，OpenEmbedded 构建系统构建其中的两个配方之一。对于 `bash` 的情况，默认情况下构建的是 4.3.30-r0 版本。不幸的是，现有的 Toaster 无法覆盖默认的配方版本。如果您想要构建 bash 3.2.48，您需要设置 `PREFERRED_VERSION`{.interpreted-text role="term"}变量。您可以从 Toaster 使用“添加变量”表单来完成，该表单位于项目配置部分的“BitBake 变量”页面中，如下图所示：
+> 默认情况下，OpenEmbedded 构建系统构建其中的两个配方之一。对于 `bash` 的情况，默认情况下构建的是 4.3.30-r0 版本。不幸的是，现有的 Toaster 无法覆盖默认的配方版本。如果您想要构建 bash 3.2.48，您需要设置 `PREFERRED_VERSION`变量。您可以从 Toaster 使用“添加变量”表单来完成，该表单位于项目配置部分的“BitBake 变量”页面中，如下图所示：
 
-![image](figures/add-variable.png){.align-center}
+![image](figures/add-variable.png)
 
 To specify `bash` 3.2.48 as the version to build, enter \"PREFERRED_VERSION_bash\" in the \"Variable\" field, and \"3.2.48\" in the \"Value\" field. Next, click the \"Add variable\" button:
 
 > 要指定要构建的 bash 3.2.48 版本，请在“变量”字段中输入“PREFERRED_VERSION_bash”，在“值”字段中输入“3.2.48”。然后点击“添加变量”按钮：
 
-![image](figures/set-variable.png){.align-center}
+![image](figures/set-variable.png)
 
-After clicking the \"Add variable\" button, the settings for `PREFERRED_VERSION`{.interpreted-text role="term"} are added to the bottom of the BitBake variables list. With these settings, the OpenEmbedded build system builds the desired version of the recipe rather than the default version:
+After clicking the \"Add variable\" button, the settings for `PREFERRED_VERSION` are added to the bottom of the BitBake variables list. With these settings, the OpenEmbedded build system builds the desired version of the recipe rather than the default version:
 
 > 点击“添加变量”按钮后，`PREFERRED_VERSION` 的设置将添加到 BitBake 变量列表的底部。使用这些设置，OpenEmbedded 构建系统将构建所需的版本的配方，而不是默认版本。
 
-![image](figures/variable-added.png){.align-center}
+![image](figures/variable-added.png)
 ```

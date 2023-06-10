@@ -7,20 +7,20 @@ title: Release 1.8 (fido)
 
 This section provides migration information for moving to the Yocto Project 1.8 Release (codename \"fido\") from the prior release.
 
-> 本节提供从前一个版本迁移到 Yocto 项目 1.8 发行版（代号“fido”）的迁移信息。
+> 本节提供从前一个版本迁移到 Yocto 项目 1.8 发行版(代号“fido”)的迁移信息。
 
-# Removed Recipes {#migration-1.8-removed-recipes}
+# Removed Recipes
 
 The following recipes have been removed:
 
-> 以下食谱已被移除：
+> 以下 recipes 已被移除：
 
 - `owl-video`: Functionality replaced by `gst-player`.
 - `gaku`: Functionality replaced by `gst-player`.
 - `gnome-desktop`: This recipe is now available in `meta-gnome` and is no longer needed.
 - `gsettings-desktop-schemas`: This recipe is now available in `meta-gnome` and is no longer needed.
 
-> - `gsettings-desktop-schemas`：这个食谱现在可以在 `meta-gnome` 中找到，不再需要。
+> - `gsettings-desktop-schemas`：这个 recipes 现在可以在 `meta-gnome` 中找到，不再需要。
 
 - `python-argparse`: The `argparse` module is already provided in the default Python distribution in a package named `python-argparse`. Consequently, the separate `python-argparse` recipe is no longer needed.
 
@@ -43,44 +43,44 @@ The following recipes have been removed:
 
 > 不再需要。预计主分发将提供一个可用的 `sed` 版本。
 
-# BlueZ 4.x / 5.x Selection {#migration-1.8-bluez}
+# BlueZ 4.x / 5.x Selection
 
-Proper built-in support for selecting BlueZ 5.x in preference to the default of 4.x now exists. To use BlueZ 5.x, simply add \"bluez5\" to your `DISTRO_FEATURES`{.interpreted-text role="term"} value. If you had previously added append files (`*.bbappend`) to make this selection, you can now remove them.
+Proper built-in support for selecting BlueZ 5.x in preference to the default of 4.x now exists. To use BlueZ 5.x, simply add \"bluez5\" to your `DISTRO_FEATURES` value. If you had previously added append files (`*.bbappend`) to make this selection, you can now remove them.
 
-> 正确的内置支持可以优先选择 BlueZ 5.x 而不是默认的 4.x。要使用 BlueZ 5.x，只需将“bluez5”添加到您的“DISTRO_FEATURES”值中。如果您之前添加了附加文件（“*.bbappend”）来进行此选择，现在可以将其删除。
+> 正确的内置支持可以优先选择 BlueZ 5.x 而不是默认的 4.x。要使用 BlueZ 5.x，只需将“bluez5”添加到您的“DISTRO_FEATURES”值中。如果您之前添加了附加文件(“*.bbappend”)来进行此选择，现在可以将其删除。
 
 Additionally, a `bluetooth` class has been added to make selection of the appropriate bluetooth support within a recipe a little easier. If you wish to make use of this class in a recipe, add something such as the following:
 
-> 此外，添加了一个 `蓝牙` 类，以使在食谱中更容易选择适当的蓝牙支持。如果您希望在食谱中使用此类，请添加以下内容之一：
+> 此外，添加了一个 `蓝牙` 类，以使在 recipes 中更容易选择适当的蓝牙支持。如果您希望在 recipes 中使用此类，请添加以下内容之一：
 
 ```
 inherit bluetooth
-PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', '${BLUEZ}', '', d)}"
+PACKAGECONFIG ??= "$"
 PACKAGECONFIG[bluez4] = "--enable-bluetooth,--disable-bluetooth,bluez4"
 PACKAGECONFIG[bluez5] = "--enable-bluez5,--disable-bluez5,bluez5"
 ```
 
-# Kernel Build Changes {#migration-1.8-kernel-build-changes}
+# Kernel Build Changes
 
-The kernel build process was changed to place the source in a common shared work area and to place build artifacts separately in the source code tree. In theory, migration paths have been provided for most common usages in kernel recipes but this might not work in all cases. In particular, users need to ensure that `${S}` (source files) and `${B}` (build artifacts) are used correctly in functions such as `ref-tasks-configure`{.interpreted-text role="ref"} and `ref-tasks-install`{.interpreted-text role="ref"}. For kernel recipes that do not inherit from `ref-classes-kernel-yocto`{.interpreted-text role="ref"} or include `linux-yocto.inc`, you might wish to refer to the `linux.inc` file in the `meta-oe` layer for the kinds of changes you need to make. For reference, here is the :oe\_[git:%60commit](git:%60commit) \</meta-openembedded/commit/meta-oe/recipes-kernel/linux/linux.inc?id=fc7132ede27ac67669448d3d2845ce7d46c6a1ee\>[ where the ]{.title-ref}[linux.inc]{.title-ref}[ file in ]{.title-ref}[meta-oe]{.title-ref}\` was updated.
+The kernel build process was changed to place the source in a common shared work area and to place build artifacts separately in the source code tree. In theory, migration paths have been provided for most common usages in kernel recipes but this might not work in all cases. In particular, users need to ensure that `$\` was updated.
 
-> 进行内核构建的过程已被改变，以将源码放置在一个共同的共享工作区中，并将构建的文件单独放置在源代码树中。理论上，内核食谱中已提供了大多数常见用法的迁移路径，但这在所有情况下都不一定有效。特别是，用户需要确保正确使用 `${S}`（源文件）和 `${B}`（构建文件）在函数中，如 `ref-tasks-configure`{.interpreted-text role="ref"}和 `ref-tasks-install`{.interpreted-text role="ref"}。对于不继承自 `ref-classes-kernel-yocto`{.interpreted-text role="ref"}或不包含 `linux-yocto.inc` 的内核食谱，您可能希望参考 `meta-oe` 层中的 `linux.inc` 文件，了解需要做出的更改类型。作为参考，以下是：oe\_[git:%60commit](git:%60commit) \</meta-openembedded/commit/meta-oe/recipes-kernel/linux/linux.inc?id=fc7132ede27ac67669448d3d2845ce7d46c6a1ee\>[ 其中的 ]{.title-ref}[linux.inc]{.title-ref}[ 文件在 ]{.title-ref}[meta-oe]{.title-ref}中被更新。
+> 进行内核构建的过程已被改变，以将源码放置在一个共同的共享工作区中，并将构建的文件单独放置在源代码树中。理论上，内核 recipes 中已提供了大多数常见用法的迁移路径，但这在所有情况下都不一定有效。特别是，用户需要确保正确使用 `$ 中被更新。
 
-Recipes that rely on the kernel source code and do not inherit the `module <ref-classes-module>`{.interpreted-text role="ref"} classes might need to add explicit dependencies on the `ref-tasks-shared_workdir`{.interpreted-text role="ref"} kernel task, for example:
+Recipes that rely on the kernel source code and do not inherit the `module <ref-classes-module>` kernel task, for example:
 
-> 若是不继承 `module <ref-classes-module>`{.interpreted-text role="ref"}类，而是依赖内核源代码的食谱，可能需要显式地添加对 `ref-tasks-shared_workdir`{.interpreted-text role="ref"}内核任务的依赖，例如：
+> 若是不继承 `module <ref-classes-module>` 内核任务的依赖，例如：
 
 ```
 do_configure[depends] += "virtual/kernel:do_shared_workdir"
 ```
 
-# SSL 3.0 is Now Disabled in OpenSSL {#migration-1.8-ssl}
+# SSL 3.0 is Now Disabled in OpenSSL
 
-SSL 3.0 is now disabled when building OpenSSL. Disabling SSL 3.0 avoids any lingering instances of the POODLE vulnerability. If you feel you must re-enable SSL 3.0, then you can add an append file (`*.bbappend`) for the `openssl` recipe to remove \"-no-ssl3\" from `EXTRA_OECONF`{.interpreted-text role="term"}.
+SSL 3.0 is now disabled when building OpenSSL. Disabling SSL 3.0 avoids any lingering instances of the POODLE vulnerability. If you feel you must re-enable SSL 3.0, then you can add an append file (`*.bbappend`) for the `openssl` recipe to remove \"-no-ssl3\" from `EXTRA_OECONF`.
 
-> SSL 3.0 在构建 OpenSSL 时已禁用。禁用 SSL 3.0 可避免 POODLE 漏洞的遗留实例。如果您觉得必须重新启用 SSL 3.0，那么可以为 `openssl` 配方添加一个附加文件（`*.bbappend`），从 `EXTRA_OECONF` 中删除 “-no-ssl3”。
+> SSL 3.0 在构建 OpenSSL 时已禁用。禁用 SSL 3.0 可避免 POODLE 漏洞的遗留实例。如果您觉得必须重新启用 SSL 3.0，那么可以为 `openssl` 配方添加一个附加文件(`*.bbappend`)，从 `EXTRA_OECONF` 中删除 “-no-ssl3”。
 
-# Default Sysroot Poisoning {#migration-1.8-default-sysroot-poisoning}
+# Default Sysroot Poisoning
 
 `gcc's` default sysroot and include directories are now \"poisoned\". In other words, the sysroot and include directories are being redirected to a non-existent location in order to catch when host directories are being used due to the correct options not being passed. This poisoning applies both to the cross-compiler used within the build and to the cross-compiler produced in the SDK.
 
@@ -90,21 +90,21 @@ If this change causes something in the build to fail, it almost certainly means 
 
 > 如果这个变化导致构建失败，几乎可以肯定的是各种编译器标志和命令没有正确传递给底层软件。在这种情况下，你需要采取纠正措施。
 
-# Rebuild Improvements {#migration-1.8-rebuild-improvements}
+# Rebuild Improvements
 
-Changes have been made to the `ref-classes-base`{.interpreted-text role="ref"}, `ref-classes-autotools`{.interpreted-text role="ref"}, and `ref-classes-cmake`{.interpreted-text role="ref"} classes to clean out generated files when the `ref-tasks-configure`{.interpreted-text role="ref"} task needs to be re-executed.
+Changes have been made to the `ref-classes-base` task needs to be re-executed.
 
-> 已经对 `ref-classes-base`{.interpreted-text role="ref"}、`ref-classes-autotools`{.interpreted-text role="ref"}和 `ref-classes-cmake`{.interpreted-text role="ref"}类进行了修改，以便在需要重新执行 `ref-tasks-configure`{.interpreted-text role="ref"}任务时清除生成的文件。
+> 已经对 `ref-classes-base` 任务时清除生成的文件。
 
-One of the improvements is to attempt to run \"make clean\" during the `ref-tasks-configure`{.interpreted-text role="ref"} task if a `Makefile` exists. Some software packages do not provide a working clean target within their make files. If you have such recipes, you need to set `CLEANBROKEN`{.interpreted-text role="term"} to \"1\" within the recipe, for example:
+One of the improvements is to attempt to run \"make clean\" during the `ref-tasks-configure` to \"1\" within the recipe, for example:
 
-> 其中一个改进是在 `ref-tasks-configure`{.interpreted-text role="ref"}任务中尝试运行“make clean”，如果存在 `Makefile`。有些软件包的 Make 文件中没有提供可用的清理目标。如果您有这样的食谱，则需要在食谱中将 `CLEANBROKEN`{.interpreted-text role="term"}设置为“1”，例如：
+> 其中一个改进是在 `ref-tasks-configure` 设置为“1”，例如：
 
 ```
 CLEANBROKEN = "1"
 ```
 
-# QA Check and Validation Changes {#migration-1.8-qa-check-and-validation-changes}
+# QA Check and Validation Changes
 
 The following QA Check and Validation Changes have occurred:
 
@@ -112,21 +112,21 @@ The following QA Check and Validation Changes have occurred:
 
 - Usage of `PRINC` previously triggered a warning. It now triggers an error. You should remove any remaining usage of `PRINC` in any recipe or append file.
 
-> 使用 `PRINC` 之前会引发警告。现在会引发错误。您应该删除任何剩余的 `PRINC` 用法，无论是食谱还是附加文件。
+> 使用 `PRINC` 之前会引发警告。现在会引发错误。您应该删除任何剩余的 `PRINC` 用法，无论是 recipes 还是附加文件。
 
-- An additional QA check has been added to detect usage of `${D}` in `FILES`{.interpreted-text role="term"} values where `D`{.interpreted-text role="term"} values should not be used at all. The same check ensures that `$D` is used in `pkg_preinst/pkg_postinst/pkg_prerm/pkg_postrm` functions instead of `${D}`.
+- An additional QA check has been added to detect usage of `$`.
 
-> 针对 `FILES`{.interpreted-text role="term"}中不应使用 `D`{.interpreted-text role="term"}值的情况，新增了一项 QA 检查。同样的检查也确保在 `pkg_preinst/pkg_postinst/pkg_prerm/pkg_postrm` 函数中使用 `$D` 而不是 `${D}`。
+> 针对 `FILES``。
 
-- `S`{.interpreted-text role="term"} now needs to be set to a valid value within a recipe. If `S`{.interpreted-text role="term"} is not set in the recipe, the directory is not automatically created. If `S`{.interpreted-text role="term"} does not point to a directory that exists at the time the `ref-tasks-unpack`{.interpreted-text role="ref"} task finishes, a warning will be shown.
+- `S` task finishes, a warning will be shown.
 
 > 现在需要在配方中设置一个有效的值。如果在配方中没有设置 S，那么该目录不会自动创建。如果 S 指向的目录在 ref-tasks-unpack 任务完成时不存在，则会显示警告。
 
-- `LICENSE`{.interpreted-text role="term"} is now validated for correct formatting of multiple licenses. If the format is invalid (e.g. multiple licenses are specified with no operators to specify how the multiple licenses interact), then a warning will be shown.
+- `LICENSE` is now validated for correct formatting of multiple licenses. If the format is invalid (e.g. multiple licenses are specified with no operators to specify how the multiple licenses interact), then a warning will be shown.
 
-> `LICENSE` 已验证以正确格式化多个许可证。如果格式无效（例如，没有操作符指定多个许可证如何交互），则会显示警告。
+> `LICENSE` 已验证以正确格式化多个许可证。如果格式无效(例如，没有操作符指定多个许可证如何交互)，则会显示警告。
 
-# Miscellaneous Changes {#migration-1.8-miscellaneous-changes}
+# Miscellaneous Changes
 
 The following miscellaneous changes have occurred:
 
@@ -136,6 +136,6 @@ The following miscellaneous changes have occurred:
 
 > 脚本 `send-error-report` 现在需要在指定服务器地址之前指定一个\"-s\"选项。这假设指定了服务器地址。
 
-- The `oe-pkgdata-util` script now expects a \"-p\" option to be specified before the `pkgdata` directory, which is now optional. If the `pkgdata` directory is not specified, the script will run BitBake to query `PKGDATA_DIR`{.interpreted-text role="term"} from the build environment.
+- The `oe-pkgdata-util` script now expects a \"-p\" option to be specified before the `pkgdata` directory, which is now optional. If the `pkgdata` directory is not specified, the script will run BitBake to query `PKGDATA_DIR` from the build environment.
 
 > 脚本 `oe-pkgdata-util` 现在需要在可选的 `pkgdata` 目录之前指定一个“-p”选项。如果没有指定 `pkgdata` 目录，脚本将运行 BitBake 来查询来自构建环境的 `PKGDATA_DIR`。

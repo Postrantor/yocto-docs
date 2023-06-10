@@ -5,9 +5,9 @@ tip: translate by openai@2023-06-10 10:45:22
 title: Efficiently Fetching Source Files During a Build
 -------------------------------------------------------
 
-The OpenEmbedded build system works with source files located through the `SRC_URI`{.interpreted-text role="term"} variable. When you build something using BitBake, a big part of the operation is locating and downloading all the source tarballs. For images, downloading all the source for various packages can take a significant amount of time.
+The OpenEmbedded build system works with source files located through the `SRC_URI` variable. When you build something using BitBake, a big part of the operation is locating and downloading all the source tarballs. For images, downloading all the source for various packages can take a significant amount of time.
 
-> 开放嵌入式构建系统使用通过 `SRC_URI` 变量位置的源文件。当您使用 BitBake 构建时，大部分操作是定位和下载所有源归档文件。对于图像，下载所有各种软件包的源代码可能需要相当长的时间。
+> 开放嵌入式构建系统使用通过 `SRC_URI` 变量位置的源文件。当您使用 BitBake 构建时，大部分操作是定位和下载所有源归档文件。对于镜像，下载所有各种软件包的源代码可能需要相当长的时间。
 
 This section shows you how you can use mirrors to speed up fetching source files and how you can pre-fetch files all of which leads to more efficient use of resources and time.
 
@@ -28,19 +28,19 @@ BB_GENERATE_MIRROR_TARBALLS = "1"
 # BB_NO_NETWORK = "1"
 ```
 
-In the previous example, the `BB_GENERATE_MIRROR_TARBALLS`{.interpreted-text role="term"} variable causes the OpenEmbedded build system to generate tarballs of the Git repositories and store them in the `DL_DIR`{.interpreted-text role="term"} directory. Due to performance reasons, generating and storing these tarballs is not the build system\'s default behavior.
+In the previous example, the `BB_GENERATE_MIRROR_TARBALLS` directory. Due to performance reasons, generating and storing these tarballs is not the build system\'s default behavior.
 
 > 在前面的例子中，变量 `BB_GENERATE_MIRROR_TARBALLS` 导致 OpenEmbedded 构建系统生成 Git 存储库的 tarballs 并将其存储在 `DL_DIR` 目录中。出于性能原因，生成和存储这些 tarballs 不是构建系统的默认行为。
 
-You can also use the `PREMIRRORS`{.interpreted-text role="term"} variable. For an example, see the variable\'s glossary entry in the Yocto Project Reference Manual.
+You can also use the `PREMIRRORS` variable. For an example, see the variable\'s glossary entry in the Yocto Project Reference Manual.
 
 > 您也可以使用 `PREMIRRORS` 变量。有关示例，请参阅 Yocto Project 参考手册中变量的术语条目。
 
 # Getting Source Files and Suppressing the Build
 
-Another technique you can use to ready yourself for a successive string of build operations, is to pre-fetch all the source files without actually starting a build. This technique lets you work through any download issues and ultimately gathers all the source files into your download directory `structure-build-downloads`{.interpreted-text role="ref"}, which is located with `DL_DIR`{.interpreted-text role="term"}.
+Another technique you can use to ready yourself for a successive string of build operations, is to pre-fetch all the source files without actually starting a build. This technique lets you work through any download issues and ultimately gathers all the source files into your download directory `structure-build-downloads`.
 
-> 你可以使用另一种技术来准备连续构建操作，那就是预先获取所有源文件而不实际开始构建。这种技术可以帮助你解决所有下载问题，并最终将所有源文件收集到位于 `DL_DIR`{.interpreted-text role="term"}的 `structure-build-downloads`{.interpreted-text role="ref"}文件夹中。
+> 你可以使用另一种技术来准备连续构建操作，那就是预先获取所有源文件而不实际开始构建。这种技术可以帮助你解决所有下载问题，并最终将所有源文件收集到位于 `DL_DIR` 文件夹中。
 
 Use the following BitBake command form to fetch all the necessary sources without starting the build:
 

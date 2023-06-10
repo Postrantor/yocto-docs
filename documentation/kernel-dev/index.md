@@ -7,6 +7,6 @@ title: Yocto Project Linux Kernel Development Manual
 
 |
 
-::: {.toctree caption="Table of Contents" numbered=""}
+:::
 intro common advanced concepts-appx maint-appx faq
 :::

@@ -8,15 +8,15 @@ title: Release notes for 3.4 (honister)
 # New Features / Enhancements in 3.4
 
 - Linux kernel 5.14, glibc 2.34 and \~280 other recipe upgrades
-- Switched override character to \':\' (replacing \'\_\') for more robust parsing and improved performance \-\-- see the above migration guide for help
+- Switched override character to \':\' (replacing \'_\') for more robust parsing and improved performance \-\-- see the above migration guide for help
 
-> 切换覆盖字符为'：'（替换'_'），以实现更强大的解析和改善性能--请参阅上面的迁移指南以获取帮助。
+> 切换覆盖字符为'：'(替换'_')，以实现更强大的解析和改善性能--请参阅上面的迁移指南以获取帮助。
 
 - Rust integrated into core, providing rust support for cross-compilation and SDK
-- New `ref-classes-create-spdx`{.interpreted-text role="ref"} class for creating SPDX SBoM documents
+- New `ref-classes-create-spdx` class for creating SPDX SBoM documents
 - New recipes: cargo, core-image-ptest-all, core-image-ptest-fast, core-image-weston-sdk, erofs-utils, gcompat, gi-docgen, libmicrohttpd, libseccomp, libstd-rs, perlcross, python3-markdown, python3-pyyaml, python3-smartypants, python3-typogrify, rust, rust-cross, rust-cross-canadian, rust-hello-world, rust-llvm, rust-tools-cross-canadian, rustfmt, xwayland
 
-> 新食谱：货运，core-image-ptest-all，core-image-ptest-fast，core-image-weston-sdk，erofs-utils，gcompat，gi-docgen，libmicrohttpd，libseccomp，libstd-rs，perlcross，python3-markdown，python3-pyyaml，python3-smartypants，python3-typogrify，rust，rust-cross，rust-cross-加拿大，rust-hello-world，rust-llvm，rust-tools-cross-加拿大，rustfmt，xwayland
+> 新 recipes：货运，core-image-ptest-all，core-image-ptest-fast，core-image-weston-sdk，erofs-utils，gcompat，gi-docgen，libmicrohttpd，libseccomp，libstd-rs，perlcross，python3-markdown，python3-pyyaml，python3-smartypants，python3-typogrify，rust，rust-cross，rust-cross-加拿大，rust-hello-world，rust-llvm，rust-tools-cross-加拿大，rustfmt，xwayland
 
 - Several optimisations to reduce unnecessary task dependencies for faster builds
 - seccomp integrated into core, with additional enabling for gnutls, systemd, qemu
@@ -42,18 +42,18 @@ title: Release notes for 3.4 (honister)
   - mesa: enable gallium Intel drivers when building for x86
   - mesa: enable crocus driver for older Intel graphics
 - Kernel-related enhancements:
-  - Support zstd-compressed modules and `Initramfs`{.interpreted-text role="term"} images
+  - Support zstd-compressed modules and `Initramfs` images
   - Allow opt-out of split kernel modules
-  - linux-yocto-dev: base `AUTOREV`{.interpreted-text role="term"} on specified version
+  - linux-yocto-dev: base `AUTOREV` on specified version
   - kernel-yocto: provide debug / summary information for metadata
   - kernel-uboot: Handle gzip and lzo compression options
   - linux-yocto/5.14: added devupstream support
-  - linux-yocto: add vfat to `KERNEL_FEATURES`{.interpreted-text role="term"} when `MACHINE_FEATURES`{.interpreted-text role="term"} include vfat
+  - linux-yocto: add vfat to `KERNEL_FEATURES` include vfat
   - linux-yocto: enable TYPEC_TCPCI in usbc fragment
 - Image-related enhancements:
   - New erofs, erofs-lz4 and erofs-lz4hc image types
   - New squashfs-zst and cpio.zst image types
-  - New lic-pkgs `IMAGE_FEATURES`{.interpreted-text role="term"} item to install all license packages
+  - New lic-pkgs `IMAGE_FEATURES` item to install all license packages
   - Added zsync metadata conversion support
   - Use xargs to set file timestamps for significant (\>90%) do_image speedup
   - Find .ko.gz and .ko.xz kernel modules as well when determining need to run depmod on an image
@@ -67,15 +67,15 @@ title: Release notes for 3.4 (honister)
   - bootimg-efi: added Unified Kernel Image option
   - bootimg-pcbios: use label provided when formatting a DOS partition
 - SDK-related enhancements:
-  - Enable `ref-tasks-populate_sdk`{.interpreted-text role="ref"} with multilibs
-  - New `SDKPATHINSTALL` variable decouples default install path from built in path to avoid rebuilding `ref-classes-nativesdk`{.interpreted-text role="ref"} components on e.g. `DISTRO_VERSION`{.interpreted-text role="term"} changes
+  - Enable `ref-tasks-populate_sdk` with multilibs
+  - New `SDKPATHINSTALL` variable decouples default install path from built in path to avoid rebuilding `ref-classes-nativesdk` changes
 
-> 新的 `SDKPATHINSTALL` 变量将默认安装路径与内置路径解耦，以避免在 `DISTRO_VERSION` 更改时重新构建 `ref-classes-nativesdk`{.interpreted-text role="ref"}组件。
+> 新的 `SDKPATHINSTALL` 变量将默认安装路径与内置路径解耦，以避免在 `DISTRO_VERSION` 更改时重新构建 `ref-classes-nativesdk` 组件。
 
 - eSDK: Error if trying to generate an eSDK from a multiconfig
-- eSDK: introduce `TOOLCHAIN_HOST_TASK_ESDK`{.interpreted-text role="term"} to be used in place of `TOOLCHAIN_HOST_TASK`{.interpreted-text role="term"} to add components to the host part of the eSDK
+- eSDK: introduce `TOOLCHAIN_HOST_TASK_ESDK` to add components to the host part of the eSDK
 
-> 引入 `TOOLCHAIN_HOST_TASK_ESDK`{.interpreted-text role="term"}以代替 `TOOLCHAIN_HOST_TASK`{.interpreted-text role="term"}，以便将组件添加到 eSDK 的主机部分。
+> 引入 `TOOLCHAIN_HOST_TASK_ESDK`，以便将组件添加到 eSDK 的主机部分。
 
 - BitBake enhancements:
 
@@ -94,7 +94,7 @@ title: Release notes for 3.4 (honister)
   - prserv: added read-only mode
   - prserv: replaced XML RPC with modern asyncrpc implementation
   - Numerous warning/error message improvements
-- New `PACKAGECONFIG`{.interpreted-text role="term"} options in btrfs-tools, ccache, coreutils, cups, dbus, elfutils, ffmpeg, findutils, glib-2.0, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-base, libarchive, libnotify, libpsl, man-db, mesa, ovmf, parted, prelink, qemu, rpm, shadow, systemd, tar, vim, weston
+- New `PACKAGECONFIG` options in btrfs-tools, ccache, coreutils, cups, dbus, elfutils, ffmpeg, findutils, glib-2.0, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-base, libarchive, libnotify, libpsl, man-db, mesa, ovmf, parted, prelink, qemu, rpm, shadow, systemd, tar, vim, weston
 
 > 新的 PACKAGECONFIG 选项在 btrfs-tools、ccache、coreutils、cups、dbus、elfutils、ffmpeg、findutils、glib-2.0、gstreamer1.0-plugins-bad、gstreamer1.0-plugins-base、libarchive、libnotify、libpsl、man-db、mesa、ovmf、parted、prelink、qemu、rpm、shadow、systemd、tar、vim、weston 中出现了
 
@@ -119,7 +119,7 @@ title: Release notes for 3.4 (honister)
 - scripts/contrib/image-manifest: add new script
 - Add beginnings of Android target support
 - devtool upgrade: rebase override-only patches as well
-- devtool: print a warning on upgrades if `PREFERRED_VERSION`{.interpreted-text role="term"} is set
+- devtool: print a warning on upgrades if `PREFERRED_VERSION` is set
 - systemd: set zstd as default compression option
 - init-manager-systemd: add a weak VIRTUAL-RUNTIME_dev_manager assignment
 - Add proper unpack dependency for .zst compressed archives
@@ -137,11 +137,11 @@ title: Release notes for 3.4 (honister)
   - Add output file listing package information
   - Label packages providing per-file dependencies in depends.dot
 - New gi-docgen class for GNOME library documentation
-- meson.bbclass: Make the default buildtype \"debug\" if `DEBUG_BUILD`{.interpreted-text role="term"} is 1
-- distro_features_check: expand with `IMAGE_FEATURES`{.interpreted-text role="term"}
+- meson.bbclass: Make the default buildtype \"debug\" if `DEBUG_BUILD` is 1
+- distro_features_check: expand with `IMAGE_FEATURES`
 - Add extended packagedata in JSON format
 - local.conf.sample: Update sstate mirror entry with new hash equivalence setting
-- poky: Use https in default `PREMIRRORS`{.interpreted-text role="term"}
+- poky: Use https in default `PREMIRRORS`
 - reproducible_build.bbclass: Enable -Wdate-time
 - yocto-check-layer: ensure that all layer dependencies are tested too
 - core-image-multilib-example: base on weston, and not sato
@@ -157,102 +157,102 @@ title: Release notes for 3.4 (honister)
 - vim: add option to disable NLS support
 - zstd: Include pzstd in the build
 - mirrors.bbclass: provide additional rule for git repo fallbacks
-- own-mirrors: Add support for s3:// scheme in `SOURCE_MIRROR_URL`{.interpreted-text role="term"}
+- own-mirrors: Add support for s3:// scheme in `SOURCE_MIRROR_URL`
 - common-licenses: add missing SPDX licences
 - Add MAINTAINERS.md file to record subsystem maintainers
 
 # Known Issues in 3.4
 
-- Build failures have been reported when running on host Linux systems with FIPS enabled (such as RHEL 8.0 with the FIPS mode enabled). For more details please see :yocto_bugs:[bug #14609 \</show_bug.cgi?id=14609\>]{.title-ref}.
+- Build failures have been reported when running on host Linux systems with FIPS enabled (such as RHEL 8.0 with the FIPS mode enabled). For more details please see :yocto_bugs:[bug #14609 \</show_bug.cgi?id=14609\>].
 
-> 报告称，在启用 FIPS（如启用 FIPS 模式的 RHEL 8.0）的 Linux 主机上运行时出现构建失败。有关更多详细信息，请参见：yocto_bugs:[bug #14609 \</show_bug.cgi?id=14609\>]{.title-ref}。
+> 报告称，在启用 FIPS(如启用 FIPS 模式的 RHEL 8.0)的 Linux 主机上运行时出现构建失败。有关更多详细信息，请参见：yocto_bugs:[bug #14609 \</show_bug.cgi?id=14609\>]。
 
 # Recipe Licenses changes in 3.4
 
-The following corrections have been made to the `LICENSE`{.interpreted-text role="term"} values set by recipes:
+The following corrections have been made to the `LICENSE` values set by recipes:
 
-- acpica: correct `LICENSE`{.interpreted-text role="term"} to \"Intel \| BSD-3-Clause \| GPLv2\"
-- dtc: correct `LICENSE`{.interpreted-text role="term"} to \"GPLv2 \| BSD-2-Clause\"
-- e2fsprogs: correct `LICENSE`{.interpreted-text role="term"} to \"GPLv2 & LGPLv2 & BSD-3-Clause & MIT\"
-- ffmpeg: correct `LICENSE`{.interpreted-text role="term"} to \"GPLv2+ & LGPLv2.1+ & ISC & MIT & BSD-2-Clause & BSD-3-Clause & IJG\"
-- flac: correct `LICENSE`{.interpreted-text role="term"} to \"GFDL-1.2 & GPLv2+ & LGPLv2.1+ & BSD-3-Clause\"
-- flex: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause & LGPL-2.0+\"
-- font-util: correct `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
-- glib-2.0: correct `LICENSE`{.interpreted-text role="term"} to \"LGPLv2.1+ & BSD-3-Clause & PD\"
-- gobject-introspection: correct `LICENSE`{.interpreted-text role="term"} to \"LGPLv2+ & GPLv2+ & MIT\" (add MIT license)
-- hdparm: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-2-Clause & GPLv2 & hdparm\"
-- iputils: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause & GPLv2+\"
-- libcap: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause \| GPLv2\"
-- libevent: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause & MIT\"
-- libjitterentropy: correct `LICENSE`{.interpreted-text role="term"} to \"GPLv2+ \| BSD-3-Clause\"
-- libpam: correct `LICENSE`{.interpreted-text role="term"} to \"GPLv2+ \| BSD-3-Clause\"
-- libwpe: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-2-Clause\"
-- libx11-compose-data: correct `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
-- libx11: correct `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
-- libxfont2: correct `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
-- libxfont: correct `LICENSE`{.interpreted-text role="term"} to \"MIT & MIT-style & BSD-3-Clause\"
-- lsof: correct `LICENSE`{.interpreted-text role="term"} to reflect that it uses a BSD-like (but not exactly BSD) license (\"Spencer-94\")
-- nfs-utils: correct `LICENSE`{.interpreted-text role="term"} to \"MIT & GPLv2+ & BSD-3-Clause\"
+- acpica: correct `LICENSE` to \"Intel \| BSD-3-Clause \| GPLv2\"
+- dtc: correct `LICENSE` to \"GPLv2 \| BSD-2-Clause\"
+- e2fsprogs: correct `LICENSE` to \"GPLv2 & LGPLv2 & BSD-3-Clause & MIT\"
+- ffmpeg: correct `LICENSE` to \"GPLv2+ & LGPLv2.1+ & ISC & MIT & BSD-2-Clause & BSD-3-Clause & IJG\"
+- flac: correct `LICENSE` to \"GFDL-1.2 & GPLv2+ & LGPLv2.1+ & BSD-3-Clause\"
+- flex: correct `LICENSE` to \"BSD-3-Clause & LGPL-2.0+\"
+- font-util: correct `LICENSE` to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
+- glib-2.0: correct `LICENSE` to \"LGPLv2.1+ & BSD-3-Clause & PD\"
+- gobject-introspection: correct `LICENSE` to \"LGPLv2+ & GPLv2+ & MIT\" (add MIT license)
+- hdparm: correct `LICENSE` to \"BSD-2-Clause & GPLv2 & hdparm\"
+- iputils: correct `LICENSE` to \"BSD-3-Clause & GPLv2+\"
+- libcap: correct `LICENSE` to \"BSD-3-Clause \| GPLv2\"
+- libevent: correct `LICENSE` to \"BSD-3-Clause & MIT\"
+- libjitterentropy: correct `LICENSE` to \"GPLv2+ \| BSD-3-Clause\"
+- libpam: correct `LICENSE` to \"GPLv2+ \| BSD-3-Clause\"
+- libwpe: correct `LICENSE` to \"BSD-2-Clause\"
+- libx11-compose-data: correct `LICENSE` to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
+- libx11: correct `LICENSE` to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
+- libxfont2: correct `LICENSE` to \"MIT & MIT-style & BSD-4-Clause & BSD-2-Clause\"
+- libxfont: correct `LICENSE` to \"MIT & MIT-style & BSD-3-Clause\"
+- lsof: correct `LICENSE` to reflect that it uses a BSD-like (but not exactly BSD) license (\"Spencer-94\")
+- nfs-utils: correct `LICENSE` to \"MIT & GPLv2+ & BSD-3-Clause\"
 - ovmf: correct license to \"BSD-2-Clause-Patent\"
-- ppp: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause & BSD-3-Clause-Attribution & GPLv2+ & LGPLv2+ & PD\"
-- python3-packaging: correct `LICENSE`{.interpreted-text role="term"} to \"Apache-2.0 \| BSD-2-Clause\"
-- python-async-test: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause\"
+- ppp: correct `LICENSE` to \"BSD-3-Clause & BSD-3-Clause-Attribution & GPLv2+ & LGPLv2+ & PD\"
+- python3-packaging: correct `LICENSE` to \"Apache-2.0 \| BSD-2-Clause\"
+- python-async-test: correct `LICENSE` to \"BSD-3-Clause\"
 - quota: remove BSD license (only BSD licensed part of the code was removed in 4.05)
-- shadow: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause \| Artistic-1.0\"
-- shadow-sysroot: set `LICENSE`{.interpreted-text role="term"} the same as shadow
-- sudo: correct `LICENSE`{.interpreted-text role="term"} to \"ISC & BSD-3-Clause & BSD-2-Clause & Zlib\"
-- swig: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-3-Clause & GPLv3\"
+- shadow: correct `LICENSE` to \"BSD-3-Clause \| Artistic-1.0\"
+- shadow-sysroot: set `LICENSE` the same as shadow
+- sudo: correct `LICENSE` to \"ISC & BSD-3-Clause & BSD-2-Clause & Zlib\"
+- swig: correct `LICENSE` to \"BSD-3-Clause & GPLv3\"
 - valgrind: correct license to \"GPLv2 & GPLv2+ & BSD-3-Clause\"
-- webkitgtk: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-2-Clause & LGPLv2+\"
-- wpebackend-fdo: correct `LICENSE`{.interpreted-text role="term"} to \"BSD-2-Clause\"
-- xinetd: correct `LICENSE`{.interpreted-text role="term"} to reflect that it uses a unique BSD-like (but not exactly BSD) license
+- webkitgtk: correct `LICENSE` to \"BSD-2-Clause & LGPLv2+\"
+- wpebackend-fdo: correct `LICENSE` to \"BSD-2-Clause\"
+- xinetd: correct `LICENSE` to reflect that it uses a unique BSD-like (but not exactly BSD) license
 
 Other license-related notes:
 
-- When creating recipes for Python software, recipetool will now treat \"BSD\" as \"BSD-3-Clause\" for the purposes of setting `LICENSE`{.interpreted-text role="term"}, as that is the most common understanding.
+- When creating recipes for Python software, recipetool will now treat \"BSD\" as \"BSD-3-Clause\" for the purposes of setting `LICENSE`, as that is the most common understanding.
 
 > 当为 Python 软件创建菜谱时，recipetool 现在将“BSD”视为“BSD-3-Clause”，以设置“LICENSE”，因为这是最常见的理解。
 
-- Please be aware that an `Initramfs`{.interpreted-text role="term"} bundled with the kernel using `INITRAMFS_IMAGE_BUNDLE`{.interpreted-text role="term"} should only contain GPLv2-compatible software; this is now mentioned in the documentation.
+- Please be aware that an `Initramfs` should only contain GPLv2-compatible software; this is now mentioned in the documentation.
 
 > 请注意，使用 INITRAMFS_IMAGE_BUNDLE 打包的 Initramfs 只能包含 GPLv2 兼容的软件；现在文档中已经提到了这一点。
 
 # Security Fixes in 3.4
 
-- apr: `2021-35940`{.interpreted-text role="cve"}
-- aspell: `2019-25051`{.interpreted-text role="cve"}
-- avahi: `2021-3468`{.interpreted-text role="cve"}, `2021-36217`{.interpreted-text role="cve"}
-- binutils: `2021-20197`{.interpreted-text role="cve"}
-- bluez: `2021-3658`{.interpreted-text role="cve"}
-- busybox: `2021-28831`{.interpreted-text role="cve"}
-- cairo: `2020-35492`{.interpreted-text role="cve"}
-- cpio: `2021-38185`{.interpreted-text role="cve"}
-- expat: `2013-0340`{.interpreted-text role="cve"}
-- ffmpeg: `2020-20446`{.interpreted-text role="cve"}, `2020-22015`{.interpreted-text role="cve"}, `2020-22021`{.interpreted-text role="cve"}, `2020-22033`{.interpreted-text role="cve"}, `2020-22019`{.interpreted-text role="cve"}, `2021-33815`{.interpreted-text role="cve"}, `2021-38171`{.interpreted-text role="cve"}, `2020-20453`{.interpreted-text role="cve"}
+- apr: `2021-35940`
+- aspell: `2019-25051`
+- avahi: `2021-3468`
+- binutils: `2021-20197`
+- bluez: `2021-3658`
+- busybox: `2021-28831`
+- cairo: `2020-35492`
+- cpio: `2021-38185`
+- expat: `2013-0340`
+- ffmpeg: `2020-20446`
 
 > ffmpeg：CVE-2020-20446、CVE-2020-22015、CVE-2020-22021、CVE-2020-22033、CVE-2020-22019、CVE-2021-33815、CVE-2021-38171、CVE-2020-20453
 
-- glibc: `2021-33574`{.interpreted-text role="cve"}, `2021-38604`{.interpreted-text role="cve"}
-- inetutils: `2021-40491`{.interpreted-text role="cve"}
-- libgcrypt: `2021-40528`{.interpreted-text role="cve"}
-- linux-yocto/5.10, 5.14: `2021-3653`{.interpreted-text role="cve"}, `2021-3656`{.interpreted-text role="cve"}
-- lz4: `2021-3520`{.interpreted-text role="cve"}
-- nettle: `2021-20305`{.interpreted-text role="cve"}
-- openssl: `2021-3711`{.interpreted-text role="cve"}, `2021-3712`{.interpreted-text role="cve"}
-- perl: `2021-36770`{.interpreted-text role="cve"}
-- python3: `2021-29921`{.interpreted-text role="cve"}
-- python3-pip: `2021-3572`{.interpreted-text role="cve"}
-- qemu: `2020-27821`{.interpreted-text role="cve"}, `2020-29443`{.interpreted-text role="cve"}, `2020-35517`{.interpreted-text role="cve"}, `2021-3392`{.interpreted-text role="cve"}, `2021-3409`{.interpreted-text role="cve"}, `2021-3416`{.interpreted-text role="cve"}, `2021-3527`{.interpreted-text role="cve"}, `2021-3544`{.interpreted-text role="cve"}, `2021-3545`{.interpreted-text role="cve"}, `2021-3546`{.interpreted-text role="cve"}, `2021-3682`{.interpreted-text role="cve"}, `2021-20181`{.interpreted-text role="cve"}, `2021-20221`{.interpreted-text role="cve"}, `2021-20257`{.interpreted-text role="cve"}, `2021-20263`{.interpreted-text role="cve"}
+- glibc: `2021-33574`
+- inetutils: `2021-40491`
+- libgcrypt: `2021-40528`
+- linux-yocto/5.10, 5.14: `2021-3653`
+- lz4: `2021-3520`
+- nettle: `2021-20305`
+- openssl: `2021-3711`
+- perl: `2021-36770`
+- python3: `2021-29921`
+- python3-pip: `2021-3572`
+- qemu: `2020-27821`
 
 > CVE-2020-27821、CVE-2020-29443、CVE-2020-35517、CVE-2021-3392、CVE-2021-3409、CVE-2021-3416、CVE-2021-3527、CVE-2021-3544、CVE-2021-3545、CVE-2021-3546、CVE-2021-3682、CVE-2021-20181、CVE-2021-20221、CVE-2021-20257、CVE-2021-20263
 
-- rpm: `2021-3421`{.interpreted-text role="cve"}, `2021-20271`{.interpreted-text role="cve"}
-- rsync: `2020-14387`{.interpreted-text role="cve"}
-- util-linux: `2021-37600`{.interpreted-text role="cve"}
-- vim: `2021-3770`{.interpreted-text role="cve"}, `2021-3778`{.interpreted-text role="cve"}
-- wpa-supplicant: `2021-30004`{.interpreted-text role="cve"}
-- xdg-utils: `2020-27748`{.interpreted-text role="cve"}
-- xserver-xorg: `2021-3472`{.interpreted-text role="cve"}
+- rpm: `2021-3421`
+- rsync: `2020-14387`
+- util-linux: `2021-37600`
+- vim: `2021-3770`
+- wpa-supplicant: `2021-30004`
+- xdg-utils: `2020-27748`
+- xserver-xorg: `2021-3472`
 
 # Recipe Upgrades in 3.4
 
@@ -727,10 +727,10 @@ Thanks to the following people who contributed to this release:
 
 poky
 
-- Repository Location: :yocto\_[git:%60/poky](git:%60/poky)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4](git:%60yocto-3.4) \</poky/tag/?h=yocto-3.4\>\`
-- Git Revision: :yocto\_[git:%60f6d1126fff213460dc6954a5d5fc168606d76b66](git:%60f6d1126fff213460dc6954a5d5fc168606d76b66) \</poky/commit/?id=f6d1126fff213460dc6954a5d5fc168606d76b66\>\`
+- Repository Location: :yocto_[git:%60/poky](git:%60/poky)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</poky/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4](git:%60yocto-3.4) \</poky/tag/?h=yocto-3.4\>\`
+- Git Revision: :yocto_[git:%60f6d1126fff213460dc6954a5d5fc168606d76b66](git:%60f6d1126fff213460dc6954a5d5fc168606d76b66) \</poky/commit/?id=f6d1126fff213460dc6954a5d5fc168606d76b66\>\`
 
 > Git 版本：yocto_<poky/commit/?id=f6d1126fff213460dc6954a5d5fc168606d76b66>`git:` f6d1126fff213460dc6954a5d5fc168606d76b66`
 
@@ -742,12 +742,12 @@ poky
 
 openembedded-core
 
-- Repository Location: :oe\_[git:%60/openembedded-core](git:%60/openembedded-core)\`
-- Branch: :oe\_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
-- Tag: :oe\_[git:%602021-10-honister](git:%602021-10-honister) \</openembedded-core/tag/?h=2021-10-honister\>\`
-- Git Revision: :oe\_[git:%60bb1dea6806f084364b6017db2567f438e805aef0](git:%60bb1dea6806f084364b6017db2567f438e805aef0) \</openembedded-core/commit/?id=bb1dea6806f084364b6017db2567f438e805aef0\>\`
+- Repository Location: :oe_[git:%60/openembedded-core](git:%60/openembedded-core)\`
+- Branch: :oe_[git:%60honister](git:%60honister) \</openembedded-core/log/?h=honister\>\`
+- Tag: :oe_[git:%602021-10-honister](git:%602021-10-honister) \</openembedded-core/tag/?h=2021-10-honister\>\`
+- Git Revision: :oe_[git:%60bb1dea6806f084364b6017db2567f438e805aef0](git:%60bb1dea6806f084364b6017db2567f438e805aef0) \</openembedded-core/commit/?id=bb1dea6806f084364b6017db2567f438e805aef0\>\`
 
-> Git 版本：<openembedded-core/commit/?id=bb1dea6806f084364b6017db2567f438e805aef0>（git：`bb1dea6806f084364b6017db2567f438e805aef0`）
+> Git 版本：<openembedded-core/commit/?id=bb1dea6806f084364b6017db2567f438e805aef0>(git：`bb1dea6806f084364b6017db2567f438e805aef0`)
 
 - Release Artefact: oecore-bb1dea6806f084364b6017db2567f438e805aef0
 - sha: 9a356c407c567b1c26e535cad235204b0462cb79321fefb0844324a6020b31f4
@@ -757,10 +757,10 @@ openembedded-core
 
 meta-mingw
 
-- Repository Location: :yocto\_[git:%60/meta-mingw](git:%60/meta-mingw)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4](git:%60yocto-3.4) \</meta-mingw/tag/?h=yocto-3.4\>\`
-- Git Revision: :yocto\_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
+- Repository Location: :yocto_[git:%60/meta-mingw](git:%60/meta-mingw)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-mingw/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4](git:%60yocto-3.4) \</meta-mingw/tag/?h=yocto-3.4\>\`
+- Git Revision: :yocto_[git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
 > Git 版本：yocto_[git:`f5d761cbd5c957e4405c5d40b0c236d263c916a8`](git:%60f5d761cbd5c957e4405c5d40b0c236d263c916a8%60) \</meta-mingw/commit/?id=f5d761cbd5c957e4405c5d40b0c236d263c916a8\>\`
 
@@ -772,10 +772,10 @@ meta-mingw
 
 meta-intel
 
-- Repository Location: :yocto\_[git:%60/meta-intel](git:%60/meta-intel)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-intel/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4](git:%60yocto-3.4) \</meta-intel/tag/?h=yocto-3.4\>\`
-- Git Revision: :yocto\_[git:%6090170cf85fe35b4e8dc00eee50053c0205276b63](git:%6090170cf85fe35b4e8dc00eee50053c0205276b63) \</meta-intel/commit/?id=90170cf85fe35b4e8dc00eee50053c0205276b63\>\`
+- Repository Location: :yocto_[git:%60/meta-intel](git:%60/meta-intel)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-intel/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4](git:%60yocto-3.4) \</meta-intel/tag/?h=yocto-3.4\>\`
+- Git Revision: :yocto_[git:%6090170cf85fe35b4e8dc00eee50053c0205276b63](git:%6090170cf85fe35b4e8dc00eee50053c0205276b63) \</meta-intel/commit/?id=90170cf85fe35b4e8dc00eee50053c0205276b63\>\`
 
 > - Git 版本：:yocto_[git:%6090170cf85fe35b4e8dc00eee50053c0205276b63](git:%6090170cf85fe35b4e8dc00eee50053c0205276b63) \</meta-intel/commit/?id=90170cf85fe35b4e8dc00eee50053c0205276b63\>\`
 
@@ -787,10 +787,10 @@ meta-intel
 
 meta-gplv2
 
-- Repository Location: :yocto\_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4](git:%60yocto-3.4) \</meta-gplv2/tag/?h=yocto-3.4\>\`
-- Git Revision: :yocto\_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
+- Repository Location: :yocto_[git:%60/meta-gplv2](git:%60/meta-gplv2)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</meta-gplv2/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4](git:%60yocto-3.4) \</meta-gplv2/tag/?h=yocto-3.4\>\`
+- Git Revision: :yocto_[git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
 > Git 修订版本：yocto_[git:`f04e4369bf9dd3385165281b9fa2ed1043b0e400`](git:%60f04e4369bf9dd3385165281b9fa2ed1043b0e400%60) \</meta-gplv2/commit/?id=f04e4369bf9dd3385165281b9fa2ed1043b0e400\>\`
 
@@ -802,12 +802,12 @@ meta-gplv2
 
 bitbake
 
-- Repository Location: :oe\_[git:%60/bitbake](git:%60/bitbake)\`
-- Branch: :oe\_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
-- Tag: :oe\_[git:%602021-10-honister](git:%602021-10-honister) \</bitbake/tag/?h=2021-10-honister\>\`
-- Git Revision: :oe\_[git:%60c78ebac71ec976fdf27ea24767057882870f5c60](git:%60c78ebac71ec976fdf27ea24767057882870f5c60) \</bitbake/commit/?id=c78ebac71ec976fdf27ea24767057882870f5c60\>\`
+- Repository Location: :oe_[git:%60/bitbake](git:%60/bitbake)\`
+- Branch: :oe_[git:%601.52](git:%601.52) \</bitbake/log/?h=1.52\>\`
+- Tag: :oe_[git:%602021-10-honister](git:%602021-10-honister) \</bitbake/tag/?h=2021-10-honister\>\`
+- Git Revision: :oe_[git:%60c78ebac71ec976fdf27ea24767057882870f5c60](git:%60c78ebac71ec976fdf27ea24767057882870f5c60) \</bitbake/commit/?id=c78ebac71ec976fdf27ea24767057882870f5c60\>\`
 
-> Git 版本：<bitbake/commit/?id=c78ebac71ec976fdf27ea24767057882870f5c60>（git:`c78ebac71ec976fdf27ea24767057882870f5c60`）
+> Git 版本：<bitbake/commit/?id=c78ebac71ec976fdf27ea24767057882870f5c60>(git:`c78ebac71ec976fdf27ea24767057882870f5c60`)
 
 - Release Artefact: bitbake-c78ebac71ec976fdf27ea24767057882870f5c60
 - sha: 8077c7e7528cd73ef488ef74de3943ec66cae361459e5b630fb3cbe89c498d3d
@@ -817,9 +817,9 @@ bitbake
 
 yocto-docs
 
-- Repository Location: :yocto\_[git:%60/yocto-docs](git:%60/yocto-docs)\`
-- Branch: :yocto\_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
-- Tag: :yocto\_[git:%60yocto-3.4](git:%60yocto-3.4) \</yocto-docs/tag/?h=yocto-3.4\>\`
-- Git Revision: :yocto\_[git:%60d75c5450ecf56c8ac799a633ee9ac459e88f91fc](git:%60d75c5450ecf56c8ac799a633ee9ac459e88f91fc) \</yocto-docs/commit/?id=d75c5450ecf56c8ac799a633ee9ac459e88f91fc\>\`
+- Repository Location: :yocto_[git:%60/yocto-docs](git:%60/yocto-docs)\`
+- Branch: :yocto_[git:%60honister](git:%60honister) \</yocto-docs/log/?h=honister\>\`
+- Tag: :yocto_[git:%60yocto-3.4](git:%60yocto-3.4) \</yocto-docs/tag/?h=yocto-3.4\>\`
+- Git Revision: :yocto_[git:%60d75c5450ecf56c8ac799a633ee9ac459e88f91fc](git:%60d75c5450ecf56c8ac799a633ee9ac459e88f91fc) \</yocto-docs/commit/?id=d75c5450ecf56c8ac799a633ee9ac459e88f91fc\>\`
 
-> Git 版本：yocto_[git：`d75c5450ecf56c8ac799a633ee9ac459e88f91fc`]（git：`d75c5450ecf56c8ac799a633ee9ac459e88f91fc`）\</yocto-docs/commit/?id=d75c5450ecf56c8ac799a633ee9ac459e88f91fc\>\`
+> Git 版本：yocto_[git：`d75c5450ecf56c8ac799a633ee9ac459e88f91fc`](git%EF%BC%9A%60d75c5450ecf56c8ac799a633ee9ac459e88f91fc%60)\</yocto-docs/commit/?id=d75c5450ecf56c8ac799a633ee9ac459e88f91fc\>\`

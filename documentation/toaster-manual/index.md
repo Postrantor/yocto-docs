@@ -7,7 +7,7 @@ title: Toaster User Manual
 
 |
 
-::: {.toctree caption="Table of Contents" numbered=""}
+:::
 
 intro start setup-and-use reference
 
