@@ -1,25 +1,45 @@
+---
+tip: translate by openai@2023-06-12 07:54:51
+...
+
 # Yocto Project Documentation
 
 This repository contains documentation materials for a variety of the Yocto Project components. In particular see the README file under documentation/.
 
+> 这个存储库包含了 Yocto Project 各组件的文档材料。特别参见 documentation/下的 README 文件。
+
 An online version of the documentation can be found at: https://docs.yoctoproject.org
+
+> 可以在以下网址找到在线文档版本：https://docs.yoctoproject.org/
 
 # Contributing
 
 See https://www.openembedded.org/wiki/How_to_submit_a_patch_to_OpenEmbedded for generic guidelines for configuring Git and preparing patches.
 
+> 請參閱https://www.openembedded.org/wiki/How_to_submit_a_patch_to_OpenEmbedded以獲取配置Git和準備补丁的通用指南。
+
 Read the documentation/README and documentation/standards.md files for rules to follow when contributing to the documentation.
+
+> 阅读文档/README 和文档/standards.md 文件，了解贡献文档时需遵守的规则。
 
 # Where to Send Patches
 
 When sending single patches, please using something like: 'git send-email -1 --to docs@lists.yoctoproject.org
 
+> 当发送单个补丁时，请使用类似：'git send-email -1 --to docs@lists.yoctoproject.org'的方式。
+
 The 'To' header can be set as default for this repository:
 
-```
+> "默认可以将“To”标题设置为此存储库："
+
+```bash
 $ git config sendemail.to docs@lists.yoctoproject.org
 ```
 
 Now you can just do 'git send-email origin/master..' to send all local patches.
 
+> 现在你可以只需要执行 'git send-email origin/master..' 就可以发送所有本地补丁。
+
 Git repository: https://git.yoctoproject.org/yocto-docs Mailing list: docs@lists.yoctoproject.org
+
+> Git 仓库：https://git.yoctoproject.org/yocto-docs 邮件列表：docs@lists.yoctoproject.org
