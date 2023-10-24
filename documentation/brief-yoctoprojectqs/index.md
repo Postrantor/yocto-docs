@@ -1,9 +1,7 @@
 ---
 tip: translate by openai@2023-06-09 19:22:08
-...
----
 title: Yocto Project Quick Build
---------------------------------
+---
 
 # Welcome!
 
@@ -16,14 +14,18 @@ This short document steps you through the process for a typical image build usin
 Note
 :::
 
-- The examples in this paper assume you are using a native Linux system running a recent Ubuntu Linux distribution. If the machine you want to use Yocto Project on to build an image (`Build Host` section in the Yocto Project Development Tasks Manual for more information.
+- The examples in this paper assume you are using a native Linux system running a recent Ubuntu Linux distribution. If the machine you want to use Yocto Project on to build an image (`Build Host` section in the Yocto Project Development Tasks Manual for more information).
 
 > 本文中的示例假设您正在使用运行最新 Ubuntu Linux 发行版的本机 Linux 系统。如果您想要使用 Yocto Project 构建镜像(Build Host)的机器不是本机 Linux 系统，您仍然可以通过使用 CROss PlatformS(CROPS)并设置 Poky 容器来执行这些步骤。有关更多信息，请参见 Yocto Project Development Tasks Manual 中的“dev-manual / start：设置使用跨平台(crops)”部分。
 
 - You may use version 2 of Windows Subsystem For Linux (WSL 2) to set up a build host using Windows 10 or later, Windows Server 2019 or later. See the `dev-manual/start:setting up to use windows subsystem for linux (wsl 2)` section in the Yocto Project Development Tasks Manual for more information.
 
-> 您可以使用 Windows 10 或更高版本、Windows Server 2019 或更高版本的 Windows 子系统(WSL 2)版本 2 来设置构建主机。有关更多信息，请参阅 Yocto 项目开发任务手册中的“dev-manual/start：使用 Windows 子系统(WSL 2)”部分。
-> :::
+> 您可以使用 Windows 10 或更高版本、Windows Server 2019 或更高版本的 Windows 子系统(WSL 2)版本 2 来设置构建主机。有关更多信息，请参阅 Yocto 项目开发任务手册中的“dev-manual/start：**使用 Windows 子系统(WSL 2)”部分**。
+
+> [!NOTE]
+> 支持使用 WSL2
+
+:::
 
 If you want more conceptual or background information on the Yocto Project, see the `/overview-manual/index`.
 
@@ -33,11 +35,11 @@ Make sure your `Build Host` meets the following requirements:
 
 - At least &MIN_DISK_SPACE; Gbytes of free disk space, though much more will help to run multiple builds and increase performance by reusing build artifacts.
 
-> 至少需要&MIN_DISK_SPACE;G 字节的可用磁盘空间，虽然更多的空间可以帮助运行多个构建，并通过重复使用构建成果来提高性能。
+> 至少需要 &MIN_DISK_SPACE;Gbytes 的可用磁盘空间，虽然更多的空间可以帮助运行多个构建，并通过重复使用构建成果来提高性能。
 
 - At least &MIN_RAM; Gbytes of RAM, though a modern modern build host with as much RAM and as many CPU cores as possible is strongly recommended to maximize build performance.
 
-> 至少需要&MIN_RAM; G 字节的内存，但强烈推荐使用尽可能多的内存和多核 CPU 的现代构建主机，以最大限度地提高构建性能。
+> 至少需要 &MIN_RAM; G 字节的内存，但强烈推荐使用尽可能多的内存和多核 CPU 的现代构建主机，以最大限度地提高构建性能。
 
 - Runs a supported Linux distribution (i.e. recent releases of Fedora, openSUSE, CentOS, Debian, or Ubuntu). For a list of Linux distributions that support the Yocto Project, see the `ref-manual/system-requirements:supported linux distributions` section in the Yocto Project Development Tasks Manual.
 
@@ -49,7 +51,6 @@ Make sure your `Build Host` meets the following requirements:
   > - Python &MIN_PYTHON_VERSION; or greater.
   > - gcc &MIN_GCC_VERSION; or greater.
   > - GNU make &MIN_MAKE_VERSION; or greater
-  >
 
 If your build host does not meet any of these three listed version requirements, you can take steps to prepare the system so that you can still use the Yocto Project. See the `ref-manual/system-requirements:required git, tar, python, make and gcc versions` section in the Yocto Project Reference Manual for information.
 
@@ -58,6 +59,8 @@ If your build host does not meet any of these three listed version requirements,
 # Build Host Packages
 
 You must install essential host packages on your build host. The following command installs the host packages based on an Ubuntu distribution:
+
+> 您必须在构建主机上安装必需的主机软件包。以下命令基于Ubuntu分发安装主机软件包：
 
 ```
 $ sudo apt install &UBUNTU_HOST_PACKAGES_ESSENTIAL;
@@ -71,7 +74,8 @@ Note
 For host package requirements on all supported Linux distributions, see the `ref-manual/system-requirements:required packages for the build host` section in the Yocto Project Reference Manual.
 
 > 在 Yocto 项目参考手册中，参见“系统要求：构建主机所需的软件包”部分，以了解所有支持的 Linux 发行版上的主机软件包要求。
-> :::
+
+:::
 
 # Use Git to Clone Poky
 
@@ -160,7 +164,7 @@ Note
 > 如果您不知道您的代理设置，请咨询您的本地网络基础架构资源并获取该信息。一个好的起点也可以是检查您的网页浏览器设置。最后，您可以在 Yocto 项目维基网站上的“工作在网络代理后面”页面上找到更多信息。
 > :::
 
-1. **Initialize the Build Environment:** From within the `poky` directory, run the ``ref-manual/structure:\`\`oe-init-build-env\`\` `` environment setup script to define Yocto Project\'s build environment on your build host.
+1. **Initialize the Build Environment:** From within the `poky` directory, run the `` ref-manual/structure:\`\`oe-init-build-env\`\`  `` environment setup script to define Yocto Project\'s build environment on your build host.
 
 > 从 `poky` 目录中运行 `ref-manual/structure:oe-init-build-env` 环境设置脚本，以在构建主机上定义 Yocto Project 的构建环境。
 
@@ -229,8 +233,7 @@ BB_HASHSERVE_UPSTREAM = "hashserv.yocto.io:8687"
 SSTATE_MIRRORS ?= "file://.* https://sstate.yoctoproject.org/all/PATH;downloadfilename=PATH"
 ```
 
-:::
-3. **Start the Build:** Continue with the following command to build an OS image for the target, which is `core-image-sato` in this example:
+::: 3. **Start the Build:** Continue with the following command to build an OS image for the target, which is `core-image-sato` in this example:
 
 ```shell
 $ bitbake core-image-sato
@@ -274,9 +277,9 @@ By convention, layer names start with the string \"meta-\".
 
 Follow these steps to add a hardware layer:
 
-1. **Find a Layer:** Many hardware layers are available. The Yocto Project :yocto_[git:%60Source](git:%60Source) Repositories \<\>[ has many hardware layers. This example adds the \`meta-altera \<[https://github.com/kraj/meta-altera](https://github.com/kraj/meta-altera)\>]__hardware layer.
+1. **Find a Layer:** Many hardware layers are available. The Yocto Project :yocto\_[git:%60Source](git:%60Source) Repositories \<\>[ has many hardware layers. This example adds the \`meta-altera \<[https://github.com/kraj/meta-altera](https://github.com/kraj/meta-altera)\>]\_\_hardware layer.
 
-> 找到一层：可用的硬件层很多。Yocto Project :yocto_[git:%60Source](git:%60Source) Repositories \<\>[有很多硬件层。这个例子添加了 `meta-altera \<[https://github.com/kraj/meta-altera](https://github.com/kraj/meta-altera)\>]__硬件层。
+> 找到一层：可用的硬件层很多。Yocto Project :yocto\_[git:%60Source](git:%60Source) Repositories \<\>[有很多硬件层。这个例子添加了 `meta-altera \<[https://github.com/kraj/meta-altera](https://github.com/kraj/meta-altera)\>]\_\_硬件层。
 
 2. **Clone the Layer:** Use Git to make a local copy of the layer on your machine. You can put the copy in the top level of the copy of the Poky repository created earlier:
 
@@ -335,9 +338,9 @@ Parsing of 918 .bb files complete (0 cached, 918 parsed). 1401 targets,
 123 skipped, 0 masked, 0 errors.
 ```
 
-You can find more information on adding layers in the ``dev-manual/layers:adding a layer using the \`\`bitbake-layers\`\` script`` section.
+You can find more information on adding layers in the `` dev-manual/layers:adding a layer using the \`\`bitbake-layers\`\` script `` section.
 
-> 你可以在 ``dev-manual/layers:adding a layer using the \`\`bitbake-layers\`\` script`` 部分找到更多关于添加层的信息。
+> 你可以在 `` dev-manual/layers:adding a layer using the \`\`bitbake-layers\`\` script `` 部分找到更多关于添加层的信息。
 
 Completing these steps has added the `meta-altera` layer to your Yocto Project development environment and configured it to build for the `cyclone5` machine.
 
@@ -368,7 +371,7 @@ NOTE: Starting bitbake server...
 Add your new layer with 'bitbake-layers add-layer meta-mylayer'
 ```
 
-For more information on layers and how to create them, see the ``dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script`` section in the Yocto Project Development Tasks Manual.
+For more information on layers and how to create them, see the `` dev-manual/layers:creating a general layer using the \`\`bitbake-layers\`\` script `` section in the Yocto Project Development Tasks Manual.
 
 > 要了解更多关于层的信息以及如何创建它们，请参阅 Yocto Project 开发任务手册中的“dev-manual / layers：使用“bitbake-layers”脚本创建一个通用层”部分。
 
